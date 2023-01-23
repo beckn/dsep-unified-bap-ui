@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-function HomeScreen({navigation}) {
+function HomeScreen({navigation}: {navigation: Navigation}) {
   return (
     <View>
       <Text>HomeScreen</Text>
