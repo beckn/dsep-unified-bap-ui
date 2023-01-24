@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Button} from 'react-native';
 import {Navigation} from '@interfaces/commonInterfaces';
-import {getString} from '../../i18n';
+import {Text} from '@components/text';
+import {getString} from '@i18n';
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
   return (
