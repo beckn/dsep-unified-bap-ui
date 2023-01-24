@@ -19,6 +19,7 @@
       "@interfaces/*": ["./interfaces/*"],
       "@styles/*": ["./styles/*"],
       "@styles": ["./styles"],
+      "@utilz/*": ["./utils/*"],
     }
   },
   "exclude": [
