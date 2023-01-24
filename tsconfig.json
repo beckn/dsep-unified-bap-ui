@@ -17,6 +17,8 @@
     "noImplicitAny": false,
     "paths":{
       "@interfaces/*": ["./interfaces/*"],
+      "@styles/*": ["./styles/*"],
+      "@styles": ["./styles"],
     }
   },
   "exclude": [
