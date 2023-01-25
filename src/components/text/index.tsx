@@ -1,6 +1,6 @@
-import {Fonts} from '@styles/fonts';
 import React, {FunctionComponent} from 'react';
 import {Text as RNText, TextStyle} from 'react-native';
+import {Fonts} from '@styles/fonts';
 
 type TextProps = {
   children: string | JSX.Element;
