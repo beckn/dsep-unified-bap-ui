@@ -11,6 +11,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2319DB16298133C50068B929 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2319DB14298133C50068B929 /* OpenSans-Regular.ttf */; };
+		2319DB17298133C50068B929 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2319DB15298133C50068B929 /* DMSans-Regular.ttf */; };
 		72D3C8BA5D509AD4FA918D94 /* libPods-dub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 196B6DF5DC899F1BA8E8E15A /* libPods-dub.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FDFFCECD529CD8BEF5F284BD /* libPods-dub-dubTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 887990382583672062D8091D /* libPods-dub-dubTests.a */; };
@@ -37,6 +39,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = dub/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = dub/main.m; sourceTree = "<group>"; };
 		196B6DF5DC899F1BA8E8E15A /* libPods-dub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2319DB14298133C50068B929 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		2319DB15298133C50068B929 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DMSans-Regular.ttf"; path = "../src/assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		3EF62EDE2B47F94AA3A9401B /* Pods-dub-dubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dub-dubTests.release.xcconfig"; path = "Target Support Files/Pods-dub-dubTests/Pods-dub-dubTests.release.xcconfig"; sourceTree = "<group>"; };
 		77049FE87C80D3F64C3CF45F /* Pods-dub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dub.release.xcconfig"; path = "Target Support Files/Pods-dub/Pods-dub.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = dub/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				2319DB15298133C50068B929 /* DMSans-Regular.ttf */,
+				2319DB14298133C50068B929 /* OpenSans-Regular.ttf */,
 				13B07FAE1A68108700A75B9A /* dub */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* dubTests */,
@@ -242,6 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2319DB16298133C50068B929 /* OpenSans-Regular.ttf in Resources */,
+				2319DB17298133C50068B929 /* DMSans-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
