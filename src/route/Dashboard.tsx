@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../screens/home';
 import ProfileScreen from '../screens/profile';
+import Description from '../screens/training/Description';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,14 @@ export default function Dashboard() {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => TabBarIcon({color, name: 'account'}),
+        }}
+      />
+      <Tab.Screen
+        name="Description"
+        component={Description}
+        options={{
+          tabBarIcon: ({color}) => TabBarIcon({color, name: 'description'}),
+          headerShown: false
         }}
       />
     </Tab.Navigator>
