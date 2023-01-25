@@ -20,6 +20,8 @@
       "@styles/*": ["./styles/*"],
       "@styles": ["./styles"],
       "@utilz/*": ["./utils/*"],
+      "@i18n": ["./i18n/"],
+      "@components/*": ["./components/*"],
     }
   },
   "exclude": [
