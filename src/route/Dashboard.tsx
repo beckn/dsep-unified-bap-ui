@@ -17,7 +17,6 @@ export default function Dashboard() {
         name="Home"
         component={HomeScreen}
         options={{
-          headerShown: false,
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => TabBarIcon({color, name: 'home'}),
         }}
@@ -26,7 +25,6 @@ export default function Dashboard() {
         name="Profile"
         component={ProfileScreen}
         options={{
-          
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => TabBarIcon({color, name: 'account'}),
         }}
