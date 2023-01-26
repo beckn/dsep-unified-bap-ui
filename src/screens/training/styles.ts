@@ -11,6 +11,21 @@ type Styles = {
     buyButton:ViewStyle;
     getButton:ViewStyle;
     debitCard:ViewStyle;
+    smallCard: ViewStyle;
+    upiCard: ViewStyle;
+    headerText: ViewStyle;
+    video: ViewStyle;
+    horizontalSpace: ViewStyle;
+    rowDirection: ViewStyle;
+    bottom: ViewStyle;
+    debitHalf:ViewStyle;
+    smallButton: ViewStyle;
+    button: ViewStyle;
+    cvv:ViewStyle;
+    cvvText:ViewStyle;
+    line: ViewStyle;
+    success:ViewStyle;
+
 
     
 };
@@ -18,12 +33,14 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
     container: {
       flex: 1,
-      backgroundColor: '#ffffff'
     },
     header: {
-      backgroundColor: 'gray',
-      opacity:0.4,
-      height: 140
+      backgroundColor: '#E5E5E5',
+      height: 140,
+      opacity: .8,
+      paddingLeft:10,
+      paddingRight:10
+
     },
     headerHeading: {
       height: '40%',
@@ -32,8 +49,8 @@ export const styles = StyleSheet.create<Styles>({
       alignItems:'center',
      },
      body: {
+      flex:8,
       padding:15,
-      backgroundColor: '#E5E5E5'
     },
     spacer: {
       height:10
@@ -65,7 +82,82 @@ export const styles = StyleSheet.create<Styles>({
        
       },
       debitCard: {
-        height: 100,
-        width:'80%'
-      }
+        height: 146,
+        backgroundColor: '#ffffff',
+        borderRadius: 20,
+        padding:15
+      },
+      smallCard :{
+        height: 70,
+        backgroundColor: '#ffffff',
+        borderRadius: 20,
+        flexDirection:'row',
+        alignItems:'center'
+      },
+      upiCard:{
+        height: 70,
+        backgroundColor: '#ffffff',
+        borderRadius: 20,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent: 'space-around'
+
+      },
+      headerText: {
+        textAlign: 'center', 
+        fontWeight:'900'
+      },
+      video: {
+        flexDirection: 'row', 
+        justifyContent:'center'
+      },
+      horizontalSpace: {
+        width:20
+      },
+      rowDirection: {
+        flexDirection:'row'
+      },
+      bottom: {
+        backgroundColor:'#ffffff',
+         padding:15
+      },
+      debitHalf :{
+        height:'50%',
+        flexDirection:'row', 
+        alignItems:'center'
+      },
+      smallButton: {
+        flexDirection:'row',
+         width:'45%'
+      },
+      button: {
+        width:'55%',
+        backgroundColor:'#000000', 
+        height:40, 
+        alignItems:'center', 
+        alignSelf:'center', 
+        justifyContent:'center'
+      },
+      cvv:{  
+        height: 30,
+        borderWidth: 1,
+        padding: -5,
+        width: 40
+    },
+    cvvText:{
+      left:10, 
+      top:5
+    },
+    line : {
+      height:1, 
+      width:'100%', 
+      backgroundColor:'#000', 
+      opacity: 0.2
+    },
+    success: {
+      height:'80%', 
+      width:'100%', 
+      justifyContent:'center',
+      alignItems:'center'
+    }
   });

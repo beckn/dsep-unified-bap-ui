@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity,Image } from 'react-native';
 import {styles} from './styles';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import images from '../../assets/images';
 
 const lessionData = [
   {
@@ -36,7 +35,7 @@ const lessionData = [
     time: '1h 2m'
   },
 ]
-function LessonPlan(){
+function LessonPlan({navigation}){
 
 
   const renderLessionData = ({item, index})=>{
@@ -46,7 +45,7 @@ function LessonPlan(){
     <Text style={{top:2}}>{item.time}</Text>
     </View>
     <View style={{flex:1.5,  alignItems:'center', top:4}}>
-    <View style={{height:22, width:22, backgroundColor:'black'}}></View>
+   <Image source={images.downArrow} style={{top:5}} /> 
     </View>
     </View>
     <View style={{backgroundColor:'gray', height:0.7, opacity:0.4}} />
@@ -57,22 +56,17 @@ function LessonPlan(){
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerHeading}>
-        <View style={{left:10}}>
-        <MaterialCommunityIcons name="arrowleft" color={'red'} size={26} />
+        <TouchableOpacity onPress={()=>{navigation.goBack()}}>
+          <Image source={images.leftArrow}  />
+          </TouchableOpacity>
+        <Text style={styles.headerText}>{'Design Thinking'}</Text>
+        <Image source={images.vector} />
         </View>
-        <View style={{width: '60%'}}>
-        <Text style={{textAlign: 'center', fontWeight:'900'}}>Design Thinking</Text>
-        </View>
-        <View style={{height:25, width:25,backgroundColor:'red'}}></View>
-        <View style={{height:25, width:25,backgroundColor:'red', right:10}}></View>
-        </View>
-        <View style={{height:'60%'}}>
-          <View style={{flexDirection: 'row', justifyContent:'center'}}>
-            <Text>online</Text>
-            <View style={{width:20}}></View>
-            <Text>video & lecture</Text>
+          <View style={styles.video}>
+            <Text>{'online'}</Text>
+            <View style={styles.horizontalSpace} />
+            <Text>{'video & lecture'}</Text>
           </View>
-        </View>
       </View>
       <View style={styles.body}>
       <View style={styles.spacer}  />
@@ -83,11 +77,14 @@ function LessonPlan(){
         <View style={styles.spacer} />
         <Text >{'Discussions'}</Text>
         <View style={styles.spacer} />
-        <Text>{'23 comments '}</Text>
+        <View style={styles.rowDirection}>
+        <Text style={{color:'#5D91CC'}}>{'23 comments '}</Text>
+        <Image source={images.inclindArrow}/>
+        </View>
       
 
       </View>
-      <View style={{backgroundColor:'#ffffff', margin:15,}}>
+      <View style={styles.bottom}>
        <TouchableOpacity onPress={()=>{}}>
         <View style={styles.buyButton}>
         <Text style={{color:'#ffffff'}}>{'Buy Now'}</Text>

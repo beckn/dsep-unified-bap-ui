@@ -6,10 +6,10 @@ import {
   View,
   FlatList,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import images from '../../assets/images'
 
 
 const courses = [
@@ -64,34 +64,31 @@ const eligibility = [
     name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
   }
 ]
-function Description() {
+function Description({navigation}) {
 
   return (
    <ScrollView style={styles.container}>
      <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerHeading}>
-        <View style={{left:10}}>
-        <MaterialCommunityIcons name="arrowleft" color={'red'} size={26} />
+        <TouchableOpacity onPress={()=>{navigation.goBack()}}>
+          <Image source={images.leftArrow}  />
+          </TouchableOpacity>
+        <Text style={styles.headerText}>{'Design Thinking'}</Text>
+          <Image source={images.vector} />
         </View>
-        <View style={{width: '60%'}}>
-        <Text style={{textAlign: 'center', fontWeight:'900'}}>Design Thinking</Text>
-        </View>
-        <View style={{height:25, width:25,backgroundColor:'red'}}></View>
-        <View style={{height:25, width:25,backgroundColor:'red', right:10}}></View>
-        </View>
-        <View style={{height:'60%'}}>
-          <View style={{flexDirection: 'row', justifyContent:'center'}}>
-            <Text>online</Text>
-            <View style={{width:20}}></View>
-            <Text>video & lecture</Text>
+        <View>
+          <View style={styles.video}>
+            <Text>{'online'}</Text>
+            <View style={styles.horizontalSpace}></View>
+            <Text>{'video & lecture'}</Text>
           </View>
         </View>
       </View>
 
       <View style={styles.body}>
         <View style={styles.spacer} />
-        <Text style={styles.heading}>About thr Course</Text>
+        <Text style={styles.heading}>{'About thr Course'}</Text>
         <View style={styles.spacer} />
         <Text>{'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.'}</Text>
         <View style={styles.spacer} />       
@@ -103,9 +100,9 @@ function Description() {
          data={courses}
          renderItem ={({item, index})=>{
           return<>
-           <View style={{flexDirection: 'row', alignItems:'center'}}>
-            <View style={{height:3, width:3, backgroundColor:'black', borderRadius:20,top:1}}></View>
-            <Text style={{left:10}}>{item.name}</Text>
+           <View style={styles.course} key={index}>
+            <View style={styles.dot}></View>
+            <Text style={styles.left}>{item.name}</Text>
            </View>
           </>
          }}
@@ -136,7 +133,7 @@ function Description() {
          data={prerequisites}
          renderItem ={({item, index})=>{
           return<>
-           <View style={{flexDirection: 'row'}}>
+           <View style={{flexDirection: 'row'}} key={index}>
             <Text style={{height:3, width:3, backgroundColor:'black', borderRadius:20,top:10}}>.</Text>
             <Text style={{left:10}}>{item.name}</Text>
            </View>
@@ -160,7 +157,7 @@ function Description() {
         <Text style={styles.heading}>{'Course Fees'}</Text>
         <Text>{'₹2,500'}</Text>
       </View>  
-      <View style={{backgroundColor:'#ffffff', margin:15,}}>
+      <View style={{backgroundColor:'#ffffff', margin:15}}>
        <TouchableOpacity onPress={()=>{}}>
         <View style={styles.buyButton}>
         <Text style={{color:'#ffffff'}}>{'Buy Now'}</Text>
@@ -185,27 +182,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   header: {
-    flex:4,
-    backgroundColor: 'gray',
-    opacity:0.4,
-    height: 140
+    backgroundColor: '#E5E5E5',
+    height: 140,
+    opacity: .8,
+    paddingLeft:10,
+    paddingRight:10
   },
   body: {
     flex:8,
     padding:15,
-    backgroundColor: '#E5E5E5'
+    backgroundColor: '#E5E5E5',
+    opacity:0.6
   },
   headerHeading: {
    height: '40%',
    flexDirection:'row',
    justifyContent: 'space-between',
    alignItems:'center',
+   zIndex:3
   },
   spacer: {
     height:10
   },
   heading: {
-    color: '#000000'
+    color: '#000000',
+    zIndex:9
   },
   buyButton: {
    height: 45,
@@ -222,7 +223,31 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     borderRadius: 4
     
-   }
+   },
+   headerText: {
+    textAlign: 'center', 
+    fontWeight:'900'
+  },
+  video: {
+    flexDirection: 'row', 
+    justifyContent:'center'
+  },
+  horizontalSpace: {
+    width:20
+  },
+  course: {
+    flexDirection: 'row', 
+    alignItems:'center'
+  },
+  dot: {
+    height:3, 
+    width:3, 
+    backgroundColor:'black', 
+    borderRadius:20,
+    top:1
+  },
+  left:{left:10}
+
 });
 
 export default Description;

@@ -37,6 +37,11 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
        title= "Go to Debit"
        onPress={() => navigation.navigate('Debit')}
       />
+       <View style={{height:15}}></View>
+       <Button 
+       title= "Go to Confirmation"
+       onPress={() => navigation.navigate('Confirmation')}
+      />
     </View>
   );
 }
