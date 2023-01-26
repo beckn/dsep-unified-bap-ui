@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import {View, Button, StyleSheet, TextInput, FlatList, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, Button, StyleSheet, TextInput, FlatList, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import {Navigation} from '@interfaces/commonInterfaces';
-import {Text} from '@components/text';
-import {getString} from '@i18n';
-import {commonStyles} from '@styles/commonStyles';
-import {Fonts} from '@styles/fonts';
 
-function HomeScreen({navigation}: {navigation: Navigation}) {
+function HomeScreen({navigation}) {
   const [data, setData] = useState([
     {"name" : "Jobs & Internships", "icon":"briefcase"},{"name" : "Trainings & Courses", "icon":"briefcase"},
     {"name" : "Scholarships & Grants", "icon":"briefcase"},{"name" : "Tutoring & Mentorship", "icon":"briefcase"},

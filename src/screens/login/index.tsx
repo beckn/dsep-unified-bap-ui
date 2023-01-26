@@ -9,6 +9,7 @@ function LoginScreen({navigation}) {
         title="Go to Home"
         onPress={() => navigation.navigate('Dashboard')}
       />
+    
     </View>
   );
 }
