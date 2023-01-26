@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 
-const Tabs = ({tabData}) => {
-  const [tabPressed, setTabPressed] = useState(tabData[0].value);
+type tabDetails = {
+  tabData: Array<{label: string; value: number}>;
+}
+
+const Tabs = ({tabData}: tabDetails) => {
+  const [tabPressed, setTabPressed] = useState<number>(tabData[0].value);
 
   return (
     <View style={styles.tabSection}>

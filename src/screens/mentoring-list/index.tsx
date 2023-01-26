@@ -19,7 +19,6 @@ const MentoringListScreen = () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
 
     if (resp.status === 200) {
-      console.log("resp.data",resp?.data)
       setData(resp.data);
     } else {
       console.log(resp.message);

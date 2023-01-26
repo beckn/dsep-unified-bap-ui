@@ -1,9 +1,17 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import {Colors} from '@styles/colors';
 import {Metrics} from '@styles/metrics';
 import {Fonts} from '@styles/fonts';
 
-export const styles = StyleSheet.create({
+type Styles = {
+  tabSection: ViewStyle;
+  tabview: ViewStyle;
+  selectedTab: ViewStyle;
+  tabText: ViewStyle;
+  selectedTabText: ViewStyle;
+};
+
+export const styles = StyleSheet.create<Styles>({
   tabSection: {
     flexDirection: 'row',
     width: '100%',
