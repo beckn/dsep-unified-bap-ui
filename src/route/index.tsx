@@ -2,6 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/login';
+import MentoringListScreen from '../screens/mentoring-list';
 import Dashboard from './Dashboard';
 import LessonPlan from '../screens/training/LessonPlan';
 import Debit from '../screens/training/Debit';
@@ -19,6 +20,7 @@ function Routes() {
           component={Dashboard}
           options={{headerShown: false}}
         />
+        <Stack.Screen name="MentoringList" component={MentoringListScreen} />
          <Stack.Screen
           name="LessonPlan"
           component={LessonPlan}
@@ -34,6 +36,7 @@ function Routes() {
           component={Confirmation}
           options={{headerShown: false}}
         />
+        <Stack.Screen name="MentoringList" component={MentoringListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
