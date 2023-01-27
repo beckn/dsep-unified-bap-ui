@@ -1,8 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity,Image } from 'react-native';
+import { View, Text, TouchableOpacity,Image, Alert } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
+import Button from '../../components/button';
+
 function Confirmation({navigation}){
+  const onClickConfirmation =(navigation) =>{
+    Alert.alert("flow completed")
+  }
     return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -37,7 +42,7 @@ function Confirmation({navigation}){
         <Text>{'Congratulations, your application has been sent'}</Text>
       </View>
       </View>
-      <View style={styles.bottom}>
+      {/* <View style={styles.bottom}>
       <View style={styles.spacer}  />
       <View style={styles.spacer}  />
        <TouchableOpacity onPress={()=>{}}>
@@ -53,7 +58,13 @@ function Confirmation({navigation}){
         </View>
        </TouchableOpacity>
        <View style={styles.spacer}  />
-      </View>
+      </View> */}
+      <View style={styles.bottom}>
+       <Button onPress={()=>onClickConfirmation(navigation)} text={'Buy Now'} type="dark"/>
+       <View style={styles.spacer} />
+       <View style={styles.spacer} />
+        <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
+      </View> 
        
     </View>
     )

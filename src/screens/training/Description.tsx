@@ -1,15 +1,13 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   FlatList,
-  ScrollView,
-  TouchableOpacity,
-  Image
+  ScrollView
 } from 'react-native';
-import images from '../../assets/images'
+import Button from '../../components/button';
+import {styles}  from './styles';
 
 
 const courses = [
@@ -66,26 +64,13 @@ const eligibility = [
 ]
 function Description({navigation}) {
 
+  const onClickBuyNow =(navigation) =>{
+    navigation.navigate('Debit')
+  }
+
   return (
    <ScrollView style={styles.container}>
      <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerHeading}>
-        <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-          <Image source={images.leftArrow}  />
-          </TouchableOpacity>
-        <Text style={styles.headerText}>{'Design Thinking'}</Text>
-          <Image source={images.vector} />
-        </View>
-        <View>
-          <View style={styles.video}>
-            <Text>{'online'}</Text>
-            <View style={styles.horizontalSpace}></View>
-            <Text>{'video & lecture'}</Text>
-          </View>
-        </View>
-      </View>
-
       <View style={styles.body}>
         <View style={styles.spacer} />
         <Text style={styles.heading}>{'About thr Course'}</Text>
@@ -133,9 +118,9 @@ function Description({navigation}) {
          data={prerequisites}
          renderItem ={({item, index})=>{
           return<>
-           <View style={{flexDirection: 'row'}} key={index}>
-            <Text style={{height:3, width:3, backgroundColor:'black', borderRadius:20,top:10}}>.</Text>
-            <Text style={{left:10}}>{item.name}</Text>
+           <View style={styles.course} key={index}>
+            <Text style={styles.dot}>.</Text>
+            <Text style={styles.left}>{item.name}</Text>
            </View>
           </>
          }}
@@ -146,9 +131,9 @@ function Description({navigation}) {
          data={eligibility}
          renderItem ={({item, index})=>{
           return<>
-           <View style={{flexDirection: 'row'}}>
-            <Text style={{height:3, width:3, backgroundColor:'black', borderRadius:20,top:10}}>.</Text>
-            <Text style={{left:10}}>{item.name}</Text>
+           <View style={styles.course} key={index}>
+            <Text style={styles.dot}>.</Text>
+            <Text style={styles.left}>{item.name}</Text>
            </View>
           </>
          }}
@@ -157,97 +142,16 @@ function Description({navigation}) {
         <Text style={styles.heading}>{'Course Fees'}</Text>
         <Text>{'₹2,500'}</Text>
       </View>  
-      <View style={{backgroundColor:'#ffffff', margin:15}}>
-       <TouchableOpacity onPress={()=>{}}>
-        <View style={styles.buyButton}>
-        <Text style={{color:'#ffffff'}}>{'Buy Now'}</Text>
-        </View>
-       </TouchableOpacity>
+      <View style={styles.bottom}>
+       <Button onPress={()=>onClickBuyNow(navigation)} text={'Buy Now'} type="dark"/>
        <View style={styles.spacer} />
        <View style={styles.spacer} />
-       <TouchableOpacity onPress={()=>{}}>
-        <View style={styles.getButton}>
-        <Text style={{color:'#000000'}} >{'GIFT THIS COURSE'}</Text>
-        </View>
-       </TouchableOpacity>
+        <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
       </View> 
     </SafeAreaView>
    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: '#ffffff'
-  },
-  header: {
-    backgroundColor: '#E5E5E5',
-    height: 140,
-    opacity: .8,
-    paddingLeft:10,
-    paddingRight:10
-  },
-  body: {
-    flex:8,
-    padding:15,
-    backgroundColor: '#E5E5E5',
-    opacity:0.6
-  },
-  headerHeading: {
-   height: '40%',
-   flexDirection:'row',
-   justifyContent: 'space-between',
-   alignItems:'center',
-   zIndex:3
-  },
-  spacer: {
-    height:10
-  },
-  heading: {
-    color: '#000000',
-    zIndex:9
-  },
-  buyButton: {
-   height: 45,
-   backgroundColor:'#000000',
-   alignItems:'center',
-   justifyContent:'center',
-   borderRadius: 4
-   
-  },
-  getButton: {
-    height: 45,
-    backgroundColor: '#E5E5E5',
-    alignItems:'center',
-    justifyContent:'center',
-    borderRadius: 4
-    
-   },
-   headerText: {
-    textAlign: 'center', 
-    fontWeight:'900'
-  },
-  video: {
-    flexDirection: 'row', 
-    justifyContent:'center'
-  },
-  horizontalSpace: {
-    width:20
-  },
-  course: {
-    flexDirection: 'row', 
-    alignItems:'center'
-  },
-  dot: {
-    height:3, 
-    width:3, 
-    backgroundColor:'black', 
-    borderRadius:20,
-    top:1
-  },
-  left:{left:10}
-
-});
 
 export default Description;

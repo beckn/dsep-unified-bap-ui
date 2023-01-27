@@ -25,6 +25,15 @@ type Styles = {
     cvvText:ViewStyle;
     line: ViewStyle;
     success:ViewStyle;
+    course: ViewStyle;
+    dot: ViewStyle;
+    left:ViewStyle;
+    row:ViewStyle;
+    comments: ViewStyle;
+    lessonPlanCardHeader: ViewStyle;
+    lessonPlanArrow: ViewStyle;
+    lessionLine: ViewStyle;
+    debitNumber: ViewStyle;
 
 
     
@@ -142,7 +151,8 @@ export const styles = StyleSheet.create<Styles>({
         height: 30,
         borderWidth: 1,
         padding: -5,
-        width: 40
+        width: 40,
+        
     },
     cvvText:{
       left:10, 
@@ -159,5 +169,41 @@ export const styles = StyleSheet.create<Styles>({
       width:'100%', 
       justifyContent:'center',
       alignItems:'center'
-    }
+    },
+    course: {
+    flexDirection: 'row', 
+    alignItems:'center'
+    },
+  dot: {
+    height:3, 
+    width:3, 
+    backgroundColor:'black', 
+    borderRadius:20,
+    top:1
+  },
+  left:{left:10},
+  row:{
+    flexDirection: 'row'
+  },
+  comments :{
+    color:'#5D91CC'
+  },
+  lessonPlanCardHeader:{
+    flex:10.5,
+    top:1
+  }, 
+  lessonPlanArrow: {
+    flex:1.5,  
+    alignItems:'center', 
+    top:4
+  },
+  lessionLine: {
+    backgroundColor:'gray', 
+    height:0.7, 
+    opacity:0.4
+  },
+  debitNumber: {
+    top:7, 
+    left:10
+  }
   });

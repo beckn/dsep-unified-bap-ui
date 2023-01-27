@@ -31,7 +31,7 @@ function Debit({navigation}){
             <View style={{flex: 8}}>
             <View style={styles.rowDirection}>
             <Text>{'Yes bank debit card '}</Text>
-            <Image source={images.masterCardBlueIcon} style={{top:7, left:10}} />
+            <Image source={images.masterCardBlueIcon} style={styles.debitNumber} />
             </View>
             <Text>{'1234 1243 7564 7364'}</Text>
             </View>
@@ -46,10 +46,9 @@ function Debit({navigation}){
         />
         <Text style={styles.cvvText}>{'CVV'}</Text>
        </View>
-       
-       <View style={styles.button}>
+       <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("Confirmation")}}>
         <Text style={{color:'#fff'}}>{'Proceed to pay'}</Text>
-       </View>
+       </TouchableOpacity>
         </View>
       </View>
       <View style={styles.spacer}  />

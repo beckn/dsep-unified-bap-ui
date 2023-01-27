@@ -22,26 +22,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
       />
-      <View style={{height:15}}></View>
-      <Button
-        title="Go to Description"
-        onPress={() => navigation.navigate('Description')}
-      />
-      <View style={{height:15}}></View>
-      <Button 
-       title= "Go to Lesson Plan"
-       onPress={() => navigation.navigate('LessonPlan')}
-      />
-      <View style={{height:15}}></View>
-      <Button 
-       title= "Go to Debit"
-       onPress={() => navigation.navigate('Debit')}
-      />
-       <View style={{height:15}}></View>
-       <Button 
-       title= "Go to Confirmation"
-       onPress={() => navigation.navigate('Confirmation')}
-      />
+     
     </View>
   );
 }

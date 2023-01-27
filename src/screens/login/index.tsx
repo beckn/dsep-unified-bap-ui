@@ -13,6 +13,10 @@ function LoginScreen({navigation}) {
         title="Go to Mentoring List"
         onPress={() => navigation.navigate('MentoringList')}
       />
+      <Button
+        title="Go to Training"
+        onPress={() => navigation.navigate('Training')}
+      />
     </View>
   );
 }

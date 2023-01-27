@@ -7,7 +7,7 @@ import Dashboard from './Dashboard';
 import LessonPlan from '../screens/training/LessonPlan';
 import Debit from '../screens/training/Debit';
 import Confirmation from '../screens/training/Confirmation';
-
+import Training from '../screens/training'
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -36,7 +36,11 @@ function Routes() {
           component={Confirmation}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+         <Stack.Screen
+          name="Training"
+          component={Training}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

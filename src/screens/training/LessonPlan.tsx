@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity,Image } from 'react-native';
+import { View, Text, FlatList,Image } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
+import Button from '../../components/button';
 
 const lessionData = [
   {
@@ -36,38 +37,26 @@ const lessionData = [
   },
 ]
 function LessonPlan({navigation}){
-
+const onClickBuyNow =(navigation) =>{
+    navigation.navigate('Debit')
+  }
 
   const renderLessionData = ({item, index})=>{
-    return (<><View style={styles.card}>
-    <View style={{flex:10.5,top:1}}>
+    return (<><View style={styles.card} key={index}>
+    <View style={styles.lessonPlanCardHeader}>
     <Text style={styles.heading}>{item.heading}</Text>
     <Text style={{top:2}}>{item.time}</Text>
     </View>
-    <View style={{flex:1.5,  alignItems:'center', top:4}}>
+    <View style={styles.lessonPlanArrow}>
    <Image source={images.downArrow} style={{top:5}} /> 
     </View>
     </View>
-    <View style={{backgroundColor:'gray', height:0.7, opacity:0.4}} />
+    <View style={styles.lessionLine} />
     </> )
 
   }
     return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerHeading}>
-        <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-          <Image source={images.leftArrow}  />
-          </TouchableOpacity>
-        <Text style={styles.headerText}>{'Design Thinking'}</Text>
-        <Image source={images.vector} />
-        </View>
-          <View style={styles.video}>
-            <Text>{'online'}</Text>
-            <View style={styles.horizontalSpace} />
-            <Text>{'video & lecture'}</Text>
-          </View>
-      </View>
       <View style={styles.body}>
       <View style={styles.spacer}  />
         <FlatList 
@@ -78,27 +67,16 @@ function LessonPlan({navigation}){
         <Text >{'Discussions'}</Text>
         <View style={styles.spacer} />
         <View style={styles.rowDirection}>
-        <Text style={{color:'#5D91CC'}}>{'23 comments '}</Text>
+        <Text style={styles.comments}>{'23 comments '}</Text>
         <Image source={images.inclindArrow}/>
         </View>
-      
-
       </View>
       <View style={styles.bottom}>
-       <TouchableOpacity onPress={()=>{}}>
-        <View style={styles.buyButton}>
-        <Text style={{color:'#ffffff'}}>{'Buy Now'}</Text>
-        </View>
-       </TouchableOpacity>
+       <Button onPress={()=>onClickBuyNow(navigation)} text={'Buy Now'} type="dark"/>
        <View style={styles.spacer} />
        <View style={styles.spacer} />
-       <TouchableOpacity onPress={()=>{}}>
-        <View style={styles.getButton}>
-        <Text style={{color:'#000000'}} >{'GIFT THIS COURSE'}</Text>
-        </View>
-       </TouchableOpacity>
+        <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
       </View>
-       
     </View>
     )
 }
