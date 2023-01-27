@@ -2,24 +2,13 @@ import React from 'react';
 import { View, Text, TextInput,Image,TouchableOpacity } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images/index'
+import Header from './Header';
+
 
 function Debit({navigation}){
     return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerHeading}>
-        <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-          <Image source={images.leftArrow}  />
-          </TouchableOpacity>
-        <Text style={styles.headerText}>{'Design Thinking'}</Text>
-        <Image source={images.vector} />
-        </View>
-          <View style={styles.video}>
-            <Text>{'online'}</Text>
-            <View style={styles.horizontalSpace}></View>
-            <Text>{'video & lecture'}</Text>
-          </View>
-      </View>
+      <Header navigation={navigation} />
       <View style={styles.body}>
       <Text style={styles.heading}>{'Credit / Debit card'}</Text>
       <View style={styles.spacer}  />

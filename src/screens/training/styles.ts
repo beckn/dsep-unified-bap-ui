@@ -1,5 +1,7 @@
 import {StyleSheet, ViewStyle} from 'react-native';
 import {Metrics} from '@styles/metrics';
+import { Colors } from '@styles/colors';
+
 type Styles = {
     container: ViewStyle;
     header: ViewStyle;
@@ -65,7 +67,7 @@ export const styles = StyleSheet.create<Styles>({
       height:10
     },
     heading: {
-      color: '#000000',
+      color: Colors.black,
       fontSize:14
     },
     card:{
@@ -76,7 +78,7 @@ export const styles = StyleSheet.create<Styles>({
     },
     buyButton: {
       height: 45,
-      backgroundColor:'#000000',
+      backgroundColor: Colors.black,
       alignItems:'center',
       justifyContent:'center',
       borderRadius: 4
@@ -92,20 +94,20 @@ export const styles = StyleSheet.create<Styles>({
       },
       debitCard: {
         height: 146,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
         borderRadius: 20,
         padding:15
       },
       smallCard :{
         height: 70,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
         borderRadius: 20,
         flexDirection:'row',
         alignItems:'center'
       },
       upiCard:{
         height: 70,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
         borderRadius: 20,
         flexDirection:'row',
         alignItems:'center',
@@ -127,7 +129,7 @@ export const styles = StyleSheet.create<Styles>({
         flexDirection:'row'
       },
       bottom: {
-        backgroundColor:'#ffffff',
+        backgroundColor: Colors.white,
          padding:15
       },
       debitHalf :{
@@ -141,7 +143,7 @@ export const styles = StyleSheet.create<Styles>({
       },
       button: {
         width:'55%',
-        backgroundColor:'#000000', 
+        backgroundColor: Colors.black, 
         height:40, 
         alignItems:'center', 
         alignSelf:'center', 
@@ -161,7 +163,7 @@ export const styles = StyleSheet.create<Styles>({
     line : {
       height:1, 
       width:'100%', 
-      backgroundColor:'#000', 
+      backgroundColor:Colors.black, 
       opacity: 0.2
     },
     success: {
@@ -177,7 +179,7 @@ export const styles = StyleSheet.create<Styles>({
   dot: {
     height:3, 
     width:3, 
-    backgroundColor:'black', 
+    backgroundColor: Colors.black, 
     borderRadius:20,
     top:1
   },

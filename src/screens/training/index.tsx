@@ -9,24 +9,26 @@ const Training = ({navigation}:any) => {
 
   return (
     <>
-     <Header navigation={navigation} />
-   <Tab.Navigator  tabBarOptions={{
-            activeTintColor: '#000000',
-            inactiveTintColor: 'gray',
+    <Header navigation={navigation} />
+    <Tab.Navigator  tabBarOptions={{
             tabStyle: {
               backgroundColor: '#E5E5E5',
-              borderTopWidth: 0.5,
               borderColor:'gray',
               opacity:0.6,
-              
             },
-            labelStyle: {
-                borderColor:'gray',
+              style: {
+                elevation: 1,
               },
           }}
-          swipeEnabled={false}
+          screenOptions={{
+            tabBarLabelStyle: { fontSize: 12 },
+            tabBarIndicatorStyle: {backgroundColor:'#000000'}
+          }}
+          swipeEnabled={true}
           >
-      <Tab.Screen name="Description" component={Description} />
+      <Tab.Screen name="Description" component={Description}
+       options={{}}
+      />
       <Tab.Screen name="LessonPlan" component={LessonPlan} />
     </Tab.Navigator>
     </>

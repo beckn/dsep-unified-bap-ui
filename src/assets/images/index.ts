@@ -11,7 +11,8 @@ const images = {
     success : require("../images/success.png"),
     grayCircle: require("../images/grayCircle.png"),
     downArrow: require("../images/downArrow.png"),
-    inclindArrow : require("../images/inclindVector.png")
+    inclindArrow : require("../images/inclindVector.png"),
+    star: require("../images/star.jpg"),
 
 
 }

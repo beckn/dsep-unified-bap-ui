@@ -20,6 +20,14 @@ function Header({navigation}){
             <View style={styles.horizontalSpace}></View>
             <Text>{'video & lecture'}</Text>
           </View>
+          <View style={{height:70}}>
+          </View>
+          <View style={styles.starEnd}>
+          <View style={styles.starValue}>
+          <Image source={images.star}/>
+          <Text style={styles.value}>{'4.8'}</Text>
+          </View>
+          </View>
         </View>
       </View>
         </>
@@ -27,25 +35,14 @@ function Header({navigation}){
 
 }
 const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      backgroundColor: '#ffffff'
-    },
     header: {
       backgroundColor: '#E5E5E5',
-      height: 140,
-    //   opacity: .8,
+      height: 160,
       paddingLeft:10,
       paddingRight:10
     },
-    body: {
-      flex:8,
-      padding:15,
-      backgroundColor: '#E5E5E5',
-      opacity:0.6
-    },
     headerHeading: {
-     height: '40%',
+     height: '30%',
      flexDirection:'row',
      justifyContent: 'space-between',
      alignItems:'center',
@@ -58,22 +55,6 @@ const styles = StyleSheet.create({
       color: '#000000',
       zIndex:9
     },
-    buyButton: {
-     height: 45,
-     backgroundColor:'#000000',
-     alignItems:'center',
-     justifyContent:'center',
-     borderRadius: 4
-     
-    },
-    getButton: {
-      height: 45,
-      backgroundColor: '#E5E5E5',
-      alignItems:'center',
-      justifyContent:'center',
-      borderRadius: 4
-      
-     },
      headerText: {
       textAlign: 'center', 
       fontWeight:'900'
@@ -85,18 +66,18 @@ const styles = StyleSheet.create({
     horizontalSpace: {
       width:20
     },
-    course: {
-      flexDirection: 'row', 
-      alignItems:'center'
+    left:{
+      left:10
     },
-    dot: {
-      height:3, 
-      width:3, 
-      backgroundColor:'black', 
-      borderRadius:20,
-      top:1
+    starEnd:{
+      alignItems:'flex-end'
     },
-    left:{left:10}
+    starValue: {
+      flexDirection:'row'
+    },
+    value: {
+      top:-2.5
+    }
   
   });
 export default Header;
