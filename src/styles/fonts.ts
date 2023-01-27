@@ -15,6 +15,7 @@ export const Fonts = {
   family: {
     DM_SANS_REGULAR: 'DMSans-Regular',
     OPEN_SANS_REGULAR: 'OpenSans-Regular',
+    OPEN_SANS_BOLD: 'OpenSans-Bold',
   },
   size: {
     xSmall: 8,

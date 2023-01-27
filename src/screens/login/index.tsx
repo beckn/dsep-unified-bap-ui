@@ -59,6 +59,10 @@ function LoginScreen({navigation}) {
           )
         }
       />
+      <Button
+        title="Go to Mentoring List"
+        onPress={() => navigation.navigate('MentoringList')}
+      />
     </View>
   );
 }
