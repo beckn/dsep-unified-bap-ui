@@ -25,7 +25,6 @@ apiCallInstance.interceptors.request.use(
 
 
 export const callService = async (methodType, endpoint, body) => {
-  console.log()
   if (methodType === ApiMethods.POST) {
     try {
       const response = await apiCallInstance.post(endpoint, body);
