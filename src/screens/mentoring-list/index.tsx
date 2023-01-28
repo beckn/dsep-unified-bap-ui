@@ -17,10 +17,10 @@ const MentoringListScreen = () => {
 
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp.status === 200) {
+    if (resp?.status === 200) {
       setData(resp.data);
     } else {
-      console.log(resp.message);
+      console.log(resp?.message);
     }
   };
   return (

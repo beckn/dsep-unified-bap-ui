@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Text} from '@components/Text';
+import {Text} from '@components';
 import {Fonts} from '@styles/fonts';
 import {styles} from './styles';
 import {SVGIcon, ICONS} from '@components/SvgIcon';
@@ -9,7 +9,7 @@ import {Colors} from '@styles/colors';
 type cardDetails = {
   data: Array<{[key: string]: string}>;
   index: number;
-}
+};
 
 const MentorCard = ({data, index}: cardDetails) => {
   return (
@@ -19,12 +19,12 @@ const MentorCard = ({data, index}: cardDetails) => {
         <Text
           style={styles.nameStyle}
           fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-          {"Akshay shinde"}
+          {'Akshay shinde'}
         </Text>
         <Text
           style={styles.destinationText}
           fontFamily={Fonts.family.DM_SANS_REGULAR}>
-          {"Frontend Architect | Founder - ABC company"}
+          {'Frontend Architect | Founder - ABC company'}
         </Text>
         <View style={styles.ratingsContainer}>
           <SVGIcon
@@ -32,7 +32,7 @@ const MentorCard = ({data, index}: cardDetails) => {
             fill={Colors.oliveBlack}
             style={styles.starIcon}
           />
-          <Text style={styles.ratingText}>{4.9}</Text>
+          <Text style={styles.ratingText}>{'4.9'}</Text>
         </View>
       </View>
     </View>

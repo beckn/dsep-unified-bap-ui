@@ -22,8 +22,10 @@
       "@utilz/*": ["./utils/*"],
       "@i18n": ["./i18n/"],
       "@components/*": ["./components/*"],
+      "@components": ["./components"],
       "@constant/*": ["./constant/*"],
-      "@services": ["./services/*"]
+      "@services/*": ["./services/*"],
+      "@services": ["./services"]
     }
   },
   "exclude": [
