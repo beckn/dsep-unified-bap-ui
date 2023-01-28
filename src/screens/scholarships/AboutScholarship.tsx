@@ -4,75 +4,89 @@ import {
   Text,
   View,
   FlatList,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import Button from '../../components/button';
 import {styles}  from './styles';
+import Spacer from '../../components/spacer';
 
 
-const courses = [
+const aboutScholarData = [
   {
     id: 1,
-    name: 'Fundamentals in UX'
+    heading: 'Name',
+    value: 'H.G. Infra Engineering Ltd Scholarship for Medical Courses (2022-23)'
   },
   {
     id: 2,
-    name: 'Research'
+    heading: 'Description',
+    value: 'H.G. Infra Engineering Ltd Scholarship for Medical Courses (2022-23)'
   },
   {
     id: 3,
-    name: 'Prototyping'
+    heading: 'Type',
+    value: "Scholarship"
   },
   {
     id: 4,
-    name: 'Design'
+    heading: 'Scheme Provider Name',
+    value: "H.G. Infra Engineering Ltd"
   },
   {
     id: 5,
-    name: 'Presentation skills'
+    heading: 'Financial Year',
+    value: "2022-2023"
+  },
+  {
+    id: 6,
+    heading: 'Scheme Amount',
+    value: "₹40000.00"
+  },
+  {
+    id: 7,
+    heading: 'Application Start Date',
+    value: "1st Jan 2023"
+  },
+  {
+    id: 8,
+    heading: 'Application End Date',
+    value: "31st Dec 2023"
   }
 ]
 
-const prerequisites = [
-  {
-    id: 1,
-    name: 'Sed ut perspiciatis unde omnis iste natus error sit.'
-  },
-  {
-    id: 2,
-    name: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
-  },
-  {
-    id: 3,
-    name: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
-  },
-  {
-    id: 4,
-    name: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur'
-  }
-]
 
-const eligibility = [
-  {
-    id: 1,
-    name:'Sed ut perspiciatis unde omnis iste natus error sit.'
-  },
-  {
-    id: 2,
-    name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
-  }
-]
 function AboutScholarship({navigation}) {
 
-  const onClickBuyNow =(navigation) =>{
-    navigation.navigate('Debit')
+  const onClickApply =(navigation) =>{
+    Alert.alert('hi')
   }
 
+  
   return (
-   <ScrollView style={styles.container}>
+   <ScrollView >
      <SafeAreaView style={styles.container}>
-      
+        <Text style={styles.heading}>{'General Information'}</Text>
+        <FlatList 
+          data={aboutScholarData}
+          renderItem={({ item, index }) => { 
+            return(
+                <View key={index}>
+                 <View style={styles.card} >
+                 <Text style={styles.heading}>{item.heading}</Text>
+                 <Text>{item.value}</Text>
+                 </View>
+                <View style={styles.line}></View>
+                </View>
+            )
+          }}
+        />
+        <Spacer size={20}/>
     </SafeAreaView>
+    <View style={styles.bottom}>
+       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+       <Spacer size={10}/>
+      </View> 
    </ScrollView>
   );
 }

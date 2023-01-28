@@ -27,6 +27,7 @@ type Styles = {
     line: ViewStyle;
     success:ViewStyle;
     course: ViewStyle;
+    dot: ViewStyle;
     left:ViewStyle;
     row:ViewStyle;
     comments: ViewStyle;
@@ -34,7 +35,9 @@ type Styles = {
     lessonPlanArrow: ViewStyle;
     lessionLine: ViewStyle;
     debitNumber: ViewStyle;
-  
+
+
+    
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -133,17 +136,17 @@ export const styles = StyleSheet.create<Styles>({
         borderWidth: 1,
         padding: -5,
         width: 40,
-      },
-      cvvText:{
+    },
+    cvvText:{
       left: Metrics.padding.small, 
-      top: Metrics.padding.xSmall
-      },
-      line : {
+      top:5
+    },
+    line : {
       height:1, 
       width:'100%', 
       backgroundColor:Colors.black, 
       opacity: 0.2
-      },
+    },
     success: {
       height:'80%', 
       width:'100%', 
@@ -154,9 +157,15 @@ export const styles = StyleSheet.create<Styles>({
     flexDirection: 'row', 
     alignItems:'center'
     },
-
+  dot: {
+    height:3, 
+    width:3, 
+    backgroundColor: Colors.black, 
+    borderRadius: Metrics.radius.large,
+    top:1
+  },
   left:{
-    left: Metrics.padding.small,
+    left: Metrics.padding.small, 
   },
   row:{
     flexDirection: 'row'
@@ -171,7 +180,7 @@ export const styles = StyleSheet.create<Styles>({
   lessonPlanArrow: {
     flex:1.5,  
     alignItems:'center', 
-    top: Metrics.padding.small
+    top:Metrics.padding.xSmall
   },
   lessionLine: {
     backgroundColor:'gray', 
@@ -179,7 +188,7 @@ export const styles = StyleSheet.create<Styles>({
     opacity:0.4
   },
   debitNumber: {
-    top: Metrics.padding.xSmall, 
+    top:7, 
     left: Metrics.padding.small,
   }
   });
