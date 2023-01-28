@@ -1,8 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/home';
-import ProfileScreen from '../screens/profile';
 import {ICONS, SVGIcon} from '@components';
+import HomeScreen from '../screens/home';
+import AppliedScreen from '../screens/applied';
+import ProfileScreen from '../screens/profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ export default function Dashboard() {
       />
       <Tab.Screen
         name="Applied"
-        component={HomeScreen}
+        component={AppliedScreen}
         options={{
           tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_APPLIED, size}),
         }}
