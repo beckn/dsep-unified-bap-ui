@@ -59,7 +59,7 @@ export const styles = StyleSheet.create<Styles>({
     marginRight: Metrics.margin.xSmall
   },
   ratingText: {
-    fontSize: Metrics.tiny,
+    fontSize: Fonts.size.base,
     fontWeight: '400',
     fontFamily: 'Open Sans',
     color: Colors.black,

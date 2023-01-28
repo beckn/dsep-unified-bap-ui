@@ -7,6 +7,7 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
+import { Text } from '@components/Text';
 
 const MentoringListScreen = () => {
   const [data, setData] = useState([]);
@@ -14,6 +15,24 @@ const MentoringListScreen = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const Odd = () => {
+    return (
+      <FlatList
+        data={data}
+        renderItem={({item, index}) => <MentorCard data={item} index={index} />}
+        contentContainerStyle={styles.listContainer}
+      /> 
+    )
+  }
+
+  const Demo = () => {
+    return (
+      <View style={styles.demoContainer}>
+        <Text>Demo</Text>
+      </View>
+    )
+  }
 
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
@@ -30,15 +49,11 @@ const MentoringListScreen = () => {
       </View>
       <Tabs
         tabData={[
-          {label: 'Tutoring', value: 1},
-          {label: 'Mentoring', value: 2},
+          {label: 'Tutoring',comp : <Odd/>},
+          {label: 'Mentoring', comp : <Demo/>},
         ]}
       />
-      <FlatList
-        data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} />}
-        contentContainerStyle={styles.listContainer}
-      />
+
     </View>
   );
 };
