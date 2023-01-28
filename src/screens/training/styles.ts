@@ -1,6 +1,7 @@
 import {StyleSheet, ViewStyle} from 'react-native';
 import {Metrics} from '@styles/metrics';
 import { Colors } from '@styles/colors';
+import { Fonts } from '@styles/fonts';
 
 type Styles = {
     container: ViewStyle;
@@ -10,8 +11,6 @@ type Styles = {
     spacer: ViewStyle;
     heading: ViewStyle;
     card: ViewStyle;
-    buyButton:ViewStyle;
-    getButton:ViewStyle;
     debitCard:ViewStyle;
     smallCard: ViewStyle;
     upiCard: ViewStyle;
@@ -28,7 +27,6 @@ type Styles = {
     line: ViewStyle;
     success:ViewStyle;
     course: ViewStyle;
-    dot: ViewStyle;
     left:ViewStyle;
     row:ViewStyle;
     comments: ViewStyle;
@@ -36,9 +34,7 @@ type Styles = {
     lessonPlanArrow: ViewStyle;
     lessionLine: ViewStyle;
     debitNumber: ViewStyle;
-
-
-    
+  
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -46,29 +42,28 @@ export const styles = StyleSheet.create<Styles>({
       flex: 1,
     },
     header: {
-      backgroundColor: '#E5E5E5',
+      backgroundColor: Colors.backgound,
       height: 140,
-      opacity: .8,
-      paddingLeft:10,
-      paddingRight:10
+      opacity: 0.8,
+      paddingLeft: Metrics.padding.small,
+      paddingRight: Metrics.padding.small
 
     },
     headerHeading: {
-      height: '40%',
       flexDirection:'row',
       justifyContent: 'space-between',
       alignItems:'center',
      },
      body: {
       flex:8,
-      padding:15,
+      padding: Metrics.padding.medium,
     },
     spacer: {
       height:10
     },
     heading: {
       color: Colors.black,
-      fontSize:14
+      fontSize: Fonts.size.medium,
     },
     card:{
      height:60,
@@ -76,39 +71,23 @@ export const styles = StyleSheet.create<Styles>({
      flex:0,
   
     },
-    buyButton: {
-      height: 45,
-      backgroundColor: Colors.black,
-      alignItems:'center',
-      justifyContent:'center',
-      borderRadius: 4
-      
-     },
-     getButton: {
-       height: 45,
-       backgroundColor: '#E5E5E5',
-       alignItems:'center',
-       justifyContent:'center',
-       borderRadius: 4
-       
-      },
       debitCard: {
         height: 146,
         backgroundColor: Colors.white,
-        borderRadius: 20,
-        padding:15
+        borderRadius: Metrics.radius.large,
+        padding: Metrics.padding.medium,
       },
       smallCard :{
         height: 70,
         backgroundColor: Colors.white,
-        borderRadius: 20,
+        borderRadius: Metrics.radius.large,
         flexDirection:'row',
         alignItems:'center'
       },
       upiCard:{
         height: 70,
         backgroundColor: Colors.white,
-        borderRadius: 20,
+        borderRadius: Metrics.radius.large,
         flexDirection:'row',
         alignItems:'center',
         justifyContent: 'space-around'
@@ -130,7 +109,7 @@ export const styles = StyleSheet.create<Styles>({
       },
       bottom: {
         backgroundColor: Colors.white,
-         padding:15
+         padding: Metrics.padding.medium,
       },
       debitHalf :{
         height:'50%',
@@ -154,18 +133,17 @@ export const styles = StyleSheet.create<Styles>({
         borderWidth: 1,
         padding: -5,
         width: 40,
-        
-    },
-    cvvText:{
-      left:10, 
-      top:5
-    },
-    line : {
+      },
+      cvvText:{
+      left: Metrics.padding.small, 
+      top: Metrics.padding.xSmall
+      },
+      line : {
       height:1, 
       width:'100%', 
       backgroundColor:Colors.black, 
       opacity: 0.2
-    },
+      },
     success: {
       height:'80%', 
       width:'100%', 
@@ -176,14 +154,10 @@ export const styles = StyleSheet.create<Styles>({
     flexDirection: 'row', 
     alignItems:'center'
     },
-  dot: {
-    height:3, 
-    width:3, 
-    backgroundColor: Colors.black, 
-    borderRadius:20,
-    top:1
+
+  left:{
+    left: Metrics.padding.small,
   },
-  left:{left:10},
   row:{
     flexDirection: 'row'
   },
@@ -197,7 +171,7 @@ export const styles = StyleSheet.create<Styles>({
   lessonPlanArrow: {
     flex:1.5,  
     alignItems:'center', 
-    top:4
+    top: Metrics.padding.small
   },
   lessionLine: {
     backgroundColor:'gray', 
@@ -205,7 +179,7 @@ export const styles = StyleSheet.create<Styles>({
     opacity:0.4
   },
   debitNumber: {
-    top:7, 
-    left:10
+    top: Metrics.padding.xSmall, 
+    left: Metrics.padding.small,
   }
   });

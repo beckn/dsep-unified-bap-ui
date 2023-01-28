@@ -7,7 +7,10 @@ import Dashboard from './Dashboard';
 import LessonPlan from '../screens/training/LessonPlan';
 import Debit from '../screens/training/Debit';
 import Confirmation from '../screens/training/Confirmation';
-import Training from '../screens/training'
+import Training from '../screens/training';
+import AboutScholarship from '../screens/scholarships/AboutScholarship';
+import Eligibility from '../screens/scholarships/Eligibility';
+import Scholarships from '../screens/scholarships'
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -39,6 +42,21 @@ function Routes() {
          <Stack.Screen
           name="Training"
           component={Training}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Scholarships'
+        component={Scholarships}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="AboutScholarship"
+          component={AboutScholarship}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Eligibility"
+          component={Eligibility}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
