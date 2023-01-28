@@ -4,8 +4,10 @@ import {styles} from './styles';
 import images from '../../assets/images';
 import Button from '../../components/button';
 import Header from './Header';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-function Confirmation({navigation}){
+
+function Confirmation({navigation}: {navigation: Navigation}){
   const onClickConfirmation =(navigation) =>{
     Alert.alert("flow completed")
   }

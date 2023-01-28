@@ -50,6 +50,6 @@ export const styles = StyleSheet.create<Styles>({
     },
     params: {
       fontSize: Fonts.size.medium,
-      color: Colors.params
+      color: Colors.lightBlack
     }
 });

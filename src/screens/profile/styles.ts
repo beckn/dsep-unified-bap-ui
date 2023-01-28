@@ -15,7 +15,7 @@ export const styles = StyleSheet.create<Styles>({
     height: 40,
     borderWidth: 1,
     borderColor: 'black',
-    borderRadius: Metrics.radius.base,
+    borderRadius: Metrics.radius.small,
     marginVertical: Metrics.margin.small,
   },
 });

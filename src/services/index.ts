@@ -1,8 +1,8 @@
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {ApiMethods} from "@constant/common.constant";
-import { BASE_URL } from "./endpoints";
-
+import axios, {AxiosResponse} from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ApiMethods} from '@constant/common.constant';
+import {BASE_URL} from './endpoints';
+import {KeyValue} from '@interfaces/commonInterfaces';
 
 const apiCallInstance = axios.create({
   baseURL: BASE_URL,
@@ -11,11 +11,11 @@ const apiCallInstance = axios.create({
 
 apiCallInstance.interceptors.request.use(
   async config => {
-    const token = await AsyncStorage.getItem("accessToken");
+    const token = await AsyncStorage.getItem('accessToken');
     if (token) {
-      config.headers["Authorization"] = "Bearer " + token;
+      config.headers.Authorization = 'Bearer ' + token;
     }
-    config.headers["Access-Control-Allow-Origin"] = "*";
+    config.headers['Access-Control-Allow-Origin'] = '*';
     return config;
   },
   error => {
@@ -23,22 +23,24 @@ apiCallInstance.interceptors.request.use(
   },
 );
 
-
-export const callService = async (methodType, endpoint, body) => {
-  console.log()
+export const callService = async (
+  methodType: ApiMethods,
+  endpoint: string,
+  body?: KeyValue | KeyValue[],
+) => {
   if (methodType === ApiMethods.POST) {
     try {
       const response = await apiCallInstance.post(endpoint, body);
       return response;
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   } else {
     try {
       const response = await apiCallInstance.get(endpoint);
       return response;
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   }
 };

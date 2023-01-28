@@ -1,36 +1,20 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Description from './Description';
 import LessonPlan from './LessonPlan';
 import React from 'react';
 import Header from './Header';
+import Tabs from '@components/Tabs';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-const Tab = createMaterialTopTabNavigator();
-const Training = ({navigation}:any) => {
-
+const Training = ({navigation}: {navigation: Navigation}) => {
   return (
     <>
     <Header navigation={navigation} />
-    <Tab.Navigator  tabBarOptions={{
-            tabStyle: {
-              backgroundColor: '#E5E5E5',
-              borderColor:'gray',
-              opacity:0.6,
-            },
-              style: {
-                elevation: 1,
-              },
-          }}
-          screenOptions={{
-            tabBarLabelStyle: { fontSize: 12 },
-            tabBarIndicatorStyle: {backgroundColor:'#000000'}
-          }}
-          swipeEnabled={true}
-          >
-      <Tab.Screen name="Description" component={Description}
-       options={{}}
+    <Tabs
+        tabData={[
+          {label: 'Description',comp : <Description navigation={navigation} />},
+          {label: 'LessonPlan', comp : <LessonPlan  navigation={navigation} />},
+        ]}
       />
-      <Tab.Screen name="LessonPlan" component={LessonPlan} />
-    </Tab.Navigator>
     </>
   );
 };

@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import Button from '../../components/button';
 import {styles}  from './styles';
+import {Navigation} from '@interfaces/commonInterfaces';
+
 
 
 const courses = [
@@ -62,10 +64,10 @@ const eligibility = [
     name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
   }
 ]
-function Description({navigation}) {
+function Description({navigation}: {navigation: Navigation}) {
 
-  const onClickBuyNow =(navigation) =>{
-    navigation.navigate('Debit')
+  const onClickBuyNow =() =>{
+    navigation.navigate("Debit")
   }
 
   return (
@@ -143,7 +145,7 @@ function Description({navigation}) {
         <Text>{'₹2,500'}</Text>
       </View>  
       <View style={styles.bottom}>
-       <Button onPress={()=>onClickBuyNow(navigation)} text={'Buy Now'} type="dark"/>
+       <Button onPress={onClickBuyNow} text={'Buy Now'} type="dark"/>
        <View style={styles.spacer} />
        <View style={styles.spacer} />
         <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
