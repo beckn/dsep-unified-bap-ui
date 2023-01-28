@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Button} from 'react-native';
 import {Navigation} from '@interfaces/commonInterfaces';
-import {Text} from '@components/Text';
 import {getString} from '@i18n';
 import {commonStyles} from '@styles/commonStyles';
 import {Fonts} from '@styles/fonts';
+import {Text} from '@components';
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
   return (
