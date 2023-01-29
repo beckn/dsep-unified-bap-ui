@@ -12,12 +12,12 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
-    backgroundColor: Colors.backgound,
+    backgroundColor: Colors.background,
   },
   searchBoxContainer: {
     paddingTop: Metrics.padding.base,
     paddingHorizontal: Metrics.padding.base,
   },
-  listContainer: {paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31},
-  demoContainer: {backgroundColor: Colors.silverSand,flex:1,alignItems:'center',justifyContent:'center'}
+  listContainer: { paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 },
+  demoContainer: { backgroundColor: Colors.white, flex: 1 }
 });
