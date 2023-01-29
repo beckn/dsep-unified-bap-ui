@@ -23,10 +23,10 @@ function LoginScreen({navigation}) {
         onPress={() => navigation.navigate('Scholarships')}
       />
       <View style={{height:20}}></View>
-       {/* <Button
-        title="Go to Mentoring"
-        onPress={() => navigation.navigate('Scholarships')}
-      /> */}
+       <Button
+        title="Go to Jobs and Internships"
+        onPress={() => navigation.navigate('Jobs')}
+      />
     </View>
   );
 }

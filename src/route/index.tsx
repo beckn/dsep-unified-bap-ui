@@ -10,7 +10,8 @@ import Confirmation from '../screens/training/Confirmation';
 import Training from '../screens/training';
 import AboutScholarship from '../screens/scholarships/AboutScholarship';
 import Eligibility from '../screens/scholarships/Eligibility';
-import Scholarships from '../screens/scholarships'
+import Scholarships from '../screens/scholarships';
+import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -47,6 +48,11 @@ function Routes() {
         <Stack.Screen 
         name='Scholarships'
         component={Scholarships}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Jobs'
+        component={Jobs}
         options={{headerShown: false}}
         />
          <Stack.Screen
