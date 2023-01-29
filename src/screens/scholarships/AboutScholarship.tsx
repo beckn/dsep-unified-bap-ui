@@ -7,9 +7,9 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
-import Button from '../../components/button';
+import Button from '../../components/AppButton';
 import {styles}  from './styles';
-import Spacer from '../../components/spacer';
+import Spacer from '../../components/Spacer';
 
 
 const aboutScholarData = [
@@ -56,9 +56,9 @@ const aboutScholarData = [
 ]
 
 
-function AboutScholarship({navigation}) {
+function AboutScholarship() {
 
-  const onClickApply =(navigation) =>{
+  const onClickApply =() =>{
     Alert.alert('hi')
   }
 

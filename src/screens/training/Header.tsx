@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import images from '../../assets/images';
 
 
-function Header({navigation}){
+function Header({navigation, heading, online, video, education, rating}){
     return(
         <>
          <View style={styles.header}>
@@ -11,22 +11,23 @@ function Header({navigation}){
         <TouchableOpacity onPress={()=>{navigation.goBack()}}>
           <Image source={images.leftArrow}  />
           </TouchableOpacity>
-        <Text style={styles.headerText}>{'Design Thinking'}</Text>
+        <Text style={styles.headerText}>{heading}</Text>
           <Image source={images.vector} />
         </View>
         <View>
-          <View style={styles.video}>
-            <Text>{'online'}</Text>
+          {online && <View style={styles.video}>
+            <Text>{online}</Text>
             <View style={styles.horizontalSpace}></View>
-            <Text>{'video & lecture'}</Text>
-          </View>
+            <Text>{video}</Text>
+          </View>}
+          {education &&<Text style={styles.align}>{education}</Text> }
           <View style={{height:70}}>
           </View>
           <View style={styles.starEnd}>
-          <View style={styles.starValue}>
+          {rating && <View style={styles.starValue}>
           <Image source={images.star}/>
-          <Text style={styles.value}>{'4.8'}</Text>
-          </View>
+          <Text style={styles.value}>{rating}</Text>
+          </View>}
           </View>
         </View>
       </View>
@@ -73,11 +74,21 @@ const styles = StyleSheet.create({
       alignItems:'flex-end'
     },
     starValue: {
-      flexDirection:'row'
+      flexDirection:'row',
+      backgroundColor: '#D0D0D0',
+      padding: 3,
+      bottom: 15,
+      borderRadius: 5,
+
     },
     value: {
-      top:-2.5
+      top: -1,
+      fontSize: 12
+    },
+    align:{
+      textAlign:'center'
     }
+
   
   });
 export default Header;

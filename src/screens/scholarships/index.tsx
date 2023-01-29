@@ -7,10 +7,16 @@ import {Navigation} from '@interfaces/commonInterfaces';
 const Scholarships = ({navigation}: {navigation: Navigation}) =>{
     return(
     <>
-    <Header navigation={navigation} />
+    <Header navigation={navigation} 
+            heading="H.G. Infra Engineering..." 
+            online={''} 
+            video={''} 
+            education='Undergraduate'
+            rating={''}
+    />
     <Tabs
         tabData={[
-          {label: 'AboutScholarship',comp : <AboutScholarship navigation={navigation} />},
+          {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} />},
           {label: 'Eligibility', comp : <Eligibility  navigation={navigation} />},
         ]}
       />

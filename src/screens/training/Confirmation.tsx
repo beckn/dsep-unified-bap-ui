@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text,Image, Alert } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
-import Button from '../../components/button';
+import Button from '../../components/AppButton';
 import Header from './Header';
 import {Navigation} from '@interfaces/commonInterfaces';
 
@@ -13,7 +13,13 @@ function Confirmation({navigation}: {navigation: Navigation}){
   }
     return (
     <View style={styles.container}>
-       <Header navigation={navigation} />
+       <Header navigation={navigation} 
+               heading='Design Thinking'
+               online= 'online'
+               video = 'video & lecture'
+               education={""}
+               rating={4.8}
+        />
       <View style={[styles.body,{alignItems:'center'}]}>
         <Image source={images.grayCircle} style={{marginTop:-50}} />
         <View style={styles.spacer}  />

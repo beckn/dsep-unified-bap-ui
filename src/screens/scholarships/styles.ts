@@ -11,6 +11,7 @@ type Styles = {
   dot: ViewStyle;
   left: ViewStyle;
   params: ViewStyle;
+  row: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create<Styles>({
       width:3, 
       backgroundColor: Colors.black, 
       borderRadius: Metrics.radius.large,
-      top:Metrics.padding.xSmall
+      top:Metrics.padding.small
     },
     left:{
       left: Metrics.padding.small, 
@@ -51,5 +52,8 @@ export const styles = StyleSheet.create<Styles>({
     params: {
       fontSize: Fonts.size.medium,
       color: Colors.lightBlack
-    }
+    },
+    row:{
+      flexDirection: 'row'
+    },
 });

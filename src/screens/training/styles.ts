@@ -35,6 +35,7 @@ type Styles = {
     lessonPlanArrow: ViewStyle;
     lessionLine: ViewStyle;
     debitNumber: ViewStyle;
+    align: ViewStyle;
 
 
     
@@ -121,25 +122,29 @@ export const styles = StyleSheet.create<Styles>({
       },
       smallButton: {
         flexDirection:'row',
-         width:'45%'
+         width:'45%',
       },
       button: {
         width:'55%',
         backgroundColor: Colors.black, 
-        height:40, 
+        height:34, 
         alignItems:'center', 
         alignSelf:'center', 
         justifyContent:'center'
       },
       cvv:{  
-        height: 30,
+        height: 32,
         borderWidth: 1,
-        padding: -5,
-        width: 40,
+        width: 48,
+        padding: Metrics.padding.xSmall,
+        borderRadius: Metrics.radius.xSmall,
+        borderColor: Colors.liteGray,
     },
     cvvText:{
-      left: Metrics.padding.small, 
-      top:5
+      left: Metrics.padding.xSmall, 
+      justifyContent:'center',
+      alignSelf:'center',
+      fontSize: Fonts.size.small
     },
     line : {
       height:1, 
@@ -190,5 +195,8 @@ export const styles = StyleSheet.create<Styles>({
   debitNumber: {
     top:7, 
     left: Metrics.padding.small,
+  },
+  align:{
+    textAlign:'center'
   }
   });

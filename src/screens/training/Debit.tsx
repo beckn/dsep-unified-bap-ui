@@ -3,12 +3,20 @@ import { View, Text, TextInput,Image,TouchableOpacity } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images/index'
 import Header from './Header';
+import Spacer from '@components/Spacer';
+import AppButton from '@components/AppButton';
 
 
 function Debit({navigation}){
     return (
-    <View style={styles.container}>
-      <Header navigation={navigation} />
+      <View style={styles.container}>
+      <Header navigation={navigation} 
+      heading='Design Thinking'  
+      online= 'online'
+      video = 'video & lecture'
+      education={""}
+      rating={4.8}
+      />
       <View style={styles.body}>
       <Text style={styles.heading}>{'Credit / Debit card'}</Text>
       <View style={styles.spacer}  />
@@ -28,23 +36,23 @@ function Debit({navigation}){
         <View style={styles.debitHalf}>
        <View style={styles.smallButton}>
        <TextInput 
-            maxLength={4}
+            maxLength={3}
             secureTextEntry={true}
             placeholder='***'
             style={styles.cvv}
         />
         <Text style={styles.cvvText}>{'CVV'}</Text>
        </View>
-       <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("Confirmation")}}>
-        <Text style={{color:'#fff'}}>{'Proceed to pay'}</Text>
-       </TouchableOpacity>
+       <AppButton onPress={()=>{navigation.navigate("Confirmation")}} text={'Proceed to pay'} type="dark" style={styles.button}/>
         </View>
       </View>
       <View style={styles.spacer}  />
       <Text style={styles.heading}>{'E-wallets'}</Text>
       <View style={styles.spacer}  />
       <View style={styles.smallCard}>
+      <Spacer horizontal size={25}/>
       <Image  source={images.paytmCircle} />
+      <Spacer horizontal size={30}/>
       <Image  source={images.paytmRactangle} />
       </View>
       <View style={styles.spacer}  />

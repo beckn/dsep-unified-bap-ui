@@ -17,7 +17,7 @@ type PropType = {
 const AppButton = (props: PropType) =>{
     const {styles, text, onPress, type} = useAppButton(props);
     return(
-       <TouchableOpacity onPress={onPress} style={styles.buyButton}>
+       <TouchableOpacity onPress={onPress} style={styles.button}>
         <Text style={styles.buttonText}>{text}</Text>
        </TouchableOpacity>
     )
@@ -26,17 +26,19 @@ const AppButton = (props: PropType) =>{
   function useAppButton(props: PropType) {
         const {height, text, style, onPress, type} = props;
         const styles = StyleSheet.create({
-          buyButton: {
+          button: {
             height: height,
             backgroundColor: type === "dark" ? Colors.black : Colors.backgound,
             alignItems:'center',
             justifyContent:'center',
-            borderRadius: Metrics.radius.small,
+            borderRadius: Metrics.radius.xSmall,
             fontFamily: Fonts.family.OPEN_SANS_BOLD,
+           
             ...style,
       },
       buttonText :{
-        color:  type === "dark" ?  Colors.white : Colors.black
+        color:  type === "dark" ?  Colors.white : Colors.black,
+        textTransform: 'uppercase'
       }
         });
 

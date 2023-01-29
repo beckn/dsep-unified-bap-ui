@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList,Image } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
-import Button from '../../components/button';
+import Button from '../../components/AppButton';
 
 const lessionData = [
   {
