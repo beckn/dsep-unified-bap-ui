@@ -13,6 +13,7 @@ import Eligibility from '../screens/scholarships/Eligibility';
 import Scholarships from '../screens/scholarships'
 import {ThemeProvider} from '@context';
 
+import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -57,6 +58,11 @@ function Routes() {
         <Stack.Screen 
         name='Scholarships'
         component={Scholarships}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Jobs'
+        component={Jobs}
         options={{headerShown: false}}
         />
          <Stack.Screen
