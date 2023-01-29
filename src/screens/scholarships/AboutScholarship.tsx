@@ -5,12 +5,11 @@ import {
   View,
   FlatList,
   ScrollView,
-  Alert
 } from 'react-native';
-import Button from '../../components/AppButton';
+import Button from '@components/AppButton';
 import {styles}  from './styles';
-import Spacer from '../../components/Spacer';
-
+import Spacer from '@components/Spacer';
+import {Navigation} from '@interfaces/commonInterfaces';
 
 const aboutScholarData = [
   {
@@ -56,10 +55,18 @@ const aboutScholarData = [
 ]
 
 
-function AboutScholarship() {
+function AboutScholarship({navigation}: {navigation: Navigation}) {
 
   const onClickApply =() =>{
-    Alert.alert('hi')
+    navigation.navigate("Confirmation",{
+      id:2,
+      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
+      time: '',
+      imgPara: 'Congratulations!',
+      para1: 'Your scholarship application was submitted successfully!',
+      para2: 'We will evaluate your application and respond as soon as possible.'
+ 
+    });
   }
 
   

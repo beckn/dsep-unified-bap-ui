@@ -22,6 +22,11 @@ function LoginScreen({navigation}) {
         title="Go to Scholarships & Grants"
         onPress={() => navigation.navigate('Scholarships')}
       />
+      <View style={{height:20}}></View>
+       {/* <Button
+        title="Go to Mentoring"
+        onPress={() => navigation.navigate('Scholarships')}
+      /> */}
     </View>
   );
 }

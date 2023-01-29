@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput,Image,TouchableOpacity } from 'react-native';
+import { View, Text, TextInput,Image } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images/index'
 import Header from './Header';
@@ -8,9 +8,20 @@ import AppButton from '@components/AppButton';
 
 
 function Debit({navigation}){
+   const onClickPay =()=>{
+    navigation.navigate("Confirmation",{
+      id:1,
+      heading:'Design Thinking course',
+      time: '1 Month',
+      imgPara: 'Successful',
+      para1: 'Congratulations, your application has been sent',
+    });
+   }
+
     return (
       <View style={styles.container}>
-      <Header navigation={navigation} 
+      <Header 
+      navigation={navigation} 
       heading='Design Thinking'  
       online= 'online'
       video = 'video & lecture'
@@ -22,10 +33,10 @@ function Debit({navigation}){
       <View style={styles.spacer}  />
       <View style={styles.debitCard}>
         <View style={styles.debitHalf}>
-            <View style={{flex:2, backgroundColor:'#fff'}}>
-             <Image source={images.yesBank}/>
+            <View style={styles.yesBank}>
+            <Image source={images.yesBank}/>
             </View>
-            <View style={{flex: 8}}>
+            <View style={styles.yesbankDetails}>
             <View style={styles.rowDirection}>
             <Text>{'Yes bank debit card '}</Text>
             <Image source={images.masterCardBlueIcon} style={styles.debitNumber} />
@@ -43,7 +54,7 @@ function Debit({navigation}){
         />
         <Text style={styles.cvvText}>{'CVV'}</Text>
        </View>
-       <AppButton onPress={()=>{navigation.navigate("Confirmation")}} text={'Proceed to pay'} type="dark" style={styles.button}/>
+       <AppButton onPress={onClickPay} text={'Proceed to pay'} type="dark" style={styles.button}/>
         </View>
       </View>
       <View style={styles.spacer}  />

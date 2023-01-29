@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, FlatList,Image } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
-import Button from '../../components/AppButton';
+import Button from '@components/AppButton';
+import Spacer from '@components/Spacer';
 
 const lessionData = [
   {
@@ -73,8 +74,7 @@ const onClickBuyNow =(navigation) =>{
       </View>
       <View style={styles.bottom}>
        <Button onPress={()=>onClickBuyNow(navigation)} text={'Buy Now'} type="dark"/>
-       <View style={styles.spacer} />
-       <View style={styles.spacer} />
+       <Spacer size={20}/>
         <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
       </View>
     </View>

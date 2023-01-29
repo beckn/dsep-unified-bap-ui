@@ -2,47 +2,45 @@ import React from 'react';
 import { View, Text,Image, Alert } from 'react-native';
 import {styles} from './styles';
 import images from '../../assets/images';
-import Button from '../../components/AppButton';
-import Header from './Header';
+import Button from '@components/AppButton';
 import {Navigation} from '@interfaces/commonInterfaces';
+import Spacer from '@components/Spacer';
 
 
-function Confirmation({navigation}: {navigation: Navigation}){
+function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
+  const { id, heading, time, imgPara, para1, para2} = route.params;
+
   const onClickConfirmation =(navigation) =>{
-    Alert.alert("flow completed")
+    // navigation.navigate('Home');
   }
     return (
     <View style={styles.container}>
-       <Header navigation={navigation} 
-               heading='Design Thinking'
-               online= 'online'
-               video = 'video & lecture'
-               education={""}
-               rating={4.8}
-        />
-      <View style={[styles.body,{alignItems:'center'}]}>
-        <Image source={images.grayCircle} style={{marginTop:-50}} />
-        <View style={styles.spacer}  />
-        <View style={styles.spacer}  />
-      <Text style={styles.heading}>{'Design Thinking course'}</Text>
-      <Text>{'Course length : 1 Month'}</Text>
-      <View style={styles.spacer}  />
+        <View style={styles.header}>
+        </View>
+      <View style={[styles.body,styles.alignItem]}>
+        <Image source={images.grayCircle} />
+        <Spacer />
+      <Text style={[styles.heading, styles.align]}>{heading}</Text>
+      {time && <Text>{'Course length :'} {time}</Text>}
+      <Spacer size={25}/>
       <View style={styles.line}></View>
       <View style={styles.success}>
       <Image source={images.success} />
-        <View style={styles.spacer}  />
-        <View style={styles.spacer}  />
-        <Text>{'Successful'}</Text>
-        <View style={styles.spacer}  />
-        <View style={styles.spacer}  />
-        <Text>{'Congratulations, your application has been sent'}</Text>
+        <Spacer size={25}/>
+        <Text style={styles.headerText}>{imgPara}</Text>
+        <Spacer size={20}/>
+        {para1 && <Text style={styles.align}>{para1}</Text>}
+        <Spacer size={20}/>
+        {para2 && <Text style={styles.align}>{para2}</Text>}
       </View>
       </View>
       <View style={styles.bottom}>
-       <Button onPress={()=>onClickConfirmation(navigation)} text={'Buy Now'} type="dark"/>
-       <View style={styles.spacer} />
-       <View style={styles.spacer} />
-        <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
+       {id ===1 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
+       <Spacer size={20}/>
+        {id === 1 ? <Button onPress={()=>{}} text={'EXPLORE OTHER COURSES'} type=""/> : null}
+        {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'Check application status'} type="dark"/>: null}
+       <Spacer size={20}/>
+        {id === 2 ? <Button onPress={()=>{}} text={'go back to home'} type=""/> : null}
       </View> 
        
     </View>

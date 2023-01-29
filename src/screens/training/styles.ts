@@ -36,6 +36,10 @@ type Styles = {
     lessionLine: ViewStyle;
     debitNumber: ViewStyle;
     align: ViewStyle;
+    imageTop: ViewStyle;
+    alignItem: ViewStyle;
+    yesBank: ViewStyle;
+    yesbankDetails: ViewStyle;
 
 
     
@@ -198,5 +202,14 @@ export const styles = StyleSheet.create<Styles>({
   },
   align:{
     textAlign:'center'
-  }
+  },
+  imageTop: {
+    // marginTop:-50
+  },
+  alignItem: {
+    alignItems:'center',
+    marginTop:-50
+  },
+  yesBank: {flex:2},
+  yesbankDetails: {flex: 9}
   });

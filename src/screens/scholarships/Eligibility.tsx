@@ -6,10 +6,11 @@ import {
   View,
   FlatList,
   ScrollView,
-  Alert
 } from 'react-native';
-import Button from '../../components/AppButton';
+import Button from '@components/AppButton';
 import {styles}  from './styles';
+import {Navigation} from '@interfaces/commonInterfaces';
+
 
 const documents = [
     {
@@ -46,12 +47,19 @@ const documents = [
     },
   ]
 
-function Eligibility() {
+function Eligibility({navigation}:{navigation: Navigation}) {
 
-    const onClickApply =() =>{
-        Alert.alert('hi')
-      }
-
+  const onClickApply =() =>{
+    navigation.navigate("Confirmation",{
+      id:2,
+      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
+      time: '',
+      imgPara: 'Congratulations!',
+      para1: 'Your scholarship application was submitted successfully!',
+      para2: 'We will evaluate your application and respond as soon as possible.'
+ 
+    });
+  }
   return (
    <ScrollView >
      <SafeAreaView style={styles.container}>
