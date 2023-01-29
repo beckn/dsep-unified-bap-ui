@@ -2,7 +2,7 @@ export const theme = (colorScheme?: string) =>
   colorScheme === 'dark'
     ? {
         white: '#FFFFFF',
-        black: 'green',
+        black: '#000000',
         black10: 'rgba(0, 0, 0, 0.1)',
         background: '#E5E5E5',
         grey: 'grey',
@@ -17,7 +17,7 @@ export const theme = (colorScheme?: string) =>
       }
     : {
         white: '#FFFFFF',
-        black: '#000',
+        black: '#000000',
         black10: 'rgba(0, 0, 0, 0.1)',
         background: '#E5E5E5',
         grey: 'grey',
