@@ -8,10 +8,7 @@ type Styles = {
   imageView: ViewStyle,
   cardSpacing: ViewStyle,
   nameStyle: TextStyle,
-  destinationText: TextStyle,
-  ratingsContainer: ViewStyle;
-  starIcon: ViewStyle,
-  ratingText: TextStyle
+  designationText: TextStyle,
 }
 
 export const styles = StyleSheet.create<Styles>({
@@ -39,30 +36,9 @@ export const styles = StyleSheet.create<Styles>({
     color: Colors.cardTitle,
     paddingBottom: Metrics.padding.xSmall,
   },
-  destinationText: {
+  designationText: {
     fontSize: Fonts.size.base,
     fontWeight: Fonts.weight.w4,
     color: Colors.cardDesc,
-  },
-  ratingsContainer: {
-    backgroundColor: Colors.dimGray,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    paddingVertical: Metrics.padding.xSmall,
-    paddingLeft: Metrics.padding.xSmall,
-    paddingRight: Metrics.padding.small,
-    borderRadius: Metrics.radius.xSmall,
-    marginTop: Metrics.margin.medium,
-  },
-  starIcon: {
-    marginRight: Metrics.margin.xSmall
-  },
-  ratingText: {
-    fontSize: Fonts.size.base,
-    fontWeight: '400',
-    fontFamily: 'Open Sans',
-    color: Colors.black,
-    paddingRight: Metrics.padding.xSmall,
   },
 });
