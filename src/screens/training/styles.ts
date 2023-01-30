@@ -40,6 +40,8 @@ type Styles = {
     alignItem: ViewStyle;
     yesBank: ViewStyle;
     yesbankDetails: ViewStyle;
+    outerCircle:ViewStyle;
+    innerCircle: ViewStyle;
 
 
     
@@ -208,8 +210,26 @@ export const styles = StyleSheet.create<Styles>({
   },
   alignItem: {
     alignItems:'center',
-    marginTop:-50
+    marginTop:-25
   },
   yesBank: {flex:2},
-  yesbankDetails: {flex: 9}
+  yesbankDetails: {flex: 9},
+  outerCircle: {
+    height: 74,
+    width: 74,
+    backgroundColor: Colors.black10,
+    borderRadius: 37,
+    alignSelf: "center",
+    marginTop: -37,
+    justifyContent: "center",
+    alignItems: "center",
+
+  },
+  innerCircle: {
+    height: 52,
+    width: 52,
+    backgroundColor: Colors.black,
+    borderRadius: 26,
+    alignSelf: "center",
+  },
   });

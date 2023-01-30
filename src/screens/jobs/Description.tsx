@@ -4,105 +4,137 @@ import {
   Text,
   View,
   FlatList,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 import Button from '@components/AppButton';
-import {styles}  from './styles';
-import Spacer from '@components/spacer';
+import {styles}  from '../training/styles';
 import {Navigation} from '@interfaces/commonInterfaces';
 
+
+
+const courses = [
+  {
+    id: 1,
+    name: 'Sed ut perspiciatis unde omnis iste natus error sit.'
+  },
+  {
+    id: 2,
+    name: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
+  },
+  {
+    id: 3,
+    name: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
+  },
+  {
+    id: 4,
+    name: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur'
+  },
+]
+
+const prerequisites = [
+  {
+    id: 1,
+    name: 'Medical'
+  },
+  {
+    id: 2,
+    name: 'Dental'
+  },
+  {
+    id: 3,
+    name: 'Technical Cartification'
+  }
+]
+
+const eligibility = [
+  {
+    id: 1,
+    name:'Sed ut perspiciatis unde omnis iste natus error sit.'
+  },
+  {
+    id: 2,
+    name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
+  }
+]
 function Description({navigation}: {navigation: Navigation}) {
 
-  const onClickApply =() =>{
-    navigation.navigate("Confirmation",{
-      id:2,
-      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
-      time: '',
-      imgPara: 'Congratulations!',
-      para1: 'Your scholarship application was submitted successfully!',
-      para2: 'We will evaluate your application and respond as soon as possible.'
- 
-    });
+  const onClickBuyNow =() =>{
+    navigation.navigate("Debit")
   }
 
-  
   return (
-   <ScrollView >
+   <ScrollView style={styles.container}>
      <SafeAreaView style={styles.container}>
-        <View style={styles.card} >
-                 <Text style={styles.heading}>{'Job Description'}</Text>
-                 <Text>{'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.'}</Text>
-                 </View>
-                 <Spacer size={20}/>
-               
-               
-        <Text style={styles.heading}>{'Requirements:'}</Text>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-      <Text style={[styles.params,styles.left]}>{'Sed ut perspiciatis unde omnis iste natus error sit.'}</Text>
-     </View>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-     <Text style={[styles.params,styles.left]}>{'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'}</Text>
-     </View>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-     <Text style={[styles.params,styles.left]}>{'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'}</Text>
-     </View>
-     <Spacer />
-     <Text style={styles.heading}>{'Informations:'}</Text>
-     <Spacer />
-     <View style={styles.card} >
-                 <Text style={styles.heading}>{'Position'}</Text>
-                 <Text>{'Senior Designer'}</Text>
-                 </View>
-                 <Spacer />
-                 <View style={styles.card} >
-                 <Text style={styles.heading}>{'Qualification'}</Text>
-                 <Text>{"Bachelor's Degree"}</Text>
-                 </View>
-                 <Spacer />
-                 <View style={styles.card} >
-                 <Text style={styles.heading}>{'Experience'}</Text>
-                 <Text>{'3 Years'}</Text>
-                 </View>
-                 <Spacer />
-                 <View style={styles.card} >
-                 <Text style={styles.heading}>{'Job Type'}</Text>
-                 <Text>{'Full time'}</Text>
-                 </View>
-                 <Spacer />
-                 <View style={styles.card} >
-                 <Text style={styles.heading}>{'Specialization'}</Text>
-                 <Text>{'Design'}</Text>
-                 </View>
-                 <Spacer />
-    <Spacer size={20}/>
-    <Text style={styles.heading}>{'Facilities and others:'}</Text>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-      <Text style={[styles.params,styles.left]}>{'Medical'}</Text>
-     </View>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-     <Text style={[styles.params,styles.left]}>{'Dental'}</Text>
-     </View>
-     <Spacer />
-     <View style={styles.row}>
-     <View style={styles.dot}></View>
-     <Text style={[styles.params,styles.left]}>{'Technical Certification'}</Text>
-     </View>
-     <Spacer />
-    </SafeAreaView>
-    <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
-       <Spacer size={10}/>
+      <View style={styles.body}>
+        <View style={styles.spacer} />
+        <Text style={styles.heading}>{'Job Description'}</Text>
+        <View style={styles.spacer} />
+        <Text>{'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.'}</Text>
+        <View style={styles.spacer} />  
+        <Text style={styles.heading}>{'Requirements'}</Text>
+        <View style={styles.spacer} />
+        <FlatList 
+         data={courses}
+         renderItem ={({item, index})=>{
+          return<>
+           <View style={styles.course} key={index}>
+            <View style={styles.dot}></View>
+            <Text style={styles.left}>{item.name}</Text>
+           </View>
+          </>
+         }}
+        />
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Informations'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Position'}</Text>
+        <Text>{'Senior Designer'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Qualification'}</Text>
+        <Text>{'Bachelor’s Degree'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Experience'}</Text>
+        <Text>{'3 Years'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Job Type'}</Text>
+        <Text>{'Full-Time'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Specialization'}</Text>
+        <Text>{'Design'}</Text>
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Facilities and Others'}</Text>
+        <FlatList 
+         data={prerequisites}
+         renderItem ={({item, index})=>{
+          return<>
+           <View style={styles.course} key={index}>
+            <Text style={styles.dot}>.</Text>
+            <Text style={styles.left}>{item.name}</Text>
+           </View>
+          </>
+         }}
+        />
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Eligibility'}</Text>
+        <FlatList 
+         data={eligibility}
+         renderItem ={({item, index})=>{
+          return<>
+           <View style={styles.course} key={index}>
+            <Text style={styles.dot}>.</Text>
+            <Text style={styles.left}>{item.name}</Text>
+           </View>
+          </>
+         }}
+        />
+        <View style={styles.spacer}  />
+        <Text style={styles.heading}>{'Course Fees'}</Text>
+        <Text>{'₹2,500'}</Text>
+      </View>  
+      <View style={styles.bottom}>
+       <Button onPress={onClickBuyNow} text={'Apply Now'} type="dark"/>
       </View> 
+    </SafeAreaView>
    </ScrollView>
   );
 }

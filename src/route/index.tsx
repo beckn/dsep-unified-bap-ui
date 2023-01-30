@@ -13,6 +13,7 @@ import Eligibility from '../screens/scholarships/Eligibility';
 import Scholarships from '../screens/scholarships'
 import {ThemeProvider} from '@context';
 
+import Mentorships from '../screens/Mentorships';
 import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
 
@@ -28,12 +29,6 @@ function Routes() {
             options={{headerShown: false}}
           />
           <Stack.Screen name="MentoringList" component={MentoringListScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{headerShown: false}}
-        />
          <Stack.Screen
           name="LessonPlan"
           component={LessonPlan}
@@ -60,8 +55,8 @@ function Routes() {
         options={{headerShown: false}}
         />
         <Stack.Screen 
-        name='Jobs'
-        component={Jobs}
+        name='Mentorships'
+        component={Mentorships}
         options={{headerShown: false}}
         />
          <Stack.Screen
@@ -73,6 +68,11 @@ function Routes() {
           name="Eligibility"
           component={Eligibility}
           options={{headerShown: false}}
+        />
+         <Stack.Screen 
+        name='Jobs'
+        component={Jobs}
+        options={{headerShown: false}}
         />
         </Stack.Navigator>
       </NavigationContainer>

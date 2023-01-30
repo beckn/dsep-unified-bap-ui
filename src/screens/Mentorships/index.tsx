@@ -1,10 +1,10 @@
-import Description from './Description';
+import AboutMentor from './AboutMentor';
 import AboutCompany from './AboutCompany';
 import React from 'react';
 import Header from '../training/Header';
 import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
-const Jobs = ({navigation}: {navigation: Navigation}) =>{
+const Mentorships = ({navigation}: {navigation: Navigation}) =>{
     return(
     <>
     <Header navigation={navigation} 
@@ -16,8 +16,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) =>{
     />
     <Tabs
         tabData={[
-          {label: 'Description',comp : <Description navigation={navigation} />},
-          {label: 'AboutCompany',comp : <AboutCompany navigation={navigation} />},
+          {label: 'About Mentor',comp : <AboutMentor navigation={navigation} />},
         ]}
       />
     </>
@@ -25,4 +24,4 @@ const Jobs = ({navigation}: {navigation: Navigation}) =>{
 
 }
 
-export default Jobs;
+export default Mentorships;
