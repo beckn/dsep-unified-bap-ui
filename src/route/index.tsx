@@ -10,8 +10,9 @@ import Confirmation from '../screens/training/Confirmation';
 import Training from '../screens/training';
 import AboutScholarship from '../screens/scholarships/AboutScholarship';
 import Eligibility from '../screens/scholarships/Eligibility';
-import Scholarships from '../screens/scholarships'
+import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
+import DevScreen from '../screens/dev';
 
 import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
@@ -22,58 +23,53 @@ function Routes() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+          <Stack.Screen name="DevScreen" component={DevScreen} />
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="LessonPlan"
-          component={LessonPlan}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Debit"
-          component={Debit}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="Confirmation"
-          component={Confirmation}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="Training"
-          component={Training}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen 
-        name='Scholarships'
-        component={Scholarships}
-        options={{headerShown: false}}
-        />
-        <Stack.Screen 
-        name='Jobs'
-        component={Jobs}
-        options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="AboutScholarship"
-          component={AboutScholarship}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="Eligibility"
-          component={Eligibility}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name="LessonPlan"
+            component={LessonPlan}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Debit"
+            component={Debit}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Confirmation"
+            component={Confirmation}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Training"
+            component={Training}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Scholarships"
+            component={Scholarships}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Jobs"
+            component={Jobs}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AboutScholarship"
+            component={AboutScholarship}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Eligibility"
+            component={Eligibility}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
