@@ -4,6 +4,7 @@ import {ICONS, SVGIcon} from '@components';
 import HomeScreen from '../screens/home';
 import AppliedScreen from '../screens/applied';
 import ProfileScreen from '../screens/profile';
+import Description from '../screens/training/Description';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,6 +42,14 @@ export default function Dashboard() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_PROFILE, size}),
+        }}
+      />
+      <Tab.Screen
+        name="Description"
+        component={Description}
+        options={{
+          tabBarIcon: ({color}) => TabBarIcon({color, name: 'description'}),
+          headerShown: false
         }}
       />
     </Tab.Navigator>

@@ -25,6 +25,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
       />
+     
     </View>
   );
 }
