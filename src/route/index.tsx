@@ -34,7 +34,6 @@ function Routes() {
           component={Dashboard}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="MentoringList" component={MentoringListScreen} />
          <Stack.Screen
           name="LessonPlan"
           component={LessonPlan}
