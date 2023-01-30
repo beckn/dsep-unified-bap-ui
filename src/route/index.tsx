@@ -5,6 +5,7 @@ import LoginScreen from '../screens/login';
 import MentoringListScreen from '../screens/mentoring-list';
 import Dashboard from './Dashboard';
 import {ThemeProvider} from '@context';
+import DevScreen from '../screens/dev';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ function Routes() {
             options={{headerShown: false}}
           />
           <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+          <Stack.Screen name="DevScreen" component={DevScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
