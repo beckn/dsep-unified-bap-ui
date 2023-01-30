@@ -36,5 +36,5 @@ const Tabs = ({tabData}: tabDetails) => {
       {tabData[tabPressed].comp}
     </View>
   );
-}
+};
 export default Tabs;

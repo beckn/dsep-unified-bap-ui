@@ -11,13 +11,23 @@ import Training from '../screens/training';
 import AboutScholarship from '../screens/scholarships/AboutScholarship';
 import Eligibility from '../screens/scholarships/Eligibility';
 import Scholarships from '../screens/scholarships'
+import {ThemeProvider} from '@context';
+
 const Stack = createNativeStackNavigator();
 
 function Routes() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} />
+    <ThemeProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
@@ -59,8 +69,9 @@ function Routes() {
           component={Eligibility}
           options={{headerShown: false}}
         />
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 

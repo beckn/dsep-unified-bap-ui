@@ -25,7 +25,8 @@
       "@components": ["./components"],
       "@constant/*": ["./constant/*"],
       "@services/*": ["./services/*"],
-      "@services": ["./services"]
+      "@services": ["./services"],
+      "@context": ["./context"]
     }
   },
   "exclude": [

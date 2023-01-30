@@ -7,7 +7,7 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
-import { Text } from '@components/Text';
+import DetailHeader from '@components/DetailHeader';
 
 const MentoringListScreen = () => {
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ const MentoringListScreen = () => {
   const Demo = () => {
     return (
       <View style={styles.demoContainer}>
-        <Text>Demo</Text>
+       <DetailHeader rating="4.9" borderBottom = {true} title ="Mentor name" description="Frontend Architect | Founder - ABC company"/>
       </View>
     )
   }

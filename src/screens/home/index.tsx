@@ -5,14 +5,17 @@ import {getString} from '@i18n';
 import {commonStyles} from '@styles/commonStyles';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components';
+import {useTheme} from '@context';
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
+  const {theme, setTheme} = useTheme();
+
   return (
     <View>
       <Text style={commonStyles.baseFontSize}>{getString('key1')}</Text>
       <Text
         fontFamily={Fonts.family.DM_SANS_REGULAR}
-        style={{fontSize: 16, color: 'red'}}>
+        style={{fontSize: 16, color: theme.black}}>
         This is DMSans-Regular
       </Text>
       <Text style={{fontSize: 16, color: 'green'}}>
