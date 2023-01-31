@@ -4,8 +4,10 @@ import React from 'react';
 import Header from '../training/Header';
 import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Jobs = ({navigation}: {navigation: Navigation}) => {
   return (
+    <SafeAreaView style={{flex: 1}}>
     <>
       <Header
         navigation={navigation}
@@ -25,6 +27,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
         ]}
       />
     </>
+    </SafeAreaView>
   );
 };
 

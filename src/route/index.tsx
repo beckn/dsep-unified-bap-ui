@@ -15,10 +15,15 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
+import SearchResultScreen from '../screens/search-result';
 
 import Jobs from '../screens/jobs';
 import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LocationSearch from '../screens/search-result/LocationSearch';
+import SkillsSearch from '../screens/search-result/SkillsSearch';
+
+
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -90,16 +95,30 @@ function Routes() {
             component={SlotBookedScreen}
             options={{headerShown: false}}
           />
+          
+         
           <Stack.Screen
             name="MentorSlotList"
             component={SlotListScreen}
             options={{headerShown: false}}
           />
          
-        
-         
-         
-          
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="LocationSearch"
+            component={LocationSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SkillsSearch"
+            component={SkillsSearch}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

@@ -6,6 +6,7 @@ import AppliedScreen from '../screens/applied';
 import ProfileScreen from '../screens/profile';
 import Description from '../screens/training/Description';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import SearchResultScreen from '../screens/search-result';
 const Tab = createBottomTabNavigator();
 
 const TabBarIcon = ({name, size}: {name: ICONS; size: number}) => (
@@ -34,9 +35,10 @@ export default function Dashboard() {
       />
       <Tab.Screen
         name="Saved"
-        component={HomeScreen}
+        component={SearchResultScreen}
         options={{
           tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_SAVED, size}),
+          headerShown: false
         }}
       />
       <Tab.Screen
@@ -46,14 +48,14 @@ export default function Dashboard() {
           tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_PROFILE, size}),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Description"
         component={Description}
         options={{
           tabBarIcon: ({color}) => TabBarIcon({color, name: 'description'}),
           headerShown: false
         }}
-      />
+      /> */}
     </Tab.Navigator>
     </SafeAreaView>
   );

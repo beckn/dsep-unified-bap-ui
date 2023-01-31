@@ -18,7 +18,7 @@ function Description({navigation}: {navigation: Navigation}) {
     });
   };
 
-  return (
+  return (  
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>

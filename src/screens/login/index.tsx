@@ -59,15 +59,15 @@ function LoginScreen({navigation}) {
           )
         }
       />
-      <Button
+      {/* <Button
         title="Go to Mentoring List"
         onPress={() => navigation.navigate('MentoringList')}
       />
       <Button
         title="Go to Training"
         onPress={() => navigation.navigate('Training')}
-      />
-      <View style={{height:20}}></View>
+      /> */}
+      {/* <View style={{height:20}}></View>
        <Button
         title="Go to Scholarships & Grants"
         onPress={() => navigation.navigate('Scholarships')}
@@ -77,6 +77,11 @@ function LoginScreen({navigation}) {
         title="Go to Jobs and Internships"
         onPress={() => navigation.navigate('Jobs')}
       />
+      <View style={{height:20}}></View>
+       <Button
+        title="Go to search result screen"
+        onPress={() => navigation.navigate('SearchResult')}
+      /> */}
     </View>
   );
 }

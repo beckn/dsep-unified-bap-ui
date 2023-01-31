@@ -10,7 +10,7 @@ import {Fonts} from '@styles/fonts';
 import {useTheme} from '@context';
 import images from '../../assets/images';
 import {styles} from './styles';
-import { Modal, Portal,  Provider } from 'react-native-paper';
+
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
   const {theme, setTheme} = useTheme();
@@ -22,7 +22,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
 
   function onButtonClick(name){
     if(name == "Jobs & Internships"){
-      navigation.navigate('Jobs')
+      navigation.navigate('SkillsSearch')
     }else if(name == "Trainings & Courses"){
       navigation.navigate('Training')
     }else if(name == "Scholarships & Grants"){
@@ -32,11 +32,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     }
     
   }
-  const onFocus = () => alert("input pressed");
-  const [visible, setVisible] = React.useState(false);
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
+ 
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -96,29 +92,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         />
       </View>
       </View>
-      <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Search Jobs & InternShips.</Text>
-          <View style={{ alignItems:'center'}}>      
-            <TextInput style={styles.input}
-              placeholder="Enter Skills / designations / companies"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder=" Location "
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder="Type here to Search !"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              </View>
-        </Modal>
+      
           
     </View>
   );
