@@ -20,11 +20,11 @@ export const styles = StyleSheet.create<Styles>({
     width: '100%',
     justifyContent: 'flex-end',
     flexDirection: 'row',
-    backgroundColor: Colors.detailHeaderBg,
+    backgroundColor: Colors.black10,
     height: 90,
   },
   lowerSection: {
-    backgroundColor: Colors.lightGray,
+    backgroundColor: Colors.background,
   },
   outerCircle: {
     height: 74,
