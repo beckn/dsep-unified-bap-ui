@@ -1,8 +1,8 @@
 import {useTheme} from '@context';
-import {Colors} from '@styles/colors';
 import {Fonts} from '@styles/fonts';
 import React, {useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {StyleSheet} from 'react-native';
 
 export interface IDropdown {
   data: ItemType[];
@@ -18,13 +18,9 @@ export function Dropdown({data, onSelect}: IDropdown) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState(data);
-
-  //     [
-  //     {label: 'Apple', value: 'apple'},
-  //     {label: 'Banana', value: 'banana'},
-  //   ]);
-
   const {theme} = useTheme();
+
+  const styles = dropdownStyles(theme);
 
   return (
     <DropDownPicker
@@ -37,22 +33,22 @@ export function Dropdown({data, onSelect}: IDropdown) {
       onSelectItem={item => {
         onSelect(item?.value);
       }}
-      style={{
-        borderColor: theme.borderColor,
-      }}
-      dropDownContainerStyle={{
-        borderColor: theme.borderColor,
-      }}
-      placeholderStyle={{
-        color: theme.black,
-        fontWeight: Fonts.weight.w4,
-        fontFamily: Fonts.family.OPEN_SANS_REGULAR,
-      }}
-      listItemLabelStyle={{
-        color: theme.black,
-        fontWeight: Fonts.weight.w4,
-        fontFamily: Fonts.family.OPEN_SANS_REGULAR,
-      }}
+      style={styles.dropdownStyle}
+      dropDownContainerStyle={styles.dropdownStyle}
+      placeholderStyle={styles.textStyle}
+      listItemLabelStyle={styles.textStyle}
     />
   );
 }
+
+const dropdownStyles = theme =>
+  StyleSheet.create({
+    dropdownStyle: {
+      borderColor: theme.borderColor,
+    },
+    textStyle: {
+      color: theme.black,
+      fontWeight: Fonts.weight.w4,
+      fontFamily: Fonts.family.OPEN_SANS_REGULAR,
+    },
+  });
