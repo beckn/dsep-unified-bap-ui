@@ -82,6 +82,11 @@ function LoginScreen({navigation}) {
         title="Go to search result screen"
         onPress={() => navigation.navigate('SearchResult')}
       />
+      <View style={{height:20}}></View>
+       <Button
+        title="Go to scholarship list screen"
+        onPress={() => navigation.navigate('ScholarshipList')}
+      />
     </View>
   );
 }
