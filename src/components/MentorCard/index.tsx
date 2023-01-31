@@ -1,18 +1,21 @@
 import React from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {Text} from '@components';
 import {Fonts} from '@styles/fonts';
 import {styles} from './styles';
 import Rating from '@components/Ratings';
+import {useNavigation} from '@react-navigation/native';
 
 type cardDetails = {
   data: Array<{[key: string]: string}>;
   index: number;
+  onPress?: () => void;
 };
 
-const MentorCard = ({data, index}: cardDetails) => {
+const MentorCard = ({data, index, onPress}: cardDetails) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.card} key={index}>
+    <TouchableOpacity style={styles.card} key={index} onPress={onPress}>
       <View style={styles.imageView} />
       <View style={styles.cardSpacing}>
         <Text
@@ -27,7 +30,7 @@ const MentorCard = ({data, index}: cardDetails) => {
         </Text>
         <Rating rating={'4.9'} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 export default MentorCard;

@@ -7,20 +7,23 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
-import DetailHeader from '@components/DetailHeader';
 
-const MentoringListScreen = () => {
+const MentoringListScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const Odd = () => {
+  const navigateToSlotList = () =>{
+     navigation.navigate("MentorSlotList")
+  }
+
+  const List = () => {
     return (
       <FlatList
         data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} />}
+        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToSlotList} />}
         contentContainerStyle={styles.listContainer}
       /> 
     )
@@ -28,8 +31,7 @@ const MentoringListScreen = () => {
 
   const Demo = () => {
     return (
-      <View style={styles.demoContainer}>
-       <DetailHeader rating="4.9" borderBottom = {true} title ="Mentor name" description="Frontend Architect | Founder - ABC company"/>
+      <View>
       </View>
     )
   }
@@ -49,7 +51,7 @@ const MentoringListScreen = () => {
       </View>
       <Tabs
         tabData={[
-          {label: 'Tutoring',comp : <Odd/>},
+          {label: 'Tutoring',comp : <List/>},
           {label: 'Mentoring', comp : <Demo/>},
         ]}
       />
