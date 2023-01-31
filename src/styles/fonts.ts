@@ -43,6 +43,7 @@ export const Fonts = {
   weight: {
     base: '700' as FontWeight,
     bold: '700' as FontWeight,
+    w6: '600' as FontWeight,
     w5: '500' as FontWeight,
     w4: '400' as FontWeight,
     normal: 'normal' as FontWeight,

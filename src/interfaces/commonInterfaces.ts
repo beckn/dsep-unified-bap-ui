@@ -19,6 +19,7 @@ export type Navigation = {
     params: NavigationParams;
     routeName: string;
   };
+  goBack: () => void;
   addListener: (event: string, fn: () => void) => {remove: () => {}};
   getParam: any;
 };

@@ -7,32 +7,24 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
+import DetailHeader from '@components/DetailHeader';
+import Header from './Header';
+import ResultCard from './ResultCard';
 
-const MentoringListScreen = ({navigation}) => {
+const SearchResultScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const navigateToSlotList = () =>{
-     navigation.navigate("MentorSlotList")
-  }
-
-  const List = () => {
+  const ResultCards = () => {
     return (
       <FlatList
         data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToSlotList} />}
-        contentContainerStyle={styles.listContainer}
+        renderItem={({item, index}) => <ResultCard data={item} index={index} />}
+       
       /> 
-    )
-  }
-
-  const Demo = () => {
-    return (
-      <View>
-      </View>
     )
   }
 
@@ -41,23 +33,17 @@ const MentoringListScreen = ({navigation}) => {
     if (resp?.status === 200) {
       setData(resp.data);
     } else {
-      console.log(resp?.message);
+      console.log(resp);
     }
   };
   return (
     <View style={styles.container}>
-      <View style={styles.searchBoxContainer}>
-        <SearchBox />
-      </View>
-      <Tabs
-        tabData={[
-          {label: 'Tutoring',comp : <List/>},
-          {label: 'Mentoring', comp : <Demo/>},
-        ]}
-      />
-
+      <Header navigation={navigation} 
+    heading='UX Designer'
+    />
+  <ResultCards/>
     </View>
   );
 };
 
-export default MentoringListScreen;
+export default SearchResultScreen;

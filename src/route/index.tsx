@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/login';
 import MentoringListScreen from '../screens/mentoring-list';
+import SlotBookedScreen from '../screens/mentor-slot-booked';
 import Dashboard from './Dashboard';
 import LessonPlan from '../screens/training/LessonPlan';
 import Debit from '../screens/training/Debit';
@@ -12,7 +13,9 @@ import AboutScholarship from '../screens/scholarships/AboutScholarship';
 import Eligibility from '../screens/scholarships/Eligibility';
 import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
+import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
+import SearchResultScreen from '../screens/search-result';
 
 import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
@@ -23,11 +26,21 @@ function Routes() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
           <Stack.Screen name="DevScreen" component={DevScreen} />
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+          <Stack.Screen
+            name="MentorSlotConfirmation"
+            component={SlotBookedScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorSlotList"
+            component={SlotListScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -68,6 +81,11 @@ function Routes() {
           <Stack.Screen
             name="Eligibility"
             component={Eligibility}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
