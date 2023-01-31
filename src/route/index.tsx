@@ -13,6 +13,7 @@ import Eligibility from '../screens/scholarships/Eligibility';
 import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import DevScreen from '../screens/dev';
+import SearchResultScreen from '../screens/search-result';
 
 import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
@@ -68,6 +69,11 @@ function Routes() {
           <Stack.Screen
             name="Eligibility"
             component={Eligibility}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
