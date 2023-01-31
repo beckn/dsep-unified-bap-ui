@@ -8,6 +8,9 @@ import Home from '../../assets/svg/home.svg';
 import Applied from '../../assets/svg/applied.svg';
 import Saved from '../../assets/svg/saved.svg';
 import Profile from '../../assets/svg/profile.svg';
+import Illustration from '../../assets/svg/illustration.svg';
+import BackArrow from '../../assets/svg/back-arrow.svg';
+import Options from '../../assets/svg/options';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -35,6 +38,12 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <Saved {...modifiedProps} />;
       case ICONS.IC_PROFILE:
         return <Profile {...modifiedProps} />;
+      case ICONS.IC_ILLUSTRATION:
+        return <Illustration {...modifiedProps} />;
+      case ICONS.IC_BACK_ARROW:
+        return <BackArrow {...modifiedProps} />;
+      case ICONS.IC_OPTIONS:
+        return <Options {...modifiedProps} />;
     }
   };
 
@@ -73,4 +82,7 @@ export enum ICONS {
   IC_APPLIED = 'IC_APPLIED',
   IC_SAVED = 'IC_SAVED',
   IC_PROFILE = 'IC_PROFILE',
+  IC_ILLUSTRATION = 'IC_ILLUSTRATION',
+  IC_BACK_ARROW = 'IC_BACK_ARROW',
+  IC_OPTIONS = 'IC_OPTIONS'
 }
