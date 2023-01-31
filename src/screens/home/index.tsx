@@ -52,8 +52,8 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             <View style={{ alignItems:'center'}}>      
       <TextInput style={styles.input}
         placeholder="Type here to Search !"
-        onFocus={ showModal }
-        onChangeText={newText => showModal()}
+        // onFocus={ showModal }
+        // onChangeText={newText => showModal()}
         // defaultValue={text} 
         /></View>
       </View>
