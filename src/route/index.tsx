@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/login';
 import MentoringListScreen from '../screens/mentoring-list';
+import SlotBookedScreen from '../screens/mentor-slot-booked';
 import Dashboard from './Dashboard';
 import LessonPlan from '../screens/training/LessonPlan';
 import Debit from '../screens/training/Debit';
@@ -10,8 +11,10 @@ import Confirmation from '../screens/training/Confirmation';
 import Training from '../screens/training';
 import AboutScholarship from '../screens/scholarships/AboutScholarship';
 import Eligibility from '../screens/scholarships/Eligibility';
-import Scholarships from '../screens/scholarships'
+import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
+import SlotListScreen from '../screens/mentor-slot-list';
+import DevScreen from '../screens/dev';
 
 import Jobs from '../screens/jobs';
 import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
@@ -25,6 +28,7 @@ function Routes() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="DevScreen" component={DevScreen} />
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}
@@ -80,6 +84,22 @@ function Routes() {
           component={Eligibility}
           options={{headerShown: false}}
         />
+          
+          <Stack.Screen
+            name="MentorSlotConfirmation"
+            component={SlotBookedScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorSlotList"
+            component={SlotListScreen}
+            options={{headerShown: false}}
+          />
+         
+        
+         
+         
+          
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
