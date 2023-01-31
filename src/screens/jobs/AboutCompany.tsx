@@ -1,8 +1,13 @@
-import Spacer from '@components/Spacer';
 import React from 'react';
-import {SafeAreaView, Text, View, FlatList, ScrollView} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView
+} from 'react-native';
 import Button from '@components/AppButton';
-import {styles} from './styles';
+import {styles}  from '../training/styles';
+import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
 function AboutCompany({navigation}: {navigation: Navigation}) {

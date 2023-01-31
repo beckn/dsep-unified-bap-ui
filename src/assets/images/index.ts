@@ -17,6 +17,8 @@ const images = {
     Mentor: require("../images/Mentor.png"),
     Scholar: require("../images/Scholar.png"),
     Training: require("../images/Training.png"),
+    pdf: require("../images/PDF.png"),
+    rectangle: require("../images/Rectangle.png"),
 }
 
 export default images;

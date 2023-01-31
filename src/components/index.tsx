@@ -6,6 +6,7 @@ import AppButton from './AppButton';
 import Button from './Button'
 import Spacer from './Spacer';
 import DetailHeader from './DetailHeader';
-import SucessCard from './SuccessCard'
+import SucessCard from './SuccessCard';
+import ScholarshipCard from './ScholarshipCard';
 
-export {Text, Tabs, SearchBox, SVGIcon, ICONS , DetailHeader, SucessCard, Button,AppButton, Spacer};
+export {Text, Tabs, SearchBox, SVGIcon, ICONS , DetailHeader, SucessCard, Button,AppButton, Spacer, ScholarshipCard};

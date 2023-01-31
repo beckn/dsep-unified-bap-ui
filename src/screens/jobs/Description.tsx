@@ -1,22 +1,60 @@
 import React from 'react';
 import {SafeAreaView, Text, View, FlatList, ScrollView} from 'react-native';
 import Button from '@components/AppButton';
-import {styles} from './styles';
+import {styles} from '../scholarships/styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
+
+
+const courses = [
+  {
+    id: 1,
+    name: 'Sed ut perspiciatis unde omnis iste natus error sit.'
+  },
+  {
+    id: 2,
+    name: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
+  },
+  {
+    id: 3,
+    name: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
+  },
+  {
+    id: 4,
+    name: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur'
+  },
+]
+
+const prerequisites = [
+  {
+    id: 1,
+    name: 'Medical'
+  },
+  {
+    id: 2,
+    name: 'Dental'
+  },
+  {
+    id: 3,
+    name: 'Technical Cartification'
+  }
+]
+
+const eligibility = [
+  {
+    id: 1,
+    name:'Sed ut perspiciatis unde omnis iste natus error sit.'
+  },
+  {
+    id: 2,
+    name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
+  }
+]
 function Description({navigation}: {navigation: Navigation}) {
   const onClickApply = () => {
-    navigation.navigate('Confirmation', {
-      id: 2,
-      heading: 'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
-      time: '',
-      imgPara: 'Congratulations!',
-      para1: 'Your scholarship application was submitted successfully!',
-      para2:
-        'We will evaluate your application and respond as soon as possible.',
-    });
-  };
+    navigation.navigate('SubmitApplication');
+  }
 
   return (  
     <ScrollView>

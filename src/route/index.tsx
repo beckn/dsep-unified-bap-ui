@@ -16,7 +16,10 @@ import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
 import SearchResultScreen from '../screens/search-result';
-
+import SubmitApplication from '../screens/jobs/SubmitApplication';
+import Mentorships from '../screens/Mentorships';
+import JobConfirmation from '../screens/job-confirmation';
+import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
 import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -117,6 +120,51 @@ function Routes() {
           <Stack.Screen
             name="SkillsSearch"
             component={SkillsSearch}
+          <Stack.Screen
+            name="SubmitApplication"
+            component={SubmitApplication}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorSlotConfirmation"
+            component={SlotBookedScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorSlotList"
+            component={SlotListScreen}
+            options={{headerShown: false}}
+          />
+         
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="LocationSearch"
+            component={LocationSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SkillsSearch"
+            component={SkillsSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SubmitApplication"
+            component={SubmitApplication}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="JobConfirmation"
+            component={JobConfirmation}
+            options={{headerShown: false}}
+            />
+            <Stack.Screen
+            name="ScholarshipList"
+            component={ScholarshipListScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
