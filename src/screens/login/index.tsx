@@ -67,15 +67,19 @@ function LoginScreen({navigation}) {
         title="Go to Training"
         onPress={() => navigation.navigate('Training')}
       />
-      <View style={{height:20}}></View>
-       <Button
+      <View style={{height: 20}}></View>
+      <Button
         title="Go to Scholarships & Grants"
         onPress={() => navigation.navigate('Scholarships')}
       />
-      <View style={{height:20}}></View>
-       <Button
+      <View style={{height: 20}}></View>
+      <Button
         title="Go to Jobs and Internships"
         onPress={() => navigation.navigate('Jobs')}
+      />
+      <Button
+        title="Go to Dev-Screen"
+        onPress={() => navigation.navigate('DevScreen')}
       />
     </View>
   );
