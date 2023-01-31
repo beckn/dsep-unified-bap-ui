@@ -11,6 +11,11 @@ import Profile from '../../assets/svg/profile.svg';
 import Illustration from '../../assets/svg/illustration.svg';
 import BackArrow from '../../assets/svg/back-arrow.svg';
 import Options from '../../assets/svg/options';
+import PersonalInfo from '../../assets/svg/personalInfo.svg';
+import Resume from '../../assets/svg/resume.svg';
+import Settings from '../../assets/svg/settings.svg';
+import RightArrow from '../../assets/svg/rightArrow.svg';
+import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -44,6 +49,16 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <BackArrow {...modifiedProps} />;
       case ICONS.IC_OPTIONS:
         return <Options {...modifiedProps} />;
+      case ICONS.IC_PERSONAL_INFO:
+        return <PersonalInfo {...modifiedProps} />;
+      case ICONS.IC_RESUME:
+        return <Resume {...modifiedProps} />;
+      case ICONS.IC_SETTINGS:
+        return <Settings {...modifiedProps} />;
+      case ICONS.IC_RIGHT_ARROW:
+        return <RightArrow {...modifiedProps} />;
+      case ICONS.IC_PURCHASE_HISTORY:
+      return <PurchaseHistory {...modifiedProps} />;
     }
   };
 
@@ -84,5 +99,10 @@ export enum ICONS {
   IC_PROFILE = 'IC_PROFILE',
   IC_ILLUSTRATION = 'IC_ILLUSTRATION',
   IC_BACK_ARROW = 'IC_BACK_ARROW',
-  IC_OPTIONS = 'IC_OPTIONS'
+  IC_OPTIONS = 'IC_OPTIONS',
+  IC_PERSONAL_INFO = 'IC_PERSONAL_INFO',
+  IC_RESUME = 'IC_RESUME',
+  IC_SETTINGS = 'IC_SETTINGS',
+  IC_RIGHT_ARROW = 'IC_RIGHT_ARROW',
+  IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY'
 }
