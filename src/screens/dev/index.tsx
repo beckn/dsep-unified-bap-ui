@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {Button, View} from 'react-native';
 import {Navigation} from '@interfaces/commonInterfaces';
 import {getString} from '@i18n';
 import {commonStyles} from '@styles/commonStyles';
@@ -7,11 +7,10 @@ import {Fonts} from '@styles/fonts';
 import {Text} from '@components';
 import {useTheme} from '@context';
 
-function HomeScreen({navigation}: {navigation: Navigation}) {
+function DevScreen({navigation}: {navigation: Navigation}) {
   const {theme, setTheme} = useTheme();
-
   return (
-    <View>
+    <View style={commonStyles.flex1}>
       <Text style={commonStyles.baseFontSize}>{getString('key1')}</Text>
       <Text
         fontFamily={Fonts.family.DM_SANS_REGULAR}
@@ -25,9 +24,8 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
       />
-     
     </View>
   );
 }
 
-export default HomeScreen;
+export default DevScreen;

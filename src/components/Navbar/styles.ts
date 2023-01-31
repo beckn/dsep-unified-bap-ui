@@ -16,7 +16,7 @@ export const styles = StyleSheet.create<Styles>({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: "red",
+    backgroundColor: Colors.black10,
     paddingTop : 23,
     paddingBottom : Metrics.padding.xSmall
   },
