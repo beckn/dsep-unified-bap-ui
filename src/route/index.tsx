@@ -16,8 +16,10 @@ import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
 import SearchResultScreen from '../screens/search-result';
+import SubmitApplication from '../screens/jobs/SubmitApplication';
+import Mentorships from '../screens/Mentorships';
+import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
-
 import Jobs from '../screens/jobs';
 const Stack = createNativeStackNavigator();
 
@@ -90,6 +92,16 @@ function Routes() {
             options={{headerShown: false}}
           />
           <Stack.Screen
+            name="SubmitApplication"
+            component={SubmitApplication}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="JobConfirmation"
+            component={JobConfirmation}
+            options={{headerShown: false}}
+            />
+            <Stack.Screen
             name="ScholarshipList"
             component={ScholarshipListScreen}
             options={{headerShown: false}}
