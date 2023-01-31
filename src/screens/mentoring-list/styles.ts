@@ -6,7 +6,6 @@ type Styles = {
   container: ViewStyle;
   searchBoxContainer: ViewStyle,
   listContainer: ViewStyle,
-  demoContainer: ViewStyle
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -18,6 +17,5 @@ export const styles = StyleSheet.create<Styles>({
     paddingTop: Metrics.padding.base,
     paddingHorizontal: Metrics.padding.base,
   },
-  listContainer: { paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 },
-  demoContainer: { backgroundColor: Colors.white, flex: 1 }
+  listContainer: { paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 }
 });

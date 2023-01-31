@@ -18,13 +18,12 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
   topSection: {
     width: '100%',
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-    backgroundColor: Colors.detailHeaderBg,
+    justifyContent: 'center',
+    backgroundColor: Colors.black10,
     height: 90,
   },
   lowerSection: {
-    backgroundColor: Colors.lightGray,
+    backgroundColor: Colors.background,
   },
   outerCircle: {
     height: 74,
@@ -52,9 +51,11 @@ export const styles = StyleSheet.create<Styles>({
     borderBottomColor: Colors.black10
   },
   ratingContainer: {
+    flex:1,
     justifyContent: 'flex-end',
     paddingBottom: 12,
     paddingRight: 30,
+    alignSelf:'flex-end'
   },
   titleText: {
     fontSize: Fonts.size.title,

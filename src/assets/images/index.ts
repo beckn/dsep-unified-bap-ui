@@ -13,6 +13,8 @@ const images = {
     downArrow: require("../images/downArrow.png"),
     inclindArrow : require("../images/inclindVector.png"),
     star: require("../images/star.jpg"),
+    pdf: require("../images/PDF.png"),
+    rectangle: require("../images/Rectangle.png"),
 }
 
 export default images;

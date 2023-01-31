@@ -43,6 +43,10 @@ type Styles = {
     outerCircle:ViewStyle;
     innerCircle: ViewStyle;
     saveResume: ViewStyle;
+    resumeLeftPart: ViewStyle;
+    resumeRightPart: ViewStyle;
+    textInput:ViewStyle;
+    uplodedResume: ViewStyle;
 
 
     
@@ -237,7 +241,31 @@ export const styles = StyleSheet.create<Styles>({
     height: 74,
     width: '100%',
     borderWidth:1,
-    borderRadius:10
-
+    borderRadius:10,
+    flexDirection:'row'
+  },
+  resumeLeftPart: {
+    width:'25%',
+    height: 74,
+    justifyContent:'center'
+  },
+  resumeRightPart:{
+    width:'75%',
+    height: 74,
+    justifyContent:'center'
+  },
+  textInput: {
+    height:100, 
+    backgroundColor:'#ffffff', 
+    padding:15, 
+    borderRadius:15
+  },
+  uplodedResume:{
+    height: 91,
+    width: '100%',
+    borderWidth:1,
+    borderRadius:10,
+    flexDirection:'row'
   }
+
   });
