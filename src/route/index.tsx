@@ -21,6 +21,7 @@ import Mentorships from '../screens/Mentorships';
 import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
+import TrainingListScreen from '../screens/trainings-courses';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -106,6 +107,11 @@ function Routes() {
             component={ScholarshipListScreen}
             options={{headerShown: false}}
           />
+            <Stack.Screen
+           name="TrainingList"
+            component={TrainingListScreen}
+            options={{headerShown: false}}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
