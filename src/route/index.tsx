@@ -14,10 +14,13 @@ import Scholarships from '../screens/scholarships'
 import {ThemeProvider} from '@context';
 
 import Jobs from '../screens/jobs';
+import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
   return (
+    <SafeAreaView style={{flex: 1}}>
     <ThemeProvider>
       <NavigationContainer>
         <Stack.Navigator>
@@ -27,13 +30,11 @@ function Routes() {
             component={Dashboard}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
+          <Stack.Screen name="MentoringList" 
+          component={MentoringListScreen}
           options={{headerShown: false}}
-        />
+          />
+          
          <Stack.Screen
           name="LessonPlan"
           component={LessonPlan}
@@ -69,6 +70,11 @@ function Routes() {
           component={AboutScholarship}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="ApplyScholorship"
+          component={ApplyScholorship}
+          options={{headerShown: false}}
+        />
          <Stack.Screen
           name="Eligibility"
           component={Eligibility}
@@ -77,6 +83,7 @@ function Routes() {
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
+    </SafeAreaView>
   );
 }
 

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Button from '@components/AppButton';
 import {styles}  from './styles';
-import Spacer from '@components/spacer';
+import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
 function Description({navigation}: {navigation: Navigation}) {

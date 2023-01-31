@@ -58,7 +58,7 @@ const aboutScholarData = [
 function AboutScholarship({navigation}: {navigation: Navigation}) {
 
   const onClickApply =() =>{
-    navigation.navigate("Confirmation",{
+    navigation.navigate('ApplyScholorship',{
       id:2,
       heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
       time: '',

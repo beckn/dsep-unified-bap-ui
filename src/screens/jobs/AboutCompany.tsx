@@ -1,4 +1,4 @@
-import Spacer from '@components/spacer';
+import Spacer from '@components/Spacer';
 import React from 'react';
 import {
   SafeAreaView,

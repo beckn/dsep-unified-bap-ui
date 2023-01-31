@@ -5,7 +5,7 @@ import HomeScreen from '../screens/home';
 import AppliedScreen from '../screens/applied';
 import ProfileScreen from '../screens/profile';
 import Description from '../screens/training/Description';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Tab = createBottomTabNavigator();
 
 const TabBarIcon = ({name, size}: {name: ICONS; size: number}) => (
@@ -14,6 +14,7 @@ const TabBarIcon = ({name, size}: {name: ICONS; size: number}) => (
 
 export default function Dashboard() {
   return (
+    <SafeAreaView style={{flex: 1}}>
     <Tab.Navigator screenOptions={{tabBarShowLabel: false}}>
       <Tab.Screen
         name="Home"
@@ -21,6 +22,7 @@ export default function Dashboard() {
         options={{
           tabBarIcon: ({size}) =>
             TabBarIcon({name: ICONS.IC_HOME_FILLED, size}),
+            headerShown: false
         }}
       />
       <Tab.Screen
@@ -53,5 +55,6 @@ export default function Dashboard() {
         }}
       />
     </Tab.Navigator>
+    </SafeAreaView>
   );
 }

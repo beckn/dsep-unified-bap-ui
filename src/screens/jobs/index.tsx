@@ -2,7 +2,7 @@ import Description from './Description';
 import AboutCompany from './AboutCompany';
 import React from 'react';
 import Header from '../training/Header';
-import Tabs from '@components/tabs';
+import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
 const Jobs = ({navigation}: {navigation: Navigation}) =>{
     return(

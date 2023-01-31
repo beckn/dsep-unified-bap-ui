@@ -40,7 +40,7 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
         {id === 1 ? <Button onPress={()=>{}} text={'EXPLORE OTHER COURSES'} type=""/> : null}
         {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'Check application status'} type="dark"/>: null}
        <Spacer size={20}/>
-        {id === 2 ? <Button onPress={()=>{}} text={'go back to home'} type=""/> : null}
+        {id === 2 ? <Button onPress={()=>navigation.navigate('Home')} text={'go back to home'} type=""/> : null}
       </View> 
        
     </View>
