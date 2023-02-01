@@ -7,6 +7,7 @@ type Styles = {
   flex1Center: ViewStyle;
   baseFontSize: TextStyle;
   paddingHBase: ViewStyle;
+  underline: TextStyle;
 };
 
 export const commonStyles = StyleSheet.create<Styles>({
@@ -24,4 +25,5 @@ export const commonStyles = StyleSheet.create<Styles>({
   paddingHBase: {
     paddingHorizontal: Metrics.padding.base,
   },
+  underline: {textDecorationLine: 'underline'},
 });

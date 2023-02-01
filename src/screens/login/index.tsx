@@ -73,13 +73,30 @@ function LoginScreen({navigation}) {
         onPress={() => navigation.navigate('Scholarships')}
       />
       <View style={{height: 20}}></View>
+      <Button title="Go to Jobs and Internships" />
+      <View style={{height: 20}}></View>
       <Button
-        title="Go to Jobs and Internships"
-        onPress={() => navigation.navigate('Jobs')}
+        title="Go to Tutoring & Mentorships"
+        onPress={() => navigation.navigate('Mentorships')}
       />
+      <View style={{height: 20}}></View>
+      <Button title="Go to Jobs" onPress={() => navigation.navigate('Jobs')} />
       <Button
         title="Go to Dev-Screen"
         onPress={() => navigation.navigate('DevScreen')}
+      />
+      <View style={{height: 20}}></View>
+      <Button
+        title="Go to scholarship list screen"
+        onPress={() => navigation.navigate('ScholarshipList')}
+      />
+      <Button
+        title="Go to purchase history"
+        onPress={() => navigation.navigate('SearchResult')}
+      />
+      <Button
+        title="Go to saved jobs"
+        onPress={() => navigation.navigate('SavedJobs')}
       />
     </View>
   );

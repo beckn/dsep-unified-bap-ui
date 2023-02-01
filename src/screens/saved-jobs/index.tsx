@@ -8,7 +8,7 @@ import ResultCard from './ResultCard';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 
-const SearchResultScreen = ({navigation}) => {
+const SavedJobs = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
@@ -38,7 +38,7 @@ const SearchResultScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <Header heading={'Purchase History'} />
+      <Header heading={'Saved Jobs'} />
       <View style={styles.dropdownContainer}>
         <Dropdown
           data={dropdownData}
@@ -50,4 +50,4 @@ const SearchResultScreen = ({navigation}) => {
   );
 };
 
-export default SearchResultScreen;
+export default SavedJobs;
