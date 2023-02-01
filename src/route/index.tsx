@@ -22,7 +22,9 @@ import SubmitApplication from '../screens/jobs/SubmitApplication';
 import Mentorships from '../screens/Mentorships';
 import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
+import Settings from '../screens/settings';
 import TrainingListScreen from '../screens/trainings-courses';
+import ResumeScreen from '../screens/resume';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -113,11 +115,21 @@ function Routes() {
             component={ScholarshipListScreen}
             options={{headerShown: false}}
           />
+           <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{headerShown: false}}
+          />
             <Stack.Screen
            name="TrainingList"
             component={TrainingListScreen}
             options={{headerShown: false}}
             />
+           <Stack.Screen
+            name="Resume"
+            component={ResumeScreen}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
