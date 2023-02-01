@@ -19,6 +19,10 @@ import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
 import PDF from '../../assets/svg/pdf.svg';
 import Rectangle from '../../assets/svg/Rectangle.svg';
 import Upload from '../../assets/svg/upload.svg';
+import Delete from '../../assets/svg/delete.svg';
+import Privacy from '../../assets/svg/Privacy.svg';
+import Language from '../../assets/svg/Language.svg';
+import CPass from '../../assets/svg/cPass.svg';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -68,6 +72,14 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       return <Rectangle {...modifiedProps} />;
       case ICONS.IC_UPLOAD:
       return <Upload {...modifiedProps} />;
+      case ICONS.IC_DELETE:
+      return <Delete {...modifiedProps} />;
+      case ICONS.IC_PRIVACY:
+      return <Privacy {...modifiedProps} />;
+      case ICONS.IC_LANGUAGE:
+      return <Language {...modifiedProps} />;
+      case ICONS.IC_CPASS:
+        return <CPass {...modifiedProps} />;
     }
   };
 
@@ -117,4 +129,9 @@ export enum ICONS {
   IC_PDF = 'IC_PDF',
   IC_RECTANGLE = 'IC_RECTANGLE',
   IC_UPLOAD = 'IC_UPLOAD',
+  IC_DELETE = 'IC_DELETE',
+  IC_PRIVACY = 'IC_PRIVACY',
+  IC_LANGUAGE = 'IC_LANGUAGE',
+  IC_CPASS = 'IC_CPASS',
+  
 }
