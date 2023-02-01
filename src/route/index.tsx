@@ -149,6 +149,8 @@ function Routes() {
           <Stack.Screen
             name="Education"
             component={Education}
+            options={{headerShown: false}}
+            />
            <Stack.Screen
             name="Settings"
             component={Settings}

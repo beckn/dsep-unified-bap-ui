@@ -6,7 +6,7 @@ import {ICONS, Text, SVGIcon} from '@components';
 import {Colors} from '@styles/colors';
 import {Navigation} from '@interfaces/commonInterfaces';
 
-function ProfileScreen({navigation}{navigation}: {navigation: Navigation}) {
+function ProfileScreen({navigation}: {navigation: Navigation}) {
   return (
     <View style={styles.container}>
     <Options leftIcon={ICONS.IC_PERSONAL_INFO} title = {'Personal Info'} onPress = {()=>{}}/>

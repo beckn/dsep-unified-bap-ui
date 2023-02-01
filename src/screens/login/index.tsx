@@ -113,7 +113,6 @@ function LoginScreen({navigation}) {
         <Spacer size={10} /> */}
       </View>
       
-      />
       <View style={{height:20}}></View>
        <Button
         title="Go to scholarship list screen"
