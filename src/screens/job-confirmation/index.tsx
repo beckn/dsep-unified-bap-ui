@@ -47,6 +47,7 @@ const JobConfirmation = ({navigation}) => {
         />
         <Spacer size={20}/>
         <Button
+        onPress={()=>navigation.navigate('Dashboard')}
           title="go back to home"
         />
       </View>

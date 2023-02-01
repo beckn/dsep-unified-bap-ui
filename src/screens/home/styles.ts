@@ -50,9 +50,9 @@ export const styles = StyleSheet.create<Styles>({
   },
   feature: {
     height: 150,
-    margin: 12,
-    backgroundColor:  `#f8f8ff`,    
-    padding: 10,
+    margin: 5,
+    // backgroundColor:  `#f8f8ff`,    
+    marginBottom: 20,
     borderRadius: 15,
   },
 title : {

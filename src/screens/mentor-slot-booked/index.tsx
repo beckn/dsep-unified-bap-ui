@@ -44,7 +44,7 @@ const SlotBookedScreen = ({navigation}) => {
           title="go back to home"
           style={styles.goBackButton}
           labelStyle={{color: Colors.black}}
-          onPress={()=>navigation.navigate('Home')}
+          onPress={()=>navigation.navigate('Dashboard')}
         />
       </View>
     </View>

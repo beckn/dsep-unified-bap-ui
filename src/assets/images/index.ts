@@ -19,6 +19,9 @@ const images = {
     Training: require("../images/Training.png"),
     pdf: require("../images/PDF.png"),
     rectangle: require("../images/Rectangle.png"),
+    signin: require("../images/signin.png"),
+    calender: require("../images/calender.png"),
+
 }
 
 export default images;

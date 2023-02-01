@@ -25,7 +25,9 @@ import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LocationSearch from '../screens/search-result/LocationSearch';
 import SkillsSearch from '../screens/search-result/SkillsSearch';
-
+import home from '../screens/home'
+import WorkExperience from '../screens/profile/WorkExperience';
+import Education from '../screens/profile/Education';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,7 @@ function Routes() {
             component={Dashboard}
             options={{headerShown: false}}
           />
+         
           <Stack.Screen name="MentoringList" 
           component={MentoringListScreen}
           options={{headerShown: false}}
@@ -92,39 +95,7 @@ function Routes() {
           component={Eligibility}
           options={{headerShown: false}}
         />
-          
-          <Stack.Screen
-            name="MentorSlotConfirmation"
-            component={SlotBookedScreen}
-            options={{headerShown: false}}
-          />
-          
-         
-          <Stack.Screen
-            name="MentorSlotList"
-            component={SlotListScreen}
-            options={{headerShown: false}}
-          />
-         
-          <Stack.Screen
-            name="SearchResult"
-            component={SearchResultScreen}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="LocationSearch"
-            component={LocationSearch}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SkillsSearch"
-            component={SkillsSearch}
-          <Stack.Screen
-            name="SubmitApplication"
-            component={SubmitApplication}
-            options={{headerShown: false}}
-          />
+        
           <Stack.Screen
             name="MentorSlotConfirmation"
             component={SlotBookedScreen}
@@ -165,6 +136,16 @@ function Routes() {
             <Stack.Screen
             name="ScholarshipList"
             component={ScholarshipListScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="WorkExperience"
+            component={WorkExperience}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Education"
+            component={Education}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

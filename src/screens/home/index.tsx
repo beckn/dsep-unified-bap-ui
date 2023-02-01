@@ -10,6 +10,7 @@ import {Fonts} from '@styles/fonts';
 import {useTheme} from '@context';
 import images from '../../assets/images';
 import {styles} from './styles';
+import ResultCard from '../../screens/search-result/ResultCard';
 
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
@@ -26,7 +27,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     }else if(name == "Trainings & Courses"){
       navigation.navigate('Training')
     }else if(name == "Scholarships & Grants"){
-      navigation.navigate('Scholarships')
+      navigation.navigate('ScholarshipList')
     }else if(name == "Tutoring & Mentorship"){
       navigation.navigate('MentoringList')
     }
@@ -60,7 +61,9 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <View>
       <View style={{ paddingTop: 30, paddingLeft: 10 }}>
       <Text style={styles.texttitle}>Featured Jobs</Text></View>
-      <View style={styles.feature}></View>
+      <View style={styles.feature}>
+      <ResultCard  navigation={navigation} />
+      </View>
       </View>
       <View style={styles.listContainer}>
       <Text style={styles.texttitle}>Browse by categories</Text>

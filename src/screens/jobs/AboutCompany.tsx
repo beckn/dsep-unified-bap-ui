@@ -12,7 +12,7 @@ import {Navigation} from '@interfaces/commonInterfaces';
 
 function AboutCompany({navigation}: {navigation: Navigation}) {
   const onClickApply = () => {
-    navigation.navigate('Confirmation', {
+    navigation.navigate('SubmitApplication', {
       id: 2,
       heading: 'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
       time: '',

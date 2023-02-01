@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, TouchableOpacity, Button, Image} from 'react-native';
+// import Button from '@components/AppButton';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {styles}  from './styles';
+import Spacer from '@components/Spacer';
+import images from '../../assets/images';
+
 
 function LoginScreen({navigation}) {
   useEffect(() => {
@@ -50,7 +55,7 @@ function LoginScreen({navigation}) {
         title="Go to Home"
         onPress={() => navigation.navigate('Dashboard')}
       />
-      <Button title="Google Sign-Out" onPress={onGoogleSignOut} />
+      {/* <Button title="Google Sign-Out" onPress={onGoogleSignOut} />
       <Button
         title="Google Sign-In"
         onPress={() =>
@@ -58,7 +63,7 @@ function LoginScreen({navigation}) {
             console.log('Signed in with Google!'),
           )
         }
-      />
+      /> */} 
       {/* <Button
         title="Go to Mentoring List"
         onPress={() => navigation.navigate('MentoringList')}
@@ -88,11 +93,26 @@ function LoginScreen({navigation}) {
         onPress={() => navigation.navigate('SearchResult')}
       /> */}
       
-      <View style={{height:20}}></View>
-       <Button
-        title="Go to scholarship list screen"
-        onPress={() => navigation.navigate('ScholarshipList')}
-      />
+      <View style={{height:600}}></View>
+      
+      <View style={styles.bottom}>
+        <TouchableOpacity 
+        onPress={() =>
+          onGoogleButtonPress().then(() =>
+            console.log('Signed in with Google!'),
+          )
+        }
+        style={{backgroundColor: 'black', height: 50, padding: 10, borderRadius: 5}}>
+          <Image source={images.signin}></Image>
+          </TouchableOpacity>
+        {/* <Button onPress={() =>
+          onGoogleButtonPress().then(() =>
+            console.log('Signed in with Google!'),
+          )
+        } text={'Google Sign-In'} type="dark" />
+        <Spacer size={10} /> */}
+      </View>
+      
     </View>
   );
 }
