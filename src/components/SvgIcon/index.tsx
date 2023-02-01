@@ -19,6 +19,7 @@ import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
 import PDF from '../../assets/svg/pdf.svg';
 import Rectangle from '../../assets/svg/Rectangle.svg';
 import Upload from '../../assets/svg/upload.svg';
+import Edit from '../../assets/svg/edit.svg';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -68,6 +69,8 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       return <Rectangle {...modifiedProps} />;
       case ICONS.IC_UPLOAD:
       return <Upload {...modifiedProps} />;
+      case ICONS.IC_EDIT:
+      return <Edit {...modifiedProps} />;
     }
   };
 
@@ -117,4 +120,5 @@ export enum ICONS {
   IC_PDF = 'IC_PDF',
   IC_RECTANGLE = 'IC_RECTANGLE',
   IC_UPLOAD = 'IC_UPLOAD',
+  IC_EDIT='IC_EDIT'
 }
