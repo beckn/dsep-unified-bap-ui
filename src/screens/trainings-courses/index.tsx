@@ -1,29 +1,29 @@
-import Tabs from '@components/Tabs';
 import {ApiMethods} from '@constant/common.constant';
 import React, {useEffect, useState} from 'react';
 import {View, FlatList} from 'react-native';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
-import SearchBox from '@components/SearchBox';
-import MentorCard from '@components/MentorCard';
+import {TrainingCard,SearchBox, Tabs} from '@components';
+import Header from './Header';
 
-const MentoringListScreen = ({navigation}) => {
+const TrainingListScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const navigateToAvailableDate = () =>{
-     navigation.navigate("MentorAvailableDate")
+  const navigateToSlotList = () =>{
+    // change the navigation here
+     navigation.navigate("MentorSlotList")
   }
 
-  const List = () => {
+  const TrainingList = () => {
     return (
       <FlatList
         data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToAvailableDate} />}
+        renderItem={({item, index}) => <TrainingCard data={item} index={index} onPress ={ navigateToSlotList} />}
         contentContainerStyle={styles.listContainer}
       /> 
     )
@@ -46,17 +46,21 @@ const MentoringListScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
+      <Header navigation={navigation} 
+    heading='Training & Courses'
+    />
       <View style={styles.searchBoxContainer}>
         <SearchBox />
       </View>
       <Tabs
         tabData={[
-          {label: 'Tutoring',comp : <List/>},
-          {label: 'Mentoring', comp : <Demo/>},
+          {label: 'Courses',comp : <TrainingList/>},
+          {label: 'Trainings', comp : <Demo/>},
         ]}
       />
+
     </View>
   );
 };
 
-export default MentoringListScreen;
+export default TrainingListScreen;

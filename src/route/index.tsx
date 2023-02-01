@@ -15,6 +15,7 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
+import MentorAvailableDate from '../screens/mentor-available-date';
 import SearchResultScreen from '../screens/search-result';
 import SubmitApplication from '../screens/jobs/SubmitApplication';
 import Mentorships from '../screens/Mentorships';
@@ -45,6 +46,11 @@ function Routes() {
           <Stack.Screen
             name="MentorSlotList"
             component={SlotListScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorAvailableDate"
+            component={MentorAvailableDate}
             options={{headerShown: false}}
           />
           <Stack.Screen
