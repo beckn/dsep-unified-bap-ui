@@ -8,5 +8,6 @@ import Spacer from './Spacer';
 import DetailHeader from './DetailHeader';
 import SucessCard from './SuccessCard';
 import ScholarshipCard from './ScholarshipCard';
+import TrainingCard from './TrainingCard';
+export {Text, Tabs, SearchBox, SVGIcon, ICONS , DetailHeader, SucessCard,TrainingCard, Button,AppButton, Spacer,ScholarshipCard};
 
-export {Text, Tabs, SearchBox, SVGIcon, ICONS , DetailHeader, SucessCard, Button,AppButton, Spacer, ScholarshipCard};
