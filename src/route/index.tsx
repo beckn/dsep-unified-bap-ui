@@ -15,16 +15,14 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
-import Jobs from '../screens/jobs';
 import MentorAvailableDate from '../screens/mentor-available-date';
 import SearchResultScreen from '../screens/search-result';
 import SubmitApplication from '../screens/jobs/SubmitApplication';
 import Mentorships from '../screens/Mentorships';
 import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
-import Settings from '../screens/settings';
-import TrainingListScreen from '../screens/trainings-courses';
-import ResumeScreen from '../screens/resume';
+import Jobs from '../screens/jobs';
+import SavedJobs from '../screens/saved-jobs';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -51,9 +49,9 @@ function Routes() {
             options={{headerShown: false}}
           />
           <Stack.Screen
-           name="MentorAvailableDate"
-           component={MentorAvailableDate}
-           options={{headerShown: false}}
+            name="MentorAvailableDate"
+            component={MentorAvailableDate}
+            options={{headerShown: false}}
           />
           <Stack.Screen
             name="LessonPlan"
@@ -105,29 +103,19 @@ function Routes() {
             component={SubmitApplication}
             options={{headerShown: false}}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="JobConfirmation"
             component={JobConfirmation}
             options={{headerShown: false}}
-            />
-            <Stack.Screen
+          />
+          <Stack.Screen
             name="ScholarshipList"
             component={ScholarshipListScreen}
             options={{headerShown: false}}
           />
-           <Stack.Screen
-            name="Settings"
-            component={Settings}
-            options={{headerShown: false}}
-          />
-            <Stack.Screen
-           name="TrainingList"
-            component={TrainingListScreen}
-            options={{headerShown: false}}
-            />
-           <Stack.Screen
-            name="Resume"
-            component={ResumeScreen}
+          <Stack.Screen
+            name="SavedJobs"
+            component={SavedJobs}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

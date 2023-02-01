@@ -67,28 +67,27 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       case ICONS.IC_RIGHT_ARROW:
         return <RightArrow {...modifiedProps} />;
       case ICONS.IC_PURCHASE_HISTORY:
-      return <PurchaseHistory {...modifiedProps} />;
+        return <PurchaseHistory {...modifiedProps} />;
       case ICONS.IC_LEFT_ARROW:
         return <LeftArrow {...modifiedProps} />;
       case ICONS.IC_PDF:
-      return <PDF {...modifiedProps} />;
+        return <PDF {...modifiedProps} />;
       case ICONS.IC_RECTANGLE:
-      return <Rectangle {...modifiedProps} />;
+        return <Rectangle {...modifiedProps} />;
       case ICONS.IC_UPLOAD:
-      return <Upload {...modifiedProps} />;
+        return <Upload {...modifiedProps} />;
 
       case ICONS.IC_EDIT:
-      return <Edit {...modifiedProps} />;
+        return <Edit {...modifiedProps} />;
 
       case ICONS.IC_DELETE:
-      return <Delete {...modifiedProps} />;
+        return <Delete {...modifiedProps} />;
       case ICONS.IC_PRIVACY:
-      return <Privacy {...modifiedProps} />;
+        return <Privacy {...modifiedProps} />;
       case ICONS.IC_LANGUAGE:
-      return <Language {...modifiedProps} />;
+        return <Language {...modifiedProps} />;
       case ICONS.IC_CPASS:
         return <CPass {...modifiedProps} />;
-
     }
   };
 
@@ -139,13 +138,9 @@ export enum ICONS {
   IC_PDF = 'IC_PDF',
   IC_RECTANGLE = 'IC_RECTANGLE',
   IC_UPLOAD = 'IC_UPLOAD',
-
-  IC_EDIT='IC_EDIT'
-
+  IC_EDIT = 'IC_EDIT',
   IC_DELETE = 'IC_DELETE',
   IC_PRIVACY = 'IC_PRIVACY',
   IC_LANGUAGE = 'IC_LANGUAGE',
   IC_CPASS = 'IC_CPASS',
-  
-
 }
