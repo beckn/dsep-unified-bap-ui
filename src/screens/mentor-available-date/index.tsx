@@ -36,6 +36,8 @@ const MentorAvailableDate = ({navigation}) => {
           theme={{
             calendarBackground: Colors.background,
             dayTextColor: Colors.descText,
+            todayTextColor: Colors.descText,
+            textDisabledColor: Colors.descText,
             textDayFontFamily: Fonts.family.DM_SANS_REGULAR,
             textDayFontWeight: Fonts.weight.w4,
             textDayFontSize: Fonts.size.base,
@@ -44,9 +46,14 @@ const MentorAvailableDate = ({navigation}) => {
             textDayHeaderFontWeight: Fonts.weight.bold,
             textDayHeaderFontSize: Fonts.size.base
           }}
+          disabledByDefault={true}
+          disableAllTouchEventsForDisabledDays={true}
           initialDate={inititalDate.toString()}
           minDate={inititalDate.toString()}
           firstDay={1}
+          onDayPress={day => {
+            navigation.navigate("MentorSlotList")
+          }}
           renderHeader={date => {
             const dateStr = date.toISOString();
             const endIndex = dateStr.indexOf('T');
@@ -72,24 +79,28 @@ const MentorAvailableDate = ({navigation}) => {
           markingType={'custom'}
           markedDates={{
             '2023-02-02': {
+              disabled: false,
               customStyles: {
                 container: styles.availableDateContainer,
                 text: styles.availableDateText,
               },
             },
             '2023-02-09': {
+              disabled: false,
               customStyles: {
                 container: styles.availableDateContainer,
                 text: styles.availableDateText,
               },
             },
             '2023-02-16': {
+              disabled: false,
               customStyles: {
                 container: styles.availableDateContainer,
                 text: styles.availableDateText,
               },
             },
             '2023-02-23': {
+              disabled: false,
               customStyles: {
                 container: styles.availableDateContainer,
                 text: styles.availableDateText,

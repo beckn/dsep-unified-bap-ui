@@ -17,6 +17,9 @@ import Settings from '../../assets/svg/settings.svg';
 import RightArrow from '../../assets/svg/right-arrow.svg';
 import LeftArrow from '../../assets/svg/left-arrow.svg';
 import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
+import PDF from '../../assets/svg/pdf.svg';
+import Rectangle from '../../assets/svg/Rectangle.svg';
+import Upload from '../../assets/svg/upload.svg';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -62,6 +65,12 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       return <PurchaseHistory {...modifiedProps} />;
       case ICONS.IC_LEFT_ARROW:
         return <LeftArrow {...modifiedProps} />;
+      case ICONS.IC_PDF:
+      return <PDF {...modifiedProps} />;
+      case ICONS.IC_RECTANGLE:
+      return <Rectangle {...modifiedProps} />;
+      case ICONS.IC_UPLOAD:
+      return <Upload {...modifiedProps} />;
     }
   };
 
@@ -108,5 +117,8 @@ export enum ICONS {
   IC_SETTINGS = 'IC_SETTINGS',
   IC_RIGHT_ARROW = 'IC_RIGHT_ARROW',
   IC_LEFT_ARROW = 'IC_LEFT_ARROW',
-  IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY'
+  IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY',
+  IC_PDF = 'IC_PDF',
+  IC_RECTANGLE = 'IC_RECTANGLE',
+  IC_UPLOAD = 'IC_UPLOAD',
 }

@@ -74,9 +74,30 @@ function LoginScreen({navigation}) {
       />
       <View style={{height:20}}></View>
        <Button
-        title="Go to Jobs and Internships"
+        title="Go to Tutoring & Mentorships"
+        onPress={() => navigation.navigate('MentoringList')}
+      />
+       <View style={{height:20}}></View>
+       <Button
+        title="Go to Jobs"
         onPress={() => navigation.navigate('Jobs')}
       />
+      <View style={{height:20}}></View>
+       <Button
+        title="Go to search result screen"
+        onPress={() => navigation.navigate('SearchResult')}
+      />
+      <View style={{height:20}}></View>
+       <Button
+        title="Go to scholarship list screen"
+        onPress={() => navigation.navigate('ScholarshipList')}
+        
+      />
+       <View style={{height:20}}></View>
+        <Button
+        title="Go to training list screen"
+          onPress={() => navigation.navigate('TrainingList')}
+          />
     </View>
   );
 }

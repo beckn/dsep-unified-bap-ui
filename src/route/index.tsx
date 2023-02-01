@@ -17,6 +17,12 @@ import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
 import Jobs from '../screens/jobs';
 import MentorAvailableDate from '../screens/mentor-available-date';
+import SearchResultScreen from '../screens/search-result';
+import SubmitApplication from '../screens/jobs/SubmitApplication';
+import Mentorships from '../screens/Mentorships';
+import JobConfirmation from '../screens/job-confirmation';
+import ScholarshipListScreen from '../screens/scholarships-grants';
+import TrainingListScreen from '../screens/trainings-courses';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -87,6 +93,31 @@ function Routes() {
             component={Eligibility}
             options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SubmitApplication"
+            component={SubmitApplication}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="JobConfirmation"
+            component={JobConfirmation}
+            options={{headerShown: false}}
+            />
+            <Stack.Screen
+            name="ScholarshipList"
+            component={ScholarshipListScreen}
+            options={{headerShown: false}}
+          />
+            <Stack.Screen
+           name="TrainingList"
+            component={TrainingListScreen}
+            options={{headerShown: false}}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
