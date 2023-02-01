@@ -5,6 +5,7 @@ type Styles = {
   flex1: ViewStyle;
   flex1Center: ViewStyle;
   baseFontSize: TextStyle;
+  alignCenter: ViewStyle
 };
 
 export const commonStyles = StyleSheet.create<Styles>({
@@ -19,4 +20,7 @@ export const commonStyles = StyleSheet.create<Styles>({
   baseFontSize: {
     fontSize: Fonts.size.header,
   },
+  alignCenter: {
+    alignItems: 'center',
+  }
 });

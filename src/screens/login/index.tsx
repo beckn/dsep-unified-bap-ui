@@ -75,7 +75,7 @@ function LoginScreen({navigation}) {
       <View style={{height:20}}></View>
        <Button
         title="Go to Tutoring & Mentorships"
-        onPress={() => navigation.navigate('Mentorships')}
+        onPress={() => navigation.navigate('MentoringList')}
       />
        <View style={{height:20}}></View>
        <Button
