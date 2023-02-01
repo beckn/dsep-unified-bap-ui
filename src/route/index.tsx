@@ -15,8 +15,8 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
-
 import Jobs from '../screens/jobs';
+import MentorAvailableDate from '../screens/mentor-available-date';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -41,6 +41,11 @@ function Routes() {
             name="MentorSlotList"
             component={SlotListScreen}
             options={{headerShown: false}}
+          />
+          <Stack.Screen
+           name="MentorAvailableDate"
+           component={MentorAvailableDate}
+           options={{headerShown: false}}
           />
           <Stack.Screen
             name="LessonPlan"

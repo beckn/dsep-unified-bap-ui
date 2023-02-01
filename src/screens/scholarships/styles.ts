@@ -17,7 +17,6 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
-    // backgroundColor: Colors.backgound,
     padding: Metrics.padding.medium,
     
   },

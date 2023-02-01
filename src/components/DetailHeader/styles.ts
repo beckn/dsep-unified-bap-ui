@@ -69,6 +69,6 @@ export const styles = StyleSheet.create<Styles>({
     fontWeight: Fonts.weight.w4,
     fontFamily: Fonts.family.DM_SANS_REGULAR,
     textAlign: "center",
-    color: Colors.cardDescription,
+    color: Colors.cardDesc,
   },
 });

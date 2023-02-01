@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {Text} from '@components';
 import {Fonts} from '@styles/fonts';
 import {styles} from './styles';
-import Rating from '@components/Ratings';
 import {SVGIcon,ICONS} from '@components/SvgIcon'
 
 type cardDetails = {

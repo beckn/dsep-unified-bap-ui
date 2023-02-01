@@ -14,7 +14,8 @@ import Options from '../../assets/svg/options';
 import PersonalInfo from '../../assets/svg/personalInfo.svg';
 import Resume from '../../assets/svg/resume.svg';
 import Settings from '../../assets/svg/settings.svg';
-import RightArrow from '../../assets/svg/rightArrow.svg';
+import RightArrow from '../../assets/svg/right-arrow.svg';
+import LeftArrow from '../../assets/svg/left-arrow.svg';
 import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
 import {Colors} from '@styles/colors';
 
@@ -59,6 +60,8 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <RightArrow {...modifiedProps} />;
       case ICONS.IC_PURCHASE_HISTORY:
       return <PurchaseHistory {...modifiedProps} />;
+      case ICONS.IC_LEFT_ARROW:
+        return <LeftArrow {...modifiedProps} />;
     }
   };
 
@@ -104,5 +107,6 @@ export enum ICONS {
   IC_RESUME = 'IC_RESUME',
   IC_SETTINGS = 'IC_SETTINGS',
   IC_RIGHT_ARROW = 'IC_RIGHT_ARROW',
+  IC_LEFT_ARROW = 'IC_LEFT_ARROW',
   IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY'
 }
