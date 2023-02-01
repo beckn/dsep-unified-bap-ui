@@ -29,6 +29,9 @@ import home from '../screens/home'
 import WorkExperience from '../screens/profile/WorkExperience';
 import Education from '../screens/profile/Education';
 
+import Settings from '../screens/settings';
+import TrainingListScreen from '../screens/trainings-courses';
+import ResumeScreen from '../screens/resume';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -146,6 +149,19 @@ function Routes() {
           <Stack.Screen
             name="Education"
             component={Education}
+           <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{headerShown: false}}
+          />
+            <Stack.Screen
+           name="TrainingList"
+            component={TrainingListScreen}
+            options={{headerShown: false}}
+            />
+           <Stack.Screen
+            name="Resume"
+            component={ResumeScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
