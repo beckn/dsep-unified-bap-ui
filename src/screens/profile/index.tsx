@@ -14,7 +14,7 @@ function ProfileScreen({navigation}: {navigation: Navigation}) {
     onPress = {()=>{navigation.navigate('WorkExperience')}}/>
     <Options leftIcon={ICONS.IC_PURCHASE_HISTORY} title = {' History '} onPress = {()=>{}}/>
     <Options leftIcon={ICONS.IC_RESUME} title = {'Resume & My info'} onPress = {()=>{navigation.navigate('Resume')}}/>
-    <Options leftIcon={ICONS.IC_SETTINGS} title = {'Settings'} onPress = {()=>{}}/>
+    <Options leftIcon={ICONS.IC_SETTINGS} title = {'Settings'} onPress = {()=>{ navigation.navigate('Settings')}}/>
     </View>
   );
 }

@@ -93,7 +93,7 @@ function LoginScreen({navigation}) {
         onPress={() => navigation.navigate('SearchResult')}
       /> */}
       
-      <View style={{height:600}}></View>
+      {/* <View style={{height:600}}></View> */}
       
       <View style={styles.bottom}>
         <TouchableOpacity 
