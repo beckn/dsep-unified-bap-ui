@@ -14,11 +14,13 @@ import Options from '../../assets/svg/options';
 import PersonalInfo from '../../assets/svg/personalInfo.svg';
 import Resume from '../../assets/svg/resume.svg';
 import Settings from '../../assets/svg/settings.svg';
-import RightArrow from '../../assets/svg/rightArrow.svg';
+import RightArrow from '../../assets/svg/right-arrow.svg';
+import LeftArrow from '../../assets/svg/left-arrow.svg';
 import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
 import PDF from '../../assets/svg/pdf.svg';
 import Rectangle from '../../assets/svg/Rectangle.svg';
 import Upload from '../../assets/svg/upload.svg';
+import Edit from '../../assets/svg/edit.svg';
 import Delete from '../../assets/svg/delete.svg';
 import Privacy from '../../assets/svg/Privacy.svg';
 import Language from '../../assets/svg/Language.svg';
@@ -65,19 +67,25 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       case ICONS.IC_RIGHT_ARROW:
         return <RightArrow {...modifiedProps} />;
       case ICONS.IC_PURCHASE_HISTORY:
-      return <PurchaseHistory {...modifiedProps} />;
+        return <PurchaseHistory {...modifiedProps} />;
+      case ICONS.IC_LEFT_ARROW:
+        return <LeftArrow {...modifiedProps} />;
       case ICONS.IC_PDF:
-      return <PDF {...modifiedProps} />;
+        return <PDF {...modifiedProps} />;
       case ICONS.IC_RECTANGLE:
-      return <Rectangle {...modifiedProps} />;
+        return <Rectangle {...modifiedProps} />;
       case ICONS.IC_UPLOAD:
-      return <Upload {...modifiedProps} />;
+        return <Upload {...modifiedProps} />;
+
+      case ICONS.IC_EDIT:
+        return <Edit {...modifiedProps} />;
+
       case ICONS.IC_DELETE:
-      return <Delete {...modifiedProps} />;
+        return <Delete {...modifiedProps} />;
       case ICONS.IC_PRIVACY:
-      return <Privacy {...modifiedProps} />;
+        return <Privacy {...modifiedProps} />;
       case ICONS.IC_LANGUAGE:
-      return <Language {...modifiedProps} />;
+        return <Language {...modifiedProps} />;
       case ICONS.IC_CPASS:
         return <CPass {...modifiedProps} />;
     }
@@ -125,13 +133,14 @@ export enum ICONS {
   IC_RESUME = 'IC_RESUME',
   IC_SETTINGS = 'IC_SETTINGS',
   IC_RIGHT_ARROW = 'IC_RIGHT_ARROW',
+  IC_LEFT_ARROW = 'IC_LEFT_ARROW',
   IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY',
   IC_PDF = 'IC_PDF',
   IC_RECTANGLE = 'IC_RECTANGLE',
   IC_UPLOAD = 'IC_UPLOAD',
+  IC_EDIT = 'IC_EDIT',
   IC_DELETE = 'IC_DELETE',
   IC_PRIVACY = 'IC_PRIVACY',
   IC_LANGUAGE = 'IC_LANGUAGE',
   IC_CPASS = 'IC_CPASS',
-  
 }

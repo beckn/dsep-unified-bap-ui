@@ -6,11 +6,17 @@ import {commonStyles} from '@styles/commonStyles';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components';
 import {useTheme} from '@context';
+import {Dropdown} from '@components/Dropdown';
+import {useState} from 'react';
 
 function DevScreen({navigation}: {navigation: Navigation}) {
+  const [dropdownData, setDropdownData] = useState([
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'},
+  ]);
   const {theme, setTheme} = useTheme();
   return (
-    <View style={commonStyles.flex1}>
+    <View style={[commonStyles.flex1, commonStyles.paddingHBase]}>
       <Text style={commonStyles.baseFontSize}>{getString('key1')}</Text>
       <Text
         fontFamily={Fonts.family.DM_SANS_REGULAR}
@@ -23,6 +29,10 @@ function DevScreen({navigation}: {navigation: Navigation}) {
       <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
+      />
+      <Dropdown
+        data={dropdownData}
+        onSelect={value => console.log('selected value:' + value)}
       />
     </View>
   );

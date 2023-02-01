@@ -15,13 +15,15 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
+import MentorAvailableDate from '../screens/mentor-available-date';
 import SearchResultScreen from '../screens/search-result';
 import SubmitApplication from '../screens/jobs/SubmitApplication';
 import Mentorships from '../screens/Mentorships';
 import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
-import Settings from '../screens/settings';
+import SavedJobs from '../screens/saved-jobs';
+import Notification from '../screens/notification';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -45,6 +47,11 @@ function Routes() {
           <Stack.Screen
             name="MentorSlotList"
             component={SlotListScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorAvailableDate"
+            component={MentorAvailableDate}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -97,19 +104,24 @@ function Routes() {
             component={SubmitApplication}
             options={{headerShown: false}}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="JobConfirmation"
             component={JobConfirmation}
             options={{headerShown: false}}
-            />
-            <Stack.Screen
+          />
+          <Stack.Screen
             name="ScholarshipList"
             component={ScholarshipListScreen}
             options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="SavedJobs"
+            component={SavedJobs}
+            options={{headerShown: false}}
+          />
            <Stack.Screen
-            name="Settings"
-            component={Settings}
+            name="Notification"
+            component={Notification}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

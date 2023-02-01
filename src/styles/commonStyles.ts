@@ -1,10 +1,13 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {Fonts} from './fonts';
+import {Metrics} from './metrics';
 
 type Styles = {
   flex1: ViewStyle;
   flex1Center: ViewStyle;
   baseFontSize: TextStyle;
+  paddingHBase: ViewStyle;
+  underline: TextStyle;
 };
 
 export const commonStyles = StyleSheet.create<Styles>({
@@ -19,4 +22,8 @@ export const commonStyles = StyleSheet.create<Styles>({
   baseFontSize: {
     fontSize: Fonts.size.header,
   },
+  paddingHBase: {
+    paddingHorizontal: Metrics.padding.base,
+  },
+  underline: {textDecorationLine: 'underline'},
 });

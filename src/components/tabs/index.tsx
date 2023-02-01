@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 
 type tabDetails = {
-  tabData: Array<{label: string; comp: ReactElement}>;
+  tabData: Array<{label: string; comp: ReactElement; rating?: string}>;
 };
 
 const Tabs = ({tabData}: tabDetails) => {

@@ -67,35 +67,41 @@ function LoginScreen({navigation}) {
         title="Go to Training"
         onPress={() => navigation.navigate('Training')}
       />
-      <View style={{height:20}}></View>
-       <Button
+      <View style={{height: 20}}></View>
+      <Button
         title="Go to Scholarships & Grants"
         onPress={() => navigation.navigate('Scholarships')}
       />
-      <View style={{height:20}}></View>
-       <Button
+      <View style={{height: 20}}></View>
+      <Button title="Go to Jobs and Internships" />
+      <View style={{height: 20}}></View>
+      <Button
         title="Go to Tutoring & Mentorships"
         onPress={() => navigation.navigate('Mentorships')}
       />
-       <View style={{height:20}}></View>
-       <Button
-        title="Go to Jobs"
-        onPress={() => navigation.navigate('Jobs')}
+      <View style={{height: 20}}></View>
+      <Button title="Go to Jobs" onPress={() => navigation.navigate('Jobs')} />
+      <Button
+        title="Go to Dev-Screen"
+        onPress={() => navigation.navigate('DevScreen')}
       />
-      <View style={{height:20}}></View>
-       <Button
-        title="Go to search result screen"
-        onPress={() => navigation.navigate('SearchResult')}
-      />
-      <View style={{height:20}}></View>
-       <Button
+      <View style={{height: 20}}></View>
+      <Button
         title="Go to scholarship list screen"
         onPress={() => navigation.navigate('ScholarshipList')}
       />
-       <View style={{height:20}}></View>
-       <Button
-        title="Settings"
-        onPress={() => navigation.navigate('Settings')}
+      <Button
+        title="Go to purchase history"
+        onPress={() => navigation.navigate('SearchResult')}
+      />
+      <Button
+        title="Go to saved jobs"
+        onPress={() => navigation.navigate('SavedJobs')}
+      />
+       <View style={{height: 20}}></View>
+      <Button
+        title="Go to Notification"
+        onPress={() => navigation.navigate('Notification')}
       />
     </View>
   );

@@ -53,7 +53,7 @@ export const styles = StyleSheet.create<Styles>({
       flex: 1,
     },
     header: {
-      backgroundColor: Colors.backgound,
+      backgroundColor: Colors.background,
       height: 140,
       opacity: 0.8,
       paddingLeft: Metrics.padding.small,
