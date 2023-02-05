@@ -7,23 +7,35 @@ import {styles} from './styles';
 import ResultCard from './ResultCard';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
+import SavedJSON from '../../data/saved-jobs.json';
+import {useListView} from '@context';
 
 const SavedJobs = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
   ]);
-  const [data, setData] = useState([]);
+  const {list, selectedValue, setList, setSelectedValue} = useListView();
+  // const [data, setData] = useState(SavedJSON);
 
   useEffect(() => {
     getData();
   }, []);
 
+  useEffect(() => {
+    console.log('selectedValue: ', selectedValue);
+  }, [selectedValue]);
+
   const ResultCards = () => {
     return (
       <FlatList
-        data={data}
-        renderItem={({item, index}) => <ResultCard data={item} index={index} />}
+        data={list}
+        renderItem={({item, index}) => (
+          <ResultCard
+            item={item}
+            onItemPressed={item => setSelectedValue(item)}
+          />
+        )}
       />
     );
   };
@@ -31,7 +43,7 @@ const SavedJobs = ({navigation}) => {
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
     if (resp?.status === 200) {
-      setData(resp.data);
+      setList(SavedJSON);
     } else {
       console.log(resp);
     }
