@@ -25,6 +25,13 @@ import Delete from '../../assets/svg/delete.svg';
 import Privacy from '../../assets/svg/Privacy.svg';
 import Language from '../../assets/svg/Language.svg';
 import CPass from '../../assets/svg/cPass.svg';
+import LeftLargeArrow from '../../assets/svg/leftLarge-arrow.svg';
+import DownArrow from '../../assets/svg/down_arrow.svg';
+import YesBank from '../../assets/svg/yesBank.svg';
+import MasterCard from '../../assets/svg/MasterCard.svg';
+import PaytmCircle from '../../assets/svg/PaytmCircle.svg';
+import Paytm from '../../assets/svg/Paytm.svg';
+import GrayCircle from '../../assets/svg/grayCircle.svg';
 import {Colors} from '@styles/colors';
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -88,6 +95,20 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <Language {...modifiedProps} />;
       case ICONS.IC_CPASS:
         return <CPass {...modifiedProps} />;
+      case ICONS.IC_LEFT_LARGE_ARROW:
+      return <LeftLargeArrow {...modifiedProps} />;
+      case ICONS.IC_DOWN_ARROW:
+      return <DownArrow {...modifiedProps} />;
+      case ICONS.IC_YES_BANK:
+      return <YesBank {...modifiedProps} />;
+      case ICONS.IC_MASTER_CARD:
+      return <MasterCard {...modifiedProps} />;
+      case ICONS.IC_PAYTM_CIRCLE:
+      return <PaytmCircle {...modifiedProps} />;
+      case ICONS.PAYTM:
+      return <Paytm {...modifiedProps} />;
+      case ICONS.IC_GRAY_CIRCLE:
+      return <GrayCircle {...modifiedProps} />;
     }
   };
 
@@ -143,4 +164,11 @@ export enum ICONS {
   IC_PRIVACY = 'IC_PRIVACY',
   IC_LANGUAGE = 'IC_LANGUAGE',
   IC_CPASS = 'IC_CPASS',
+  IC_LEFT_LARGE_ARROW= 'IC_LEFT_LARGE_ARROW',
+  IC_DOWN_ARROW='IC_DOWN_ARROW',
+  IC_YES_BANK= 'IC_YES_BANK',
+  IC_MASTER_CARD= 'IC_MASTER_CARD',
+  IC_PAYTM_CIRCLE='IC_PAYTM_CIRCLE',
+  PAYTM='PAYTM',
+  IC_GRAY_CIRCLE='IC_GRAY_CIRCLE'
 }

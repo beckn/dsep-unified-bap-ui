@@ -4,6 +4,9 @@ import {styles} from './styles';
 import images from '../../assets/images';
 import Button from '@components/AppButton';
 import Spacer from '@components/Spacer';
+import {ICONS, SVGIcon } from '@components';
+import { Colors } from '@styles/colors';
+
 
 const lessionData = [
   {
@@ -49,7 +52,11 @@ const onClickBuyNow =(navigation) =>{
     <Text style={{top:2}}>{item.time}</Text>
     </View>
     <View style={styles.lessonPlanArrow}>
-   <Image source={images.downArrow} style={{top:5}} /> 
+    <SVGIcon
+          name={ICONS.IC_DOWN_ARROW}
+          fill={Colors.oliveBlack}
+          style={{ marginRight: 10 }}
+        />
     </View>
     </View>
     <View style={styles.lessionLine} />

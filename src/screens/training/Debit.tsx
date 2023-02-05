@@ -5,6 +5,8 @@ import images from '../../assets/images/index'
 import Header from './Header';
 import Spacer from '@components/Spacer';
 import AppButton from '@components/AppButton';
+import {ICONS, SVGIcon } from '@components';
+import { Colors } from '@styles/colors';
 
 
 function Debit({navigation}){
@@ -34,12 +36,20 @@ function Debit({navigation}){
       <View style={styles.debitCard}>
         <View style={styles.debitHalf}>
             <View style={styles.yesBank}>
-            <Image source={images.yesBank}/>
+            <SVGIcon
+             name={ICONS.IC_YES_BANK}
+             fill={Colors.oliveBlack}
+             style={{ marginRight: 10 }}
+           />
             </View>
             <View style={styles.yesbankDetails}>
             <View style={styles.rowDirection}>
             <Text>{'Yes bank debit card '}</Text>
-            <Image source={images.masterCardBlueIcon} style={styles.debitNumber} />
+            <SVGIcon
+             name={ICONS.IC_MASTER_CARD}
+             fill={Colors.oliveBlack}
+             style={{ marginLeft: 10, top:5 }}
+           />
             </View>
             <Text>{'1234 1243 7564 7364'}</Text>
             </View>
@@ -62,15 +72,27 @@ function Debit({navigation}){
       <View style={styles.spacer}  />
       <View style={styles.smallCard}>
       <Spacer horizontal size={25}/>
-      <Image  source={images.paytmCircle} />
+      <SVGIcon
+             name={ICONS.IC_PAYTM_CIRCLE}
+             fill={Colors.black10}
+             style={{ marginRight: 10 }}
+      />
       <Spacer horizontal size={30}/>
-      <Image  source={images.paytmRactangle} />
+      <SVGIcon
+             name={ICONS.PAYTM}
+             fill={Colors.black10}
+             style={{ marginRight: 10 }}
+           />
       </View>
       <View style={styles.spacer}  />
       <Text style={styles.heading}>{'UPI’s'}</Text>
       <View style={styles.spacer}  />
       <View style={styles.upiCard}>
-      <Image  source={images.paytmCircle}/>
+      <SVGIcon
+             name={ICONS.IC_PAYTM_CIRCLE}
+             fill={Colors.black10}
+             style={{ marginRight: 10 }}
+      />
       <Image  source={images.gPay} />
       <Image  source={images.phonePay} />
       <Image  source={images.bhim} />

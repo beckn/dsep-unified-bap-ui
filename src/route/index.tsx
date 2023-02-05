@@ -124,6 +124,11 @@ function Routes() {
             component={Notification}
             options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="Mentorships"
+            component={Mentorships}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

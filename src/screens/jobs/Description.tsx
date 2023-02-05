@@ -5,52 +5,6 @@ import {styles} from '../scholarships/styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
-
-
-const courses = [
-  {
-    id: 1,
-    name: 'Sed ut perspiciatis unde omnis iste natus error sit.'
-  },
-  {
-    id: 2,
-    name: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
-  },
-  {
-    id: 3,
-    name: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
-  },
-  {
-    id: 4,
-    name: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur'
-  },
-]
-
-const prerequisites = [
-  {
-    id: 1,
-    name: 'Medical'
-  },
-  {
-    id: 2,
-    name: 'Dental'
-  },
-  {
-    id: 3,
-    name: 'Technical Cartification'
-  }
-]
-
-const eligibility = [
-  {
-    id: 1,
-    name:'Sed ut perspiciatis unde omnis iste natus error sit.'
-  },
-  {
-    id: 2,
-    name:'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit.'
-  }
-]
 function Description({navigation}: {navigation: Navigation}) {
   const onClickApply = () => {
     navigation.navigate('SubmitApplication');
@@ -61,6 +15,7 @@ function Description({navigation}: {navigation: Navigation}) {
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.heading}>{'Job Description'}</Text>
+          <Spacer size={15}/>
           <Text>
             {
               'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.'

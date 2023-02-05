@@ -1,6 +1,7 @@
 import React from "react";
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import images from '../../assets/images';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {ICONS, SVGIcon } from '@components';
+import { Colors } from '@styles/colors';
 
 
 function Header({navigation, heading, online, video, education, rating}){
@@ -9,10 +10,19 @@ function Header({navigation, heading, online, video, education, rating}){
          <View style={styles.header}>
         <View style={styles.headerHeading}>
         <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-          <Image source={images.leftArrow}  />
+        <SVGIcon
+          name={ICONS.IC_LEFT_LARGE_ARROW}
+          fill={Colors.oliveBlack}
+          style={{ marginRight: 10 }}
+        />
           </TouchableOpacity>
+         
         <Text style={styles.headerText}>{heading}</Text>
-          <Image source={images.vector} />
+        <SVGIcon
+          name={ICONS.IC_SAVED}
+          fill={Colors.oliveBlack}
+          style={{ marginRight: 10 }}
+        />
         </View>
         <View>
           {online && <View style={styles.video}>
@@ -25,7 +35,10 @@ function Header({navigation, heading, online, video, education, rating}){
           </View>
           <View style={styles.starEnd}>
           {rating && <View style={styles.starValue}>
-          <Image source={images.star}/>
+          <SVGIcon
+          name={ICONS.IC_STAR}
+          fill={Colors.oliveBlack}
+        />
           <Text style={styles.value}>{rating}</Text>
           </View>}
           </View>
