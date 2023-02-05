@@ -1,0 +1,38 @@
+    {
+        "id": 1,
+        "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.",
+        "requirements": [
+            {
+                "id": 1,
+                "title": "Sed ut perspiciatis unde omnis iste natus error sit."
+            },
+            {
+                "id": 2,
+                "title": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit."
+            },
+            {
+                "id": 3,
+                "title": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+            }
+        ],
+        "position": "Senior Designer",
+        "qualification": "Bachelor's Degree",
+        "experience": "3 Years",
+        "type": "Full time",
+        "specialization": "Design",
+        "facilities":[
+            {
+                "id": 1,
+                "title": "Medical"
+            },
+            {
+                "id": 2,
+                "title": "Dental"
+            },
+            {
+                "id": 2,
+                "title": "Technical Certification"
+            }
+        ]
+  
+    }
