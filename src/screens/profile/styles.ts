@@ -10,14 +10,26 @@ type Styles = {
   optionsTitle:ViewStyle;
   optionsRightIcon:ViewStyle;
   inputStyle: ViewStyle;
+  searchBox: ViewStyle;
+  input: ViewStyle;
   centeredView: ViewStyle;
   modalView: ViewStyle;
   calender: ViewStyle;
   button: ViewStyle;
+  searchBoxContainer: ViewStyle;
+  bottom: ViewStyle;
   inputStyleMultiLine: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
+  searchBoxContainer: {
+    paddingTop: Metrics.padding.base,
+    paddingHorizontal: Metrics.padding.base,
+  },
+  bottom: {
+    backgroundColor: Colors.white,
+     padding: Metrics.padding.medium,
+  },
   container: {
     flex: 1,
     paddingHorizontal: Metrics.base,
@@ -53,6 +65,22 @@ export const styles = StyleSheet.create<Styles>({
   },
   optionsRightIcon:{
     flex:1
+  },
+  searchBox: {
+    height: 47.95,
+    backgroundColor: Colors.white,
+    borderColor: Colors.black,
+    borderWidth: 1,
+    borderRadius: Metrics.radius.base,
+    alignSelf: 'center',
+    marginVertical: Metrics.margin.xtiny,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: Metrics.padding.small,
+  },
+  input: {
+    flex: 1,
+    paddingLeft: Metrics.padding.xSmall,
   },
   inputStyle: {
     height: 40,

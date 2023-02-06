@@ -15,6 +15,7 @@ import Scholarships from '../screens/scholarships';
 import {ThemeProvider} from '@context';
 import SlotListScreen from '../screens/mentor-slot-list';
 import DevScreen from '../screens/dev';
+import MentorAvailableDate from '../screens/mentor-available-date';
 import SearchResultScreen from '../screens/search-result';
 import SubmitApplication from '../screens/jobs/SubmitApplication';
 import Mentorships from '../screens/Mentorships';
@@ -32,6 +33,9 @@ import Education from '../screens/profile/Education';
 import Settings from '../screens/settings';
 import TrainingListScreen from '../screens/trainings-courses';
 import ResumeScreen from '../screens/resume';
+import SavedJobs from '../screens/saved-jobs';
+import AddSkills from '../screens/profile/AddSkills';
+import AddDegree from '../screens/profile/AddDegree';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -111,6 +115,12 @@ function Routes() {
           />
          
           <Stack.Screen
+            name="MentorAvailableDate"
+            component={MentorAvailableDate}
+            options={{headerShown: false}}
+          />
+        
+          <Stack.Screen
             name="SearchResult"
             component={SearchResultScreen}
             options={{headerShown: false}}
@@ -131,12 +141,12 @@ function Routes() {
             component={SubmitApplication}
             options={{headerShown: false}}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="JobConfirmation"
             component={JobConfirmation}
             options={{headerShown: false}}
-            />
-            <Stack.Screen
+          />
+          <Stack.Screen
             name="ScholarshipList"
             component={ScholarshipListScreen}
             options={{headerShown: false}}
@@ -154,6 +164,16 @@ function Routes() {
            <Stack.Screen
             name="Settings"
             component={Settings}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddSkills"
+            component={AddSkills}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddDegree"
+            component={AddDegree}
             options={{headerShown: false}}
           />
             <Stack.Screen

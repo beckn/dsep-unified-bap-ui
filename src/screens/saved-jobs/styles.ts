@@ -10,9 +10,6 @@ type Styles = {
   headerHeading: ViewStyle;
   headerText: ViewStyle;
   resultCardContainer: ViewStyle;
-  searchBoxContainer: ViewStyle;
-  bottom: ViewStyle;
-  input: ViewStyle;
   organizationRow: ViewStyle;
   profilleIconContainer: ViewStyle;
   profileIconOuter: ViewStyle;
@@ -33,40 +30,19 @@ type Styles = {
 };
 
 export const styles = StyleSheet.create<Styles>({
-  searchBoxContainer: {
-    paddingTop: Metrics.padding.base,
-    paddingHorizontal: Metrics.padding.base,
-  },
   container: {
     flex: 1,
   },
-  bottom: {
-    backgroundColor: Colors.white,
-     padding: Metrics.padding.medium,
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    width: 300,
-    borderWidth: 1,
-    borderRadius: 15,
-    padding: 10,
-    backgroundColor:  `#f8f8ff`, 
-
-  },
   header: {
-    height: 60,
+    height: 40,
     paddingHorizontal: Metrics.padding.base,
     flexDirection: 'row',
   },
   headerHeading: {
-    // flex: 1,
+    flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    marginBottom: 20,
-    padding: 5
   },
-  
   headerText: {
     textAlign: 'center',
     fontWeight: Fonts.weight.w6,

@@ -15,15 +15,15 @@ const MentoringListScreen = ({navigation}) => {
     getData();
   }, []);
 
-  const navigateToSlotList = () =>{
-     navigation.navigate("MentorSlotList")
+  const navigateToAvailableDate = () =>{
+     navigation.navigate("MentorAvailableDate")
   }
 
   const List = () => {
     return (
       <FlatList
         data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToSlotList} />}
+        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToAvailableDate} />}
         contentContainerStyle={styles.listContainer}
       /> 
     )
@@ -55,7 +55,6 @@ const MentoringListScreen = ({navigation}) => {
           {label: 'Mentoring', comp : <Demo/>},
         ]}
       />
-
     </View>
   );
 };

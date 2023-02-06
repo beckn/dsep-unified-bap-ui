@@ -25,13 +25,13 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     if(name == "Jobs & Internships"){
       navigation.navigate('SkillsSearch')
     }else if(name == "Trainings & Courses"){
-      navigation.navigate('Training')
+      navigation.navigate('TrainingList')
     }else if(name == "Scholarships & Grants"){
       navigation.navigate('ScholarshipList')
     }else if(name == "Tutoring & Mentorship"){
       navigation.navigate('MentoringList')
     }
-    
+      
   }
  
   return (

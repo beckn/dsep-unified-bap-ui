@@ -1,4 +1,3 @@
-import Tabs from '@components/Tabs';
 import {ApiMethods} from '@constant/common.constant';
 import React, {useEffect, useState} from 'react';
 import {View, FlatList, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
@@ -7,15 +6,17 @@ import Button from '@components/AppButton';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
-import SearchBox from '@components/SearchBox';
-import MentorCard from '@components/MentorCard';
-import DetailHeader from '@components/DetailHeader';
-import Header from './Header';
 import ResultCard from './ResultCard';
 import { Modal, Portal,  Provider } from 'react-native-paper';
 import { Colors } from '@styles/colors';
+import {Dropdown} from '@components/Dropdown';
+import Header from './Header';
 
 const SearchResultScreen = ({navigation}) => {
+  const [dropdownData, setDropdownData] = useState([
+    {label: 'Jobs & Internships', value: 'job-internships'},
+    {label: 'Mentorship', value: 'mentorship'},
+  ]);
   const [data, setData] = useState([]);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
@@ -38,6 +39,7 @@ const SearchResultScreen = ({navigation}) => {
       /> 
     )
   }
+        
 
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
@@ -56,6 +58,15 @@ const SearchResultScreen = ({navigation}) => {
     />
    
   <ResultCards/>
+    <View style={styles.container}>
+      <Header heading={'Purchase History'} />
+      <View style={styles.dropdownContainer}>
+        <Dropdown
+          data={dropdownData}
+          onSelect={value => console.log('selected value:' + value)}
+        />
+      </View>
+      <ResultCards />
     </View>
     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
           <Text>Search Jobs & InternShips.</Text>
@@ -85,6 +96,7 @@ const SearchResultScreen = ({navigation}) => {
        
       </View> 
         </Modal>
+        </View>
     </SafeAreaView>
   );
 };

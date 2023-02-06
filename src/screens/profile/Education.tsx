@@ -1,9 +1,10 @@
-import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import {styles} from './styles';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Button from '@components/AppButton';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import images from '../../assets/images';
 
 const Education = ({navigation}: {navigation: Navigation}) => {
     const onClickApply =() =>{
@@ -13,9 +14,12 @@ const Education = ({navigation}: {navigation: Navigation}) => {
   return (
     <SafeAreaView>
     <View>
+    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+          <Image source={images.leftArrow} />
+        </TouchableOpacity>
       <Text>Education</Text>
       <View style={styles.container}>
-      <TextInput placeholder="Name" style={styles.inputStyle} />
+      <TextInput placeholder="Name" onFocus={() => navigation.navigate('AddDegree')} style={styles.inputStyle} />
       <TextInput placeholder="Address" style={styles.inputStyle} />
       <TextInput placeholder="Phone" style={styles.inputStyle} />
       <View style={styles.calender}>

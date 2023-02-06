@@ -55,43 +55,9 @@ function LoginScreen({navigation}) {
         title="Go to Home"
         onPress={() => navigation.navigate('Dashboard')}
       />
-      {/* <Button title="Google Sign-Out" onPress={onGoogleSignOut} />
-      <Button
-        title="Google Sign-In"
-        onPress={() =>
-          onGoogleButtonPress().then(() =>
-            console.log('Signed in with Google!'),
-          )
-        }
-      /> */} 
-      {/* <Button
-        title="Go to Mentoring List"
-        onPress={() => navigation.navigate('MentoringList')}
-      />
-      <Button
-        title="Go to Training"
-        onPress={() => navigation.navigate('Training')}
-      /> */}
-      {/* <View style={{height:20}}></View>
-       <Button
-        title="Go to Scholarships & Grants"
-        onPress={() => navigation.navigate('Scholarships')}
-      />
-      <View style={{height:20}}></View>
-       <Button
-        title="Go to Tutoring & Mentorships"
-        onPress={() => navigation.navigate('Mentorships')}
-      />
-       <View style={{height:20}}></View>
-       <Button
-        title="Go to Jobs"
-        onPress={() => navigation.navigate('Jobs')}
-      />
-      <View style={{height:20}}></View>
-       <Button
-        title="Go to search result screen"
-        onPress={() => navigation.navigate('SearchResult')}
-      /> */}
+      
+     
+      
       
       {/* <View style={{height:600}}></View> */}
       
@@ -112,23 +78,20 @@ function LoginScreen({navigation}) {
         } text={'Google Sign-In'} type="dark" />
         <Spacer size={10} /> */}
       </View>
-      
-      <View style={{height:20}}></View>
-       <Button
+     
+     
+      <Button
         title="Go to scholarship list screen"
         onPress={() => navigation.navigate('ScholarshipList')}
-        
       />
-       <View style={{height:20}}></View>
-
-       <Button
-        title="Settings"
-        onPress={() => navigation.navigate('Settings')}
+      <Button
+        title="Go to purchase history"
+        onPress={() => navigation.navigate('SearchResult')}
       />
-        <Button
-        title="Go to training list screen"
-          onPress={() => navigation.navigate('TrainingList')}
-          />
+      <Button
+        title="Go to saved jobs"
+        onPress={() => navigation.navigate('SavedJobs')}
+      />
     </View>
   );
 }
