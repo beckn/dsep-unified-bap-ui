@@ -12,6 +12,7 @@ type Styles = {
   left: ViewStyle;
   params: ViewStyle;
   row: ViewStyle;
+  rignt: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -55,4 +56,7 @@ export const styles = StyleSheet.create<Styles>({
     row:{
       flexDirection: 'row'
     },
+    rignt :{
+      marginLeft: 30
+    }
 });
