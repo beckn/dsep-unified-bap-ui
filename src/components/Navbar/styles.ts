@@ -18,22 +18,23 @@ export const styles = StyleSheet.create<Styles>({
     justifyContent: 'space-between',
     backgroundColor: Colors.black10,
     paddingTop : 23,
-    paddingBottom : Metrics.padding.xSmall
+    paddingBottom : Metrics.padding.xSmall,
+    paddingHorizontal: 24
   },
   backArrowContainer:{
-    width:"15%",
-    justifyContent:'center',
-    alignItems: 'center',
+    width:"20%",
   },
   titleContainer:{
-    width:'70%',
+    width:'40%',
     justifyContent:'center',
     alignItems: 'center'
   },
   rightIconContainer:{
-    width:"15%",
-    justifyContent:'center',
-    alignItems: 'center'
+    width:'20%',
+    paddingLeft:15,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent:'space-between'
   },
   titleText:{
     fontSize:Fonts.size.title,

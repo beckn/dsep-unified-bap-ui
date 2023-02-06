@@ -17,6 +17,7 @@ export const Colors = {
   sucessCardTitle: '#3A3452',
   descText: '#524B6B',
   slotText: '#150B3D',
-  slotBg: 'rgba(203,201,212,0.2)',
-  borderColor: '#E2E2E2',
+  slotBg: "rgba(203,201,212,0.2)",
+  antiFlashWhite: "#F0F0F0",
+  columbiaBlue: "#CED3DE"
 };
