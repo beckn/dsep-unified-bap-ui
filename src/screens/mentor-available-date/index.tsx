@@ -117,7 +117,7 @@ const MentorAvailableDate = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <NavBar hasBackArrow={true} hasRightIcon={true} title={'Mentoring'} />
+      <NavBar hasBackArrow={true} hasRightIcon={true} rightIconName={ICONS.IC_OPTIONS} title={'Mentoring'} />
       <DetailHeader
         title="Mentor name"
         description="Frontend Architect | Founder - ABC company"

@@ -7,6 +7,8 @@ import {styles} from './styles';
 import ResultCard from './ResultCard';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
+import SavedJSON from '../../data/saved-jobs.json';
+import { useListView } from '@context';
 
 const SearchResultScreen = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
@@ -14,6 +16,7 @@ const SearchResultScreen = ({navigation}) => {
     {label: 'Mentorship', value: 'mentorship'},
   ]);
   const [data, setData] = useState([]);
+  const {list, selectedValue, setList, setSelectedValue} = useListView();
 
   useEffect(() => {
     getData();
@@ -22,8 +25,8 @@ const SearchResultScreen = ({navigation}) => {
   const ResultCards = () => {
     return (
       <FlatList
-        data={data}
-        renderItem={({item, index}) => <ResultCard data={item} index={index} />}
+        data={list}
+        renderItem={({item, index}) => <ResultCard data={item} onItemPressed={item => setSelectedValue(item)} />}
       />
     );
   };
@@ -32,6 +35,7 @@ const SearchResultScreen = ({navigation}) => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
     if (resp?.status === 200) {
       setData(resp.data);
+      setList(SavedJSON)
     } else {
       console.log(resp);
     }
