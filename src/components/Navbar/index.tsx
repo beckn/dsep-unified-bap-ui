@@ -49,12 +49,12 @@ const NavBar = ({
       <View style={styles.rightIconContainer}>
       {hasSecondaryRightIcon ? (
         <View >
-          <SVGIcon name={secondaryRightIconName} />
+          <SVGIcon name={ICONS.IC_SAVED} />
         </View>
       ) : null}
       {hasRightIcon ? (
         <View >
-          <SVGIcon name={rightIconName} />
+          <SVGIcon name={ICONS.IC_SAVED} />
         </View>
       ) : null}
       </View>

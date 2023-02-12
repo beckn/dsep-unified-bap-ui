@@ -30,7 +30,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
 
   return (
     <>
-       <NavBar hasBackArrow={true} hasRightIcon = {true} title={data?.selectedJobs[0]?.role} />
+       <NavBar hasBackArrow={true} hasRightIcon = {true}  hasSecondaryRightIcon ={true} title={data?.selectedJobs[0]?.role} rightIconName ={''} />
       <DetailHeader
         title={data?.company?.name}
         description={data?.selectedJobs[0]?.locations[0]?.city + ', ' +  data?.selectedJobs[0]?.locations[0]?.country}
