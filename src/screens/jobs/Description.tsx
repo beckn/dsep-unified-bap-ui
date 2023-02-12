@@ -9,10 +9,8 @@ import {ApiMethods} from '@constant/common.constant';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 
-
-
 function Description({navigation}: {navigation: Navigation}) {
-const [data, setData] = useState({});
+const [data, setData]: any = useState();
   useEffect(() => {
     getData();
   }, []);
@@ -32,7 +30,7 @@ const [data, setData] = useState({});
     <View style={styles.row} key={index}>
     <View style={styles.dot}></View>
     <Text style={[styles.params, styles.left]}>
-     {item.title}
+     {item}
     </Text>
     </View>
     <Spacer />
@@ -45,14 +43,14 @@ const [data, setData] = useState({});
           <Text style={styles.heading}>{'Job Description'}</Text>
           <Spacer size={5}/>
           <Text>
-            {DescriptionJSON.description}
+            {data?.selectedJobs[0]?.description}
           </Text>
         <Spacer size={10} />
 
         <Text style={styles.heading}>{'Requirements:'}</Text>
         <Spacer />
         <FlatList 
-         data = {DescriptionJSON.requirements}
+         data = {data?.selectedJobs[0]?.responsibilities}
          renderItem={renderItem}
         />
         <Spacer />
@@ -60,22 +58,22 @@ const [data, setData] = useState({});
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Position'}</Text>
-          <Text>{DescriptionJSON.position}</Text>
+          <Text>{data?.selectedJobs[0]?.role}</Text>
         </View>
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Qualification'}</Text>
-          <Text>{DescriptionJSON.qualification}</Text>
+          <Text>{data?.selectedJobs[0]?.educationalQualifications[0]?.qualification[0].value}{' '}{'Degree'}</Text>
         </View>
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Experience'}</Text>
-          <Text>{DescriptionJSON.experience}</Text>
+          <Text>{data?.selectedJobs[0]?.workExperience?.experience[0]?.value}</Text>
         </View>
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Job Type'}</Text>
-          <Text>{DescriptionJSON.type}</Text>
+          <Text>{data?.selectedJobs[0].employmentInformation.employmentInfo[0].value}</Text>
         </View>
         <Spacer />
         <View style={styles.card}>
