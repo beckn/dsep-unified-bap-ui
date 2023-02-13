@@ -10,6 +10,7 @@ import images from '../../assets/images';
 
 const WorkExperience = ({navigation}: {navigation: Navigation}) => {
     const onClickApply =() =>{
+      
         navigation.navigate('Education');
       }
       const [modalVisible, setModalVisible] = useState(false);

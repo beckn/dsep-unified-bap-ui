@@ -4,10 +4,13 @@ import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import { styles } from "./styles";
 
-const ResultCard = ({navigation})=>{
+// const ResultCard = ({navigation})=>{
+//     return (
+//     <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
+//     <View style = {styles.resultCardContainer}>
+const ResultCard = ({data, onItemPressed})=>{
     return (
-    <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
-    <View style = {styles.resultCardContainer}>
+    <TouchableOpacity style = {styles.resultCardContainer} key ={data.id} onPress={() => onItemPressed(data)}>
         <View style = {styles.organizationRow}>
             <View style = {styles.profilleIconContainer}>
                 <View style = {styles.profileIconOuter}>
@@ -16,10 +19,10 @@ const ResultCard = ({navigation})=>{
             </View>
             <View style = {styles.organizationDetails}>
                 <Text style = {styles.organizationName}>
-                    Facebook
+                    {data.company}
                 </Text>
                 <Text style = {styles.organizationLocation}>
-                    Bangalore, India
+                {`${data.city}, ${data.country}`}
                 </Text>
             </View>
             <View style = {styles.bookmarkIcon}>
@@ -27,15 +30,14 @@ const ResultCard = ({navigation})=>{
             </View>
         </View>
         <View style = {styles.detailsRow}>
-            <Text style = {styles.roleName}>UX Designer</Text>
-            <Text style = {styles.roleAttributes}>Senior . Fulltime . Remote</Text>
+            <Text style = {styles.roleName}>{data.skills}</Text>
+            <Text style = {styles.roleAttributes}>{`${data.type1} . ${data.type2} . ${data.type3}`}</Text>
             <View style = {styles.roleHistory}>
-                <Text style = {styles.rolePostedDate}>1d ago</Text>
-                <Text style = {styles.rolePostedBy}>by affnidi</Text>
+                <Text style = {styles.rolePostedDate}>{data.postedOn}</Text>
+                <Text style = {styles.rolePostedBy}>{`by ${data.byWhom}`}</Text>
             </View>
         </View>
-    </View>
-    </TouchableOpacity>  
+    </TouchableOpacity>
     )
 }
 

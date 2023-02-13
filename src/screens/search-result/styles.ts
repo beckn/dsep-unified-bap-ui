@@ -13,6 +13,7 @@ type Styles = {
   searchBoxContainer: ViewStyle;
   bottom: ViewStyle;
   input: ViewStyle;
+  searchBox: ViewStyle;
   organizationRow: ViewStyle;
   profilleIconContainer: ViewStyle;
   profileIconOuter: ViewStyle;
@@ -33,6 +34,19 @@ type Styles = {
 };
 
 export const styles = StyleSheet.create<Styles>({
+  searchBox: {
+    height: 47.95,
+    backgroundColor: Colors.white,
+    borderColor: Colors.black,
+    borderWidth: 1,
+    margin:10,
+    borderRadius: Metrics.radius.base,
+    alignSelf: 'center',
+    marginVertical: Metrics.margin.xtiny,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: Metrics.padding.small,
+  },
   searchBoxContainer: {
     paddingTop: Metrics.padding.base,
     paddingHorizontal: Metrics.padding.base,
@@ -48,10 +62,10 @@ export const styles = StyleSheet.create<Styles>({
     height: 40,
     margin: 10,
     width: 300,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 15,
     padding: 10,
-    backgroundColor:  `#f8f8ff`, 
+    // backgroundColor:  `#f8f8ff`, 
 
   },
   header: {

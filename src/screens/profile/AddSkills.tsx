@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, Image, TouchableOpacity, TextInput, FlatList } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@components/AppButton';
 import {Navigation} from '@interfaces/commonInterfaces';
 import images from '../../assets/images';
@@ -7,48 +7,60 @@ import {styles} from './styles'
 import SearchBox from '@components/SearchBox'
 import {ICONS, SVGIcon} from '@components/SvgIcon';
 import {Colors} from '@styles/colors';
+import { userSkillView } from '@context';
 
 const AddSkills = ({navigation}:{navigation: Navigation}) => {
     const [value, setValue] = useState("");
-    const[data, setData] = useState([
-        {
-            id: 1,
-            skill: 'Mobile App'
-        },
-        {
-            id: 2,
-            skill: 'Web App'
-        },
-        {
-            id: 2,
-            skill: 'React'
-        }
-    ]);
-    const[filterdata, setFilterData] = useState([{
-        id: 1,
-        skill: 'mobile App'
-    },])
-    const SearchData = (text) => {
+    const {skills, setSkills} = userSkillView();
+    // const[data, setData] = useState([
+    //     {
+    //         id: 1,
+    //         skill: 'Mobile App'
+    //     },
+    //     {
+    //         id: 2,
+    //         skill: 'Web App'
+    //     },
+    //     {
+    //         id: 2,
+    //         skill: 'React'
+    //     }
+    // ]);
+    // const[filterdata, setFilterData] = useState([{
+    //     id: 1,
+    //     skill: 'mobile App'
+    // },])
+    // const SearchData = (text) => {
   
-        if(text){
-          const newData = data.filter((item) => {
-            const itemData = item.skill
-            return itemData.indexOf(text) > -1;
+    //     if(text){
+    //       const newData = data.filter((item) => {
+    //         const itemData = item.skill
+    //         return itemData.indexOf(text) > -1;
             
-          } );
-          setFilterData(newData)
+    //       } );
+    //       setFilterData(newData)
         
-        setValue(text)
-        }else{
+    //     setValue(text)
+    //     }else{
      
-        setFilterData(data)
-        setValue(text)
-        }
+    //     setFilterData(data)
+    //     setValue(text)
+    //     }
         
-      }
+    //   }
       const onClickApply =() =>{
-        navigation.navigate("SearchResult");
+        let item = value?.split(',')
+        console.log(item);
+        setSkills(item)
+        navigation.navigate("Resume");
       }
+
+      // useEffect(() => {
+        
+      //   console.log("check",skills);
+      // }, []);
+
+
   return (
     <SafeAreaView>
     <View>
@@ -57,11 +69,11 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
         </TouchableOpacity>
       {/* <Text>LocationSearch</Text> */}
     <View style={styles.searchBox}>
-      <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} />
-      <TextInput style={styles.input} value= {value} placeholder='Add skills ' onChangeText={text => SearchData(text)} />
-      <SVGIcon name={ICONS.IC_REMOVE} />
+      {/* <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} /> */}
+      <TextInput style={styles.input} value= {value} placeholder='Add skills ' onChangeText={text => setValue(text)} />
+      {/* <SVGIcon name={ICONS.IC_REMOVE} /> */}
     </View>
-    <View style={{height: 150}}>
+    {/* <View style={{height: 150}}>
         <FlatList 
         // horizontal={false}
         // numColumns={2}
@@ -73,7 +85,7 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
             // onPress={()=> onButtonClick(item.name) }
             >
             {/* <View style={styles.item}> */}
-            <Text>{item.skill}</Text>
+            {/* <Text>{item.skill}</Text>
             </TouchableOpacity>
             <View>
            </View>
@@ -81,8 +93,8 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
           </View>
         )}
         keyExtractor = {(item => item.skill)}
-        />
-      </View>
+        /> */}
+      {/* </View>  */}
     <View style={styles.bottom}>
        <Button onPress={onClickApply} text={'Apply'} type="dark"/>
        

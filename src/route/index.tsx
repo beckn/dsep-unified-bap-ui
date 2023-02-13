@@ -36,6 +36,8 @@ import ResumeScreen from '../screens/resume';
 import SavedJobs from '../screens/saved-jobs';
 import AddSkills from '../screens/profile/AddSkills';
 import AddDegree from '../screens/profile/AddDegree';
+import AddLanguage from '../screens/profile/AddLanguage';
+import ProfileScreen from '../screens/profile';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -184,6 +186,16 @@ function Routes() {
            <Stack.Screen
             name="Resume"
             component={ResumeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Language"
+            component={AddLanguage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

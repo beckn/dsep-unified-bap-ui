@@ -62,7 +62,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <View style={{ paddingTop: 30, paddingLeft: 10 }}>
       <Text style={styles.texttitle}>Featured Jobs</Text></View>
       <View style={styles.feature}>
-      <ResultCard  navigation={navigation} />
+      {/* <ResultCard  navigation={navigation} /> */}
       </View>
       </View>
       <View style={styles.listContainer}>

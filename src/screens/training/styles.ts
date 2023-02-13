@@ -77,9 +77,9 @@ export const styles = StyleSheet.create<Styles>({
       fontSize: Fonts.size.medium,
     },
     card:{
-     height:60,
-     flexDirection:'row',
+     minHeight:40,
      flex:0,
+     padding:Metrics.padding.small
   
     },
       debitCard: {

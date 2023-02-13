@@ -10,12 +10,18 @@ import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
 import { Metrics } from '@styles/metrics';
 import {Navigation} from '@interfaces/commonInterfaces';
+import { userSkillView } from '@context';
+import Button from '@components/AppButton';
 
 const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
-
-  const skills = ['Figma', 'Sketch','Zeplin', 'Invivision App','Adobe XD'];
-  const languages =  ['English', 'Hindi','German', 'Spanish','Odia'];
-
+  const {skills, setSkills} = userSkillView();
+  const {languages, setLanguages} = userSkillView();
+  const onClickApply =() =>{
+    navigation.navigate("Dashboard");
+  }
+  // const skills = ['Figma', 'Sketch','Zeplin', 'Invivision App','Adobe XD'];
+  // const languages =  ['English', 'Hindi','German', 'Spanish','Odia'];
+  console.log("in resume",languages);
   const Tags = ({tag})=>{
     return (
       <View style={styles.tags}>
@@ -101,7 +107,8 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Skill</Text>
-      <TouchableOpacity onPress={ ()=> navigation.navigate('AddSkills') }><Text style={styles.addText}>+Add More</Text></TouchableOpacity>
+      <TouchableOpacity onPress={ ()=> navigation.navigate('AddSkills') }><Text style={styles.addText}>+Add More</Text>
+      </TouchableOpacity>
         </View>
         <View style={styles.bottomSkillLanguageSection}>
         {
@@ -113,7 +120,8 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Languages Known</Text>
-          <Text style={styles.addText}>+Add More</Text>
+          <TouchableOpacity onPress={ ()=> navigation.navigate('Language') }><Text style={styles.addText}>+Add More</Text>
+      </TouchableOpacity>
         </View>
         <View style={styles.bottomSkillLanguageSection}>
         {
@@ -121,6 +129,10 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
         }
         </View>
       </View>
+      <View style={styles.bottom}>
+       <Button onPress={onClickApply} text={'Goto Dashboard'} type="dark"/>
+       
+      </View> 
     </ScrollView>
   );
 };

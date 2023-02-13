@@ -4,8 +4,8 @@ import {StyleSheet, ViewStyle} from 'react-native';
 import { Fonts } from '@styles/fonts';
 
 type Styles = {
-  container: ViewStyle;
-
+  container: ViewStyle,
+  bottom: ViewStyle,
   header:ViewStyle,
   headerHeading:ViewStyle,
   headerText:ViewStyle,
@@ -26,6 +26,10 @@ export const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  bottom: {
+    backgroundColor: Colors.white,
+     padding: Metrics.padding.medium,
   },
   header: {
     height: 60,

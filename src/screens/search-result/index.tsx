@@ -11,40 +11,47 @@ import { Modal, Portal,  Provider } from 'react-native-paper';
 import { Colors } from '@styles/colors';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
+import SavedJSON from '../../data/saved-jobs.json';
+import { useListView } from '@context';
 
 const SearchResultScreen = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
   ]);
+  // console.log("Test data: "+SavedJSON);
   const [data, setData] = useState([]);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
+  const {list, selectedValue, setList, setSelectedValue} = useListView();
 
+  const onClickApply =(item) =>{
+    setSelectedValue(item);
+    navigation.navigate("Jobs");
+  }
   useEffect(() => {
     getData();
   }, []);
-  const onClickApply =() =>{
-    showModal();
-  }
+  // const onClickApply =() =>{
+  //   showModal();
+  // }
   const ResultCards = () => {
     return (
       <FlatList
-        data={data}
-        renderItem={({item, index}) => <ResultCard data={item} navigation={navigation} index={index} />}
-       
-      /> 
-    )
-  }
-        
+        data={list}
+        renderItem={({item, index}) => <ResultCard data={item} onItemPressed={item => onClickApply(item)} />}
+      />
+    );
+  };
 
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
     if (resp?.status === 200) {
       setData(resp.data);
+      setList(SavedJSON)
     } else {
       console.log(resp);
     }
@@ -68,7 +75,9 @@ const SearchResultScreen = ({navigation}) => {
       </View>
       <ResultCards />
     </View>
-    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+    <Modal visible={visible} onDismiss={hideModal}
+     contentContainerStyle={containerStyle}
+     >
           <Text>Search Jobs & InternShips.</Text>
           <View style={{ alignItems:'center'}}>      
             <TextInput style={styles.input}

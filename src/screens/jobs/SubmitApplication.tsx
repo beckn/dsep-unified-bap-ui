@@ -28,7 +28,7 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
-      <NavBar hasBackArrow={true} hasRightIcon = {true} title={'Mentoring'} />
+      <NavBar hasBackArrow={true} hasRightIcon = {true} title={'role'} />
       <DetailHeader
         rating="4.9"
         title="Facebook"

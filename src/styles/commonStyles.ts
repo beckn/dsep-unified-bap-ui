@@ -8,6 +8,7 @@ type Styles = {
   baseFontSize: TextStyle;
   paddingHBase: ViewStyle;
   underline: TextStyle;
+  alignCenter: ViewStyle;
 };
 
 export const commonStyles = StyleSheet.create<Styles>({
@@ -26,4 +27,7 @@ export const commonStyles = StyleSheet.create<Styles>({
     paddingHorizontal: Metrics.padding.base,
   },
   underline: {textDecorationLine: 'underline'},
+  alignCenter: {
+    alignItems: 'center',
+  }
 });

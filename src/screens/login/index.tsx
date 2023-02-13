@@ -81,8 +81,8 @@ function LoginScreen({navigation}) {
      
      
       <Button
-        title="Go to scholarship list screen"
-        onPress={() => navigation.navigate('ScholarshipList')}
+        title="Go to  Profile"
+        onPress={() => navigation.navigate('ProfileScreen')}
       />
       <Button
         title="Go to purchase history"

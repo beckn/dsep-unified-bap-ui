@@ -5,7 +5,28 @@ import Header from '../training/Header';
 import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useJobsInternshipsView} from '@context';
+import {callService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
+import {ApiMethods} from '@constant/common.constant';
+import aboutCompanyTabDetails from '../../data/about-company.json';
+import { useEffect } from 'react';
+
 const Jobs = ({navigation}: {navigation: Navigation}) => {
+  const {setAboutCompany} = useJobsInternshipsView();
+  const getData = async () => {
+    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    if (resp?.status === 200) {
+      setAboutCompany(aboutCompanyTabDetails);
+    } else {
+      console.log(resp);
+    }
+  };
+
+  useEffect(()=>{
+    getData();
+  },[])
+
   return (
     <SafeAreaView style={{flex: 1}}>
     <>
