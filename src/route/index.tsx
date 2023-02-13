@@ -38,6 +38,8 @@ import AddSkills from '../screens/profile/AddSkills';
 import AddDegree from '../screens/profile/AddDegree';
 import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
+import Notification from '../screens/notification';
+import SampleProfile from '../screens/profile/SampleProfile';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -198,6 +200,22 @@ function Routes() {
             component={ProfileScreen}
             options={{headerShown: false}}
           />
+           <Stack.Screen
+            name="Notification"
+            component={Notification}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Mentorships"
+            component={Mentorships}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="SampleProfile"
+            component={SampleProfile}
+            options={{headerShown: false}}
+          />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

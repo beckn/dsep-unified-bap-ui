@@ -33,7 +33,7 @@ export function JobsInternshipsViewProvider({children}): JSX.Element {
     <JobsInternshipsContext.Provider
       value={{
         aboutCompany,
-        setAboutCompany
+        setAboutCompany,
       }}>
       {children}
     </JobsInternshipsContext.Provider>

@@ -14,6 +14,7 @@ type Styles = {
   row: ViewStyle;
   inputStyle: ViewStyle;
   inputStyleMultiLine: ViewStyle;
+  rignt: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -71,4 +72,7 @@ export const styles = StyleSheet.create<Styles>({
       borderRadius: Metrics.radius.small,
       marginVertical: Metrics.margin.small,
     },
+    rignt :{
+      marginLeft: 30
+    }
 });

@@ -114,5 +114,5 @@ export const styles = StyleSheet.create<Styles>({
       height: 2,
     },
   }
-
+ 
 });

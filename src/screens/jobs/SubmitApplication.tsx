@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -17,13 +17,91 @@ import NavBar from '@components/Navbar';
 import { DetailHeader } from '@components/index';
 import {SVGIcon,ICONS} from '@components/SvgIcon';
 import images from '../../assets/images';
-
+import {callService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
+import {ApiMethods} from '@constant/common.constant';
+import context from '../../data/applyjob-context.json';
+import { userSkillView } from '@context';
 
 
 function SubmitApplication({navigation}: {navigation: Navigation}) {
     const [upload , setUpload]= useState(false);
-  const onClickApply = () => {
-    navigation.navigate('JobConfirmation');
+    const [data, setData] = useState([]);
+    const [init, setInit] = useState('init');
+    const {languages, skills, profileInfo} = userSkillView();
+    const [profileUrl, setProfileUrl] = useState("https://linkedin.com/john-doe");
+    let con = {
+      "jobId": "1",
+      "context": {
+        "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+        "bppId": "affinidibpp.com",
+        "bppUri": "http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com"
+      },
+      "confirmation": {
+        "JobFulfillmentCategoryId": "1",
+        "jobApplicantProfile": {
+          "name":profileInfo? profileInfo.profile.firstName:'name empty',
+          "languages": languages,
+          "profileUrl": profileUrl,
+          "creds": [
+            {
+              "url": "https://cbse.nic.in/link/to/college-marksheet.json",
+              "type": "application/vc+json"
+            },
+            {
+              "url": "https://drive.google.com/link/to/pass-certificate.json",
+              "type": "application/vc+json"
+            },
+            {
+              "url": "https://digilocker.com/link/to/python-skill-certificate.json",
+              "type": "application/vc+json"
+            },
+            {
+              "url": "https://drive.google.com/link/to/python-skill-certificate.pdf",
+              "type": "application/pdf"
+            },
+            {
+              "url": "https://drive.google.com/link/to/experience-certificate.pdf",
+              "type": "application/pdf"
+            }
+          ],
+          "skills": skills
+        }
+      }
+    }
+    useEffect(() => {
+      // getData();
+    }, []);
+    const initApplication = async () => {
+      const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_APLLICATION, );
+      if (resp?.status === 200) {
+        setData(resp.data);
+      } else {
+        console.log(resp);
+      }
+    };
+    const submitApplication = async () => {
+      console.log("check context", JSON.stringify(con))
+      const resp = await callService(ApiMethods.POST, ENDPOINT.SUBMIT_APLLICATION, con);
+      if (resp?.status === 200) {
+        setData(resp.data);
+        console.log(resp.data);
+        if(resp.data.applicationId != ''){
+          navigation.navigate('JobConfirmation');
+        }
+      } else {
+        console.log(resp);
+      }
+    };
+  const onClickApply = (bid) => {
+    if(bid === 'init'){
+      alert("process init")
+      setInit('submit');
+      initApplication();
+    }else{
+    submitApplication();
+    
+    }
   };
   return (
     <ScrollView>
@@ -92,6 +170,13 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
       <Text style={styles.heading}>{'Information'}</Text>
       <Spacer />
       <TextInput 
+        // multiline={true}
+        placeholder='paste url here'
+        style={styles.textInput}
+        onChangeText = {(text)=>setProfileUrl(text)}
+        textAlignVertical={'top'}
+      />
+      <TextInput 
         multiline={true}
         placeholder='Explain why you are the right person for this job'
         style={styles.textInput}
@@ -101,7 +186,12 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
       </View>
       </SafeAreaView>
       <View style={styles.bottom}>
-        <Button onPress={onClickApply} text={'SUBMIT APPLICATION'} type="dark" />
+        {(init === 'init')?(
+          <Button onPress={() => onClickApply('init')} text={'PROCESS APPLICATION'} type="dark" />
+        ):(
+          <Button onPress={() => onClickApply('submit')} text={'SUBMIT APPLICATION'} type="dark" />
+        )}
+        
         <Spacer size={10} />
       </View>
     </ScrollView>

@@ -12,50 +12,18 @@ import NavBar from '@components/Navbar';
 import { userSkillView } from '@context';
 
 const LocationSearch = ({navigation}:{navigation: Navigation}) => {
+  const [value, setValue] = useState("");
+  const {jobsearchlocation, setJobSearchlocation} = userSkillView();
+
     const onClickApply =() =>{
+      let item = value?.split(',')
+      let a = item.map(i => {return({ "city":i })})
+        setJobSearchlocation(a)
+        console.log("a",a);
+        console.log("context",jobsearchlocation);
         navigation.navigate("SearchResult");
       }
-      const [value, setValue] = useState("");
-      const[data, setData] = useState([]);
-    const[filterdata, setFilterData] = useState([{
-      "id": "1",
-      "company": "Facebook",
-      "country": "India",
-      "city": "Bangalore",
-      "skills": "Mobile App developer",
-      "jobType": "",
-      "type1": "full",
-      "type2": "remote",
-      "type3": "senior",
-      "postedOn": "1 day ago",
-      "bookmarked": false,
-      "byWhom": "affiidy",
-      "image": ""
-  },])
-
-
-  const SearchData = (text) => {
-
-    if(text){
-      const newData = SavedJSON.filter((item) => {
-        const itemData = item.city
-        return itemData.indexOf(text) > -1;
-        
-      } );
-      setFilterData(newData)
-    
-    setValue(text)
-    }else{
-  
-    setFilterData(data)
-    setValue(text)
-    }
-    
-  }
-
-
-
-
+ 
   return (
     <SafeAreaView>
     <View>
@@ -66,7 +34,7 @@ const LocationSearch = ({navigation}:{navigation: Navigation}) => {
     </View> */}
     <View style={styles.searchBox}>
       <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} />
-      <TextInput style={styles.input} value= {value} placeholder='Enter Preferred Location  ' onChangeText={text => SearchData(text)} />
+      <TextInput style={styles.input} value= {value} placeholder='Enter Preferred Location  ' onChangeText={text => setValue(text)} />
       <SVGIcon name={ICONS.IC_REMOVE} />
     </View>
     <View style={styles.bottom}>

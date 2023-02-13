@@ -1,0 +1,62 @@
+{
+    "para1": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.",
+    "para2": "Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+    "courses" : [
+        {
+          "id": 1,
+          "name": "Fundamentals in UX"
+        },
+        {
+          "id": 2,
+          "name": "Research"
+        },
+        {
+          "id": 3,
+          "name": "Prototyping"
+        },
+        {
+          "id": 4,
+          "name": "Design"
+        },
+        {
+          "id": 5,
+          "name": "Presentation skills"
+        }
+    ],
+    "duration":"23h 40m",
+    "language": "English, Hindi",
+    "enrollments": "1,271",
+    "specialization": "Interaction Design",
+    "course":"Udemy",
+    "provider": "Ignou",
+    "prerequisites": [
+        {
+          "id": 1,
+          "name": "Sed ut perspiciatis unde omnis iste natus error sit."
+        },
+        {
+          "id": 2,
+          "name": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit."
+        },
+        {
+          "id": 3,
+          "name": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+        },
+        {
+          "id": 4,
+          "name": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur"
+        }
+    ],
+    "eligibility": [
+        {
+          "id": 1,
+          "name":"Sed ut perspiciatis unde omnis iste natus error sit."
+        },
+        {
+          "id": 2,
+          "name":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur & adipisci velit."
+        }
+    ],
+    "fees": "₹2,500"
+
+}

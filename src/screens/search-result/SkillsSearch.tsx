@@ -22,8 +22,13 @@ const SkillsSearch = ({navigation}:{navigation: Navigation}) => {
 
     const onClickApply =() =>{
       let item = value?.split(',')
+
         console.log(item);
-        setJobSearchSkills(item)
+        let a = item.map(i => {return({"name":i, "code":i })})
+        setJobSearchSkills(a)
+        console.log("a",a);
+        console.log("context",jobSearchSkills);
+       
         navigation.navigate("LocationSearch");
       }
     
