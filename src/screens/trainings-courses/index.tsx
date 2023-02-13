@@ -16,7 +16,7 @@ const TrainingListScreen = ({navigation}) => {
 
   const navigateToSlotList = () =>{
     // change the navigation here
-     navigation.navigate("MentorSlotList")
+     navigation.navigate("Training")
   }
 
   const TrainingList = () => {

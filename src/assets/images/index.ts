@@ -13,8 +13,15 @@ const images = {
     downArrow: require("../images/downArrow.png"),
     inclindArrow : require("../images/inclindVector.png"),
     star: require("../images/star.jpg"),
+    bag: require("../images/bag.png"),
+    Mentor: require("../images/Mentor.png"),
+    Scholar: require("../images/Scholar.png"),
+    Training: require("../images/Training.png"),
     pdf: require("../images/PDF.png"),
     rectangle: require("../images/Rectangle.png"),
+    signin: require("../images/signin.png"),
+    calender: require("../images/calender.png"),
+
 }
 
 export default images;

@@ -1,6 +1,7 @@
 export const BASE_URL = "https://api.dsep-bap-client.becknprotocol.io"
 export const ENDPOINT = {
-  GET_MENTORS: "/posts",
+  INIT_APLLICATION: "/job/init",
+  SUBMIT_APLLICATION: "/job/confirm",
   SEARCH_JOBS: "/job/search",
   SELECT_JOBS:"/job/select"
 };

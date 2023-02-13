@@ -15,7 +15,7 @@ function AboutCompany({ navigation , data }: { navigation: Navigation, data:any 
 
   const {aboutCompany:aboutCompanyTabDetails} = useJobsInternshipsView();
   const onClickApply = () => {
-    navigation.navigate('Confirmation', {
+    navigation.navigate('SubmitApplication', {
       id: 2,
       heading: 'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
       time: '',

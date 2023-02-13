@@ -46,7 +46,6 @@ type Styles = {
     resumeLeftPart: ViewStyle;
     resumeRightPart: ViewStyle;
     textInput:ViewStyle;
-    textInput2:ViewStyle;
     uplodedResume: ViewStyle;
 
 
@@ -58,7 +57,7 @@ export const styles = StyleSheet.create<Styles>({
       flex: 1,
     },
     header: {
-      backgroundColor: Colors.background,
+      backgroundColor: Colors.backgound,
       height: 140,
       opacity: 0.8,
       paddingLeft: Metrics.padding.small,
@@ -124,8 +123,11 @@ export const styles = StyleSheet.create<Styles>({
         flexDirection:'row'
       },
       bottom: {
+      
         backgroundColor: Colors.white,
          padding: Metrics.padding.medium,
+         
+         bottom: 0,
       },
       debitHalf :{
         height:'50%',
@@ -261,19 +263,12 @@ export const styles = StyleSheet.create<Styles>({
     padding:15, 
     borderRadius:15
   },
-  textInput2: {
-    height:40, 
-    backgroundColor:'#ffffff', 
-    
-    borderRadius:15
-  },
   uplodedResume:{
     height: 91,
     width: '100%',
     borderWidth:1,
     borderRadius:10,
     flexDirection:'row'
-  },
-  
+  }
 
   });

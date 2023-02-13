@@ -3,6 +3,7 @@ import AboutCompany from './AboutCompany';
 import React,{useState} from 'react';
 import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useJobsInternshipsView} from '@context';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
@@ -38,6 +39,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
   };
 
   return (
+    <SafeAreaView style={{flex: 1}}>
     <>
        <NavBar hasBackArrow={true} hasRightIcon = {true}  hasSecondaryRightIcon ={true} title={data?.selectedJobs[0]?.role} rightIconName ={''} />
       <DetailHeader
@@ -56,6 +58,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
         ]}
       />
     </>
+    </SafeAreaView>
   );
 };
 

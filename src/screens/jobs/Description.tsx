@@ -22,7 +22,7 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
     </>)
    }
 
-  return (
+  return (  
     <ScrollView>
       <SafeAreaView style={styles.container}>
           <Text style={styles.heading}>{'Job Description'}</Text>

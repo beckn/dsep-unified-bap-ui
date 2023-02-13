@@ -4,6 +4,10 @@ import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import { styles } from "./styles";
 
+// const ResultCard = ({navigation})=>{
+//     return (
+//     <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
+//     <View style = {styles.resultCardContainer}>
 const ResultCard = ({data, onItemPressed})=>{
     console.log("data",data)
     return (

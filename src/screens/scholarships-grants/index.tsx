@@ -16,7 +16,7 @@ const ScholarshipListScreen = ({navigation}) => {
 
   const navigateToSlotList = () =>{
     // change the navigation here
-     navigation.navigate("MentorSlotList")
+     navigation.navigate("Scholarships")
   }
 
   const ScholarshipList = () => {
