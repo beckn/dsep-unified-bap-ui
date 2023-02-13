@@ -9,6 +9,7 @@ type Styles = {
   optionsLeftIcon:ViewStyle;
   optionsTitle:ViewStyle;
   optionsRightIcon:ViewStyle;
+  inputStyle: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -34,5 +35,11 @@ export const styles = StyleSheet.create<Styles>({
   },
   optionsRightIcon:{
     flex:1
+  },
+  inputStyle :{
+    height:40,
+    width:'100%',
+    backgroundColor: Colors.white,
+    borderRadius:5
   }
 });

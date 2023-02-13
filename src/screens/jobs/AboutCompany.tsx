@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -6,11 +6,30 @@ import {
   ScrollView
 } from 'react-native';
 import Button from '@components/AppButton';
-import {styles}  from '../training/styles';
+import { styles } from '../training/styles';
 import Spacer from '@components/Spacer';
-import {Navigation} from '@interfaces/commonInterfaces';
+import { Navigation } from '@interfaces/commonInterfaces';
+import { useJobsInternshipsView} from '@context';
+import AboutCompanyJSON from '../../data/about-company.json';
+import {ApiMethods} from '@constant/common.constant';
+import {callService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
 
-function AboutCompany({navigation}: {navigation: Navigation}) {
+
+function AboutCompany({ navigation }: { navigation: Navigation }) {
+  const [data, setData]: any = useState();
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    if (resp?.status === 200) {
+      setData(AboutCompanyJSON);
+    } else {
+      console.log(resp);
+    }
+  };
+  const {aboutCompany:aboutCompanyTabDetails} = useJobsInternshipsView();
   const onClickApply = () => {
     navigation.navigate('Confirmation', {
       id: 2,
@@ -22,32 +41,28 @@ function AboutCompany({navigation}: {navigation: Navigation}) {
         'We will evaluate your application and respond as soon as possible.',
     });
   };
-  return (
+ return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.heading}>{'About Company'}</Text>
-          <Spacer size={20} />
-          <Text>
-            {
-              'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. \n \n At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas .\n\n Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain.'
-            }
-          </Text>
+          <Spacer />
+          <Text>{data?.companyTabDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Website'}</Text>
-          <Text>{'https://www.facebook.com'}</Text>
+          <Text>{data?.companyWebsiteDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Industry'}</Text>
-          <Text>{'Internet Product'}</Text>
+          <Text>{data?.companyWebsiteDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
-          <Text style={styles.heading}>{'Employee Size'}</Text>
-          <Text>{'2000-3000 Employees'}</Text>
+          <Text style={styles.heading}>{'Employee size'}</Text>
+          <Text>{data?.companySizeDetails}</Text>
         </View>
         <Spacer size={20} />
       </SafeAreaView>
