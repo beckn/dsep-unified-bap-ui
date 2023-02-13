@@ -5,6 +5,10 @@ export interface IItemType {
   
   }
 
+  export interface IAppId {
+  id: string
+  }
+
   export interface IProfileType {
     profile: {
       firstName: string;
@@ -17,10 +21,12 @@ export interface IItemType {
 export interface Context {
   profileInfo: IProfileType;
   skills: IItemType[];
+  appid: IAppId;
   jobSearchSkills: IItemType[];
   jobsearchlocation: IItemType[];
   languages: IItemType[];
   setProfileInfo: (args: IProfileType) => void;
+  setAppId: (args: IAppId) => void;
   setSkills: (args: IItemType[]) => void;
   setJobSearchSkills: (args: IItemType[]) => void;
   setLanguages: (args: IItemType[]) => void;

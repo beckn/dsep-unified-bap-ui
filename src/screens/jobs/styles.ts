@@ -46,6 +46,7 @@ type Styles = {
     resumeLeftPart: ViewStyle;
     resumeRightPart: ViewStyle;
     textInput:ViewStyle;
+    textInput2:ViewStyle;
     uplodedResume: ViewStyle;
 
 
@@ -258,6 +259,12 @@ export const styles = StyleSheet.create<Styles>({
     height:100, 
     backgroundColor:'#ffffff', 
     padding:15, 
+    borderRadius:15
+  },
+  textInput2: {
+    height:40, 
+    backgroundColor:'#ffffff', 
+    
     borderRadius:15
   },
   uplodedResume:{

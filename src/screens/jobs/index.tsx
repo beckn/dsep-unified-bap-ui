@@ -11,8 +11,6 @@ import {ApiMethods} from '@constant/common.constant';
 import { useEffect } from 'react';
 import NavBar from '@components/Navbar';
 import DetailHeader from '@components/DetailHeader';
-import DescriptionJSON from '../../data/jobs-description.json';
-
 
 const Jobs = ({navigation}: {navigation: Navigation}) => {
   const {setAboutCompany} = useJobsInternshipsView();
@@ -21,9 +19,20 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
     getData();
   }, []);
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(DescriptionJSON);
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SELECT_JOBS,
+    {
+      "companyId": "1",
+      "jobs": {
+        "jobId": "1"
+      },
+      "context": {
+        "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+        "bppId": "affinidibpp.com",
+        "bppUri": "http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com"
+      }
+    });
+    if (resp?.status == 200) {
+      setData(resp?.data);
     } else {
       console.log(resp);
     }
@@ -41,10 +50,10 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
       />
       <Tabs
         tabData={[
-          {label: 'Description', comp: <Description navigation={navigation} />},
+          {label: 'Description', comp: <Description navigation={navigation} data = {data}/>},
           {
             label: 'About Company',
-            comp: <AboutCompany navigation={navigation} />,
+            comp: <AboutCompany navigation={navigation} data = {data} />,
           },
         ]}
       />

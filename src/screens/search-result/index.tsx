@@ -11,7 +11,7 @@ import { Modal, Portal,  Provider } from 'react-native-paper';
 import { Colors } from '@styles/colors';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
-import SavedJSON from '../../data/saved-jobs.json';
+import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
 
 const SearchResultScreen = ({navigation}) => {
@@ -48,10 +48,32 @@ const SearchResultScreen = ({navigation}) => {
   };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS,
+      {
+        "title": {
+          "key": "Engineering Manager"
+        },
+        "company": {
+          "name": "Google India",
+          "locations": [
+            {
+              "city": "Hyderabad"
+            },
+            {
+              "city": "Pune"
+            }
+          ]
+        },
+        "skills": [
+          {
+            "name": "Python",
+            "code": "Flutter"
+          }
+        ]
+      });
     if (resp?.status === 200) {
-      setData(resp.data);
-      setList(SavedJSON)
+      setData(resp?.data.jobResults);
+      setList(resp?.data.jobResults)
     } else {
       console.log(resp);
     }
@@ -62,19 +84,20 @@ const SearchResultScreen = ({navigation}) => {
       <Header navigation={navigation} 
     heading='UX Designer'
     onPress={onClickApply}
+    count = {list.length}
     />
    
   <ResultCards/>
-    <View style={styles.container}>
+    {/* <View style={styles.container}>
       <Header heading={'Purchase History'} />
-      <View style={styles.dropdownContainer}>
+      {/* <View style={styles.dropdownContainer}>
         <Dropdown
           data={dropdownData}
           onSelect={value => console.log('selected value:' + value)}
         />
-      </View>
-      <ResultCards />
-    </View>
+      </View> */}
+      {/* <ResultCards />
+    </View> */} 
     <Modal visible={visible} onDismiss={hideModal}
      contentContainerStyle={containerStyle}
      >

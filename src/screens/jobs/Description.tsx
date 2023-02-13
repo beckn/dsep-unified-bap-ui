@@ -4,24 +4,9 @@ import Button from '@components/AppButton';
 import {styles} from '../scholarships/styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
-import DescriptionJSON from '../../data/jobs-description.json';
-import {ApiMethods} from '@constant/common.constant';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
 
-function Description({navigation}: {navigation: Navigation}) {
-const [data, setData]: any = useState();
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(DescriptionJSON);
-    } else {
-      console.log(resp);
-    }
-  };
+function Description({navigation, data }: {navigation: Navigation, data: any}) {
+
   const onClickApply = () => {
     navigation.navigate('SubmitApplication');
   }
@@ -78,15 +63,15 @@ const [data, setData]: any = useState();
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Specialization'}</Text>
-          <Text>{DescriptionJSON.specialization}</Text>
+          <Text>{}</Text>
         </View>
         <Spacer />
         <Text style={styles.heading}>{'Facilities and others:'}</Text>
         <Spacer />
-        <FlatList 
+        {/* <FlatList 
          data={DescriptionJSON.facilities}
          renderItem={renderItem}
-        />
+        /> */}
       </SafeAreaView>
       <View style={styles.bottom}>
         <Button onPress={onClickApply} text={'Apply'} type="dark" />

@@ -6,7 +6,7 @@ import {Fonts} from '@styles/fonts';
 import {SVGIcon, ICONS} from '@components/SvgIcon';
 import { Colors } from "@styles/colors";
 
-function Header({ navigation, heading, onPress }) {
+function Header({ navigation, heading, onPress, count }) {
 
   return (
     <View >
@@ -16,7 +16,7 @@ function Header({ navigation, heading, onPress }) {
       </View>
       </View>
       <View style={styles.headerHeading}>
-        <Text>23 Results Found</Text>
+        <Text> {count} Results Found</Text>
         
       <View style={styles.rightTextContainer}>
       <TouchableOpacity onPress={onPress}>

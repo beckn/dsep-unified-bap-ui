@@ -40,7 +40,7 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
       "confirmation": {
         "JobFulfillmentCategoryId": "1",
         "jobApplicantProfile": {
-          "name":profileInfo? profileInfo.profile.firstName:'name empty',
+          "name":profileInfo.profile? profileInfo.profile.firstName : 'name empty',
           "languages": languages,
           "profileUrl": profileUrl,
           "creds": [
@@ -172,10 +172,12 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
       <TextInput 
         // multiline={true}
         placeholder='paste url here'
-        style={styles.textInput}
+        style={styles.textInput2}
         onChangeText = {(text)=>setProfileUrl(text)}
         textAlignVertical={'top'}
       />
+
+<Spacer />
       <TextInput 
         multiline={true}
         placeholder='Explain why you are the right person for this job'
