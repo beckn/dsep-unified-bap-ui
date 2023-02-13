@@ -10,25 +10,9 @@ import { styles } from '../training/styles';
 import Spacer from '@components/Spacer';
 import { Navigation } from '@interfaces/commonInterfaces';
 import { useJobsInternshipsView} from '@context';
-import AboutCompanyJSON from '../../data/about-company.json';
-import {ApiMethods} from '@constant/common.constant';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
 
+function AboutCompany({ navigation , data }: { navigation: Navigation, data:any }) {
 
-function AboutCompany({ navigation }: { navigation: Navigation }) {
-  const [data, setData]: any = useState();
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(AboutCompanyJSON);
-    } else {
-      console.log(resp);
-    }
-  };
   const {aboutCompany:aboutCompanyTabDetails} = useJobsInternshipsView();
   const onClickApply = () => {
     navigation.navigate('Confirmation', {
@@ -47,12 +31,12 @@ function AboutCompany({ navigation }: { navigation: Navigation }) {
         <View style={styles.card}>
           <Text style={styles.heading}>{'About Company'}</Text>
           <Spacer />
-          <Text>{data?.companyTabDetails}</Text>
+          <Text>{data?.selectedJobs[0]?.description}</Text>
         </View>
         <Spacer  />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Website'}</Text>
-          <Text>{data?.companyWebsiteDetails}</Text>
+          <Text>{data?.selectedJobs[0]?.additionalDesc.url}</Text>
         </View>
         <Spacer  />
         <View style={styles.card}>
