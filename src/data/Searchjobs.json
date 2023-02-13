@@ -1,0 +1,92 @@
+
+{
+  "context": {
+    "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+    "messageId": "$3faf9bc5-6107-42a1-add3-c4af6fa3bad6"
+  },
+  "jobProviderPlatform": "Affindi Jobs",
+  "jobResults": [
+    {
+      "company": {
+        "id": "1",
+        "name": "Google India Pvt Ltd",
+        "imageLink": [
+          {
+            "url": "data:image/jpeg;base64,R0lGODlhEAAQAAAAAA******LOGO**OF**GOOGLE**********AAAQABAAAA...jIQA7",
+            "size": "sm"
+          }
+        ]
+      },
+      "jobs": [
+        {
+          "jobId": "1",
+          "role": "Software Engineering Manager II, Google Cloud",
+          "description": "Like Google's own ambitions, the work of a Software Engineer (SWE) goes way beyond just Search. SWE Managers have not only the technical expertise to take on and provide technical leadership to major projects, but also manage a team of engineers. You not only optimize your own code but make sure engineers are able to optimize theirs. As a SWE Manager you manage your project goals, contribute to product strategy and help develop your team. SWE teams work all across the company, in areas such as information retrieval, artificial intelligence, natural language processing, distributed computing, large-scale system design, networking, security, data compression, user interface design; the list goes on and is growing every day. Operating with scale and speed, our exceptional software engineers are just getting started -- and as a manager, you guide the way.Google Cloud accelerates organizations’ ability to digitally transform their business with the best infrastructure, platform, industry solutions and expertise. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems",
+          "additionalDesc": {
+            "url": "https://g.co/kgs/XRj9sH",
+            "contentType": "text/html"
+          },
+          "locations": [
+            {
+              "id": "1",
+              "city": "Bangalore",
+              "cityCode": "std:080",
+              "state": "Karnataka",
+              "country": "India",
+              "countryCode": "IND"
+            },
+            {
+              "id": "2",
+              "city": "Hyderabad",
+              "cityCode": "std:040",
+              "state": "Telangana",
+              "country": "India",
+              "countryCode": "IND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "company": {
+        "id": "1",
+        "name": "Facebook India Pvt Ltd",
+        "imageLink": [
+          {
+            "url": "data:image/jpeg;base64,R0lGODlhEAAQAAAAAA******LOGO**OF**GOOGLE**********AAAQABAAAA...jIQA7",
+            "size": "sm"
+          }
+        ]
+      },
+      "jobs": [
+        {
+          "jobId": "1",
+          "role": "Software Engineering Manager I ",
+          "description": "Like Google's own ambitions, the work of a Software Engineer (SWE) goes way beyond just Search. SWE Managers have not only the technical expertise to take on and provide technical leadership to major projects, but also manage a team of engineers. You not only optimize your own code but make sure engineers are able to optimize theirs. As a SWE Manager you manage your project goals, contribute to product strategy and help develop your team. SWE teams work all across the company, in areas such as information retrieval, artificial intelligence, natural language processing, distributed computing, large-scale system design, networking, security, data compression, user interface design; the list goes on and is growing every day. Operating with scale and speed, our exceptional software engineers are just getting started -- and as a manager, you guide the way.Google Cloud accelerates organizations’ ability to digitally transform their business with the best infrastructure, platform, industry solutions and expertise. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems",
+          "additionalDesc": {
+            "url": "https://g.co/kgs/XRj9sH",
+            "contentType": "text/html"
+          },
+          "locations": [
+            {
+              "id": "1",
+              "city": "Bangalore",
+              "cityCode": "std:080",
+              "state": "Karnataka",
+              "country": "India",
+              "countryCode": "IND"
+            },
+            {
+              "id": "2",
+              "city": "Hyderabad",
+              "cityCode": "std:040",
+              "state": "Telangana",
+              "country": "India",
+              "countryCode": "IND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,8 +4,14 @@ import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import { styles } from "./styles";
 
+// const ResultCard = ({navigation})=>{
+//     return (
+//     <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
+//     <View style = {styles.resultCardContainer}>
 const ResultCard = ({data, onItemPressed})=>{
+    console.log("data",data)
     return (
+        
     <TouchableOpacity style = {styles.resultCardContainer} key ={data.id} onPress={() => onItemPressed(data)}>
         <View style = {styles.organizationRow}>
             <View style = {styles.profilleIconContainer}>
@@ -15,10 +21,10 @@ const ResultCard = ({data, onItemPressed})=>{
             </View>
             <View style = {styles.organizationDetails}>
                 <Text style = {styles.organizationName}>
-                    {data.company}
+                    {data.company.name}
                 </Text>
                 <Text style = {styles.organizationLocation}>
-                {`${data.city}, ${data.country}`}
+                {data.jobs[0].locations[0].city}{","} {data.jobs[0].locations[0].country}
                 </Text>
             </View>
             <View style = {styles.bookmarkIcon}>
@@ -26,11 +32,11 @@ const ResultCard = ({data, onItemPressed})=>{
             </View>
         </View>
         <View style = {styles.detailsRow}>
-            <Text style = {styles.roleName}>{data.skills}</Text>
-            <Text style = {styles.roleAttributes}>{`${data.type1} . ${data.type2} . ${data.type3}`}</Text>
+            <Text style = {styles.roleName}>{data.jobs[0].role}</Text>
+            <Text style = {styles.roleAttributes}></Text>
             <View style = {styles.roleHistory}>
-                <Text style = {styles.rolePostedDate}>{data.postedOn}</Text>
-                <Text style = {styles.rolePostedBy}>{`by ${data.byWhom}`}</Text>
+                <Text style = {styles.rolePostedDate}>{data?.postedOn}</Text>
+                <Text style = {styles.rolePostedBy}></Text>
             </View>
         </View>
     </TouchableOpacity>

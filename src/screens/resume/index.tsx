@@ -1,6 +1,6 @@
 import { ApiMethods } from '@constant/common.constant';
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, ScrollView } from 'react-native';
+import { View, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { callService } from '@services';
 import { ENDPOINT } from '@services/endpoints';
 import { styles } from './styles';
@@ -9,12 +9,19 @@ import Header from './Header';
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
 import { Metrics } from '@styles/metrics';
+import {Navigation} from '@interfaces/commonInterfaces';
+import { userSkillView } from '@context';
+import Button from '@components/AppButton';
 
-const ResumeScreen = ({ navigation }) => {
-
-  const skills = ['Figma', 'Sketch','Zeplin', 'Invivision App','Adobe XD'];
-  const languages =  ['English', 'Hindi','German', 'Spanish','Odia'];
-
+const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
+  const {skills, setSkills} = userSkillView();
+  const {languages, setLanguages} = userSkillView();
+  const onClickApply =() =>{
+    navigation.navigate("Dashboard");
+  }
+  // const skills = ['Figma', 'Sketch','Zeplin', 'Invivision App','Adobe XD'];
+  // const languages =  ['English', 'Hindi','German', 'Spanish','Odia'];
+  console.log("in resume",languages);
   const Tags = ({tag})=>{
     return (
       <View style={styles.tags}>
@@ -22,6 +29,10 @@ const ResumeScreen = ({ navigation }) => {
       </View>
     )
   }
+
+ function onPress(){
+  navigation.navigate('WorkExperience')
+ }
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -47,7 +58,7 @@ const ResumeScreen = ({ navigation }) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Work Experience</Text>
-          <Text style={styles.addText}>+Add New</Text>
+          <TouchableOpacity onPress={ ()=> onPress() }><Text style={styles.addText}>+Add New</Text></TouchableOpacity>
         </View>
         <View style={styles.bottomWorkEducationSection}>
           <View>
@@ -71,7 +82,7 @@ const ResumeScreen = ({ navigation }) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Education</Text>
-          <Text style={styles.addText}>+Add New</Text>
+          <TouchableOpacity onPress={ ()=> navigation.navigate('Education') }><Text style={styles.addText}>+Add New</Text></TouchableOpacity>
         </View>
         <View style={styles.bottomWorkEducationSection}>
           <View>
@@ -96,7 +107,8 @@ const ResumeScreen = ({ navigation }) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Skill</Text>
-          <Text style={styles.addText}>+Add More</Text>
+      <TouchableOpacity onPress={ ()=> navigation.navigate('AddSkills') }><Text style={styles.addText}>+Add More</Text>
+      </TouchableOpacity>
         </View>
         <View style={styles.bottomSkillLanguageSection}>
         {
@@ -108,7 +120,8 @@ const ResumeScreen = ({ navigation }) => {
       <View style={styles.sectionContainer}>
         <View style={styles.topSection}>
           <Text style={styles.sectionHeaderText}>Languages Known</Text>
-          <Text style={styles.addText}>+Add More</Text>
+          <TouchableOpacity onPress={ ()=> navigation.navigate('Language') }><Text style={styles.addText}>+Add More</Text>
+      </TouchableOpacity>
         </View>
         <View style={styles.bottomSkillLanguageSection}>
         {
@@ -116,6 +129,10 @@ const ResumeScreen = ({ navigation }) => {
         }
         </View>
       </View>
+      <View style={styles.bottom}>
+       <Button onPress={onClickApply} text={'Goto Dashboard'} type="dark"/>
+       
+      </View> 
     </ScrollView>
   );
 };

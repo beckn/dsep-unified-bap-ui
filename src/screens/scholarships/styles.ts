@@ -12,6 +12,8 @@ type Styles = {
   left: ViewStyle;
   params: ViewStyle;
   row: ViewStyle;
+  inputStyle: ViewStyle;
+  inputStyleMultiLine: ViewStyle;
   rignt: ViewStyle;
 };
 
@@ -55,6 +57,20 @@ export const styles = StyleSheet.create<Styles>({
     },
     row:{
       flexDirection: 'row'
+    },
+    inputStyle: {
+      height: 40,
+      borderWidth: 1,
+      borderColor: 'black',
+      borderRadius: Metrics.radius.small,
+      marginVertical: Metrics.margin.small,
+    },
+    inputStyleMultiLine: {
+      height: 130,
+      borderWidth: 1,
+      borderColor: 'black',
+      borderRadius: Metrics.radius.small,
+      marginVertical: Metrics.margin.small,
     },
     rignt :{
       marginLeft: 30

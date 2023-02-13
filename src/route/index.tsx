@@ -22,13 +22,29 @@ import Mentorships from '../screens/Mentorships';
 import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
+import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import LocationSearch from '../screens/search-result/LocationSearch';
+import SkillsSearch from '../screens/search-result/SkillsSearch';
+import home from '../screens/home'
+import WorkExperience from '../screens/profile/WorkExperience';
+import Education from '../screens/profile/Education';
+
+import Settings from '../screens/settings';
+import TrainingListScreen from '../screens/trainings-courses';
+import ResumeScreen from '../screens/resume';
 import SavedJobs from '../screens/saved-jobs';
+import AddSkills from '../screens/profile/AddSkills';
+import AddDegree from '../screens/profile/AddDegree';
+import AddLanguage from '../screens/profile/AddLanguage';
+import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
   return (
+    <SafeAreaView style={{flex: 1}}>
     <ThemeProvider>
       <NavigationContainer>
         <Stack.Navigator>
@@ -39,7 +55,58 @@ function Routes() {
             component={Dashboard}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="MentoringList" component={MentoringListScreen} />
+         
+          <Stack.Screen name="MentoringList" 
+          component={MentoringListScreen}
+          options={{headerShown: false}}
+          />
+          
+         <Stack.Screen
+          name="LessonPlan"
+          component={LessonPlan}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Debit"
+          component={Debit}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Confirmation"
+          component={Confirmation}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Training"
+          component={Training}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Scholarships'
+        component={Scholarships}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Jobs'
+        component={Jobs}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="AboutScholarship"
+          component={AboutScholarship}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ApplyScholorship"
+          component={ApplyScholorship}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Eligibility"
+          component={Eligibility}
+          options={{headerShown: false}}
+        />
+        
           <Stack.Screen
             name="MentorSlotConfirmation"
             component={SlotBookedScreen}
@@ -50,54 +117,27 @@ function Routes() {
             component={SlotListScreen}
             options={{headerShown: false}}
           />
+         
           <Stack.Screen
             name="MentorAvailableDate"
             component={MentorAvailableDate}
             options={{headerShown: false}}
           />
-          <Stack.Screen
-            name="LessonPlan"
-            component={LessonPlan}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Debit"
-            component={Debit}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Confirmation"
-            component={Confirmation}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Training"
-            component={Training}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Scholarships"
-            component={Scholarships}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Jobs"
-            component={Jobs}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AboutScholarship"
-            component={AboutScholarship}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Eligibility"
-            component={Eligibility}
-            options={{headerShown: false}}
-          />
+        
           <Stack.Screen
             name="SearchResult"
             component={SearchResultScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="LocationSearch"
+            component={LocationSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SkillsSearch"
+            component={SkillsSearch}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -116,8 +156,48 @@ function Routes() {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="SavedJobs"
-            component={SavedJobs}
+            name="WorkExperience"
+            component={WorkExperience}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Education"
+            component={Education}
+            options={{headerShown: false}}
+            />
+           <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddSkills"
+            component={AddSkills}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddDegree"
+            component={AddDegree}
+            options={{headerShown: false}}
+          />
+            <Stack.Screen
+           name="TrainingList"
+            component={TrainingListScreen}
+            options={{headerShown: false}}
+            />
+           <Stack.Screen
+            name="Resume"
+            component={ResumeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Language"
+            component={AddLanguage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
             options={{headerShown: false}}
           />
            <Stack.Screen
@@ -135,9 +215,11 @@ function Routes() {
             component={SampleProfile}
             options={{headerShown: false}}
           />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
+    </SafeAreaView>
   );
 }
 

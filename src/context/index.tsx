@@ -9,12 +9,15 @@ import {
   JobsInternshipsViewProvider,
   JobsInternshipsContext
 } from './JobsInternshipsContext';
+import { UserProfileDetailsProvider, userSkillView } from './userProfileContext';
 
 export {
   ThemeContext,
   ThemeProvider,
   useTheme,
   useListView,
+  userSkillView,
+  UserProfileDetailsProvider,
   ListViewProvider,
   ListViewContext,
   useJobsInternshipsView,

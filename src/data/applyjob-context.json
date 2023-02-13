@@ -1,0 +1,47 @@
+{
+    "jobId": "1",
+    "context": {
+      "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+      "bppId": "affinidibpp.com",
+      "bppUri": "http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com"
+    },
+    "confirmation": {
+      "JobFulfillmentCategoryId": "1",
+      "jobApplicantProfile": {
+        "name": "John Doe",
+        "languages": [
+          "ENG",
+          "HIN"
+        ],
+        "profileUrl": "https://linkedin.com/john-doe",
+        "creds": [
+          {
+            "url": "https://cbse.nic.in/link/to/college-marksheet.json",
+            "type": "application/vc+json"
+          },
+          {
+            "url": "https://drive.google.com/link/to/pass-certificate.json",
+            "type": "application/vc+json"
+          },
+          {
+            "url": "https://digilocker.com/link/to/python-skill-certificate.json",
+            "type": "application/vc+json"
+          },
+          {
+            "url": "https://drive.google.com/link/to/python-skill-certificate.pdf",
+            "type": "application/pdf"
+          },
+          {
+            "url": "https://drive.google.com/link/to/experience-certificate.pdf",
+            "type": "application/pdf"
+          }
+        ],
+        "skills": [
+          "NodeJS",
+          "React",
+          "Project Management",
+          "Enterprise Architecture"
+        ]
+      }
+    }
+  }
