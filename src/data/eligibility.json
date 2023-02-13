@@ -1,0 +1,58 @@
+{
+    "criteria": "Minimum 50% in Class 10, Minimum 50% in Class 12",
+    "education": "BAMS, BHMS, BUMS",
+    "gender": "All Gender",
+    "income": "Family income is less than 500000.00",
+    "fields": [
+        {
+            "id": 1,
+            "title": "Branch Name"
+        },
+        {
+            "id": 2,
+            "title": "Designation"
+        },
+        {
+            "id": 3,
+            "title": "ID card"
+        }
+    ],
+    "spocName": "Tom A",
+    "spocEmail": "tom@xyz.com",
+    "helpNumber": 36364646,
+    "documents": [
+        {
+            "id": 1,
+            "title": "Proof of Identity"
+          },
+          {
+            "id": 2,
+            "title": "Proof Of Address"
+          },
+          {
+            "id": 3,
+            "title": "10th & 12th Marksheets"
+          },
+          {
+            "id": 4,
+            "title": "Previous academic marksheet"
+          },
+          {
+              "id": 5,
+              "title": "Income Certificate/ITR/Salary Certificate"
+          },
+          {
+              "id": 6,
+              "title": "Student Bank Passbook"
+          },
+          {
+              "id": 7,
+              "title": "Current Year Fee receipt/Fee Structure - Tuition and Non Tuition"
+          },
+          {
+              "id": 8,
+              "title": "Bonafide Certificate from Institute"
+          }
+    ]
+
+}

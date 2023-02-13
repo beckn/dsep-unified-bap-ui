@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text,Image, Alert } from 'react-native';
+import { View, Text } from 'react-native';
 import {styles} from './styles';
-import images from '../../assets/images';
 import Button from '@components/AppButton';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Spacer from '@components/Spacer';
+import {ICONS, SVGIcon } from '@components';
+import { Colors } from '@styles/colors';
 
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
@@ -18,7 +19,11 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
         <View style={styles.header}>
         </View>
       <View style={[styles.body,styles.alignItem]}>
-        {id===1 && <Image source={images.grayCircle} />}
+        {id===1 && <SVGIcon
+             name={ICONS.IC_GRAY_CIRCLE}
+             fill={Colors.grey}
+             style={{ marginRight: 10, top: -25 }}
+           />}
         {id ===3 &&   <View style={styles.outerCircle}>
           <View style={styles.innerCircle} />
         </View>}
@@ -29,7 +34,11 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
       <Spacer size={25}/>
       <View style={styles.line}></View>
       <View style={styles.success}>
-      <Image source={images.success} />
+      <SVGIcon
+             name={ICONS.IC_ILLUSTRATION}
+             fill={Colors.oliveBlack}
+             style={{ marginRight: 10 }}
+           />
         <Spacer size={25}/>
         <Text style={styles.headerText}>{imgPara}</Text>
         <Spacer size={20}/>

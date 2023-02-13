@@ -266,6 +266,7 @@ export const styles = StyleSheet.create<Styles>({
     borderWidth:1,
     borderRadius:10,
     flexDirection:'row'
-  }
+  },
+  
 
   });

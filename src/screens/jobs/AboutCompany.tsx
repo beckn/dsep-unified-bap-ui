@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -10,8 +10,25 @@ import { styles } from '../training/styles';
 import Spacer from '@components/Spacer';
 import { Navigation } from '@interfaces/commonInterfaces';
 import { useJobsInternshipsView} from '@context';
+import AboutCompanyJSON from '../../data/about-company.json';
+import {ApiMethods} from '@constant/common.constant';
+import {callService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
+
 
 function AboutCompany({ navigation }: { navigation: Navigation }) {
+  const [data, setData]: any = useState();
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    if (resp?.status === 200) {
+      setData(AboutCompanyJSON);
+    } else {
+      console.log(resp);
+    }
+  };
   const {aboutCompany:aboutCompanyTabDetails} = useJobsInternshipsView();
   const onClickApply = () => {
     navigation.navigate('Confirmation', {
@@ -24,30 +41,28 @@ function AboutCompany({ navigation }: { navigation: Navigation }) {
         'We will evaluate your application and respond as soon as possible.',
     });
   };
-  const { companyTabTitle, companyTabDetails, companyWebsiteTitle, companyWebsiteDetails,
-     companyIndustryTitle, companyIndustryDetails,companySizeTitle, companySizeDetails } = aboutCompanyTabDetails[0];
-  return (
+ return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>
-          <Text style={styles.heading}>{companyTabTitle}</Text>
-          <Spacer size={20} />
-          <Text>{companyTabDetails}</Text>
+          <Text style={styles.heading}>{'About Company'}</Text>
+          <Spacer />
+          <Text>{data?.companyTabDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
-          <Text style={styles.heading}>{companyWebsiteTitle}</Text>
-          <Text>{companyWebsiteDetails}</Text>
+          <Text style={styles.heading}>{'Website'}</Text>
+          <Text>{data?.companyWebsiteDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
-          <Text style={styles.heading}>{companyIndustryTitle}</Text>
-          <Text>{companyIndustryDetails}</Text>
+          <Text style={styles.heading}>{'Industry'}</Text>
+          <Text>{data?.companyWebsiteDetails}</Text>
         </View>
-        <Spacer size={20} />
+        <Spacer  />
         <View style={styles.card}>
-          <Text style={styles.heading}>{companySizeTitle}</Text>
-          <Text>{companySizeDetails}</Text>
+          <Text style={styles.heading}>{'Employee size'}</Text>
+          <Text>{data?.companySizeDetails}</Text>
         </View>
         <Spacer size={20} />
       </SafeAreaView>
