@@ -7,7 +7,7 @@ import {styles} from './styles';
 import ResultCard from './ResultCard';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
-import SavedJSON from '../../data/saved-jobs.json';
+import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
 
 const SearchResultScreen = ({navigation}) => {
@@ -35,7 +35,7 @@ const SearchResultScreen = ({navigation}) => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
     if (resp?.status === 200) {
       setData(resp.data);
-      setList(SavedJSON)
+      setList(SearchListJson)
     } else {
       console.log(resp);
     }
