@@ -32,10 +32,32 @@ const SearchResultScreen = ({navigation}) => {
   };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS,
+      {
+        "title": {
+          "key": "Engineering Manager"
+        },
+        "company": {
+          "name": "Google India",
+          "locations": [
+            {
+              "city": "Hyderabad"
+            },
+            {
+              "city": "Pune"
+            }
+          ]
+        },
+        "skills": [
+          {
+            "name": "Python",
+            "code": "Flutter"
+          }
+        ]
+      });
     if (resp?.status === 200) {
-      setData(resp.data);
-      setList(SearchListJson)
+      setData(resp?.data.jobResults);
+      setList(resp?.data.jobResults)
     } else {
       console.log(resp);
     }
