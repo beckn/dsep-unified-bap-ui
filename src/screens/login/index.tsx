@@ -103,6 +103,11 @@ function LoginScreen({navigation}) {
         title="Go to Notification"
         onPress={() => navigation.navigate('Notification')}
       />
+       <View style={{height: 20}}></View>
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('SampleProfile')}
+      />
     </View>
   );
 }

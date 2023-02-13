@@ -24,6 +24,7 @@ import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
 import SavedJobs from '../screens/saved-jobs';
 import Notification from '../screens/notification';
+import SampleProfile from '../screens/profile/SampleProfile';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -127,6 +128,11 @@ function Routes() {
           <Stack.Screen
             name="Mentorships"
             component={Mentorships}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="SampleProfile"
+            component={SampleProfile}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
