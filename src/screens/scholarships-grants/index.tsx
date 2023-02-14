@@ -1,31 +1,41 @@
-import {ApiMethods} from '@constant/common.constant';
-import React, {useEffect, useState} from 'react';
-import {View, FlatList} from 'react-native';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
-import {styles} from './styles';
-import {ScholarshipCard,SearchBox, Tabs} from '@components';
+import { ApiMethods } from '@constant/common.constant';
+import React, { useEffect, useState } from 'react';
+import { View, FlatList } from 'react-native';
+import { callService } from '@services';
+import { ENDPOINT } from '@services/endpoints';
+import { styles } from './styles';
+import { ScholarshipCard, SearchBox, Tabs } from '@components';
 import Header from './Header';
 
-const ScholarshipListScreen = ({navigation}) => {
+const ScholarshipListScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const onSearch = (value: string) => {
+    setSearch(value);
+
+    const nextValue = {
+      "name": value
+    }
+    getData(nextValue);
+  }
 
   useEffect(() => {
-    getData();
+    getData({});
   }, []);
 
-  const navigateToSlotList = () =>{
+  const navigateToSlotList = () => {
     // change the navigation here
-     navigation.navigate("Scholarships")
+    navigation.navigate("Scholarships")
   }
 
   const ScholarshipList = () => {
     return (
       <FlatList
-        data={data}
-        renderItem={({item, index}) => <ScholarshipCard data={item} index={index} onPress ={ navigateToSlotList} />}
+        data={data?.scholarshipProviders?.[0]?.scholarships}
+        renderItem={({ item, index }) => <ScholarshipCard data={item} index={index} onPress={navigateToSlotList} />}
         contentContainerStyle={styles.listContainer}
-      /> 
+      />
     )
   }
 
@@ -36,8 +46,8 @@ const ScholarshipListScreen = ({navigation}) => {
     )
   }
 
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+  const getData = async (data) => {
+    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, data);
     if (resp?.status === 200) {
       setData(resp.data);
     } else {
@@ -46,16 +56,16 @@ const ScholarshipListScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <Header navigation={navigation} 
-    heading='Scholarships & Grants'
-    />
+      <Header navigation={navigation}
+        heading='Scholarships & Grants'
+      />
       <View style={styles.searchBoxContainer}>
-        <SearchBox />
+        <SearchBox value={search} onSearch={onSearch} />
       </View>
       <Tabs
         tabData={[
-          {label: 'Scholarships',comp : <ScholarshipList/>},
-          {label: 'Grants', comp : <Demo/>},
+          { label: 'Scholarships', comp: <ScholarshipList /> },
+          { label: 'Grants', comp: <Demo /> },
         ]}
       />
 

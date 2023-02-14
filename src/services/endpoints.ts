@@ -6,4 +6,6 @@ export const ENDPOINT = {
   SELECT_JOBS:"/job/select",
   MENTORSHIP_SELECT: "/mentorship/select",
   SCHOLARSHIP_SEARCH: "/scholarship/search",  
+  GET_SCHOLARSHIPS:'/scholarship/search',
+  CONFIRM_SCHOLARSHIP:'/scholarship/confirm'
 };
