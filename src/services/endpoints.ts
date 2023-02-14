@@ -4,5 +4,6 @@ export const ENDPOINT = {
   SUBMIT_APLLICATION: "/job/confirm",
   SEARCH_JOBS: "/job/search",
   SELECT_JOBS:"/job/select",
-  GET_SCHOLARSHIPS:'/scholarship/search'
+  GET_SCHOLARSHIPS:'/scholarship/search',
+  CONFIRM_SCHOLARSHIP:'/scholarship/confirm'
 };
