@@ -20,12 +20,12 @@ const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
         <Text
           style={styles.nameStyle}
           fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-          {'H.G. Infra Engineering Ltd Scholarship for Medical Courses....'}
+          {data?.description}
         </Text>
         <Text
           style={styles.designationText}
           fontFamily={Fonts.family.DM_SANS_REGULAR}>
-          {'Undergraduate'}
+          {data?.scholarshipDetails?.academicQualifications?.[0].value}
         </Text>
       </View>
     </TouchableOpacity>
