@@ -1,4 +1,4 @@
-package com.dub;
+package org.beckn.dsep.bap;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

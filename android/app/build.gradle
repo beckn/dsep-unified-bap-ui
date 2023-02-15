@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.dub"
+    namespace "org.beckn.dsep.bap"
     defaultConfig {
-        applicationId "com.dub"
+        applicationId "org.beckn.dsep.bap"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
