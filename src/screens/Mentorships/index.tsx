@@ -34,7 +34,7 @@ const Mentorships = ({navigation}: {navigation: Navigation}) =>{
     <>
      <NavBar hasBackArrow={true}  title ={'Mentoring'} hasSecondaryRightIcon ={true}  rightIconName ={''} />
       <DetailHeader
-        title={data?.company?.name}
+        // title={data?.company?.name}
         time=""
         rating={data?.mentorshipProvider?.mentorships[0]?.mentorshipSessions[0]?.mentor?.rating}
         title={data?.mentorshipProvider?.mentorships[0]?.mentorshipSessions[0]?.mentor?.name}

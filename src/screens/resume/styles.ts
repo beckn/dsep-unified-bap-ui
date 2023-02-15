@@ -20,6 +20,7 @@ type Styles = {
   verticalMargin:ViewStyle,
   iconMargin:ViewStyle,
   tags:ViewStyle
+  inputStyle: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -59,5 +60,13 @@ export const styles = StyleSheet.create<Styles>({
   addText:{ fontSize: Fonts.size.base, fontWeight: Fonts.weight.w5, color: Colors.black, textDecorationLine: 'underline' },
   verticalMargin:{ marginVertical: Metrics.margin.xSmall },
   iconMargin:{ marginRight: Metrics.margin.small },
-  tags:{backgroundColor:Colors.dimGray, borderRadius:Metrics.radius.small, minWidth:20, height:30, alignItems:'center', justifyContent:'center', paddingHorizontal:Metrics.padding.base, margin:Metrics.margin.xSmall}
+  tags:{backgroundColor:Colors.dimGray, borderRadius:Metrics.radius.small, minWidth:20, height:30, alignItems:'center', justifyContent:'center', paddingHorizontal:Metrics.padding.base, margin:Metrics.margin.xSmall},
+  inputStyle: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: Metrics.radius.small,
+    marginVertical: Metrics.margin.small,
+    width:'90%'
+  },
 });
