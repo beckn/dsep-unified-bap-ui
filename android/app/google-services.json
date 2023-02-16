@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "911038214517",
-    "project_id": "dsep-unified-bap-ui",
-    "storage_bucket": "dsep-unified-bap-ui.appspot.com"
+    "project_number": "153318683305",
+    "project_id": "reference-apps-authentication",
+    "storage_bucket": "reference-apps-authentication.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:911038214517:android:2b8dc37e85c3811025233c",
+        "mobilesdk_app_id": "1:153318683305:android:b39de9c2a3395de652afb8",
         "android_client_info": {
-          "package_name": "com.dub"
+          "package_name": "org.beckn.dsep.bap"
         }
       },
       "oauth_client": [
         {
-          "client_id": "911038214517-alig59kvfg46l0deomhnb0hmmsocfsol.apps.googleusercontent.com",
+          "client_id": "153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8meEe_M32RfyiKJ69k6EHgHopT6wrosg"
+          "current_key": "AIzaSyDvCIrk7nY204p7S_r6ANPDo-183BPDOgU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "911038214517-alig59kvfg46l0deomhnb0hmmsocfsol.apps.googleusercontent.com",
+              "client_id": "153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
