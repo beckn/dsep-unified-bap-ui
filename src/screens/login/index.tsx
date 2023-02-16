@@ -3,10 +3,9 @@ import {View, Text, TouchableOpacity, Button, Image} from 'react-native';
 // import Button from '@components/AppButton';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {styles}  from './styles';
+import {styles} from './styles';
 import Spacer from '@components/Spacer';
 import images from '../../assets/images';
-
 
 function LoginScreen({navigation}) {
   useEffect(() => {
@@ -55,22 +54,24 @@ function LoginScreen({navigation}) {
         title="Go to Home"
         onPress={() => navigation.navigate('Dashboard')}
       />
-      
-     
-      
-      
+
       {/* <View style={{height:600}}></View> */}
-      
+
       <View style={styles.bottom}>
-        <TouchableOpacity 
-        onPress={() =>
-          onGoogleButtonPress().then(() =>
-            console.log('Signed in with Google!'),
-          )
-        }
-        style={{backgroundColor: 'black', height: 50, padding: 10, borderRadius: 5}}>
+        <TouchableOpacity
+          onPress={() =>
+            onGoogleButtonPress().then(() =>
+              console.log('Signed in with Google!'),
+            )
+          }
+          style={{
+            backgroundColor: 'black',
+            height: 50,
+            padding: 10,
+            borderRadius: 5,
+          }}>
           <Image source={images.signin}></Image>
-          </TouchableOpacity>
+        </TouchableOpacity>
         {/* <Button onPress={() =>
           onGoogleButtonPress().then(() =>
             console.log('Signed in with Google!'),
@@ -78,8 +79,7 @@ function LoginScreen({navigation}) {
         } text={'Google Sign-In'} type="dark" />
         <Spacer size={10} /> */}
       </View>
-     
-     
+
       <Button
         title="Go to  Profile"
         onPress={() => navigation.navigate('ProfileScreen')}
@@ -90,14 +90,18 @@ function LoginScreen({navigation}) {
       />
       <Button
         title="Go to saved jobs"
-        onPress={() => navigation.navigate('SavedJobs')}
+        onPress={() =>
+          navigation.navigate('Dashboard', {
+            screen: 'Saved',
+          })
+        }
       />
-       <View style={{height: 20}}></View>
+      <View style={{height: 20}}></View>
       <Button
         title="Go to Notification"
         onPress={() => navigation.navigate('Notification')}
       />
-       <View style={{height: 20}}></View>
+      <View style={{height: 20}}></View>
       <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('SampleProfile')}

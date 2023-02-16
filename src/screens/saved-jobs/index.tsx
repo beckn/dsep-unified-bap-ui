@@ -41,8 +41,14 @@ const SavedJobs = ({navigation}) => {
   };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    const resp = await callService(
+      ApiMethods.GET,
+      `${ENDPOINT.SAVED_JOBS}test.user@gmail.com`,
+    );
+
+    setList(SavedJSON);
     if (resp?.status === 200) {
+      console.log(resp);
       setList(SavedJSON);
     } else {
       console.log(resp);
