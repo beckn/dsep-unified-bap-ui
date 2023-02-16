@@ -8,15 +8,16 @@ import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 
-const Scholarships = ({navigation}: {navigation: Navigation}) =>{
+const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) =>{
   const [data, setData]: any = useState();
+  const {name} = route.params;
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
     const resp = await callService(ApiMethods.POST,ENDPOINT.SCHOLARSHIP_SEARCH,
       {
-        "name": "Undergraduation scholarship"
+        "name": name
       }
     );
     if (resp?.status == 200) {

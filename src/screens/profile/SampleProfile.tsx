@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, TextInput, Alert} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, TextInput} from 'react-native';
 import {styles} from './styles';
 import { Button, Spacer} from '@components';
 import NavBar from '@components/Navbar';
@@ -7,18 +7,38 @@ import { userSkillView } from '@context';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function SampleProfile({navigation}) {
   const {profileInfo, setProfileInfo} = userSkillView();
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName]: any = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [email, setEmail]:any = useState("");
+  const [mobile, setMobile]:any = useState("");
   const [data, setData] = useState();
   // const [al, setValue] = useState("");
   // const [value, setValue] = useState("");
   // const [value, setValue] = useState("");
+ 
+const getUser = async () => {
+    const fullName = await AsyncStorage.getItem('fullName');
+   
+    const email = await AsyncStorage.getItem('email');
+    const mobileNumber = await AsyncStorage.getItem('phoneNumber');
+    setFirstName(fullName);
+    setEmail(email);
+    setMobile(mobileNumber);
+   console.log('fullName', fullName, email);
+    
+}
+useEffect(() => {
+  async function fetchUser() {
+    const user = await getUser();
+    console.log('user',user);
+  }
+  fetchUser();
+}, []);
 
   const onClickApply =async () =>{
     let profile = {firstName,lastName, email, mobile}

@@ -25,6 +25,10 @@ function LoginScreen({navigation}) {
   // Handle user state changes
   function onAuthStateChanged(user) {
     console.log('user auth state changed', user);
+    AsyncStorage.setItem('fullName',user?.displayName);
+    AsyncStorage.setItem('email',user?.email);
+    AsyncStorage.setItem('phoneNumber',user?.phoneNumber);
+    AsyncStorage.setItem('photoURL',user?.photoURL);
     setUser(user);
     if (initializing) {
       setInitializing(false);
@@ -39,6 +43,7 @@ function LoginScreen({navigation}) {
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     AsyncStorage.setItem('accessToken', idToken);
+    console.log('googleCredential===>>>', googleCredential);
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
   }
