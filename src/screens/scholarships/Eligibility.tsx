@@ -15,15 +15,15 @@ import {ApiMethods} from '@constant/common.constant';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 
-function Eligibility({navigation}:{navigation: Navigation}) {
-  const [data, setData]: any = useState({});
+function Eligibility({navigation, data}:{navigation: Navigation, data:any}) {
+  const [eledata, setEleData]: any = useState({});
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
     const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
     if (resp?.status === 200) {
-      setData(EligibilityJSON);
+      setEleData(EligibilityJSON);
     } else {
       console.log(resp);
     }
@@ -57,22 +57,22 @@ function Eligibility({navigation}:{navigation: Navigation}) {
      <Spacer />
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Qualification criteria :'} <Text style={[styles.params,styles.left]}>{data.criteria}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Qualification criteria :'} <Text style={[styles.params,styles.left]}>{eledata?.criteria}</Text></Text>
      </View>
      <Spacer />
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Current Education : '} <Text style={[styles.params,styles.left]}>{data.education}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Current Education : '} <Text style={[styles.params,styles.left]}>{eledata?.education}</Text></Text>
      </View>
      <Spacer />
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Gender : '} <Text style={[styles.params,styles.left]}>{data.gender}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Gender : '} <Text style={[styles.params,styles.left]}>{eledata?.gender}</Text></Text>
      </View>
      <Spacer />
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Family Income criteria : '} <Text style={[styles.params,styles.left]}>{data.income}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Family Income criteria : '} <Text style={[styles.params,styles.left]}>{eledata?.income}</Text></Text>
      </View>
      <Spacer />
      <Text style={styles.heading}>{'Additional Information'}</Text>
@@ -84,30 +84,30 @@ function Eligibility({navigation}:{navigation: Navigation}) {
      <Spacer />
      <View style={styles.rignt}>
      <FlatList 
-      data={data.fields}
+      data={eledata?.fields}
       renderItem={renderItem}
      />
      </View>
      <Spacer />
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Spoc Name : '} <Text style={[styles.params,styles.left]}>{data.spocName}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Spoc Name : '} <Text style={[styles.params,styles.left]}>{eledata?.spocName}</Text></Text>
      </View>
      <Spacer /> 
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Spoc Email : '} <Text style={[styles.params,styles.left]}>{data.spocEmail}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Spoc Email : '} <Text style={[styles.params,styles.left]}>{eledata?.spocEmail}</Text></Text>
      </View>
      <Spacer /> 
      <View style={styles.row}>
      <View style={styles.dot}></View>
-     <Text style={[styles.heading,styles.left]}>{'Helpdesk Number : '} <Text style={[styles.params,styles.left]}>{data.helpNumber}</Text></Text>
+     <Text style={[styles.heading,styles.left]}>{'Helpdesk Number : '} <Text style={[styles.params,styles.left]}>{eledata?.helpNumber}</Text></Text>
      </View>
      <Spacer size={20}/>  
      <Text style={styles.heading}>{'While applying to scholarship, below documents need to be uploaded:'}</Text>
       <Spacer />
       <FlatList 
-      data={data.documents}
+      data={eledata?.documents}
       renderItem={({item,index})=>{
         return(<View style={styles.row} key={index}>
             <View style={styles.dot}></View>

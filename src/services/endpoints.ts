@@ -3,5 +3,10 @@ export const ENDPOINT = {
   INIT_APLLICATION: "/job/init",
   SUBMIT_APLLICATION: "/job/confirm",
   SEARCH_JOBS: "/job/search",
-  SELECT_JOBS:"/job/select"
+  SELECT_JOBS:"/job/select",
+  USER_PROFILE: "/user/profile",
+  MENTORSHIP_SELECT: "/mentorship/select",
+  SCHOLARSHIP_SEARCH: "/scholarship/search",  
+  GET_SCHOLARSHIPS:'/scholarship/search',
+  CONFIRM_SCHOLARSHIP:'/scholarship/confirm'
 };

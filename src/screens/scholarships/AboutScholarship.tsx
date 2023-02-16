@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -9,26 +9,8 @@ import Button from '@components/AppButton';
 import {styles}  from './styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
-import AboutScholarShipJSON from '../../data/about-scholarships.json';
-import {ApiMethods} from '@constant/common.constant';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
 
-function AboutScholarship({navigation}: {navigation: Navigation}) {
-
-  const [data, setData]: any = useState({});
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(AboutScholarShipJSON);
-    } else {
-      console.log(resp);
-    }
-  };
-
+function AboutScholarship({navigation, data}: {navigation: Navigation, data:any}) {
   const onClickApply =() =>{
     navigation.navigate('ApplyScholorship',{
       id:2,
@@ -48,42 +30,42 @@ function AboutScholarship({navigation}: {navigation: Navigation}) {
         <Text style={styles.heading}>{'General Information'}</Text>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Name'}</Text>
-                 <Text>{data.name}</Text>
+                 <Text>{data?.scholarshipProviders[0].scholarships[0].name}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Description'}</Text>
-                 <Text>{data.description}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.description}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Type'}</Text>
-                 <Text>{data.type}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.type}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Scheme Provider Name'}</Text>
-                 <Text>{data.provider}</Text>
+                 <Text>{data?.scholarshipProviders[0].name}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Financial Year'}</Text>
-                 <Text>{data.year}</Text>
+                 <Text>{data?.year}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Scheme Amount'}</Text>
-                 <Text>{data.amount}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.amount.amount}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application Start Date'}</Text>
-                 <Text>{data.startDate}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationStartDate}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application End Date'}</Text>
-                 <Text>{data.endDate}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationEndDate}</Text>
         </View>
         <Spacer size={20}/>
     </SafeAreaView>

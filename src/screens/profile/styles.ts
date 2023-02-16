@@ -43,20 +43,21 @@ export const styles = StyleSheet.create<Styles>({
     alignItems:'center'
   },
   calender:{
-    flexDirection:'row',
+    flexDirection: 'row',
     // minHeight:Metrics.large,
     // // backgroundColor:Colors.white,
     // // margin:Metrics.small,
     height: 60,
-    width: 200,
-    margin: 10,
-    alignItems: 'stretch'
+    top:5,
+    alignItems: 'stretch',
+    justifyContent:'space-between'
+   
   },
   optionsLeftIcon:{
     flex:2
   },
   button:{
-    padding: 6
+    width:160
   },
   optionsTitle:{
     flex:7,
