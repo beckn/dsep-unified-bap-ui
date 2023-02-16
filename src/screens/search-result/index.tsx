@@ -13,13 +13,14 @@ import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-const SearchResultScreen = ({navigation}) => {
+const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
+  const { searchData } = route.params;
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
   ]);
-  // console.log("Test data: "+SavedJSON);
   const [data, setData] = useState([]);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
@@ -35,9 +36,9 @@ const SearchResultScreen = ({navigation}) => {
   useEffect(() => {
     getData();
   }, []);
-  // const onClickApply =() =>{
-  //   showModal();
-  // }
+  const onPress =() =>{
+    showModal();
+  }
   const ResultCards = () => {
     return (
       <FlatList
@@ -48,34 +49,14 @@ const SearchResultScreen = ({navigation}) => {
   };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS,
-      {
-        "title": {
-          "key": "Engineering Manager"
-        },
-        "company": {
-          "name": "Google India",
-          "locations": [
-            {
-              "city": "Hyderabad"
-            },
-            {
-              "city": "Pune"
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "Python",
-            "code": "Flutter"
-          }
-        ]
-      });
+    
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
     if (resp?.status === 200) {
+      console.log("check search data", searchData)
       setData(resp?.data.jobResults);
       setList(resp?.data.jobResults)
     } else {
-      console.log(resp);
+       console.log(resp);
     }
   };
   return (
@@ -83,7 +64,7 @@ const SearchResultScreen = ({navigation}) => {
     <View >
       <Header navigation={navigation} 
     heading='UX Designer'
-    onPress={onClickApply}
+    onPress={onPress}
     count = {list.length}
     />
    

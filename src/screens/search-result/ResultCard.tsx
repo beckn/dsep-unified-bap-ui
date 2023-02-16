@@ -9,7 +9,7 @@ import { styles } from "./styles";
 //     <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
 //     <View style = {styles.resultCardContainer}>
 const ResultCard = ({data, onItemPressed})=>{
-    console.log("data",data)
+console.log(data)
     return (
         
     <TouchableOpacity style = {styles.resultCardContainer} key ={data.id} onPress={() => onItemPressed(data)}>
