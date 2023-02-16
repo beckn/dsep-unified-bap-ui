@@ -1,4 +1,4 @@
-package com.dub;
+package org.beckn.dsep.bap;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "dub";
+    return "bap";
   }
 
   @Override

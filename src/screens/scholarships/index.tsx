@@ -1,23 +1,44 @@
 import AboutScholarship from './AboutScholarship';
 import Eligibility from './Eligibility';
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import Header from '../training/Header';
 import Tabs from '@components/Tabs';
 import {Navigation} from '@interfaces/commonInterfaces';
+import {callService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
+import {ApiMethods} from '@constant/common.constant';
+
 const Scholarships = ({navigation}: {navigation: Navigation}) =>{
+  const [data, setData]: any = useState();
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SCHOLARSHIP_SEARCH,
+      {
+        "name": "Undergraduation scholarship"
+      }
+    );
+    if (resp?.status == 200) {
+      setData(resp?.data);
+      console.log('resp?.data--->>>', resp?.data)
+    } else {
+      console.log(resp);
+    }
+  };
     return(
     <>
     <Header navigation={navigation} 
-            heading="H.G. Infra Engineering..." 
+            heading={data?.scholarshipProviders[0].scholarships[0].name}
             online={''} 
             video={''} 
-            education='Undergraduate'
+            education={data?.scholarshipProviders[0]?.scholarships[0]?.category.name}
             rating={''}
     />
     <Tabs
         tabData={[
-          {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} />},
-          {label: 'Eligibility', comp : <Eligibility  navigation={navigation} />},
+          {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} data = {data} />},
+          {label: 'Eligibility', comp : <Eligibility  navigation={navigation} data = {data} />},
         ]}
       />
     </>

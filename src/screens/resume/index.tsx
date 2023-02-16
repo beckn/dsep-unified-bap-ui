@@ -1,10 +1,10 @@
 import { ApiMethods } from '@constant/common.constant';
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { View, FlatList, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { callService } from '@services';
 import { ENDPOINT } from '@services/endpoints';
 import { styles } from './styles';
-import { ScholarshipCard, SearchBox, ICONS, Text, SVGIcon } from '@components';
+import { ScholarshipCard, SearchBox, ICONS, Text, SVGIcon, Spacer } from '@components';
 import Header from './Header';
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
@@ -16,12 +16,17 @@ import Button from '@components/AppButton';
 const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
   const {skills, setSkills} = userSkillView();
   const {languages, setLanguages} = userSkillView();
+  const {educationInfo, setEducationInfo} = userSkillView();
+  const {experienceInfo, setExperienceInfo} = userSkillView();
+  const [profile, setProfile] = useState("");
   const onClickApply =() =>{
     navigation.navigate("Dashboard");
   }
   // const skills = ['Figma', 'Sketch','Zeplin', 'Invivision App','Adobe XD'];
   // const languages =  ['English', 'Hindi','German', 'Spanish','Odia'];
-  console.log("in resume",languages);
+  console.log("educationInfo",educationInfo);
+  console.log('experienceInfo',experienceInfo);
+  
   const Tags = ({tag})=>{
     return (
       <View style={styles.tags}>
@@ -63,13 +68,13 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
         <View style={styles.bottomWorkEducationSection}>
           <View>
             <Text style={styles.sectionHeaderText}  >
-              Sr. UX Designer
+              {experienceInfo?.workExperience?.profile}
             </Text>
             <Text style={[styles.sectionDetailText,styles.verticalMargin]}  >
-              Beckn Foundation, Bangalore
+              {experienceInfo?.workExperience?.companyName}
             </Text>
             <Text style={styles.sectionDetailText}  >
-              Jan 2015 - Feb 2021 . 5 Years
+             {experienceInfo?.workExperience?.startDate + ' '+ experienceInfo?.workExperience?.endDate}
             </Text>
           </View>
           <SVGIcon
@@ -87,13 +92,16 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
         <View style={styles.bottomWorkEducationSection}>
           <View>
             <Text style={styles.sectionHeaderText}  >
-            Bachelor of Arts
+            {educationInfo?.educationProfile?.education}
             </Text>
             <Text style={[styles.sectionDetailText,styles.verticalMargin]}  >
-            Christ University, Bangalore
+            {educationInfo?.educationProfile?.collageName}
             </Text>
             <Text style={styles.sectionDetailText}  >
-            Sep 2010 - Aug 2013 . 5 Years
+            {educationInfo?.educationProfile?.startDate + ' ' + educationInfo?.educationProfile?.endDate}
+            </Text>
+            <Text style={styles.sectionDetailText}  >
+            {educationInfo?.educationProfile?.information}
             </Text>
           </View>
           <SVGIcon
@@ -129,6 +137,17 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
         }
         </View>
       </View>
+      <View style={{left:20, top:10}}>
+      <Text style={styles.sectionHeaderText}>Profile</Text>
+      <TextInput 
+        placeholder="Profile URl" 
+        style={styles.inputStyle} 
+        onChangeText ={(text)=>{setProfile(text)}}
+        value={profile}
+        
+        />
+      </View>
+      <Spacer size={20}/>
       <View style={styles.bottom}>
        <Button onPress={onClickApply} text={'Goto Dashboard'} type="dark"/>
        

@@ -17,6 +17,26 @@ export interface IItemType {
       mobile: string;
   };
   }
+  export interface IEducationType{
+    educationProfile: {
+      collageName: string;
+      collageAddress: string;
+      startDate: string;
+      endDate: string;
+      information: string;
+      education: string;
+    }
+  }
+
+  export interface IExperienceType{
+    workExperience: {
+      companyName: string;
+      startDate: string;
+      endDate: string;
+      information: string;
+      profile: string;
+    }
+  }
 
 export interface Context {
   profileInfo: IProfileType;
@@ -25,12 +45,16 @@ export interface Context {
   jobSearchSkills: IItemType[];
   jobsearchlocation: IItemType[];
   languages: IItemType[];
+  educationInfo: IEducationType;
+  experienceInfo: IExperienceType;
   setProfileInfo: (args: IProfileType) => void;
   setAppId: (args: IAppId) => void;
   setSkills: (args: IItemType[]) => void;
   setJobSearchSkills: (args: IItemType[]) => void;
   setLanguages: (args: IItemType[]) => void;
   setJobSearchlocation: (args: IItemType[]) => void;
+  setEducationInfo: (args: IEducationType) =>void;
+  setExperienceInfo: (args: IExperienceType) =>void;
 }
 
 export const UserSkillsContext = React.createContext({
@@ -39,11 +63,15 @@ export const UserSkillsContext = React.createContext({
   jobSearchSkills: [],
   jobsearchlocation: [],
   languages: [],
+  educationInfo: {},
+  experienceInfo:{},
   setProfileInfo: (args: IProfileType) => {},
   setSkills: (args: IItemType[]) => {},
   setJobSearchSkills: (args: IItemType[]) => {},
   setLanguages: (args: IItemType[]) => {},
   setJobSearchlocation: (args: IItemType[]) => {},
+  setEducationInfo: (args: IEducationType) =>{},
+  setExperienceInfo: (args: IExperienceType) =>{},
 });
 
 export const userSkillView = (): Context => React.useContext(UserSkillsContext);
@@ -54,6 +82,8 @@ export function UserProfileDetailsProvider({children}): JSX.Element {
   const [jobSearchSkills, setJobSearchSkills] = useState([]);
   const [jobsearchlocation, setJobSearchlocation] = useState([]);
   const [languages, setLanguages] = useState([]);
+  const [educationInfo,setEducationInfo] = useState([]);
+  const [experienceInfo, setExperienceInfo] = useState([]);
 
   return (
     <UserSkillsContext.Provider
@@ -68,6 +98,12 @@ export function UserProfileDetailsProvider({children}): JSX.Element {
         setJobSearchSkills: setJobSearchSkills,
         jobsearchlocation: jobsearchlocation,
         setJobSearchlocation: setJobSearchlocation,
+        educationInfo:educationInfo,
+        setEducationInfo: setEducationInfo,
+        experienceInfo: experienceInfo,
+        setExperienceInfo:setExperienceInfo,
+
+
         
       }}>
       {children}

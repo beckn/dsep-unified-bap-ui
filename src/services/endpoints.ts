@@ -7,4 +7,7 @@ export const ENDPOINT = {
   GET_SCHOLARSHIPS: '/scholarship/search',
   CONFIRM_SCHOLARSHIP: '/scholarship/confirm',
   SAVED_JOBS: '/user/item/saved/',
+  USER_PROFILE: '/user/profile',
+  MENTORSHIP_SELECT: '/mentorship/select',
+  SCHOLARSHIP_SEARCH: '/scholarship/search',
 };

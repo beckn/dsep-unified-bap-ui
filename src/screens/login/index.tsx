@@ -6,10 +6,14 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {styles} from './styles';
 import Spacer from '@components/Spacer';
 import images from '../../assets/images';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function LoginScreen({navigation}) {
   useEffect(() => {
-    GoogleSignin.configure({});
+    GoogleSignin.configure({
+        webClientId:
+          '153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com',     
+    });
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
@@ -33,7 +37,7 @@ function LoginScreen({navigation}) {
     console.log('idtoken', idToken);
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
+    AsyncStorage.setItem('accessToken', idToken);
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
   }
@@ -42,6 +46,7 @@ function LoginScreen({navigation}) {
     GoogleSignin.signOut()
       .then(res => {
         console.log('signed out', res);
+        AsyncStorage.setItem('accessToken', "");
       })
       .catch(err => {
         console.log('sign out error', err);
@@ -105,6 +110,16 @@ function LoginScreen({navigation}) {
       <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('SampleProfile')}
+      />
+       <View style={{height: 20}}></View>
+      <Button
+        title="Go to Scholarships"
+        onPress={() => navigation.navigate('Scholarships')}
+      />
+       <View style={{height: 20}}></View>
+      <Button
+        title="Go to Mentor"
+        onPress={() => navigation.navigate('Mentorships')}
       />
     </View>
   );
