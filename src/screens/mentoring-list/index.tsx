@@ -7,54 +7,103 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
+import {useMentorContext} from '@context';
+import Loader from '@components/Loader/Loader';
+import { Text } from '@components/Text';
+import NoData from '@components/NoData';
 
 const MentoringListScreen = ({navigation}) => {
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(true);
+  const {setMentorlist, mentorList, setSelectedMentorData, selectedMentorData} =
+    useMentorContext();
+  console.log('mentorList', mentorList);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const navigateToAvailableDate = () =>{
-     navigation.navigate("MentorAvailableDate")
-  }
+  const navigateToAvailableDate = () => {
+    navigation.navigate('MentorAvailableDate');
+  };
 
   const List = () => {
     return (
       <FlatList
         data={data}
-        renderItem={({item, index}) => <MentorCard data={item} index={index} onPress ={ navigateToAvailableDate} />}
+        renderItem={({item, index}) => (
+          <MentorCard
+            data={item}
+            index={index}
+            onPress={navigateToAvailableDate}
+          />
+        )}
         contentContainerStyle={styles.listContainer}
-      /> 
-    )
-  }
+      />
+    );
+  };
 
   const Demo = () => {
-    return (
-      <View>
-      </View>
-    )
-  }
+    return <View></View>;
+  };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    const resp = await callService(
+      ApiMethods.POST,
+      ENDPOINT.SEARCH_MENTORSHIP,
+      {
+        sessionTitle: {
+          key: 'Management',
+        },
+        mentor: {
+          name: 'joffin',
+        },
+      },
+    );
+    console.log('resp', JSON.stringify(resp));
     if (resp?.status === 200) {
-      setData(resp.data);
+      setLoader(false)
+      setMentorlist(resp.data.mentorshipProviders);
     } else {
+      setLoader(false)
       console.log(resp?.message);
     }
   };
+
+  const setMentorshipData = data => {
+    setSelectedMentorData(data);
+    navigation.navigate('Mentorships', {
+      mentorshipId: selectedMentorData.mentorshipId,
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.searchBoxContainer}>
-        <SearchBox />
-      </View>
-      <Tabs
-        tabData={[
-          {label: 'Tutoring',comp : <List/>},
-          {label: 'Mentoring', comp : <Demo/>},
-        ]}
-      />
+      {loader ? (
+        <Loader />
+      ) : (
+    
+        mentorList.length > 0 ?
+        <>
+          <View style={styles.searchBoxContainer}>
+            <SearchBox />
+          </View>
+          <FlatList
+            data={mentorList}
+            renderItem={({item, index}) => (
+              <MentorCard
+                data={item}
+                index={index}
+                onPress={data => setMentorshipData(data)}
+              />
+            )}
+            contentContainerStyle={styles.listContainer}
+          />
+        </> :
+        
+        <NoData message= {"No Data found"} />
+
+      )}
     </View>
   );
 };

@@ -9,7 +9,8 @@ type Styles = {
   dateText: TextStyle;
   slotText: ViewStyle,
   slotContainer: ViewStyle,
-  buttonContainer: ViewStyle
+  buttonContainer: ViewStyle,
+  selectedSlot: ViewStyle
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -32,7 +33,7 @@ export const styles = StyleSheet.create<Styles>({
     color: Colors.descText
   },
   slotContainer: {
-    width: "40%",
+    width: "45%",
     backgroundColor: Colors.slotBg,
     alignItems: "center",
     marginBottom: 15,
@@ -43,5 +44,9 @@ export const styles = StyleSheet.create<Styles>({
     paddingHorizontal: 23,
     paddingVertical: 37,
     backgroundColor: Colors.white
+  },
+  selectedSlot: {
+    borderColor: Colors.black,
+    borderWidth : 1
   }
 });
