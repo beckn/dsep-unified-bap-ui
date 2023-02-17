@@ -7,8 +7,10 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-const MentoringListScreen = ({navigation}) => {
+const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
+  const { mentor } = route.params;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -37,9 +39,10 @@ const MentoringListScreen = ({navigation}) => {
   }
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_MENTOR, mentor);
     if (resp?.status === 200) {
       setData(resp.data);
+      console.log("Mentor data ----------------->",JSON.stringify(resp.data))
     } else {
       console.log(resp?.message);
     }
@@ -47,7 +50,7 @@ const MentoringListScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchBoxContainer}>
-        <SearchBox />
+        {/* <SearchBox /> */}
       </View>
       <Tabs
         tabData={[

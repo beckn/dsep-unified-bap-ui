@@ -23,6 +23,9 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [skills, setSkills] = useState("");
+  const [scholortitle, setScholorTitle] = useState("");
+  const [sessiontitle, setSessionTitle] = useState("");
+  const [mentortitle, setMentorTitle] = useState("");
   // const {skills, setSkills} = userSkillView();
   const [data, setData] = useState([
     {"name" : "Jobs & Internships", "icon":images.bag},{"name" : "Trainings & Courses", "icon":images.Training},
@@ -49,6 +52,25 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     }
     hideModal()
     navigation.navigate('SearchResult', {searchData});
+  }else if(selectedCatagory == "Scholarships & Grants"){
+   
+    hideModal()
+    navigation.navigate('ScholarshipList', {scholortitle});
+  }else if(selectedCatagory == "Scholarships & Grants"){
+   
+    hideModal()
+    navigation.navigate('ScholarshipList', {scholortitle});
+  }else if(selectedCatagory == "Tutoring & Mentorship"){
+  let mentor = {
+    "sessionTitle": {
+      "key": sessiontitle
+    },
+    "mentor": {
+      "name": mentortitle
+    }
+  }
+   hideModal()
+    navigation.navigate('MentoringList', {mentor});
   }
     
   }
@@ -57,11 +79,14 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       setSelectedCatagory(name);
       showModal()
     }else if(name == "Trainings & Courses"){
-      navigation.navigate('Training')
+      setSelectedCatagory(name);
+      showModal()
     }else if(name == "Scholarships & Grants"){
-      navigation.navigate('Scholarships')
+      setSelectedCatagory(name);
+      showModal()
     }else if(name == "Tutoring & Mentorship"){
-      navigation.navigate('MentoringList')
+      setSelectedCatagory(name);
+      showModal()
     }
     
   }
@@ -69,7 +94,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 350, width: 400  };
+  const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0, height: 350, width: 400  };
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -129,34 +154,72 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         />
       </View>
       </View>
-      <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Search Jobs & InternShips.</Text>
+      {(selectedCatagory === 'Jobs & Internships')?(
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+        <Text>Search Jobs & InternShips.</Text>
+        <View style={{ alignItems:'center'}}>
+        <TextInput style={styles.input}
+            placeholder="Enter job title "
+            value={jobtitle}
+            onChangeText={text => setJobTitle(text)}
+            />      
+          <TextInput style={styles.input}
+            placeholder="Enter company Name"
+            value={company}
+            onChangeText={text => setCompany(text)}
+            />
+            <TextInput style={styles.input}
+            placeholder="Enter Location "
+            value={location}
+            onChangeText={text => setLocation(text)}
+            />
+            <TextInput style={styles.input}
+            placeholder="Enter Skills "
+            value={skills}
+            onChangeText={text => setSkills(text)}
+            />
+          <View style={styles.bottom}>
+          <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+         </View> 
+            </View>
+      </Modal>  
+      ):(selectedCatagory === 'Scholarships & Grants')?
+      (
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+          <Text>Search Scholorship</Text>
           <View style={{ alignItems:'center'}}>
           <TextInput style={styles.input}
-              placeholder="Enter job title "
-              value={jobtitle}
-              onChangeText={text => setJobTitle(text)}
+              placeholder="Enter scholorship title "
+              value={scholortitle}
+              onChangeText={text => setScholorTitle(text)}
               />      
-            <TextInput style={styles.input}
-              placeholder="Enter company Name"
-              value={company}
-              onChangeText={text => setCompany(text)}
-              />
-              <TextInput style={styles.input}
-              placeholder="Enter Location "
-              value={location}
-              onChangeText={text => setLocation(text)}
-              />
-              <TextInput style={styles.input}
-              placeholder="Enter Skills "
-              value={skills}
-              onChangeText={text => setSkills(text)}
-              />
             <View style={styles.bottom}>
             <Button onPress={onClickApply} text={'Apply'} type="dark"/>
            </View> 
               </View>
         </Modal>  
+      ):(
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+          <Text>Search Mentor</Text>
+          <View style={{ alignItems:'center'}}>
+          <TextInput style={styles.input}
+              placeholder="Enter session title "
+              value={sessiontitle}
+              onChangeText={text => setSessionTitle(text)}
+              />
+          <TextInput style={styles.input}
+            placeholder="Enter mentor Name"
+            value={mentortitle}
+            onChangeText={text => setMentorTitle(text)}
+            />      
+            <View style={styles.bottom}>
+            <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+           </View> 
+              </View>
+        </Modal> 
+      )
+    }
+      
           
     </View>
   );

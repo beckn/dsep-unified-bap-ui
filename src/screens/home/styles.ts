@@ -31,7 +31,7 @@ export const styles = StyleSheet.create<Styles>({
   },
   listContainer: { padding: 10 },
   item:{
-    padding: 10,
+    padding: 5,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -92,7 +92,6 @@ centeredView: {
 },
 modalView: {
   margin: 10,
-  
   backgroundColor: 'white',
   borderRadius: 20,
   padding: 15,

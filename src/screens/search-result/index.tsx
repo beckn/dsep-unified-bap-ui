@@ -1,6 +1,6 @@
 import {ApiMethods} from '@constant/common.constant';
 import React, {useEffect, useState} from 'react';
-import {View, FlatList, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, FlatList, TextInput, TouchableOpacity, SafeAreaView, ActivityIndicator} from 'react-native';
 import { ICONS, Text, SVGIcon,  } from '@components';
 import Button from '@components/AppButton';
 import {callService} from '@services';
@@ -14,6 +14,8 @@ import Header from './Header';
 import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
 import {Navigation} from '@interfaces/commonInterfaces';
+import NavBar from '@components/Navbar';
+
 
 const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
   const { searchData } = route.params;
@@ -22,6 +24,7 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     {label: 'Mentorship', value: 'mentorship'},
   ]);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
@@ -49,18 +52,25 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
   };
 
   const getData = async () => {
-    
+    setLoading(true);
     const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
     if (resp?.status === 200) {
       console.log("check search data", searchData)
+      
       setData(resp?.data.jobResults);
       setList(resp?.data.jobResults)
+      setLoading(false);
     } else {
        console.log(resp);
     }
   };
   return (
     <SafeAreaView  style={styles.container}>
+      {loading?( 
+        <ActivityIndicator />
+      ):((list.length == undefined)?(
+ <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="data not found please go back"   />
+      ):(
     <View >
       <Header navigation={navigation} 
     heading='UX Designer'
@@ -69,47 +79,9 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     />
    
   <ResultCards/>
-    {/* <View style={styles.container}>
-      <Header heading={'Purchase History'} />
-      {/* <View style={styles.dropdownContainer}>
-        <Dropdown
-          data={dropdownData}
-          onSelect={value => console.log('selected value:' + value)}
-        />
-      </View> */}
-      {/* <ResultCards />
-    </View> */} 
-    <Modal visible={visible} onDismiss={hideModal}
-     contentContainerStyle={containerStyle}
-     >
-          <Text>Search Jobs & InternShips.</Text>
-          <View style={{ alignItems:'center'}}>      
-            <TextInput style={styles.input}
-              placeholder="Enter Skills / designations / companies"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder=" Location "
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder="Type here to Search !"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              
-              </View>
-              <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
-       
-      </View> 
-        </Modal>
+   
         </View>
+        ))}
     </SafeAreaView>
   );
 };

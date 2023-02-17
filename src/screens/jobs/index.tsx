@@ -11,6 +11,7 @@ import {ApiMethods} from '@constant/common.constant';
 import { useEffect } from 'react';
 import NavBar from '@components/Navbar';
 import DetailHeader from '@components/DetailHeader';
+import {Text} from '@components/Text';
 
 const Jobs = ({navigation}: {navigation: Navigation}) => {
   const {setAboutCompany} = useJobsInternshipsView();
@@ -32,6 +33,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
       }
     });
     if (resp?.status == 200) {
+      console.log("check respone in jobs", JSON.stringify(resp.data))
       setData(resp?.data);
     } else {
       console.log(resp);
@@ -40,8 +42,12 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
+      {(data == "")?(
+        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="data not found please go back"   />
+        // <Text>No Data found</Text>
+      ):(
     <>
-       <NavBar hasBackArrow={true} hasRightIcon = {true}  hasSecondaryRightIcon ={true} title={data?.selectedJobs[0]?.role} rightIconName ={''} />
+       <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title={data?.selectedJobs[0]?.role}  />
       <DetailHeader
         title={data?.company?.name}
         description={data?.selectedJobs[0]?.locations[0]?.city + ', ' +  data?.selectedJobs[0]?.locations[0]?.country}
@@ -58,6 +64,7 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
         ]}
       />
     </>
+    )}
     </SafeAreaView>
   );
 };
