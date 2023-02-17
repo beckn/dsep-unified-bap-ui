@@ -9,9 +9,11 @@ import SuccessCard from '@components/SuccessCard';
 import Button from '@components/Button';
 import {Colors} from '@styles/colors';
 import NavBar from '@components/Navbar';
+import { useMentorContext } from '@context';
 
 const SlotBookedScreen = ({navigation}) => {
   const [data, setData] = useState([]);
+  const {selectedMentorData} = useMentorContext();
 
   useEffect(() => {
     getData();
@@ -31,7 +33,7 @@ const SlotBookedScreen = ({navigation}) => {
       <NavBar hasBackArrow = {false} hasRightIcon={false}/>
       <DetailHeader
         borderBottom={true}
-        title="Mentor name"
+        title= {selectedMentorData.mentor.name}
         description="Frontend Architect | Founder - ABC company"
       />
       <SuccessCard
@@ -39,7 +41,6 @@ const SlotBookedScreen = ({navigation}) => {
         primaryText={'You have successfully booked a slot with your mentor!'}
       />
       <View style={styles.buttonContainer}>
-        <Button title="show calendly link" />
         <Button
           title="go back to home"
           style={styles.goBackButton}

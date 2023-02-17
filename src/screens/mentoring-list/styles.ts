@@ -17,5 +17,5 @@ export const styles = StyleSheet.create<Styles>({
     paddingTop: Metrics.padding.base,
     paddingHorizontal: Metrics.padding.base,
   },
-  listContainer: { paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 }
+  listContainer: {paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 }
 });
