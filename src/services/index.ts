@@ -31,6 +31,7 @@ export const callService = async (
   if (methodType === ApiMethods.POST) {
     try {
       const response = await apiCallInstance.post(endpoint, body);
+      console.log("api repsonse", response);
       return response;
     } catch (error) {
       console.log('error', error);
@@ -38,6 +39,7 @@ export const callService = async (
   } else {
     try {
       const response = await apiCallInstance.get(endpoint);
+      console.log("api get repsonse", response);
       return response;
     } catch (error) {
       console.log('error', error);

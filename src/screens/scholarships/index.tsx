@@ -8,17 +8,24 @@ import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 
-const Scholarships = ({navigation}: {navigation: Navigation}) =>{
+const Scholarships = ({navigation, route}: {navigation: Navigation, route: any}) =>{
+  // console.log({navigation, searchData});
+  const {data:searchData} = route.params;
+  console.log({navigation, searchData});
   const [data, setData]: any = useState();
   useEffect(() => {
     getData();
   }, []);
+
+  const request = {
+    context:searchData.context,
+    scholarshipProiderId:searchData.scholarshipProviders[0].id,
+    scholarshipId:searchData.scholarshipProviders[0].scholarships[0].id,
+    scholarshipDetailsId:searchData.scholarshipProviders[0].scholarships[0].scholarshipDetails.id
+  }
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST,ENDPOINT.SCHOLARSHIP_SEARCH,
-      {
-        "name": "Undergraduation scholarship"
-      }
-    );
+    console.log("request", request);
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SCHOLARSHIP_SEARCH, request);
     if (resp?.status == 200) {
       setData(resp?.data);
       console.log('resp?.data--->>>', resp?.data)
@@ -26,6 +33,10 @@ const Scholarships = ({navigation}: {navigation: Navigation}) =>{
       console.log(resp);
     }
   };
+
+  const onClickApply =async ()=> {
+    navigation.navigate("ApplyScholorship",{data});
+  }
     return(
     <>
     <Header navigation={navigation} 
@@ -37,8 +48,8 @@ const Scholarships = ({navigation}: {navigation: Navigation}) =>{
     />
     <Tabs
         tabData={[
-          {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} data = {data} />},
-          {label: 'Eligibility', comp : <Eligibility  navigation={navigation} data = {data} />},
+          {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} data = {data} onClickApply = {onClickApply}/>},
+          {label: 'Eligibility', comp : <Eligibility  navigation={navigation} data = {data} onClickApply = {onClickApply}/>},
         ]}
       />
     </>

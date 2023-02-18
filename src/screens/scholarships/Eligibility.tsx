@@ -15,7 +15,7 @@ import {ApiMethods} from '@constant/common.constant';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 
-function Eligibility({navigation, data}:{navigation: Navigation, data:any}) {
+function Eligibility({navigation, data, onClickApply}:{navigation: Navigation, data:any, onClickApply:any}) {
   const [eledata, setEleData]: any = useState({});
   useEffect(() => {
     getData();
@@ -29,17 +29,17 @@ function Eligibility({navigation, data}:{navigation: Navigation, data:any}) {
     }
   };
 
-  const onClickApply =() =>{
-    navigation.navigate("Confirmation",{
-      id:2,
-      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
-      time: '',
-      imgPara: 'Congratulations!',
-      para1: 'Your scholarship application was submitted successfully!',
-      para2: 'We will evaluate your application and respond as soon as possible.'
+  // const onClickApply =() =>{
+  //   navigation.navigate("Confirmation",{
+  //     id:2,
+  //     heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
+  //     time: '',
+  //     imgPara: 'Congratulations!',
+  //     para1: 'Your scholarship application was submitted successfully!',
+  //     para2: 'We will evaluate your application and respond as soon as possible.'
  
-    });
-  }
+  //   });
+  // }
   const renderItem =({item,index})=>{
   return(
     <View style={styles.row} key={index}>

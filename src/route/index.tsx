@@ -40,6 +40,8 @@ import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
+import ScholarshipConfirmation from '../screens/scholarships/ScholarshipConfirmation';
+
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -215,7 +217,11 @@ function Routes() {
             component={SampleProfile}
             options={{headerShown: false}}
           />
-          
+          <Stack.Screen
+            name="ScholarshipConfirmation"
+            component={ScholarshipConfirmation}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

@@ -10,18 +10,10 @@ import {styles}  from './styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
-function AboutScholarship({navigation, data}: {navigation: Navigation, data:any}) {
-  const onClickApply =() =>{
-    navigation.navigate('ApplyScholorship',{
-      id:2,
-      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
-      time: '',
-      imgPara: 'Congratulations!',
-      para1: 'Your scholarship application was submitted successfully!',
-      para2: 'We will evaluate your application and respond as soon as possible.'
- 
-    });
-  }
+function AboutScholarship({navigation, data, onClickApply}: {navigation: Navigation, data:any, onClickApply:any}) {
+  // const onClickApply =() =>{
+  //   navigation.navigate('ApplyScholorship',{data});
+  // }
 
   
   return (
