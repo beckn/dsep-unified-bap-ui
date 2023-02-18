@@ -6,11 +6,13 @@ import { ENDPOINT } from '@services/endpoints';
 import { styles } from './styles';
 import { ScholarshipCard, SearchBox, Tabs } from '@components';
 import Header from './Header';
+import {Navigation} from '@interfaces/commonInterfaces';
 
-const ScholarshipListScreen = ({ navigation }) => {
+const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-
+  const { scholortitle } = route.params;
+  console.log(scholortitle);
   const onSearch = (value: string) => {
     setSearch(value);
 
@@ -47,7 +49,7 @@ const ScholarshipListScreen = ({ navigation }) => {
   }
 
   const getData = async (data) => {
-    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, data);
+    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, scholortitle);
     if (resp?.status === 200) {
       setData(resp.data);
     } else {
@@ -60,7 +62,7 @@ const ScholarshipListScreen = ({ navigation }) => {
         heading='Scholarships & Grants'
       />
       <View style={styles.searchBoxContainer}>
-        <SearchBox value={search} onSearch={onSearch} />
+        {/* <SearchBox value={search} onSearch={onSearch} /> */}
       </View>
       <Tabs
         tabData={[

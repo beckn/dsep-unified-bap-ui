@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
 import DetailHeader from '@components/DetailHeader';
@@ -11,11 +11,17 @@ import {ICONS, SVGIcon} from '@components/SvgIcon';
 import {Fonts} from '@styles/fonts';
 import Tabs from '@components/Tabs';
 import { commonStyles } from '@styles/commonStyles';
+import { callService } from '@services/';
+import { ApiMethods } from '@constant/common.constant';
+import { ENDPOINT } from '@services/endpoints';
+import { useMentorContext } from '@context';
 
 const MentorAvailableDate = ({navigation}) => {
   const [inititalDate, setInitialDate] = useState(
     moment(new Date(), 'YYYY-MM-DD').local(),
   );
+  const {selectedMentorData} = useMentorContext();
+  const markedDate = moment(selectedMentorData.timingStart).format('YYYY-MM-DD')
 
   const Arrow = direction => {
     return direction.direction == 'right' ? (
@@ -32,7 +38,7 @@ const MentorAvailableDate = ({navigation}) => {
   const CalendarComp = () => {
     return (
       <View style={styles.calendarContainer}>
-        <Calendar
+   <Calendar
           theme={{
             calendarBackground: Colors.background,
             dayTextColor: Colors.descText,
@@ -40,7 +46,6 @@ const MentorAvailableDate = ({navigation}) => {
             textDisabledColor: Colors.descText,
             textDayFontFamily: Fonts.family.DM_SANS_REGULAR,
             textDayFontWeight: Fonts.weight.w4,
-            textDayFontSize: Fonts.size.base,
             textSectionTitleColor: Colors.cardTitle,
             textDayHeaderFontFamily: Fonts.family.DM_SANS_REGULAR,
             textDayHeaderFontWeight: Fonts.weight.bold,
@@ -49,7 +54,7 @@ const MentorAvailableDate = ({navigation}) => {
           disabledByDefault={true}
           disableAllTouchEventsForDisabledDays={true}
           initialDate={inititalDate.toString()}
-          minDate={inititalDate.toString()}
+          // minDate={inititalDate.toString()}
           firstDay={1}
           onDayPress={day => {
             navigation.navigate("MentorSlotList")
@@ -78,28 +83,8 @@ const MentorAvailableDate = ({navigation}) => {
           renderArrow={direction => <Arrow direction={direction} />}
           markingType={'custom'}
           markedDates={{
-            '2023-02-02': {
-              disabled: false,
-              customStyles: {
-                container: styles.availableDateContainer,
-                text: styles.availableDateText,
-              },
-            },
-            '2023-02-09': {
-              disabled: false,
-              customStyles: {
-                container: styles.availableDateContainer,
-                text: styles.availableDateText,
-              },
-            },
-            '2023-02-16': {
-              disabled: false,
-              customStyles: {
-                container: styles.availableDateContainer,
-                text: styles.availableDateText,
-              },
-            },
-            '2023-02-23': {
+      
+           [markedDate]: {
               disabled: false,
               customStyles: {
                 container: styles.availableDateContainer,
@@ -119,15 +104,10 @@ const MentorAvailableDate = ({navigation}) => {
     <View style={styles.container}>
       <NavBar hasBackArrow={true} hasRightIcon={true} rightIconName={ICONS.IC_OPTIONS} title={'Mentoring'} />
       <DetailHeader
-        title="Mentor name"
+        title= {selectedMentorData.mentor.name}
         description="Frontend Architect | Founder - ABC company"
       />
-      <Tabs
-        tabData={[
-          {label: 'Tutoring', comp: <CalendarComp />},
-          {label: 'Rating', comp: <View />, rating : '4.9'},
-        ]}
-      />
+      <CalendarComp />
       <View style={commonStyles.flex1}></View>
     </View>
   );

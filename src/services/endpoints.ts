@@ -8,5 +8,9 @@ export const ENDPOINT = {
   MENTORSHIP_SELECT: "/mentorship/select",
   SCHOLARSHIP_SEARCH: "/scholarship/search",  
   GET_SCHOLARSHIPS:'/scholarship/search',
-  CONFIRM_SCHOLARSHIP:'/scholarship/confirm'
+  CONFIRM_SCHOLARSHIP:'/scholarship/confirm',
+  GET_MENTOR: '/mentorship/search',
+  SEARCH_MENTORSHIP: '/mentorship/search',
+  SELECT_MENTORSHIP: '/mentorship/select',
+  CONFIRM_MENTORSHIP: '/mentorship/confirm'
 };

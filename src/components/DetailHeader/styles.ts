@@ -51,7 +51,6 @@ export const styles = StyleSheet.create<Styles>({
     borderBottomColor: Colors.black10
   },
   ratingContainer: {
-    flex:1,
     justifyContent: 'flex-end',
     paddingBottom: 12,
     paddingRight: 30,

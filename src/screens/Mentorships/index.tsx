@@ -7,15 +7,16 @@ import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 import NavBar from '@components/Navbar';
 import DetailHeader from '@components/DetailHeader';
-const Mentorships = ({navigation}: {navigation: Navigation}) =>{
+const Mentorships = ({navigation,route }: {navigation: Navigation}) => {
   const [data, setData]: any = useState({});
+  const {mentorshipId} = route.params
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
     const resp = await callService(ApiMethods.POST,ENDPOINT.MENTORSHIP_SELECT,
       {
-        "mentorshipId": "63e6065223df082856936335",
+        "mentorshipId": mentorshipId,
         "context": {
           "transactionId": "bdb5ba09-2241-4f00-b434-73466cd06228",
           "bppId": "dev.elevate-apis.shikshalokam.org/bpp",
@@ -25,7 +26,6 @@ const Mentorships = ({navigation}: {navigation: Navigation}) =>{
     );
     if (resp?.status == 200) {
       setData(resp?.data);
-      console.log('resp?.data---Mentorships>>>',resp?.data.mentorshipProvider);
     } else {
       console.log(resp);
     }

@@ -28,7 +28,7 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
           <Text style={styles.heading}>{'Job Description'}</Text>
           <Spacer size={5}/>
           <Text>
-            {data?.selectedJobs[0]?.description}
+            {data?.selectedJobs[0]?.description != undefined ? data?.selectedJobs[0]?.description : ""}
           </Text>
         <Spacer size={10} />
 
@@ -48,7 +48,10 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
         <Spacer />
         <View style={styles.card}>
           <Text style={styles.heading}>{'Qualification'}</Text>
-          <Text>{data?.selectedJobs[0]?.educationalQualifications[0]?.qualification[0].value}{' '}{'Degree'}</Text>
+          <Text>
+    {data?.selectedJobs[0]?.educationalQualifications[0]?.qualification[0].value != undefined ? data?.selectedJobs[0]?.educationalQualifications[0]?.qualification[0].value: ""
+          }{' '}{'Degree'}
+          </Text>
         </View>
         <Spacer />
         <View style={styles.card}>

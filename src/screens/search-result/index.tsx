@@ -1,6 +1,6 @@
 import {ApiMethods} from '@constant/common.constant';
 import React, {useEffect, useState} from 'react';
-import {View, FlatList, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, FlatList, TextInput, TouchableOpacity, SafeAreaView, ActivityIndicator} from 'react-native';
 import { ICONS, Text, SVGIcon,  } from '@components';
 import Button from '@components/AppButton';
 import {callService} from '@services';
@@ -13,31 +13,44 @@ import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
+import {Navigation} from '@interfaces/commonInterfaces';
+import NavBar from '@components/Navbar';
+import Loader from '@components/Loader/Loader';
+import NoData from '@components/NoData';
 
-const SearchResultScreen = ({navigation}) => {
+const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
+  const { searchData } = route.params;
+  const [loader, setLoader] = useState(true);
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
   ]);
-  // console.log("Test data: "+SavedJSON);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
   const {list, selectedValue, setList, setSelectedValue} = useListView();
-
+  // console.log("checking list", JSON.stringify((list[0].jobs[0].jobId)))
   const onClickApply =(item) =>{
     setSelectedValue(item);
-    navigation.navigate("Jobs");
+    let reqdata =  {
+      "companyId": "1",
+      "jobs": {
+        "jobId": list?list[0].jobs[0].jobId : ""
+      } 
+    }
+    navigation.navigate("Jobs", {reqdata});
   }
   useEffect(() => {
     getData();
+    
   }, []);
-  // const onClickApply =() =>{
-  //   showModal();
-  // }
+  const onPress =() =>{
+    showModal();
+  }
   const ResultCards = () => {
     return (
       <FlatList
@@ -48,87 +61,39 @@ const SearchResultScreen = ({navigation}) => {
   };
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS,
-      {
-        "title": {
-          "key": "Engineering Manager"
-        },
-        "company": {
-          "name": "Google India",
-          "locations": [
-            {
-              "city": "Hyderabad"
-            },
-            {
-              "city": "Pune"
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "Python",
-            "code": "Flutter"
-          }
-        ]
-      });
+    setLoading(true);
+    const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
     if (resp?.status === 200) {
+      console.log("check search data", searchData)
+      
       setData(resp?.data.jobResults);
       setList(resp?.data.jobResults)
+      setLoading(false);
     } else {
-      console.log(resp);
+       console.log(resp);
     }
   };
   return (
     <SafeAreaView  style={styles.container}>
+      {loading?( 
+        <Loader />
+      ):((list.length == undefined)?(
+        <View>
+ <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title=""   />
+ <NoData message= {"No Data found"} />
+ </View> 
+ ):(
     <View >
       <Header navigation={navigation} 
     heading='UX Designer'
-    onPress={onClickApply}
+    onPress={onPress}
     count = {list.length}
     />
    
   <ResultCards/>
-    {/* <View style={styles.container}>
-      <Header heading={'Purchase History'} />
-      {/* <View style={styles.dropdownContainer}>
-        <Dropdown
-          data={dropdownData}
-          onSelect={value => console.log('selected value:' + value)}
-        />
-      </View> */}
-      {/* <ResultCards />
-    </View> */} 
-    <Modal visible={visible} onDismiss={hideModal}
-     contentContainerStyle={containerStyle}
-     >
-          <Text>Search Jobs & InternShips.</Text>
-          <View style={{ alignItems:'center'}}>      
-            <TextInput style={styles.input}
-              placeholder="Enter Skills / designations / companies"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder=" Location "
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              <TextInput style={styles.input}
-              placeholder="Type here to Search !"
-              onFocus={ onFocus }
-              onChangeText={newText => showModal()}
-              // defaultValue={text} 
-              />
-              
-              </View>
-              <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
-       
-      </View> 
-        </Modal>
+   
         </View>
+        ))}
     </SafeAreaView>
   );
 };

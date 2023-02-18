@@ -13,14 +13,7 @@ import {Navigation} from '@interfaces/commonInterfaces';
 function AboutMentor({navigation, data}: {navigation: Navigation, data:any}) {
 
   const onClickApply =() =>{
-    navigation.navigate("Confirmation",{
-      id:3,
-      heading:'Mentor Name',
-      time: '12/12/2022 , 1.30pm',
-      imgPara: 'Yay!',
-      para1: 'You have successfully booked a slot with your mentor!',
-      para2: ""
-    });
+    navigation.navigate("MentorAvailableDate")
   }
   return (
    <ScrollView >
