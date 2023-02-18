@@ -12,46 +12,66 @@ import { useEffect } from 'react';
 import NavBar from '@components/Navbar';
 import DetailHeader from '@components/DetailHeader';
 import {Text} from '@components/Text';
+import Loader from '@components/Loader/Loader';
+import NoData from '@components/NoData';
+import {View, } from 'react-native';
 
-const Jobs = ({navigation}: {navigation: Navigation}) => {
+const Jobs = ({navigation, route}: {navigation: Navigation, route: any}) => {
+  const { reqdata } = route.params;
   const {setAboutCompany} = useJobsInternshipsView();
   const [data, setData]: any = useState();
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
+    console.log("check req in jobs", JSON.stringify(reqdata))
     const resp = await callService(ApiMethods.POST,ENDPOINT.SELECT_JOBS,
     {
-      "companyId": "1",
-      "jobs": {
-        "jobId": "1"
-      },
-      "context": {
-        "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-        "bppId": "affinidibpp.com",
-        "bppUri": "http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com"
-      }
+        "companyId": "1",
+        "jobs": {
+          "jobId": "0253719F295521CED39EC9C2F3C8DCDE"
+        },
+        "context": {
+          "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+         "bppId": "affinidi.com.bpp",
+          "bppUri": "https://6vs8xnx5i7.execute-api.ap-south-1.amazonaws.com/dsep"
+        }
+      // reqdata,
+      // "context": {
+      //   "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
+      //   "bppId": "affinidi.com.bpp",
+      //   "bppUri": "https://6vs8xnx5i7.execute-api.ap-south-1.amazonaws.com/dsep"
+      // }
     });
     if (resp?.status == 200) {
       console.log("check respone in jobs", JSON.stringify(resp.data))
       setData(resp?.data);
+      setLoader(false)
     } else {
+      setLoader(false)
       console.log(resp);
     }
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {(data == "")?(
-        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="data not found please go back"   />
-        // <Text>No Data found</Text>
+      {loader ? (
+        <Loader />
+      ) : ( (data == "")?(
+        <View>
+        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="No Data found"   />
+        <NoData message= {"No Data found"} />
+        </View> 
       ):(
     <>
        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title={data?.selectedJobs[0]?.role}  />
       <DetailHeader
         title={data?.company?.name}
         description={data?.selectedJobs[0]?.locations[0]?.city + ', ' +  data?.selectedJobs[0]?.locations[0]?.country}
-        heading={data?.selectedJobs[0].employmentInformation.employmentInfo[0].value}
+        heading={data?.selectedJobs[0].employmentInformation.name
+          //employmentInfo[0].value
+        }
         time=""
       />
       <Tabs
@@ -64,7 +84,8 @@ const Jobs = ({navigation}: {navigation: Navigation}) => {
         ]}
       />
     </>
-    )}
+    ) )
+  }
     </SafeAreaView>
   );
 };

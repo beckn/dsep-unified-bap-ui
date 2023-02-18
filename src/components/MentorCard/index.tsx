@@ -9,28 +9,37 @@ import {useNavigation} from '@react-navigation/native';
 type cardDetails = {
   data: Array<{[key: string]: string}>;
   index: number;
-  onPress?: () => void;
+  onPress?: (data : any) => void;
 };
 
 const MentorCard = ({data, index, onPress}: cardDetails) => {
-  const navigation = useNavigation();
-  return (
-    <TouchableOpacity style={styles.card} key={index} onPress={onPress}>
-      <View style={styles.imageView} />
-      <View style={styles.cardSpacing}>
-        <Text
-          style={styles.nameStyle}
-          fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-          {'Akshay shinde'}
-        </Text>
-        <Text
-          style={styles.designationText}
-          fontFamily={Fonts.family.DM_SANS_REGULAR}>
-          {'Frontend Architect | Founder - ABC company'}
-        </Text>
-        <Rating rating={'4.9'} />
-      </View>
-    </TouchableOpacity>
-  );
+  const navigation = useNavigation();  
+  return data?.mentorships.map((mentorshipsData) => {
+      return mentorshipsData.mentorshipSessions.map((mentorData) => {
+        console.log("mentorData",mentorData)
+         return (
+          <TouchableOpacity style={styles.card} key={index} onPress={() => onPress({  ...mentorData ,mentorshipId : mentorshipsData.id  })}>
+            <View style={styles.imageView} />
+            <View style={styles.cardSpacing}>
+              <Text
+                style={styles.nameStyle}
+                fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
+                {mentorData.mentor.name}
+              </Text>
+              <Text
+                style={styles.designationText}
+                fontFamily={Fonts.family.DM_SANS_REGULAR}>
+                {'Frontend Architect | Founder - ABC company'}
+              </Text>
+              <Rating rating={mentorData.mentor.rating}/>
+            </View>
+          </TouchableOpacity>
+         )
+   
+      })
+
+    })
+  
+  
 };
 export default MentorCard;

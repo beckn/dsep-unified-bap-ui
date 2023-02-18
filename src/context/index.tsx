@@ -10,6 +10,7 @@ import {
   JobsInternshipsContext
 } from './JobsInternshipsContext';
 import { UserProfileDetailsProvider, userSkillView } from './userProfileContext';
+import { useMentorContext,MentorContext,MentorProvider} from './MentorContext'
 
 export {
   ThemeContext,
@@ -22,5 +23,9 @@ export {
   ListViewContext,
   useJobsInternshipsView,
   JobsInternshipsViewProvider,
-  JobsInternshipsContext
+  JobsInternshipsContext,
+  useMentorContext,
+  MentorContext,
+  MentorProvider
+
 };

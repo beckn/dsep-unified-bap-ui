@@ -15,10 +15,12 @@ import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
 import {Navigation} from '@interfaces/commonInterfaces';
 import NavBar from '@components/Navbar';
-
+import Loader from '@components/Loader/Loader';
+import NoData from '@components/NoData';
 
 const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
   const { searchData } = route.params;
+  const [loader, setLoader] = useState(true);
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
@@ -31,13 +33,20 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
   const {list, selectedValue, setList, setSelectedValue} = useListView();
-
+  // console.log("checking list", JSON.stringify((list[0].jobs[0].jobId)))
   const onClickApply =(item) =>{
     setSelectedValue(item);
-    navigation.navigate("Jobs");
+    let reqdata =  {
+      "companyId": "1",
+      "jobs": {
+        "jobId": list?list[0].jobs[0].jobId : ""
+      } 
+    }
+    navigation.navigate("Jobs", {reqdata});
   }
   useEffect(() => {
     getData();
+    
   }, []);
   const onPress =() =>{
     showModal();
@@ -67,10 +76,13 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
   return (
     <SafeAreaView  style={styles.container}>
       {loading?( 
-        <ActivityIndicator />
+        <Loader />
       ):((list.length == undefined)?(
- <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="data not found please go back"   />
-      ):(
+        <View>
+ <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title=""   />
+ <NoData message= {"No Data found"} />
+ </View> 
+ ):(
     <View >
       <Header navigation={navigation} 
     heading='UX Designer'
