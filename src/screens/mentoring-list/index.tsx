@@ -7,18 +7,20 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import SearchBox from '@components/SearchBox';
 import MentorCard from '@components/MentorCard';
+import {Navigation} from '@interfaces/commonInterfaces';
 import {useMentorContext} from '@context';
 import Loader from '@components/Loader/Loader';
 import { Text } from '@components/Text';
 import NoData from '@components/NoData';
 
-const MentoringListScreen = ({navigation}) => {
+const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
+  const { mentor } = route.params;
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(true);
   const {setMentorlist, mentorList, setSelectedMentorData, selectedMentorData} =
     useMentorContext();
-  console.log('mentorList', mentorList);
-
+  console.log('mentorList', JSON.stringify(mentorList));
+  // const [loader, setLoader] = useState(true);
   useEffect(() => {
     getData();
   }, []);
@@ -50,15 +52,15 @@ const MentoringListScreen = ({navigation}) => {
   const getData = async () => {
     const resp = await callService(
       ApiMethods.POST,
-      ENDPOINT.SEARCH_MENTORSHIP,
-      {
-        sessionTitle: {
-          key: 'Management',
-        },
-        mentor: {
-          name: 'joffin',
-        },
-      },
+      ENDPOINT.SEARCH_MENTORSHIP, mentor
+      // {
+      //   sessionTitle: {
+      //     key: 'Management',
+      //   },
+      //   mentor: {
+      //     name: 'joffin',
+      //   },
+      // },
     );
     console.log('resp', JSON.stringify(resp));
     if (resp?.status === 200) {
@@ -73,7 +75,7 @@ const MentoringListScreen = ({navigation}) => {
   const setMentorshipData = data => {
     setSelectedMentorData(data);
     navigation.navigate('Mentorships', {
-      mentorshipId: selectedMentorData.mentorshipId,
+      "mentorshipId": selectedMentorData.mentorshipId,
     });
   };
 
