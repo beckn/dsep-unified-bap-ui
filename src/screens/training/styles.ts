@@ -167,14 +167,13 @@ export const styles = StyleSheet.create<Styles>({
     },
     course: {
     flexDirection: 'row', 
-    alignItems:'center'
     },
   dot: {
     height:3, 
     width:3, 
     backgroundColor: Colors.black, 
     borderRadius: Metrics.radius.large,
-    top:1
+    top:"2.4%",
   },
   left:{
     left: Metrics.padding.small, 

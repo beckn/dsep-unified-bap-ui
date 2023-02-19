@@ -9,26 +9,11 @@ import {
 import Button from '@components/AppButton';
 import {styles}  from './styles';
 import {Navigation} from '@interfaces/commonInterfaces';
-import TrainingDescriptionJSON from '../../data/training-description.json';
-import {ApiMethods} from '@constant/common.constant';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
 import Spacer from '@components/Spacer';
+import Loader from '@components/Loader/Loader';
 
-function Description({navigation}: {navigation: Navigation}) {
-  const [data, setData]: any = useState({});
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(TrainingDescriptionJSON);
-    } else {
-      console.log(resp);
-    }
-  };
 
+function Description({navigation, data, loader}: {navigation: Navigation, data:any,loader:boolean}) {
 
   const onClickBuyNow =() =>{
     navigation.navigate("Debit")
@@ -36,24 +21,26 @@ function Description({navigation}: {navigation: Navigation}) {
 
   return (
    <ScrollView style={styles.container}>
+     
      <SafeAreaView style={styles.container}>
+     {loader && <Loader />}
       <View style={styles.body}>
         <Spacer />
         <Text style={styles.heading}>{'About thr Course'}</Text>
         <Spacer />
-        <Text>{data.para1}</Text>
+        <Text>{data?.course?.description}</Text>
         <Spacer />      
-        <Text>{data.para2}</Text>
-        <Spacer /> 
+        {/* <Text>{data?.para2}</Text>
+        <Spacer />  */}
         <Text style={styles.heading}>{'Course Highlights'}</Text>
         <Spacer />
         <FlatList 
-         data={data.courses}
+         data={data?.courseDetails?.courseHighlights}
          renderItem ={({item, index})=>{
           return<>
            <View style={styles.course} key={index}>
             <View style={styles.dot}></View>
-            <Text style={styles.left}>{item.name}</Text>
+            <Text style={styles.left}>{item.value}</Text>
            </View>
           </>
          }}
@@ -62,31 +49,31 @@ function Description({navigation}: {navigation: Navigation}) {
         <Text style={styles.heading}>{'General Information'}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Duration'}</Text>
-        <Text>{data.duration}</Text>
+        <Text>{data?.course.duration}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Language'}</Text>
-        <Text>{data.language}</Text>
+        <Text>{data?.language}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Number of enrollments'}</Text>
-        <Text>{data.enrollments}</Text>
+        <Text>{data?.enrollments}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Specialization'}</Text>
-        <Text>{data.specialization}</Text>
+        <Text>{data?.specialization}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Course Creator'}</Text>
-        <Text>{data.course}</Text>
+        <Text>{data?.courseDetails?.instructors}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Provider'}</Text>
-        <Text>{data.provider}</Text>
+        <Text>{data?.course?.provider?.name}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Prerequisites'}</Text>
         <FlatList 
-         data={data.prerequisites}
+         data={data?.courseDetails?.prerequisites}
          renderItem ={({item, index})=>{
           return<>
            <View style={styles.course} key={index}>
             <Text style={styles.dot}>.</Text>
-            <Text style={styles.left}>{item.name}</Text>
+            <Text style={styles.left}>{item.value}</Text>
            </View>
           </>
          }}
@@ -94,19 +81,19 @@ function Description({navigation}: {navigation: Navigation}) {
        <Spacer />
         <Text style={styles.heading}>{'Eligibility'}</Text>
         <FlatList 
-         data={data.eligibility}
+         data={data?.courseDetails?.eligibility}
          renderItem ={({item, index})=>{
           return<>
            <View style={styles.course} key={index}>
             <Text style={styles.dot}>.</Text>
-            <Text style={styles.left}>{item.name}</Text>
+            <Text style={styles.left}>{item.value}</Text>
            </View>
           </>
          }}
         />
          <Spacer />
         <Text style={styles.heading}>{'Course Fees'}</Text>
-        <Text>{data.fees}</Text>
+        <Text>{data?.courseDetails?.price}</Text>
       </View>  
       <View style={styles.bottom}>
        <Button onPress={onClickBuyNow} text={'Buy Now'} type="dark"/>
