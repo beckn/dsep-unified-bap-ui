@@ -40,6 +40,9 @@ import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
+import ConfirmApplication from '../screens/jobs/ConfirmApplication';
+
+
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -213,6 +216,12 @@ function Routes() {
            <Stack.Screen
             name="SampleProfile"
             component={SampleProfile}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="ConfirmApplication"
+            component={ConfirmApplication}
             options={{headerShown: false}}
           />
           

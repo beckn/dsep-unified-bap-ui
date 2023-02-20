@@ -1,4 +1,6 @@
 export const BASE_URL = "https://api.dsep-bap-client.becknprotocol.io"
+export const PROFILE_BASE_URL = "https://api.dsep-bap-api.becknprotocol.io"
+
 export const ENDPOINT = {
   INIT_APLLICATION: "/job/init",
   SUBMIT_APLLICATION: "/job/confirm",
@@ -12,5 +14,7 @@ export const ENDPOINT = {
   GET_MENTOR: '/mentorship/search',
   SEARCH_MENTORSHIP: '/mentorship/search',
   SELECT_MENTORSHIP: '/mentorship/select',
-  CONFIRM_MENTORSHIP: '/mentorship/confirm'
+  CONFIRM_MENTORSHIP: '/mentorship/confirm',
+  SAVE_APPLIED_JOB_TO_PROFILE: '/user/item',
+  USER_RESUME: '/user/resume'
 };
