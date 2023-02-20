@@ -11,4 +11,8 @@ export const ENDPOINT = {
   USER_PROFILE: '/user/profile',
   MENTORSHIP_SELECT: '/mentorship/select',
   SCHOLARSHIP_SEARCH: '/scholarship/search',
+  GET_MENTOR: '/mentorship/search',
+  SEARCH_MENTORSHIP: '/mentorship/search',
+  SELECT_MENTORSHIP: '/mentorship/select',
+  CONFIRM_MENTORSHIP: '/mentorship/confirm',
 };

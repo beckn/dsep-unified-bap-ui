@@ -442,11 +442,11 @@ PODS:
     - React-perflogger (= 0.71.1)
   - RNCAsyncStorage (1.17.11):
     - React-Core
-  - RNFBApp (17.3.0):
-    - Firebase/CoreOnly (= 10.5.0)
+  - RNFBApp (16.7.0):
+    - Firebase/CoreOnly (= 10.3.0)
     - React-Core
-  - RNFBAuth (17.3.0):
-    - Firebase/Auth (= 10.5.0)
+  - RNFBAuth (16.7.0):
+    - Firebase/Auth (= 10.3.0)
     - React-Core
     - RNFBApp
   - RNGoogleSignin (9.0.2):
@@ -672,8 +672,8 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 311feb67600774723fe10eb8801d3138cae9ad67
   ReactCommon: 03be76588338a27a88d103b35c3c44a3fd43d136
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
-  RNFBApp: 13ca8ba0feba98d4bac2057884894dcf8eedf97f
-  RNFBAuth: 64013625ff1810a0af56ad7cdf6d93da36a4b06f
+  RNFBApp: aecfcdc0964d9bc0c5f7ba05efb50be724d8e8b3
+  RNFBAuth: e9d85018f54b3eb50f5031e2d76a833943b14205
   RNGoogleSignin: 22e468a9474dbcb8618d8847205ad4f0b2575d13
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902

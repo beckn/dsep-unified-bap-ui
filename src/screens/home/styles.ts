@@ -15,7 +15,7 @@ type Styles = {
   list: ViewStyle,
   centeredView: ViewStyle,
   modalView: ViewStyle,
-  
+  bottom: ViewStyle
 
 };
 
@@ -24,9 +24,14 @@ export const styles = StyleSheet.create<Styles>({
     flex: 1,
     backgroundColor: Colors.background,
   },
+  bottom: {
+    backgroundColor: Colors.white,
+     padding: Metrics.padding.medium,
+     width: 400
+  },
   listContainer: { padding: 10 },
   item:{
-    padding: 10,
+    padding: 5,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -87,7 +92,6 @@ centeredView: {
 },
 modalView: {
   margin: 10,
-  
   backgroundColor: 'white',
   borderRadius: 20,
   padding: 15,

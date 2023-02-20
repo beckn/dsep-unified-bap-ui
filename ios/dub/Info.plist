@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>dub</string>
+	<string>bap</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.911038214517-89h8tb5fao80lpp3la5mvo1s23kohsko</string>
+				<string>com.googleusercontent.apps.153318683305-81dn1043kkdhfh389m3p7rv07e1edng5</string>
 			</array>
 		</dict>
 	</array>
