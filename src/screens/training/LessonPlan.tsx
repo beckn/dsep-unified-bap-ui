@@ -11,7 +11,7 @@ import {ApiMethods} from '@constant/common.constant';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 
-function LessonPlan({navigation}){
+function LessonPlan({navigation, onClickBuyNow}){
   const [data, setData]: any = useState({});
   useEffect(() => {
     getData();
@@ -24,9 +24,9 @@ function LessonPlan({navigation}){
       console.log(resp);
     }
   };
-  const onClickBuyNow =(navigation) =>{
-    navigation.navigate('Debit')
-  }
+  // const onClickBuyNow =(navigation) =>{
+  //   navigation.navigate('Debit')
+  // }
 
   const renderLessionData = ({item, index})=>{
     return (<><View style={[styles.card, styles.row]} key={index}>

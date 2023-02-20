@@ -28,7 +28,7 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
 
   const navigateToSlotList = () => {
     // change the navigation here
-    navigation.navigate("Scholarships")
+    navigation.navigate("Scholarships",{name: "Undergraduation scholarship"})
   }
 
   const ScholarshipList = () => {
