@@ -40,6 +40,8 @@ import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
+import InitTraining from '../screens/training/Init';
+import ConfirmTraining from '../screens/training/Confirm';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -213,6 +215,16 @@ function Routes() {
            <Stack.Screen
             name="SampleProfile"
             component={SampleProfile}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="InitTraining"
+            component={InitTraining}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="ConfirmTraining"
+            component={ConfirmTraining}
             options={{headerShown: false}}
           />
           

@@ -13,11 +13,7 @@ import Spacer from '@components/Spacer';
 import Loader from '@components/Loader/Loader';
 
 
-function Description({navigation, data, loader}: {navigation: Navigation, data:any,loader:boolean}) {
-
-  const onClickBuyNow =() =>{
-    navigation.navigate("Debit")
-  }
+function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navigation, data:any,loader:boolean,onClickBuyNow:any}) {
 
   return (
    <ScrollView style={styles.container}>
