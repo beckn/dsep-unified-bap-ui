@@ -18,7 +18,7 @@ const ResultCard = ({item, onItemPressed}) => {
           <View style={styles.organizationDetails}>
             <Text style={styles.organizationName}>{item?.job_id?.comapny}</Text>
             <Text style={styles.organizationLocation}>
-              {`${item?.job_id?.city}, ${item.country}`}
+              {`${item?.job_id?.city}`}
             </Text>
           </View>
           <View style={styles.bookmarkIcon}>
@@ -26,7 +26,7 @@ const ResultCard = ({item, onItemPressed}) => {
           </View>
         </View>
         <View style={styles.detailsRow}>
-          <Text style={styles.roleName}>{item.skills}</Text>
+          <Text style={styles.roleName}>{item?.job_id?.role}</Text>
           <Text
             style={
               styles.roleAttributes
