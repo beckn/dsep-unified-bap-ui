@@ -12,5 +12,7 @@ export const ENDPOINT = {
   GET_MENTOR: '/mentorship/search',
   SEARCH_MENTORSHIP: '/mentorship/search',
   SELECT_MENTORSHIP: '/mentorship/select',
-  CONFIRM_MENTORSHIP: '/mentorship/confirm'
+  INIT_MENTORSHIP: '/mentorship/init',
+  CONFIRM_MENTORSHIP: '/mentorship/confirm',
+  SEARCH_COURSE: '/course/search'
 };

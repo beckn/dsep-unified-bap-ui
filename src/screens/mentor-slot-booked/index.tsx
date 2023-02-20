@@ -10,6 +10,7 @@ import Button from '@components/Button';
 import {Colors} from '@styles/colors';
 import NavBar from '@components/Navbar';
 import { useMentorContext } from '@context';
+import moment from 'moment';
 
 const SlotBookedScreen = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -34,7 +35,7 @@ const SlotBookedScreen = ({navigation}) => {
       <DetailHeader
         borderBottom={true}
         title= {selectedMentorData.mentor.name}
-        description="Frontend Architect | Founder - ABC company"
+        description= {`Date & time : ${moment(selectedMentorData.timingStart).format('DD/MM/YYYY, hh:mm A')}`}
       />
       <SuccessCard
         title={'Yay!'}

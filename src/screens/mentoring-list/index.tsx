@@ -10,49 +10,30 @@ import MentorCard from '@components/MentorCard';
 import {Navigation} from '@interfaces/commonInterfaces';
 import {useMentorContext} from '@context';
 import Loader from '@components/Loader/Loader';
-import { Text } from '@components/Text';
 import NoData from '@components/NoData';
 
-const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
-  const { mentor } = route.params;
-  const [data, setData] = useState([]);
+const MentoringListScreen = ({
+  navigation,
+  route,
+}: {
+  navigation: Navigation;
+  route: any;
+}) => {
+  const {mentor} = route.params;
   const [loader, setLoader] = useState(true);
-  const {setMentorlist, mentorList, setSelectedMentorData, selectedMentorData} =
-    useMentorContext();
-  console.log('mentorList', JSON.stringify(mentorList));
+  const [data, setData] = useState([]);
+  const {setSelectedMentorData, selectedMentorData,setTransactionId} = useMentorContext();
+  console.log('data', JSON.stringify(data));
   // const [loader, setLoader] = useState(true);
   useEffect(() => {
     getData();
   }, []);
 
-  const navigateToAvailableDate = () => {
-    navigation.navigate('MentorAvailableDate');
-  };
-
-  const List = () => {
-    return (
-      <FlatList
-        data={data}
-        renderItem={({item, index}) => (
-          <MentorCard
-            data={item}
-            index={index}
-            onPress={navigateToAvailableDate}
-          />
-        )}
-        contentContainerStyle={styles.listContainer}
-      />
-    );
-  };
-
-  const Demo = () => {
-    return <View></View>;
-  };
-
   const getData = async () => {
     const resp = await callService(
       ApiMethods.POST,
-      ENDPOINT.SEARCH_MENTORSHIP, mentor
+      ENDPOINT.SEARCH_MENTORSHIP,
+      mentor,
       // {
       //   sessionTitle: {
       //     key: 'Management',
@@ -64,10 +45,11 @@ const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route
     );
     console.log('resp', JSON.stringify(resp));
     if (resp?.status === 200) {
-      setLoader(false)
-      setMentorlist(resp.data.mentorshipProviders);
+      setLoader(false);
+      setData(resp.data.mentorshipProviders);
+      setTransactionId(resp.data.context.transactionId);
     } else {
-      setLoader(false)
+      setLoader(false);
       console.log(resp?.message);
     }
   };
@@ -75,7 +57,7 @@ const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route
   const setMentorshipData = data => {
     setSelectedMentorData(data);
     navigation.navigate('Mentorships', {
-      "mentorshipId": selectedMentorData.mentorshipId,
+      mentorshipId: data.mentorshipId,
     });
   };
 
@@ -83,15 +65,13 @@ const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route
     <View style={styles.container}>
       {loader ? (
         <Loader />
-      ) : (
-    
-        mentorList.length > 0 ?
+      ) : data.length > 0 ? (
         <>
           <View style={styles.searchBoxContainer}>
             <SearchBox />
           </View>
           <FlatList
-            data={mentorList}
+            data={data}
             renderItem={({item, index}) => (
               <MentorCard
                 data={item}
@@ -101,10 +81,9 @@ const MentoringListScreen = ({navigation, route}: {navigation: Navigation, route
             )}
             contentContainerStyle={styles.listContainer}
           />
-        </> :
-        
-        <NoData message= {"No Data found"} />
-
+        </>
+      ) : (
+        <NoData message={'No Data found'} />
       )}
     </View>
   );

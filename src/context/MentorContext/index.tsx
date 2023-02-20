@@ -19,9 +19,11 @@ export interface IItemType {
 
 export interface Context {
   mentorList: IItemType[];
-  selectedMentor: IItemType | null;
-  setSelectedMentor: (args: IItemType) => void;
+  selectedMentorData: IItemType | null;
+  setSelectedMentorData: (args: IItemType) => void;
   setMentorlist: (args: IItemType[]) => void;
+  setTransactionId: (id : string) => void;
+  transactionId: string;
 }
 
 export const MentorContext = React.createContext({
@@ -29,6 +31,8 @@ export const MentorContext = React.createContext({
   selectedMentorData: null,
   setSelectedMentorData: (args: IItemType) => {},
   setMentorlist: (args: IItemType[]) => {},
+  setTransactionId: (id : string) => {},
+  transactionId: ""
 });
 
 export const useMentorContext = (): Context => React.useContext(MentorContext);
@@ -36,6 +40,7 @@ export const useMentorContext = (): Context => React.useContext(MentorContext);
 export function MentorProvider({children}): JSX.Element {
   const [mentorList, setMentorlist] = useState([]);
   const [selectedMentorData, setSelectedMentorData] = useState(null);
+  const [transactionId, setTransactionId] = useState("");
 
   console.log("mentorlistcon",mentorList)
 
@@ -46,6 +51,8 @@ export function MentorProvider({children}): JSX.Element {
         setMentorlist: setMentorlist,
         selectedMentorData: selectedMentorData,
         setSelectedMentorData: setSelectedMentorData,
+        setTransactionId: setTransactionId,
+        transactionId: transactionId
       }}>
       {children}
     </MentorContext.Provider>

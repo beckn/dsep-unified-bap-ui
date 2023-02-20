@@ -22,8 +22,9 @@ const Button: FunctionComponent<ButtonTypes> = ({
   return (
     <View
       style={[
-        { ...styles.defaultButtonStyle },
-        style
+        { ...styles.defaultButtonStyle ,opacity: disabled ? 0.5 : 1},
+        style,
+        
       ]}
     >
       <TouchableOpacity

@@ -7,9 +7,11 @@ import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 import NavBar from '@components/Navbar';
 import DetailHeader from '@components/DetailHeader';
+import { useMentorContext } from '@context';
 const Mentorships = ({navigation,route }: {navigation: Navigation}) => {
   const [data, setData]: any = useState({});
   const {mentorshipId} = route.params
+  
   useEffect(() => {
     getData();
   }, []);
@@ -30,14 +32,15 @@ const Mentorships = ({navigation,route }: {navigation: Navigation}) => {
       console.log(resp);
     }
   };
+  const {selectedMentorData} = useMentorContext();
     return(
     <>
      <NavBar hasBackArrow={true}  title ={'Mentoring'} hasSecondaryRightIcon ={true}  rightIconName ={''} />
       <DetailHeader
         // title={data?.company?.name}
         time=""
-        rating={data?.mentorshipProvider?.mentorships[0]?.mentorshipSessions[0]?.mentor?.rating}
-        title={data?.mentorshipProvider?.mentorships[0]?.mentorshipSessions[0]?.mentor?.name}
+        rating={selectedMentorData?.mentor?.rating}
+        title={selectedMentorData?.mentor?.name}
       />
     <Tabs
         tabData={[

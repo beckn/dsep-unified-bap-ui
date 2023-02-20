@@ -56,10 +56,10 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
    
     hideModal()
     navigation.navigate('ScholarshipList', {scholortitle});
-  }else if(selectedCatagory == "Scholarships & Grants"){
+  }else if(selectedCatagory == "Trainings & Courses"){
    
     hideModal()
-    navigation.navigate('ScholarshipList', {scholortitle});
+    navigation.navigate('TrainingList', {scholortitle});
   }else if(selectedCatagory == "Tutoring & Mentorship"){
   let mentor = {
     "sessionTitle": {

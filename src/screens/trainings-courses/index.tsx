@@ -37,9 +37,19 @@ const TrainingListScreen = ({navigation}) => {
   }
 
   const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
+    console.log("in")
+    const resp = await callService(ApiMethods.POST, ENDPOINT.SEARCH_COURSE,{
+        "courseTrainer": "Prof. Madhavan Mukund",
+        "providerInstitute": "IIT Delhi",
+        "courseTitle": "Machine Learning",
+        "courseState": "archived",
+        "credits": "gt 1",
+        "courseLanguage": "Hindi"
+      }
+    );
+    console.log("resp223",JSON.stringify(resp))
     if (resp?.status === 200) {
-      setData(resp.data);
+      setData(resp.data.courses);
     } else {
       console.log(resp?.message);
     }
@@ -52,12 +62,11 @@ const TrainingListScreen = ({navigation}) => {
       <View style={styles.searchBoxContainer}>
         <SearchBox />
       </View>
-      <Tabs
-        tabData={[
-          {label: 'Courses',comp : <TrainingList/>},
-          {label: 'Trainings', comp : <Demo/>},
-        ]}
-      />
+      <FlatList
+        data={data}
+        renderItem={({item, index}) => <TrainingCard data={item} index={index} onPress ={ navigateToSlotList} />}
+        contentContainerStyle={styles.listContainer}
+      /> 
 
     </View>
   );
