@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -13,11 +13,7 @@ import Spacer from '@components/Spacer';
 import Loader from '@components/Loader/Loader';
 
 
-function Description({navigation, data, loader}: {navigation: Navigation, data:any,loader:boolean}) {
-
-  const onClickBuyNow =() =>{
-    navigation.navigate("Debit")
-  }
+function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navigation, data:any,loader:boolean,onClickBuyNow:any}) {
 
   return (
    <ScrollView style={styles.container}>
@@ -30,8 +26,6 @@ function Description({navigation, data, loader}: {navigation: Navigation, data:a
         <Spacer />
         <Text>{data?.course?.description}</Text>
         <Spacer />      
-        {/* <Text>{data?.para2}</Text>
-        <Spacer />  */}
         <Text style={styles.heading}>{'Course Highlights'}</Text>
         <Spacer />
         <FlatList 
@@ -49,7 +43,7 @@ function Description({navigation, data, loader}: {navigation: Navigation, data:a
         <Text style={styles.heading}>{'General Information'}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Duration'}</Text>
-        <Text>{data?.course.duration}</Text>
+        <Text>{data?.course?.duration}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Language'}</Text>
         <Text>{data?.language}</Text>

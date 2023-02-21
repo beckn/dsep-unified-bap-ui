@@ -15,7 +15,7 @@ const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
   // const {name} = route.params;
   useEffect(() => {
     getData();
-  }, [9000]);
+  }, []);
   const getData = async () => {
     const resp = await callService(ApiMethods.POST,ENDPOINT.SELECT_TRAINING,
       {
@@ -38,11 +38,15 @@ const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
       setLoader(false)
     }
   };
+
+  const onClickBuyNow = () =>{
+    navigation.navigate("InitTraining", {data, loader})
+  }
   return (
     <>
    
     <Header navigation={navigation} 
-    heading={data.course.name}
+    heading={data?.course?.name}
     online= 'online'
     video = 'video & lecture'
     education={""}
@@ -50,8 +54,8 @@ const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
     />
     <Tabs
         tabData={[
-          {label: 'Description',comp : <Description navigation={navigation} data={data} loader={loader} />},
-          {label: 'LessonPlan', comp : <LessonPlan  navigation={navigation} />},
+          {label: 'Description',comp : <Description navigation={navigation} data={data} loader={loader} onClickBuyNow = {onClickBuyNow}/>},
+          {label: 'LessonPlan', comp : <LessonPlan  navigation={navigation} onClickBuyNow = {onClickBuyNow}/>},
         ]}
       />
     </>
