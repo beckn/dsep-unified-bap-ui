@@ -42,6 +42,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     let sk = skilitem.map(i => {return({"name":i, "code":i })})
     
     var searchData = {
+      "loggedInUserEmail": profileInfo?.profile?.email,
       "title": {
         "key": jobtitle
       },
@@ -104,14 +105,16 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <Text>Hello </Text>
       <Text style={styles.texttitle}> {profileInfo?.profile?.firstName} </Text></View>
       <View style={{ alignItems:'flex-end'}}>
-      <Icon
+      {/* <Icon
                 size={30}
                 name={'bell'}
                 // backgroundColor="#3b5998"
                 onPress={()=> navigation.navigate('Notification')}
                 >
                 
-            </Icon></View></View>
+            </Icon> */}
+            </View>
+            </View>
             <View style={{ alignItems:'center'}}>      
       <TextInput style={styles.input}
         placeholder="Type here to Search !"
@@ -147,7 +150,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             </View>
             </TouchableOpacity>
             <View>
-            <Text>{item.name}</Text></View>
+            <Text style={styles.texttitle}>{item.name}</Text></View>
             
           </View>
         )}

@@ -10,10 +10,11 @@ import Button from '@components/Button';
 import {Colors} from '@styles/colors';
 import NavBar from '@components/Navbar';
 import Spacer from '@components/Spacer';
+import { ReqContextView } from '@context';
 
 const JobConfirmation = ({navigation}) => {
   const [data, setData] = useState([]);
-
+  const { reqData, headerData,  } = ReqContextView();
   useEffect(() => {
     getData();
   }, []);
@@ -29,22 +30,20 @@ const JobConfirmation = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <NavBar hasBackArrow={true} hasRightIcon = {true} title={'UX Designer'} />
-       <DetailHeader
-        title="Facebook"
-        description="Bangalore, India"
-        heading="Senior Fulltime Remote"
-        time="1 days"
+      <NavBar hasBackArrow={true} hasRightIcon = {false} title={headerData.role} />
+      <DetailHeader
+        title={headerData.company}
+        description={headerData.location}
       />
       <SuccessCard
         title={'Successful'}
         primaryText={'Congratulations, your application has been sent'}
       />
       <View style={styles.buttonContainer}>
-        <Button title="BROWSE similar job" 
+        {/* <Button title="BROWSE similar job" 
          style={styles.goBackButton}
          labelStyle={{color: Colors.black}}
-        />
+        /> */}
         <Spacer size={20}/>
         <Button
         onPress={()=>navigation.navigate('Dashboard')}

@@ -26,6 +26,16 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
   const [resumeUri, setResumeUri] = useState('');
   const [fileName, setFileName] = useState('');
   const [fileType, setFileType] = useState('');
+
+
+  useEffect(() => {
+   if(skills.length  !=0 && languages.length != 0 ){
+    navigation.navigate("Dashboard");
+   }
+  }, []);
+
+
+
   const onClickApply = async () =>{
     console.log(fileType + resumeUri);
     let req = {
@@ -151,13 +161,15 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
         <View style={styles.bottomWorkEducationSection}>
           <View>
             <Text style={styles.sectionHeaderText}  >
-            {educationInfo?.educationProfile?.education}
+            { educationInfo?.educationProfile?.education }
             </Text>
             <Text style={[styles.sectionDetailText,styles.verticalMargin]}  >
             {educationInfo?.educationProfile?.collageName}
             </Text>
             <Text style={styles.sectionDetailText}  >
-            {educationInfo?.educationProfile?.startDate + ' ' + educationInfo?.educationProfile?.endDate}
+              
+            {(educationInfo?.educationProfile?.startDate != undefined ? educationInfo?.educationProfile?.startDate: '' )+ ' ' 
+            + (educationInfo?.educationProfile?.endDate != undefined ? educationInfo?.educationProfile?.endDate : '' )}
             </Text>
             <Text style={styles.sectionDetailText}  >
             {educationInfo?.educationProfile?.information}

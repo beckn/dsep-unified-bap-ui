@@ -19,7 +19,7 @@ function Header({navigation, heading, online, video, education, rating}){
          
         <Text style={styles.headerText}>{heading}</Text>
         <SVGIcon
-          name={ICONS.IC_SAVED}
+          name={ICONS.IC_SAVED2}
           fill={Colors.oliveBlack}
           style={{ marginRight: 10 }}
         />
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
     },
      headerText: {
       textAlign: 'center', 
-      fontWeight:'900'
+      fontWeight:'900',
+      width: 300
     },
     video: {
       flexDirection: 'row', 

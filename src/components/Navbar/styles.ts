@@ -26,7 +26,7 @@ export const styles = StyleSheet.create<Styles>({
     width:"10%",
   },
   titleContainer:{
-    width:'70%',
+    width:'80%',
     justifyContent:'center',
     alignItems: 'center',
   },

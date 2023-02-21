@@ -28,10 +28,9 @@ import Loader from '@components/Loader/Loader';
 
 
 function SubmitApplication({navigation, route}: {navigation: Navigation, route: any}) {
-    const { initContext } = route.params;
-    const { reqData, setreqData } = ReqContextView();
+    const { initContext, role, comp, loc } = route.params;
     const [upload , setUpload]= useState(true);
-    
+    const { reqData, headerData,  } = ReqContextView();
     const [singleFile, setSingleFile] = useState('');
     const [data, setData] = useState([]);
     const [init, setInit] = useState('init');
@@ -152,23 +151,24 @@ function SubmitApplication({navigation, route}: {navigation: Navigation, route: 
   return (
     <ScrollView>
       {loader ? (
-        <Loader />
+        <View style={{ alignItems:  'center', justifyContent: 'center', alignContent: 'center', paddingTop:200 }}>
+        <Loader /></View>
       ) :(
         <View>
       <SafeAreaView style={styles.container}>
       
-      <NavBar hasBackArrow={true} hasRightIcon = {false} title={'role'} />
+      <NavBar hasBackArrow={true} hasRightIcon = {false} title={headerData.role} />
       <DetailHeader
         // rating="4.9"
-        title="Facebook"
-        description="Bangalore, India"
-        heading="Senior Fulltime Remote"
+        title={headerData.company}
+        description={headerData.location}
+        //heading="Senior Fulltime Remote"
         // time="1 days"
       />
       <View style={styles.body}>
-      <Text style={styles.heading}>{'Saved Resume'}</Text>
+      {/* <Text style={styles.heading}>{'Saved Resume'}</Text> */}
       <Spacer />
-      <View style={styles.saveResume}>
+      {/* <View style={styles.saveResume}>
         <View style={styles.resumeLeftPart}>
         <Image source={images.pdf}/>
         </View>
@@ -180,9 +180,9 @@ function SubmitApplication({navigation, route}: {navigation: Navigation, route: 
           <Text>{'14 Sep 2022 at 11:30 am'}</Text>
           </View>
         </View>
-      </View>
+      </View> */}
       <Spacer />
-      <Text style={{textAlign:'center'}}>{'or'}</Text>
+      {/* <Text style={{textAlign:'center'}}>{'or'}</Text> */}
       <Text style={styles.heading}>{'Upload  a New Resume'}</Text>
       <Spacer />
       <Text>{'Add your CV/Resume to apply for a job'}</Text>

@@ -63,7 +63,9 @@ function LoginScreen({navigation}) {
   };
   return (
     <View style={{}}>
-    <Spacer size={600}/>
+    <Spacer size={300}/>
+    <Text style={styles.headerText}>Unified BAP</Text>
+    <Spacer size={30}/>
       <View style={styles.bottom}>
         <TouchableOpacity
           onPress={() =>
@@ -79,7 +81,11 @@ function LoginScreen({navigation}) {
             width: 350,
             borderRadius: 5,
           }}>
-          <Image source={images.signin}></Image>
+          <View style={{flexDirection: 'row', }}>
+          <View style={{alignItems: 'baseline', paddingRight: 10}}>
+          <Image source={images.google} style={{width: 30, height:30}} ></Image></View>
+          <View style={{alignItems: 'baseline', paddingLeft: 10}} >
+          <Text style={{color: 'white', padding: 2, fontSize: 20}}>Sign in With Google</Text></View></View>  
         </TouchableOpacity>
        
       </View>

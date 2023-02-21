@@ -110,7 +110,10 @@ export const styles = StyleSheet.create<Styles>({
       },
       headerText: {
         textAlign: 'center', 
-        fontWeight:'900'
+        fontWeight:'900',
+        color: Colors.black,
+      fontSize: Fonts.size.extraLarge,
+      //fontWeight : 'bold'
       },
       video: {
         flexDirection: 'row', 

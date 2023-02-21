@@ -7,6 +7,9 @@ import { callService } from '@services';
 import { ENDPOINT } from '@services/endpoints';
 import { ApiMethods } from '@constant/common.constant';
 import Loader from '@components/Loader/Loader';
+import NavBar from '@components/Navbar';
+
+
 const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:any}) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -101,7 +104,8 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
     <ScrollView>
     <SafeAreaView style={{flex:1}}>
     {loader ? <Loader /> :  <View>
-         <Text>ApplyScholorship</Text>
+    <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title={selectData.scholarshipProviders[0].scholarships[0].name}  />
+        
          <View style={styles.container}>
          <TextInput onChangeText={(text)=>setName(text)} placeholder="Name" style={styles.inputStyle} />
          <TextInput onChangeText={(text)=>setAddress(text)} placeholder="Address" style={styles.inputStyle} />

@@ -8,6 +8,7 @@ import Description from '../screens/training/Description';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SearchResultScreen from '../screens/search-result';
 import SavedJobs from '../screens/saved-jobs';
+import AppliedJobs from '../screens/applied-jobs';
 const Tab = createBottomTabNavigator();
 
 const TabBarIcon = ({name, size}: {name: ICONS; size: number}) => (
@@ -29,7 +30,7 @@ export default function Dashboard() {
       />
       <Tab.Screen
         name="Applied"
-        component={AppliedScreen}
+        component={AppliedJobs}
         options={{
           tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_APPLIED, size}),
         }}

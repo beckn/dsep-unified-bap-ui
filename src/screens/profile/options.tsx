@@ -5,9 +5,15 @@ import {Colors} from '@styles/colors';
 import {Metrics} from "@styles/metrics";
 import {styles} from './styles';
 
-const Options = ({leftIcon, title, onPress })=>{
+const Options = ({leftIcon, title, onPress, backgroundColor })=>{
     return (
-        <TouchableOpacity onPress={onPress} style = {styles.optionsRow}>
+        <TouchableOpacity onPress={onPress} style = {{
+            backgroundColor: backgroundColor,
+            flexDirection:'row',
+            minHeight:Metrics.large,
+            margin:Metrics.small,
+            alignItems:'center'
+        }}>
             <SVGIcon 
                 name={leftIcon}
                 width={Metrics.large}

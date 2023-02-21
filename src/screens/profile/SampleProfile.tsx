@@ -64,7 +64,7 @@ const getProfile =async () =>{
     console.log("item-->>",item);
     setProfileInfo(item)
     console.log(profileInfo);
-    navigation.navigate("Dashboard");
+    navigation.navigate("Resume");
     setLoader(false)
   } else {
     setLoader(false)
