@@ -265,7 +265,7 @@ export const styles = StyleSheet.create<Styles>({
     height:40, 
     backgroundColor:'#ffffff', 
     
-    borderRadius:15
+    borderRadius:5
   },
   uplodedResume:{
     height: 91,

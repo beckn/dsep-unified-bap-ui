@@ -32,6 +32,7 @@ function LoginScreen({navigation}) {
     if (initializing) {
       setInitializing(false);
     }
+    
   }
 
   async function onGoogleButtonPress() {
@@ -44,6 +45,9 @@ function LoginScreen({navigation}) {
     AsyncStorage.setItem('accessToken', idToken);
     console.log('googleCredential===>>>', googleCredential);
     // Sign-in the user with the credential
+    if(idToken != ''){
+      navigation.navigate('SampleProfile')
+    }
     return auth().signInWithCredential(googleCredential);
   }
 
@@ -58,15 +62,8 @@ function LoginScreen({navigation}) {
       });
   };
   return (
-    <View>
-      <Text>LoginScreen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate('Dashboard')}
-      />
-
-      {/* <View style={{height:600}}></View> */}
-
+    <View style={{}}>
+    <Spacer size={600}/>
       <View style={styles.bottom}>
         <TouchableOpacity
           onPress={() =>
@@ -75,52 +72,20 @@ function LoginScreen({navigation}) {
             )
           }
           style={{
+            alignItems: 'center',
             backgroundColor: 'black',
             height: 50,
             padding: 10,
+            width: 350,
             borderRadius: 5,
           }}>
           <Image source={images.signin}></Image>
         </TouchableOpacity>
-        {/* <Button onPress={() =>
-          onGoogleButtonPress().then(() =>
-            console.log('Signed in with Google!'),
-          )
-        } text={'Google Sign-In'} type="dark" />
-        <Spacer size={10} /> */}
+       
       </View>
 
-      <Button
-        title="Go to  Profile"
-        onPress={() => navigation.navigate('ProfileScreen')}
-      />
-      <Button
-        title="Go to purchase history"
-        onPress={() => navigation.navigate('SearchResult')}
-      />
-      <Button
-        title="Go to saved jobs"
-        onPress={() =>
-          navigation.navigate('Dashboard', {
-            screen: 'Saved',
-          })
-        }
-      />
-      <View style={{height: 20}}></View>
-      <Button
-        title="Go to Notification"
-        onPress={() => navigation.navigate('Notification')}
-      />
-      <View style={{height: 20}}></View>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('SampleProfile')}
-      />
-       <View style={{height: 20}}></View>
-      <Button
-        title="Go to Training"
-        onPress={() => navigation.navigate('Training')}
-      />
+     
+     
     </View>
   );
 }

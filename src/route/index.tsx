@@ -40,6 +40,9 @@ import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
+import ConfirmApplication from '../screens/jobs/ConfirmApplication';
+
+
 import InitTraining from '../screens/training/Init';
 import ConfirmTraining from '../screens/training/Confirm';
 const Stack = createNativeStackNavigator();
@@ -68,6 +71,7 @@ function Routes() {
           component={LessonPlan}
           options={{headerShown: false}}
         />
+        
         <Stack.Screen
           name="Debit"
           component={Debit}
@@ -215,6 +219,12 @@ function Routes() {
            <Stack.Screen
             name="SampleProfile"
             component={SampleProfile}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="ConfirmApplication"
+            component={ConfirmApplication}
             options={{headerShown: false}}
           />
           <Stack.Screen
