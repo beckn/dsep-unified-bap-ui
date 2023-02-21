@@ -20,7 +20,6 @@ const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route:
     const { reqData, setreqData } = ReqContextView();
     const [init, setInit] = useState('init');
     const [loader, setLoader] = useState(false);
-    const [profileUrl, setProfileUrl] = useState("https://linkedin.com/john-doe");
     const {languages, skills, profileInfo} = userSkillView();
     const email = profileInfo.profile?.email ;
     console.log("check email", email)
@@ -138,35 +137,48 @@ const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route:
         <Loader />
       ) :(
       <View style={{ padding: 30, backgroundColor: 'white' }}>
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Confirm Application</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Role :</Text>
+      <Text style={styles.heading2}>Confirm Application</Text>
+      <Spacer size={30} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>Role :</Text>
       <Text> {respData?.initiatedJobs[0]?.role}</Text>
-      {/* <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Location :</Text>
-      <Text> {respData?.initiatedJobs[0]?.locations[0].city}</Text>
-      <Spacer size={10} /> */}
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Applicant Name :</Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>Applicant Name :</Text>
       <Text> {respData?.jobFulfillments[0]?.jobApplicantProfile.name}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>{respData?.initiatedJobs[0]?.employmentInformation?.employmentInfo[0].name} :</Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>{respData?.initiatedJobs[0]?.employmentInformation?.employmentInfo[0].name} :</Text>
       <Text> {respData?.initiatedJobs[0]?.employmentInformation?.employmentInfo[0].value}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>{respData?.initiatedJobs[0]?.compensation?.salaryInfo[0].name} : </Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>{respData?.initiatedJobs[0]?.compensation?.salaryInfo[0].name} : </Text>
       <Text> {respData?.initiatedJobs[0]?.compensation?.salaryInfo[0].value}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}> Linked in URL : </Text>
-      <Text> {respData?.initiatedJobs[0]?.compensation?.salaryInfo[0].value}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Resume : </Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}> Linked in URL : </Text>
+      <Text> {profileInfo.profile?.profileUrl}</Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>Resume : </Text>
       <Text> {resumeUri}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>Exp : </Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={{ fontWeight : 'bold',  }}>Exp : </Text>
       <Text> {exp}</Text>
-      <Spacer size={10} />
-      <Text style={{ fontWeight : 'bold', color: 'blue' }}>SOP : </Text>
+      </View>
+      <Spacer size={20} />
+      <View style={{ flexDirection: 'row'}}>
+      <Text style={styles.heading2}>SOP : </Text>
       <Text> {sop}</Text>
-      <Spacer size={10} />
+      </View>
+      <Spacer size={20} />
       <View style={styles.bottom}>
       <Button onPress={() => onClickApply('submit')} text={'SUBMIT APPLICATION'} type="dark" />
       </View>
