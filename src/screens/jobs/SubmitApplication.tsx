@@ -101,8 +101,8 @@ function SubmitApplication({navigation, route}: {navigation: Navigation, route: 
         setLoader(false);
       }
     }else{
-      alert("please complete profile")
-      navigation.navigate('SampleProfile');
+      alert("please provide Additional details")
+      navigation.navigate('Resume');
     }
     };
     

@@ -123,11 +123,12 @@ export const styles = StyleSheet.create<Styles>({
         flexDirection:'row'
       },
       bottom: {
-      
+       
         backgroundColor: Colors.white,
          padding: Metrics.padding.medium,
-         
-         bottom: 0,
+         alignItems: 'flex-end',
+       
+        
       },
       debitHalf :{
         height:'50%',

@@ -24,9 +24,10 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   const [location, setLocation] = useState("");
   const [skills, setSkills] = useState("");
   const [scholortitle, setScholorTitle] = useState("");
+  const [courseTitle, setCourseTitle] = useState("");
   const [sessiontitle, setSessionTitle] = useState("");
   const [mentortitle, setMentorTitle] = useState("");
-  // const {skills, setSkills} = userSkillView();
+  const {profileInfo} = userSkillView();
   const [data, setData] = useState([
     {"name" : "Jobs & Internships", "icon":images.bag},{"name" : "Trainings & Courses", "icon":images.Training},
     {"name" : "Scholarships & Grants", "icon":images.Scholar},{"name" : "Tutoring & Mentorship", "icon":images.Mentor},
@@ -56,10 +57,10 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
    
     hideModal()
     navigation.navigate('ScholarshipList', {scholortitle});
-  }else if(selectedCatagory == "Scholarships & Grants"){
+  }else if(selectedCatagory == "Trainings & Courses"){
    
     hideModal()
-    navigation.navigate('ScholarshipList', {scholortitle});
+    navigation.navigate('TrainingList', {courseTitle});
   }else if(selectedCatagory == "Tutoring & Mentorship"){
   let mentor = {
     "sessionTitle": {
@@ -94,20 +95,20 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0, height: 350, width: 400  };
+  const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0, alignItems: 'center', height: 350, width: 400  };
   return (
     <View style={styles.container}>
       <View style={styles.title}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 20}}>
       <View style={{ alignItems:'center'}}>
       <Text>Hello </Text>
-      <Text style={styles.texttitle}> Rajesh </Text></View>
+      <Text style={styles.texttitle}> {profileInfo?.profile?.firstName} </Text></View>
       <View style={{ alignItems:'flex-end'}}>
       <Icon
                 size={30}
                 name={'bell'}
                 // backgroundColor="#3b5998"
-                onPress={()=> Alert.alert("pressed")}
+                onPress={()=> navigation.navigate('Notification')}
                 >
                 
             </Icon></View></View>
@@ -156,7 +157,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       </View>
       {(selectedCatagory === 'Jobs & Internships')?(
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-        <Text>Search Jobs & InternShips.</Text>
+        <Text style={styles.texttitle}>Search Jobs & InternShips.</Text>
         <View style={{ alignItems:'center'}}>
         <TextInput style={styles.input}
             placeholder="Enter job title "
@@ -186,7 +187,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       ):(selectedCatagory === 'Scholarships & Grants')?
       (
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Search Scholorship</Text>
+          <Text style={styles.texttitle}>Search Scholorship</Text>
           <View style={{ alignItems:'center'}}>
           <TextInput style={styles.input}
               placeholder="Enter scholorship title "
@@ -198,9 +199,24 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
            </View> 
               </View>
         </Modal>  
+      ):(selectedCatagory === 'Trainings & Courses')?
+      (
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+          <Text style={styles.texttitle}>Search Course</Text>
+          <View style={{ alignItems:'center'}}>
+          <TextInput style={styles.input}
+              placeholder="Enter category "
+              value={courseTitle}
+              onChangeText={text => setCourseTitle(text)}
+              />      
+            <View style={styles.bottom}>
+            <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+           </View> 
+              </View>
+        </Modal>  
       ):(
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Search Mentor</Text>
+          <Text style={styles.texttitle}>Search Mentor</Text>
           <View style={{ alignItems:'center'}}>
           <TextInput style={styles.input}
               placeholder="Enter session title "
@@ -224,71 +240,5 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     </View>
   );
 }
-// const styles = StyleSheet.create({
-//   container: {
-//     marginTop: 10,
-//     backgroundColor: `#ffffff`
-//   },
-//   listcontainer: {
-   
-//     padding: 10
-    
-//   },
-//   item:{
-//     padding: 10,
-//     justifyContent: 'center',
-//     alignItems: 'center'
-//   },
-//   icon:{
-//     height: 90,
-//     width: 80,
-//     borderRadius: 15,
-//     padding: 25,
-//     alignItems: 'center',
-//     backgroundColor:  `#dcdcdc`, 
-//   },
-//   input: {
-//     height: 40,
-//     margin: 10,
-//     width: 300,
-//     borderWidth: 1,
-//     borderRadius: 15,
-//     padding: 10,
-//     backgroundColor:  `#f8f8ff`, 
 
-//   },
-//   feature: {
-//     height: 150,
-//     margin: 12,
-//     backgroundColor:  `#f8f8ff`,    
-//     padding: 10,
-//     borderRadius: 15,
-//   },
-// title : {
-//    height: 110, 
-//   //  borderRadius: 15,
-//    borderTopLeftRadius: 15,
-//    borderTopRightRadius: 15,
-//   //  padding: 10,
-//   //  margin: 12,
-//    alignItems: 'stretch',
-//    backgroundColor:  `#dcdcdc`,
-// },
-// texttitle : {
-//   fontWeight: 'bold',
-//   Color: `#000000`
-// },
-// list: {
-//   height: 130,
-//   flex: 1,
-//   // flexDirection: 'row',
-//   justifyContent: 'space-between',
-//   alignItems: 'center'
-
-// },
-// button: {
-
-
-// },
-// })
 export default HomeScreen;
