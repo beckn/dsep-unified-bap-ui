@@ -28,22 +28,22 @@ function AboutScholarship({navigation, data, loader}: {navigation: Navigation, d
         <Text style={styles.heading}>{'General Information'}</Text>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Name'}</Text>
-                 <Text>{data?.scholarshipProviders[0].scholarships[0].name}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0].name}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Description'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.description}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0]?.description}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Type'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.type}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0]?.scholarshipDetails?.type}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Scheme Provider Name'}</Text>
-                 <Text>{data?.scholarshipProviders[0].name}</Text>
+                 <Text>{data?.scholarshipProviders?.[0].name}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
@@ -53,17 +53,17 @@ function AboutScholarship({navigation, data, loader}: {navigation: Navigation, d
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Scheme Amount'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.amount.amount}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0]?.amount?.amount}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application Start Date'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationStartDate}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0]?.scholarshipDetails?.applicationStartDate}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application End Date'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationEndDate}</Text>
+                 <Text>{data?.scholarshipProviders?.[0]?.scholarships?.[0]?.scholarshipDetails?.applicationEndDate}</Text>
         </View>
         <Spacer size={20}/>
     </SafeAreaView>
