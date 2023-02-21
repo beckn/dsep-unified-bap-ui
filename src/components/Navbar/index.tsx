@@ -1,11 +1,11 @@
-import React from 'react';
-import {View} from 'react-native';
-import {SVGIcon, ICONS} from '@components/SvgIcon';
-import {styles} from './styles';
-import {Text} from '@components/Text';
-import {Fonts} from '@styles/fonts';
-import {useNavigation} from '@react-navigation/native';
-import {Navigation} from '@interfaces/commonInterfaces';
+import React from "react";
+import { View } from "react-native";
+import { SVGIcon, ICONS } from "@components/SvgIcon";
+import { styles } from "./styles";
+import { Text } from "@components/Text";
+import { Fonts } from "@styles/fonts";
+import { useNavigation } from "@react-navigation/native";
+import { Navigation } from "@interfaces/commonInterfaces";
 
 type NavabarDetails = {
   title?: string;
@@ -41,22 +41,23 @@ const NavBar = ({
         {title && (
           <Text
             fontFamily={Fonts.family.DM_SANS_REGULAR}
-            style={styles.titleText}>
+            style={styles.titleText}
+          >
             {title}
           </Text>
         )}
       </View>
       <View style={styles.rightIconContainer}>
-      {hasSecondaryRightIcon ? (
-        <View >
-          <SVGIcon name={ICONS.IC_SAVED} />
-        </View>
-      ) : null}
-      {hasRightIcon ? (
-        <View >
-          <SVGIcon name={ICONS.IC_SAVED} />
-        </View>
-      ) : null}
+        {hasRightIcon ? (
+          <View style={styles.rightIcon}>
+            <SVGIcon name={rightIconName} />
+          </View>
+        ) : null}
+        {hasSecondaryRightIcon ? (
+          <View style={styles.rightIcon}>
+            <SVGIcon name={secondaryRightIconName} />
+          </View>
+        ) : null}
       </View>
     </View>
   );

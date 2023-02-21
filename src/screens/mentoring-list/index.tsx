@@ -43,10 +43,11 @@ const MentoringListScreen = ({
       //   },
       // },
     );
-    console.log('resp', JSON.stringify(resp));
+    console.log('resp1', JSON.stringify(resp));
     if (resp?.status === 200) {
       setLoader(false);
       setData(resp.data.mentorshipProviders);
+      console.log("transactionId",resp.data.context.transactionId)
       setTransactionId(resp.data.context.transactionId);
     } else {
       setLoader(false);
@@ -55,7 +56,9 @@ const MentoringListScreen = ({
   };
 
   const setMentorshipData = data => {
+    console.log("data123",data)
     setSelectedMentorData(data);
+    // return
     navigation.navigate('Mentorships', {
       mentorshipId: data.mentorshipId,
     });

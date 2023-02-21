@@ -6,9 +6,12 @@ import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import {TrainingCard,SearchBox, Tabs} from '@components';
 import Header from './Header';
+import Loader from '@components/Loader/Loader';
+import NoData from '@components/NoData';
 
 const TrainingListScreen = ({navigation}) => {
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     getData();
@@ -50,23 +53,33 @@ const TrainingListScreen = ({navigation}) => {
     console.log("resp223",JSON.stringify(resp))
     if (resp?.status === 200) {
       setData(resp.data.courses);
+      setLoader(false)
     } else {
       console.log(resp?.message);
+      setLoader(false)
     }
   };
   return (
     <View style={styles.container}>
-      <Header navigation={navigation} 
-    heading='Training & Courses'
-    />
-      <View style={styles.searchBoxContainer}>
-        <SearchBox />
-      </View>
-      <FlatList
-        data={data}
-        renderItem={({item, index}) => <TrainingCard data={item} index={index} onPress ={ navigateToSlotList} />}
-        contentContainerStyle={styles.listContainer}
-      /> 
+      {
+        loader ? <Loader/> 
+        : data.length > 0 ? (
+          <>
+        <Header navigation={navigation} 
+        heading='Training & Courses'
+        />
+          <View style={styles.searchBoxContainer}>
+            <SearchBox />
+          </View>
+          <FlatList
+            data={data}
+            renderItem={({item, index}) => <TrainingCard data={item} index={index} onPress ={ navigateToSlotList} />}
+            contentContainerStyle={styles.listContainer}
+          /> 
+          </>):
+          <NoData message={'No Data found'} />
+      }
+     
 
     </View>
   );

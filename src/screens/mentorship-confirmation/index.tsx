@@ -7,7 +7,7 @@ import {Text} from '@components/Text';
 import NavBar from '@components/Navbar';
 import {useMentorContext} from '@context';
 import moment from 'moment';
-import {callService} from '@services';
+import {callService, profileApiCallInstance} from '@services';
 import {ApiMethods} from '@constant/common.constant';
 import {ENDPOINT} from '@services/endpoints';
 import Loader from '@components/Loader/Loader';
@@ -21,10 +21,10 @@ const MentorshipConfirmScreen = ({navigation}) => {
 
   const mentorshipData = [
     {
-      title: 'MentorShip Title',
+      title: 'Session Title',
       desc: selectedMentorData?.mentorshipName,
     },
-    {title: 'Mentorship Desc', 
+    {title: 'Session Desc', 
     desc: selectedMentorData?.mentorshipDesc},
     {
       title: 'Selected Slot',
@@ -61,10 +61,34 @@ const MentorshipConfirmScreen = ({navigation}) => {
     );
 
     if (resp?.status === 200) {
+      console.log("=====>",resp)
       setLoader(false);
-      navigation.navigate('MentorSlotBooked');
+      addSlotData()
+      // navigation.navigate('MentorSlotBooked');
     } else {
       setLoader(false);
+    }
+  };
+
+  const addSlotData = async () => {
+    const resp = await profileApiCallInstance.post( ENDPOINT.ADD_MENTORDATA+"test_user@gmail.com/save",{
+      "_id": "5f92cbf10cf217478ba93571",
+      "mentorship_id": "63e6298723df08285693637b",
+      "provider_id": "63d93aea62820fd9e6be9d1b",
+      "application_id": null,
+      "mentor": "John Doe 2",
+      "mentorRating": "4.2",
+      "mentorshipTitle\"": "Class Room Engineering Level 1",
+      "data": "Response object from select api",
+      "bpp_id": "dev.elevate-apis.shikshalokam.org/bpp",
+      "bpp_uri": "https://dev.elevate-apis.shikshalokam.org/bpp",
+      "created_at": "2023-01-27T07:10:30Z"
+    });
+    if (resp?.status === 200) {
+      console.log("implemented")
+      // setData(resp.data);
+    } else {
+      console.log(resp?.message);
     }
   };
 
@@ -76,7 +100,7 @@ const MentorshipConfirmScreen = ({navigation}) => {
       <DetailHeader
         rating="4.9"
         title={selectedMentorData?.mentor?.name}
-        description="Frontend Architect | Founder - ABC company"
+        description={selectedMentorData?.mentor?.experience}
       />
       <View style={styles.detailsView}>
         

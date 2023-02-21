@@ -19,7 +19,7 @@ export const styles = StyleSheet.create<Styles>({
     fontSize: Fonts.size.base,
     fontWeight: Fonts.weight.bold
   },
-  desc: {
+  desc:{
     color: Colors.cardDesc,
     fontSize: Fonts.size.base,
     fontWeight: Fonts.weight.w4

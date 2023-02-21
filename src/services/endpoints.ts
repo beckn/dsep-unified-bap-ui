@@ -1,7 +1,5 @@
-
+export const BASE_URL = "https://api.dsep-bap-client.becknprotocol.io"
 export const PROFILE_BASE_URL = "https://api.dsep-bap-api.becknprotocol.io"
-export const BASE_URL = 'https://api.dsep-bap-client.becknprotocol.io';
-export const BASE_URL_PROFILE = 'https://api.dsep-bap-api.becknprotocol.io';
 export const ENDPOINT = {
 
   INIT_APLLICATION: "/job/init",
@@ -28,4 +26,5 @@ export const ENDPOINT = {
   SELECT_TRAINING: '/course/select',
   INIT_TRAINING:'/course/init',
   CONFIRM_TRAINING:'/course/confirm',
+  ADD_MENTORDATA: '/user/item/mentorship/'
 };

@@ -27,10 +27,10 @@ const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
           <Text
             style={styles.designationText}
             fontFamily={Fonts.family.DM_SANS_REGULAR}>
-            {moment(data.duration).utc().format('mm:ss')}
+            {data.duration}
           </Text>
         </View>
-        <Text style={styles.provider}>by udemy</Text>
+        <Text style={styles.provider}>{"by " + data.provider.name}</Text>
       </View>
       
      

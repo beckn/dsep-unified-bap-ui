@@ -16,18 +16,11 @@ const SlotBookedScreen = ({navigation}) => {
   const [data, setData] = useState([]);
   const {selectedMentorData} = useMentorContext();
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   addSlotData();
+  // }, []);
 
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(resp.data);
-    } else {
-      console.log(resp?.message);
-    }
-  };
+
 
   return (
     <View style={styles.container}>
