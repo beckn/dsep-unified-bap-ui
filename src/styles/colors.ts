@@ -19,5 +19,6 @@ export const Colors = {
   slotText: '#150B3D',
   slotBg: "rgba(203,201,212,0.2)",
   antiFlashWhite: "#F0F0F0",
-  columbiaBlue: "#CED3DE"
+  columbiaBlue: "#CED3DE",
+  graniteGray : "#616161" 
 };

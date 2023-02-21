@@ -1,11 +1,11 @@
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
 import { Metrics } from '@styles/metrics';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type Styles = {
   card: ViewStyle,
-  imageView: ViewStyle,
+  imageView: ImageStyle,
   cardSpacing: ViewStyle,
   nameStyle: TextStyle,
   designationText: TextStyle,
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create<Styles>({
   imageView: {
     width: 126,
     height: 126,
-    backgroundColor: Colors.silverSand,
+    //backgroundColor: Colors.silverSand,
     borderRadius: Metrics.radius.large,
   },
   cardSpacing: {

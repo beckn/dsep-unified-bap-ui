@@ -9,7 +9,7 @@ const apiCallInstance = axios.create({
   timeout: 8000,
 });
 
-const profileApiCallInstance = axios.create({
+export const profileApiCallInstance = axios.create({
   baseURL: PROFILE_BASE_URL,
   timeout: 8000,
 });

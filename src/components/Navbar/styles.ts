@@ -7,6 +7,7 @@ type Styles = {
   container: ViewStyle;
   backArrowContainer:ViewStyle;
   rightIconContainer: ViewStyle;
+  rightIcon: ViewStyle;
   titleContainer: ViewStyle;
   titleText: ViewStyle;
 };
@@ -33,9 +34,11 @@ export const styles = StyleSheet.create<Styles>({
     width:'20%',
     paddingLeft:15,
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent:'space-between',
-    top: -14
+    //alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+  rightIcon: {
+    marginHorizontal: Metrics.margin.xSmall
   },
   titleText:{
     fontSize:Fonts.size.title,
