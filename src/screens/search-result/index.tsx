@@ -13,6 +13,7 @@ import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 import SearchListJson from '../../data/search-list.json';
 import { useListView } from '@context';
+import { ReqContextView } from '@context';
 import {Navigation} from '@interfaces/commonInterfaces';
 import NavBar from '@components/Navbar';
 import Loader from '@components/Loader/Loader';
@@ -25,7 +26,7 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     {label: 'Jobs & Internships', value: 'job-internships'},
     {label: 'Mentorship', value: 'mentorship'},
   ]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
@@ -33,16 +34,20 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
   const {list, selectedValue, setList, setSelectedValue} = useListView();
-  // console.log("checking list", JSON.stringify((list[0].jobs[0].jobId)))
+  const { reqData, setreqData } = ReqContextView();
   const onClickApply =(item) =>{
     setSelectedValue(item);
-    let reqdata =  {
-      "companyId": "1",
+    console.log("check search screen", JSON.stringify(data))
+    let reqdata1 =  {
+      "context": data,
+      "companyId": item.company.id,
       "jobs": {
-        "jobId": list?list[0].jobs[0].jobId : ""
+        "jobId": item.jobs[0].jobId
       } 
     }
-    navigation.navigate("Jobs", {reqdata});
+    setreqData(reqdata1)
+    console.log("check search screen", JSON.stringify(reqData))
+    navigation.navigate("Jobs");
   }
   useEffect(() => {
     getData();
@@ -64,9 +69,9 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     setLoading(true);
     const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
     if (resp?.status === 200) {
-      console.log("check search data", searchData)
+      // console.log("check search data", searchData)
       
-      setData(resp?.data.jobResults);
+      setData(resp?.data.context);
       setList(resp?.data.jobResults)
       setLoading(false);
     } else {

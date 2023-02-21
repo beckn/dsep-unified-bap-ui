@@ -7,10 +7,14 @@ import { styles } from './styles';
 import { ScholarshipCard, SearchBox, Tabs } from '@components';
 import Header from './Header';
 import {Navigation} from '@interfaces/commonInterfaces';
+import Loader from '@components/Loader/Loader';
+import NavBar from '@components/Navbar';
+import NoData from '@components/NoData';
 
 const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [loader, setLoader] = useState(true);
   const { scholortitle } = route.params;
   console.log(scholortitle);
   const onSearch = (value: string) => {
@@ -28,7 +32,7 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
 
   const navigateToSlotList = () => {
     // change the navigation here
-    navigation.navigate("Scholarships")
+    navigation.navigate("Scholarships",{dataFromSearch:data})
   }
 
   const ScholarshipList = () => {
@@ -49,15 +53,27 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
   }
 
   const getData = async (data) => {
-    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, scholortitle);
+    console.log('scholortitle',scholortitle)
+    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, {name: scholortitle,  loggedInUserEmail: "test.user@xyz.com"});
     if (resp?.status === 200) {
       setData(resp.data);
+      console.log('ScholarshipListScreen',resp.data);
+      
+      setLoader(false)
     } else {
       console.log(resp?.message);
+      setLoader(false)
     }
   };
   return (
     <View style={styles.container}>
+      {loader ? (<Loader />) : ((data == "" || data == null || data== undefined)?(
+        <View>
+        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title="No Data found"   />
+        <NoData message= {"No Data found"} />
+        </View> 
+      ):
+      (<>
       <Header navigation={navigation}
         heading='Scholarships & Grants'
       />
@@ -70,6 +86,9 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
           { label: 'Grants', comp: <Demo /> },
         ]}
       />
+      </>)
+      )}
+     
 
     </View>
   );

@@ -8,7 +8,15 @@ import {Navigation} from '@interfaces/commonInterfaces';
 function Description({navigation, data }: {navigation: Navigation, data: any}) {
 
   const onClickApply = () => {
-    navigation.navigate('SubmitApplication');
+    const initContext = {
+      "context": data.context,
+      "companyId": data?.company?.id,
+      "jobs": {
+        "jobId": data?.selectedJobs[0]?.jobId
+      },
+    }
+  
+    navigation.navigate('SubmitApplication', initContext);
   }
    const renderItem = ({item, index})=>{
     return(<>

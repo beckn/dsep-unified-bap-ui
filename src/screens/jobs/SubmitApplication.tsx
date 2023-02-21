@@ -22,97 +22,148 @@ import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 import context from '../../data/applyjob-context.json';
 import { userSkillView } from '@context';
+import DocumentPicker from 'react-native-document-picker';
+import { ReqContextView } from '@context';
+import Loader from '@components/Loader/Loader';
 
 
-function SubmitApplication({navigation}: {navigation: Navigation}) {
-    const [upload , setUpload]= useState(false);
+function SubmitApplication({navigation, route}: {navigation: Navigation, route: any}) {
+    const { initContext } = route.params;
+    const { reqData, setreqData } = ReqContextView();
+    const [upload , setUpload]= useState(true);
+    
+    const [singleFile, setSingleFile] = useState('');
     const [data, setData] = useState([]);
     const [init, setInit] = useState('init');
     const {languages, skills, profileInfo} = userSkillView();
+    const [loader, setLoader] = useState(false);
+    const [exp, setExp] = useState('');
+    const [sop, setSop] = useState('');
+    const [resumeUri, setResumeUri] = useState('');
+    const [fileName, setFileName] = useState('');
     const [profileUrl, setProfileUrl] = useState("https://linkedin.com/john-doe");
-    let con = {
-      "jobId": "1",
-      "context": {
-        "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-        "bppId": "affinidibpp.com",
-        "bppUri": "http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com"
-      },
-      "confirmation": {
-        "JobFulfillmentCategoryId": "1",
-        "jobApplicantProfile": {
-          "name":profileInfo.profile? profileInfo.profile.firstName : 'name empty',
-          "languages": languages,
+    
+    useEffect(() => {
+      // getData()
+    }, []);
+
+    const initContext2 = {
+     ...reqData,
+      "jobFulfillments": [
+        {
+          "JobFulfillmentCategoryId": "1",
+          "jobApplicantProfile": {
+            "name":profileInfo.profile? profileInfo.profile.firstName : 'name empty',
+            "languages": languages,
           "profileUrl": profileUrl,
-          "creds": [
-            {
-              "url": "https://cbse.nic.in/link/to/college-marksheet.json",
-              "type": "application/vc+json"
-            },
-            {
-              "url": "https://drive.google.com/link/to/pass-certificate.json",
-              "type": "application/vc+json"
-            },
-            {
-              "url": "https://digilocker.com/link/to/python-skill-certificate.json",
-              "type": "application/vc+json"
-            },
-            {
-              "url": "https://drive.google.com/link/to/python-skill-certificate.pdf",
-              "type": "application/pdf"
-            },
-            {
-              "url": "https://drive.google.com/link/to/experience-certificate.pdf",
-              "type": "application/pdf"
-            }
-          ],
           "skills": skills
+            
+          }
         }
+      ],
+      "additionalFormData": {
+        "submissionId": "123456",
+        "data": [
+          {
+            "formInputKey": "resume",
+            "formInputValue": resumeUri
+          },
+          {
+            "formInputKey": "exp-years",
+            "formInputValue": exp
+          },
+          {
+            "formInputKey": "sop",
+            "formInputValue": sop
+           }
+        ]
       }
     }
-    useEffect(() => {
-      // getData();
-    }, []);
-    const initApplication = async () => {
-      const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_APLLICATION, );
-      if (resp?.status === 200) {
-        setData(resp.data);
-      } else {
-        console.log(resp);
-      }
-    };
-    const submitApplication = async () => {
-      console.log("check context", JSON.stringify(con))
-      const resp = await callService(ApiMethods.POST, ENDPOINT.SUBMIT_APLLICATION, con);
-      if (resp?.status === 200) {
-        setData(resp.data);
-        console.log(resp.data);
-        if(resp.data.applicationId != ''){
-          navigation.navigate('JobConfirmation');
-        }
-      } else {
-        console.log(resp);
-      }
-    };
-  const onClickApply = (bid) => {
-    if(bid === 'init'){
-      alert("process init")
-      setInit('submit');
-      initApplication();
-    }else{
-    submitApplication();
     
+    const initApplication = async () => {
+      console.log("check init", JSON.stringify(initContext))
+      console.log("check req", JSON.stringify(initContext2))
+      if(languages.length > 0 ){
+      setLoader(true);
+      const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_APLLICATION, initContext2);
+      if (resp?.status === 200) {
+        setData(resp.data);
+        setInit('submit');
+        console.log("check response", JSON.stringify(resp))
+        if(resp.data != ''){
+          console.log("check resp data", JSON.stringify(resp.data))
+          setLoader(false);
+         navigation.navigate('ConfirmApplication', {respData:resp.data, resumeUri:resumeUri, exp: exp, sop: sop});
+         }
+        
+      } else {
+        console.log(resp);
+        setLoader(false);
+      }
+    }else{
+      alert("please provide Additional details")
+      navigation.navigate('Resume');
+    }
+    };
+    
+  const onClickApply = (bid) => {
+    
+   initApplication();
+  };
+
+
+  const selectOneFile = async () => {
+    //Opening Document Picker for selection of one file
+    console.log('res : ' + "function call ok");
+   
+    try {
+      const res = await DocumentPicker.pickMultiple({
+        type: [DocumentPicker.types.pdf, DocumentPicker.types.plainText, DocumentPicker.types.doc, DocumentPicker.types.docx]
+      })
+      
+      //Printing the log realted to the file
+      // console.log('res : ' + JSON.stringify(res));
+      // console.log('URI : ' + res[0].uri);
+      // console.log('Type : ' + res[0].type);
+      // console.log('File Name : ' + res[0].name);
+      // console.log('File Size : ' + res[0].size);
+      // Setting the state to show single file attributes
+      setUpload(!upload)
+      setResumeUri(res[0].uri)
+      setFileName(res[0].name)
+      
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        // setUpload(!upload)
+        alert('Canceled from single doc picker');
+
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
     }
   };
+
+
+
   return (
     <ScrollView>
+      {loader ? (
+        <Loader />
+      ) :(
+        <View>
       <SafeAreaView style={styles.container}>
-      <NavBar hasBackArrow={true} hasRightIcon = {true} title={'role'} />
+      
+      <NavBar hasBackArrow={true} hasRightIcon = {false} title={'role'} />
       <DetailHeader
-        rating="4.9"
+        // rating="4.9"
         title="Facebook"
         description="Bangalore, India"
         heading="Senior Fulltime Remote"
-        time="1 days"
+        // time="1 days"
       />
       <View style={styles.body}>
       <Text style={styles.heading}>{'Saved Resume'}</Text>
@@ -137,12 +188,17 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
       <Text>{'Add your CV/Resume to apply for a job'}</Text>
       <Spacer />
       <View>
-       <TouchableOpacity onPress={()=>{setUpload(!upload)}}>
-       {upload ?(<ImageBackground source={images.rectangle} resizeMode="cover" style={{ flex: 1,width:'100%', height:81, justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
+     
+       {upload ?(
+       <TouchableOpacity onPress={selectOneFile}>
+       <ImageBackground source={images.rectangle} resizeMode="cover" style={{ flex: 1,width:'100%', height:81, justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
         {/* <Image source={im}/> */}
         <SVGIcon name={ICONS.IC_UPLOAD} onPress={()=>{}} />
-        <Text style={{textAlign:'center'}}>{'Upload CV/Resume'}</Text>
-        </ImageBackground>):( <>
+        <Text style={{textAlign:'center'}}>{'Upload CV/Resume'} {upload}</Text>
+        </ImageBackground>
+        </TouchableOpacity>
+        ):( <>
+        <TouchableOpacity onPress={() => setUpload(!upload)}>
         <View style={styles.uplodedResume}>
         <>
         <View style={styles.resumeLeftPart}>
@@ -150,30 +206,38 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
         
         </View>
         <View style={styles.resumeRightPart}>
-            <Text>{'Resume George Alexander - UX Designer'}</Text>
+            
             <Spacer  size={3}/>
           <View style={styles.row}>
-          <Text>{'Last Used: '}</Text>
-          <Text>{'Today at 02:30 pm'}</Text>
+            {/* {singleFile != undefined ?(singleFile.map(item => {
+              return(<Text>{item.name}</Text>) } )
+            ):(<View></View>)
+            } */}
+          <Text>{fileName}</Text>
+         
           </View>
-          <Text style={{top:5, color:'#000'}}>{'Remove'}</Text>
+          <Text style={{top:5, color:'#000'}}>{upload}   {'Remove'}</Text>
         </View>
         </>
         
         </View>
-     
-        </>)}
-       </TouchableOpacity>
+        </TouchableOpacity>
+        </>
+        )}
+      
       <Spacer />
       
       </View>
       <Text style={styles.heading}>{'Information'}</Text>
       <Spacer />
+    
+
+<Spacer />
       <TextInput 
         // multiline={true}
-        placeholder='paste url here'
+        placeholder=' Enter Your Experience'
         style={styles.textInput2}
-        onChangeText = {(text)=>setProfileUrl(text)}
+        onChangeText = {(text)=>setExp(text)}
         textAlignVertical={'top'}
       />
 
@@ -182,20 +246,19 @@ function SubmitApplication({navigation}: {navigation: Navigation}) {
         multiline={true}
         placeholder='Explain why you are the right person for this job'
         style={styles.textInput}
-        onChangeText = {()=>{}}
+        onChangeText = {(text)=>setSop(text)}
         textAlignVertical={'top'}
       />
       </View>
+     
       </SafeAreaView>
       <View style={styles.bottom}>
-        {(init === 'init')?(
           <Button onPress={() => onClickApply('init')} text={'PROCESS APPLICATION'} type="dark" />
-        ):(
-          <Button onPress={() => onClickApply('submit')} text={'SUBMIT APPLICATION'} type="dark" />
-        )}
         
         <Spacer size={10} />
       </View>
+       </View>
+       ) }
     </ScrollView>
   );
 }

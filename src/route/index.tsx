@@ -41,191 +41,211 @@ import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
 import MentorshipConfirmScreen from '../screens/mentorship-confirmation';
+import ConfirmApplication from '../screens/jobs/ConfirmApplication';
+import InitTraining from '../screens/training/Init';
+import ConfirmTraining from '../screens/training/Confirm';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ThemeProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="DevScreen" component={DevScreen} />
-            <Stack.Screen
-              name="Dashboard"
-              component={Dashboard}
-              options={{headerShown: false}}
-            />
+    <ThemeProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="DevScreen" component={DevScreen} />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{headerShown: false}}
+          />
+         
+          <Stack.Screen name="MentoringList" 
+          component={MentoringListScreen}
+          options={{headerShown: false}}
+          />
+          
+         <Stack.Screen
+          name="LessonPlan"
+          component={LessonPlan}
+          options={{headerShown: false}}
+        />
+        
+        <Stack.Screen
+          name="Debit"
+          component={Debit}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Confirmation"
+          component={Confirmation}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Training"
+          component={Training}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Scholarships'
+        component={Scholarships}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name='Jobs'
+        component={Jobs}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="AboutScholarship"
+          component={AboutScholarship}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ApplyScholorship"
+          component={ApplyScholorship}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Eligibility"
+          component={Eligibility}
+          options={{headerShown: false}}
+        />
+        
+          <Stack.Screen
+            name="MentorSlotConfirmation"
+            component={SlotBookedScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MentorSlotList"
+            component={SlotListScreen}
+            options={{headerShown: false}}
+          />
+         
+          <Stack.Screen
+            name="MentorAvailableDate"
+            component={MentorAvailableDate}
+            options={{headerShown: false}}
+          />
 
-            <Stack.Screen
-              name="MentoringList"
-              component={MentoringListScreen}
-              options={{headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="LessonPlan"
-              component={LessonPlan}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Debit"
-              component={Debit}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Confirmation"
-              component={Confirmation}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Training"
-              component={Training}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Scholarships"
-              component={Scholarships}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Jobs"
-              component={Jobs}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="AboutScholarship"
-              component={AboutScholarship}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="ApplyScholorship"
-              component={ApplyScholorship}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Eligibility"
-              component={Eligibility}
-              options={{headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="MentorSlotBooked"
-              component={SlotBookedScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="MentorSlotList"
-              component={SlotListScreen}
-              options={{headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="MentorAvailableDate"
-              component={MentorAvailableDate}
-              options={{headerShown: false}}
-            />
-
-            <Stack.Screen
+<Stack.Screen
               name="MentorshipConfirmation"
               component={MentorshipConfirmScreen}
               options={{headerShown: false}}
             />
+        
+          <Stack.Screen
+            name="SearchResult"
+            component={SearchResultScreen}
+            options={{headerShown: false}}
+          />
 
-            <Stack.Screen
-              name="SearchResult"
-              component={SearchResultScreen}
-              options={{headerShown: false}}
+          <Stack.Screen
+            name="LocationSearch"
+            component={LocationSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SkillsSearch"
+            component={SkillsSearch}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SubmitApplication"
+            component={SubmitApplication}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="JobConfirmation"
+            component={JobConfirmation}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ScholarshipList"
+            component={ScholarshipListScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="WorkExperience"
+            component={WorkExperience}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Education"
+            component={Education}
+            options={{headerShown: false}}
             />
+           <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddSkills"
+            component={AddSkills}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddDegree"
+            component={AddDegree}
+            options={{headerShown: false}}
+          />
+            <Stack.Screen
+           name="TrainingList"
+            component={TrainingListScreen}
+            options={{headerShown: false}}
+            />
+           <Stack.Screen
+            name="Resume"
+            component={ResumeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Language"
+            component={AddLanguage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="Notification"
+            component={Notification}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Mentorships"
+            component={Mentorships}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="SampleProfile"
+            component={SampleProfile}
+            options={{headerShown: false}}
+          />
 
-            <Stack.Screen
-              name="LocationSearch"
-              component={LocationSearch}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="SkillsSearch"
-              component={SkillsSearch}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="SubmitApplication"
-              component={SubmitApplication}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="JobConfirmation"
-              component={JobConfirmation}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="ScholarshipList"
-              component={ScholarshipListScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="WorkExperience"
-              component={WorkExperience}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Education"
-              component={Education}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Settings"
-              component={Settings}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="AddSkills"
-              component={AddSkills}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="AddDegree"
-              component={AddDegree}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="TrainingList"
-              component={TrainingListScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Resume"
-              component={ResumeScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Language"
-              component={AddLanguage}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="ProfileScreen"
-              component={ProfileScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Notification"
-              component={Notification}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Mentorships"
-              component={Mentorships}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="SampleProfile"
-              component={SampleProfile}
-              options={{headerShown: false}}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ThemeProvider>
+          <Stack.Screen
+            name="ConfirmApplication"
+            component={ConfirmApplication}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="InitTraining"
+            component={InitTraining}
+            options={{headerShown: false}}
+          />
+           <Stack.Screen
+            name="ConfirmTraining"
+            component={ConfirmTraining}
+            options={{headerShown: false}}
+          />
+          
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
     </SafeAreaView>
   );
 }
