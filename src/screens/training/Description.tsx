@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -26,8 +26,6 @@ function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navi
         <Spacer />
         <Text>{data?.course?.description}</Text>
         <Spacer />      
-        {/* <Text>{data?.para2}</Text>
-        <Spacer />  */}
         <Text style={styles.heading}>{'Course Highlights'}</Text>
         <Spacer />
         <FlatList 
@@ -45,7 +43,7 @@ function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navi
         <Text style={styles.heading}>{'General Information'}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Duration'}</Text>
-        <Text>{data?.course.duration}</Text>
+        <Text>{data?.course?.duration}</Text>
         <Spacer />
         <Text style={styles.heading}>{'Language'}</Text>
         <Text>{data?.language}</Text>

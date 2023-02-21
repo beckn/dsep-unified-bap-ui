@@ -8,7 +8,7 @@
     "resolveJsonModule": true,
     "baseUrl": "src",
     "jsx": "react",
-    "lib": ["es2015", "es5", "es6", "dom"],
+    "lib": ["es2015", "es5", "es6", "dom","es2019"],
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "noEmit": true,
