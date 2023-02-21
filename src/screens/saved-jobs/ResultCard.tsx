@@ -3,9 +3,23 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import {styles} from './styles';
+import {getTimeDiff} from '@utilz/commonUtils';
 
 const ResultCard = ({item, onItemPressed}) => {
-  console.log(item?.job_id?.comapny);
+  const getTimeString = (dt: number): string => {
+    const timeDiff = getTimeDiff(dt);
+    if (timeDiff?.days > 0) {
+      return `${timeDiff?.days}d ago`;
+    } else if (timeDiff?.hours > 0) {
+      return `${timeDiff?.hours}hours ago`;
+    } else if (timeDiff?.minutes > 0) {
+      return `${timeDiff?.days}minutes ago`;
+    } else if (timeDiff?.seconds > 0) {
+      return `${timeDiff?.days}seconds ago`;
+    } else {
+      return 'now';
+    }
+  };
   return (
     <TouchableOpacity onPress={() => onItemPressed(item)}>
       <View style={styles.resultCardContainer} key={item.id}>
@@ -33,9 +47,9 @@ const ResultCard = ({item, onItemPressed}) => {
             }>{`${item?.job_id?.location_type}`}</Text>
           <View style={styles.roleHistory}>
             <Text style={styles.rolePostedDate}>
-              {item?.job_id?.created_at}
+              {getTimeString(item?.job_id?.created_at)}
             </Text>
-            <Text style={styles.rolePostedBy}>{'test.user@gmail.com'}</Text>
+            <Text style={styles.rolePostedBy}>{'by test.user@gmail.com'}</Text>
           </View>
         </View>
       </View>

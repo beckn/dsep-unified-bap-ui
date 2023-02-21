@@ -44,10 +44,9 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
     <>
     <Header navigation={navigation} 
             heading={data?.scholarshipProviders[0].scholarships[0]?.name}
-            online={''} 
-            video={''} 
-            education={data?.scholarshipProviders[0]?.scholarships[0]?.category?.name}
-            rating={''}
+            
+            //education={data?.scholarshipProviders[0]?.scholarships[0]?.category?.name}
+           
     />
     <Tabs
         tabData={[

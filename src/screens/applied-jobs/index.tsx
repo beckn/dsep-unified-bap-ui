@@ -14,8 +14,10 @@ import MentorCard from '@components/MentorCard';
 import Rating from '@components/Ratings';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components/Text';
+import { userSkillView } from '@context';
 
 const AppliedJobs = ({navigation}) => {
+  const { profileInfo} = userSkillView();
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'jobs'},
     {label: 'Tutoring & Mentorship', value: 'mentorship'},
@@ -24,13 +26,14 @@ const AppliedJobs = ({navigation}) => {
   ]);
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
-
+  const email = profileInfo.profile?.email ;
   useEffect(() => {
     getData();
   }, []);
 
   useEffect(() => {
     console.log('selectedValue: ', selectedValue);
+    getData();
   }, [selectedValue]);
 
   const ResultCards = () => {
@@ -131,7 +134,7 @@ const AppliedJobs = ({navigation}) => {
   const getData = async () => {
     console.log("job response appli check",);
     const resp = await axios.get(
-      `${BASE_URL_PROFILE}${ENDPOINT.APPLIED_JOBS}test.user@gmail.com`,
+      `${BASE_URL_PROFILE}${ENDPOINT.APPLIED_JOBS}${email}`,
     );
     console.log("job response appli check",JSON.stringify(resp));
     if (resp?.status === 200) {

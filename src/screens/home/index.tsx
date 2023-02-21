@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, StyleSheet, TextInput, FlatList, TouchableOpacity, Alert, Image} from 'react-native';
+import {View, StyleSheet, TextInput, FlatList, TouchableOpacity, Alert, Image} from 'react-native'; 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {Navigation} from '@interfaces/commonInterfaces';
@@ -14,7 +14,7 @@ import { Modal, Portal,  Provider } from 'react-native-paper';
 import { userSkillView } from '@context';
 import Button from '@components/AppButton';
 import SearchListJson from '../../data/search-list.json';
-import ResultCard from '../../screens/search-result/ResultCard';
+import ResultCard from '../search-result/ResultCard';
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
   const {theme, setTheme} = useTheme();
@@ -150,7 +150,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             </View>
             </TouchableOpacity>
             <View>
-            <Text>{item.name}</Text></View>
+            <Text style={styles.texttitle}>{item.name}</Text></View>
             
           </View>
         )}

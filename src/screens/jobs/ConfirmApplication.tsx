@@ -170,7 +170,7 @@ const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route:
       </View>
       <Spacer size={20} />
       <View style={{ flexDirection: 'row'}}>
-      <Text style={{ fontWeight : 'bold',  }}>Exp : </Text>
+      <Text style={styles.heading2}>Exp : </Text>
       <Text> {exp}</Text>
       </View>
       <Spacer size={20} />

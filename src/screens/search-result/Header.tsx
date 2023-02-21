@@ -5,6 +5,7 @@ import {styles} from './styles';
 import {Fonts} from '@styles/fonts';
 import {SVGIcon, ICONS} from '@components/SvgIcon';
 import { Colors } from "@styles/colors";
+import images from '../../assets/images';
 
 function Header({ navigation, heading, onPress, count }) {
 
@@ -12,6 +13,9 @@ function Header({ navigation, heading, onPress, count }) {
     <View >
     <View style={styles.header}>
       <View style={[styles.headerHeading, StyleSheet.absoluteFill]}>
+      {/* <TouchableOpacity onPress={() => { navigation.goBack() }}>
+          <Image source={images.leftArrow} />
+        </TouchableOpacity> */}
         <Text style={styles.headerText}>{heading}</Text>
       </View>
       </View>

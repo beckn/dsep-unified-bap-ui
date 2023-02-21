@@ -11,11 +11,11 @@ function Header({heading}) {
         <Text style={styles.headerText}>{heading}</Text>
       </View>
       <View style={styles.rightTextContainer}>
-        <Text
+        {/* <Text
           style={styles.rightText}
           fontFamily={Fonts.family.DM_SANS_REGULAR}>
           Remove all
-        </Text>
+        </Text> */}
       </View>
     </View>
   );

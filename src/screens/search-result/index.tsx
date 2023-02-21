@@ -45,9 +45,11 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
         "jobId": item.jobs[0].jobId
       } 
     }
+    let userSavedItem = item.jobs[0].userSavedItem
+    let userAppliedItem = item.jobs[0].userAppliedItem
     setreqData(reqdata1)
     console.log("check search screen", JSON.stringify(reqData))
-    navigation.navigate("Jobs");
+    navigation.navigate("Jobs", {userSavedItem, userAppliedItem});
   }
   useEffect(() => {
     getData();

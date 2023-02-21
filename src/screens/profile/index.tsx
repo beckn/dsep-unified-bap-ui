@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TextInput} from 'react-native';
 import {styles} from './styles';
 import Options from './options';
-import {ICONS, Text, SVGIcon} from '@components';
+import {ICONS, Text, SVGIcon, Spacer} from '@components';
 import {Colors} from '@styles/colors';
 import {Navigation} from '@interfaces/commonInterfaces';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -23,13 +23,14 @@ function ProfileScreen({navigation}: {navigation: Navigation}) {
   };
   return (
     <View style={styles.container}>
-    <Options leftIcon={ICONS.IC_PERSONAL_INFO} title = {'Personal Info'} onPress = {()=>{}}/>
+      <Spacer size={50} />
+    <Options backgroundColor={'grey'} leftIcon={ICONS.IC_PERSONAL_INFO} title = {'Personal Info'} onPress = {()=>{}}/>
     {/* <Options leftIcon={ICONS.IC_RESUME} title = {'Resume & My info'} 
     onPress = {()=>{navigation.navigate('WorkExperience')}}/> */}
-    <Options leftIcon={ICONS.IC_PURCHASE_HISTORY} title = {' History '} onPress = {()=>{}}/>
-    <Options leftIcon={ICONS.IC_RESUME} title = {'Resume & My info'} onPress = {()=>{navigation.navigate('Resume')}}/>
-    <Options leftIcon={ICONS.IC_SETTINGS} title = {'Settings'} onPress = {()=>{ navigation.navigate('Settings')}}/>
-    <Options leftIcon={ICONS.IC_SETTINGS} title = {'Logout'} onPress = {()=>{ onGoogleSignOut() }}/>
+    <Options backgroundColor={'grey'} leftIcon={ICONS.IC_PURCHASE_HISTORY} title = {' History '} onPress = {()=>{}}/>
+    <Options backgroundColor={'white'} leftIcon={ICONS.IC_RESUME} title = {'Resume & My info'} onPress = {()=>{navigation.navigate('Resume')}}/>
+    <Options backgroundColor={'grey'} leftIcon={ICONS.IC_SETTINGS} title = {'Settings'} onPress = {()=>{ }}/>
+    <Options backgroundColor={'white'} leftIcon={ICONS.IC_SETTINGS} title = {'Logout'} onPress = {()=>{ onGoogleSignOut() }}/>
     </View>
   );
 }

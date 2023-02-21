@@ -29,7 +29,7 @@ export const styles = StyleSheet.create<Styles>({
     justifyContent:'center'
   },
   headerHeading: {
-    height: '50%',
+    height: '80%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
