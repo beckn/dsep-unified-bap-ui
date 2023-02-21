@@ -38,7 +38,13 @@ const SavedJobs = ({navigation}) => {
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <ResultCard item={item} onItemPressed={item => console.log(item)} />
+          <ResultCard
+            item={item}
+            onItemPressed={item => {
+              console.log(item);
+              seeJobStatus();
+            }}
+          />
         )}
       />
     );
@@ -139,6 +145,29 @@ const SavedJobs = ({navigation}) => {
       if (selectedValue) {
         setList(resp.data[selectedValue.toString()]);
       }
+    } else {
+      console.log(resp);
+    }
+  };
+
+  const seeJobStatus = async () => {
+    const valuesToSend = {
+      applicationId: '123456',
+      context: {
+        transactionId: 'a9aaecca-10b7-4d19-b640-b047a7c62195',
+        bppId: 'affinidibpp.com',
+        bppUri:
+          'http://affinidibpp.com/DSEP-nlb-d3ed9a3f85596080.elb.ap-south-1.amazonaws.com',
+      },
+    };
+    const resp = await callService(
+      ApiMethods.POST,
+      ENDPOINT.JOB_STATUS,
+      valuesToSend,
+    );
+
+    if (resp?.status === 200) {
+      console.log(JSON.stringify(resp.data));
     } else {
       console.log(resp);
     }
