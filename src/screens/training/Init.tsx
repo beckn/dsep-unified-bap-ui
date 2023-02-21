@@ -29,7 +29,7 @@ function InitTraining({navigation, route}: {navigation: Navigation, route:any}) 
         request.CourseProviderId = data.course.provider.id;
         request.applicantProfile = {
             "name": "string",
-                  "email": "string",
+            "email": "string",
                   "contact": "string"
         }
         request.additionalFormData = {

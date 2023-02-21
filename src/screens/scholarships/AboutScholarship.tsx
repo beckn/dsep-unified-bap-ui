@@ -9,17 +9,14 @@ import Button from '@components/AppButton';
 import {styles}  from './styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
+import Loader from '@components/Loader/Loader';
 
-function AboutScholarship({navigation, data}: {navigation: Navigation, data:any}) {
+
+function AboutScholarship({navigation, data, loader}: {navigation: Navigation, data:any,loader: boolean}) {
+  
   const onClickApply =() =>{
     navigation.navigate('ApplyScholorship',{
-      id:2,
-      heading:'H.G. Infra Engineering Ltd Scholarship for Medical Courses',
-      time: '',
-      imgPara: 'Congratulations!',
-      para1: 'Your scholarship application was submitted successfully!',
-      para2: 'We will evaluate your application and respond as soon as possible.'
- 
+      selectData:data
     });
   }
 
@@ -27,6 +24,7 @@ function AboutScholarship({navigation, data}: {navigation: Navigation, data:any}
   return (
    <ScrollView >
      <SafeAreaView style={styles.container}>
+     {loader && <Loader />}
         <Text style={styles.heading}>{'General Information'}</Text>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Name'}</Text>

@@ -18,10 +18,11 @@ function SampleProfile({navigation}) {
   const [email, setEmail]:any = useState("");
   const [mobile, setMobile]:any = useState("");
   const [data, setData] = useState();
+
   const [profileUrl, setProfileUrl] = useState("");
   const [id, setId] = useState("");
   // const [value, setValue] = useState("");
- 
+
 const getUser = async () => {
     const fullName = await AsyncStorage.getItem('fullName');
    

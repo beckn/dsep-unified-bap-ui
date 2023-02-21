@@ -9,7 +9,7 @@ import { Colors } from '@styles/colors';
 
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
-  const { id, heading, time, imgPara, para1, para2} = route.params;
+  const { id, heading, time, imgPara, para1, para2, bacId} = route.params;
 
   const onClickConfirmation =(navigation) =>{
     // navigation.navigate('Home');

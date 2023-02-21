@@ -15,7 +15,7 @@ import {ApiMethods} from '@constant/common.constant';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 
-function Eligibility({navigation, data}:{navigation: Navigation, data:any}) {
+function Eligibility({navigation, data, loader}:{navigation: Navigation, data:any, loader: boolean}) {
   const [eledata, setEleData]: any = useState({});
   useEffect(() => {
     getData();
