@@ -15,6 +15,7 @@ type Styles = {
   inputStyle: ViewStyle;
   inputStyleMultiLine: ViewStyle;
   rignt: ViewStyle;
+  body:ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -74,5 +75,9 @@ export const styles = StyleSheet.create<Styles>({
     },
     rignt :{
       marginLeft: 30
-    }
+    },
+    body: {
+      flex:8,
+      padding: Metrics.padding.medium,
+    },
 });

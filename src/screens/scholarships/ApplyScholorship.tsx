@@ -23,74 +23,21 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
          "formInputValue": value
         })
       }
-      const request = {
-        context:selectData.context,
-        scholarshipProvider: {
-          id: selectData.scholarshipProviders[0].id,
-          name: selectData.scholarshipProviders[0].name,
-          scholarships: [
-              {
-                  id: selectData.scholarshipProviders[0].scholarships[0].id,
-                  name: selectData.scholarshipProviders[0].scholarships[0].name,
-                  description: selectData.scholarshipProviders[0].description,
-                  amount: selectData.scholarshipProviders[0].scholarships[0].amount,
-                  "categoryId": "DSEP_CAT_1",
-                  "scholarshipDetails": {
-                      "id": "DSEP_FUL_01",
-                      "type": "SCHOLARSHIP",
-                      "applicationStartDate": "2013-02-04T22:44:30.652Z",
-                      "applicationEndDate": "2013-02-04T22:44:30.652Z",
-                      "supportContact": {
-                          "name": "Mary G",
-                          "phone": "9876543210",
-                          "email": "maryg@xyz.com"
-                      },
-                      "scholarshipRequestor": {
-                          "name": "James",
-                          "phone": "498674",
-                          "address": "Mumbai",
-                          "needOfScholarship": "higher education",
-                          "docUrl": " http://abc.co/docs"
-                      }
-                  },
-                  "additionalFormData": {
-                      "formUrl": "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1/public/getForm/a9aaecca-10b7-4d19-b640-022723112309/ba854d6184fa48eea36aab701486eee9",
-                      "formMimeType": "text/html",
-                      "submissionId": "8203501c-8934-468c-b947-1d5317847e9a",
-                      "data": formData
-                  },
-                  "academicQualificationsCriteria": selectData.scholarshipProviders[0].scholarships[0].academicQualifications,
-                  "finStatusCriteria": [
-                      {
-                          "code": "family_income",
-                          "name": "Family Income",
-                          "value": "<= 2000000"
-                      }
-                  ],
-                  "benefits": [
-                      {
-                          "code": "scholarship-amount",
-                          "name": "Scholarship Amount",
-                          "value": "Upto Rs.30000 per year"
-                      }
-                  ]
-              }
-          ]
-      }
-      };
+      const request = {...selectData}
+      request.scholarshipProvider = selectData.scholarshipProviders[0];
+      // category id is null... cant do anything
+       request.scholarshipProvider.scholarships[0].categoryId = selectData.scholarshipProviders[0].scholarships[0].categories?.[0]?.id;
+      delete request.scholarshipProvider.scholarships[0].category;
+      request.scholarshipProvider.scholarships[0].scholarshipDetails.scholarshipRequestor = {name,address,phone,info}
+      request.scholarshipProvider.scholarships[0].additionalFormData.submissionId="8203501c-8934-468c-b947-1d5317847e9a",
+      request.scholarshipProvider.scholarships[0].additionalFormData.data = formData;
+      delete request.scholarshipProviders;
+
       setLoader(true);
       const resp = await callService(ApiMethods.POST, ENDPOINT.SCHOLARSHIP_INIT, request);
         if (resp?.status === 200) {   
           setLoader(false)
-          navigation.navigate('Confirmation',{
-            id:2,
-            heading:resp?.data?.scholarshipProvider.scholarships[0].name,
-            time: resp?.data?.scholarshipProvider.scholarships[0].scholarshipDetails.applicationEndDate,
-            imgPara: 'Congratulations!',
-            para1: resp?.data?.scholarshipProvider.description,
-            para2: 'We will evaluate your application and respond as soon as possible.'
-       
-          });
+          navigation.navigate("ConfirmScholarship", {data:resp?.data})
         } else 
         {
             console.log(resp?.message);
