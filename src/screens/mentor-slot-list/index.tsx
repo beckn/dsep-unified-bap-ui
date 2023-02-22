@@ -54,7 +54,7 @@ const SlotListScreen = ({navigation}) => {
     );
       console.log("resp slot-list",resp)
     if (resp?.status === 200) {
-      // navigation.navigate('MentorshipConfirmation');
+       navigation.navigate('MentorshipConfirmation');
       setLoader(false);
     } else {
       setLoader(false);

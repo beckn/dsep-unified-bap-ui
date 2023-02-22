@@ -40,6 +40,7 @@ const SearchResultScreen = ({
     {label: 'Mentorship', value: 'mentorship'},
   ]);
   const [data, setData] = useState();
+  const [role, setRole] = useState();
   const [loading, setLoading] = useState(false);
   const onFocus = () => alert('input pressed');
   const [visible, setVisible] = React.useState(false);

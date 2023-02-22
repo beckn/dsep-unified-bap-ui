@@ -62,39 +62,18 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
 
 
   return (
-    <SafeAreaView>
-    <View>
+    <SafeAreaView style={styles.container}>
+    <View style={{ paddingTop: 30, }}>
     <TouchableOpacity onPress={() => { navigation.goBack() }}>
+      <View style={styles.titlePosition}>
           <Image source={images.leftArrow} />
+          <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Your Skills</Text></View>
         </TouchableOpacity>
-      {/* <Text>LocationSearch</Text> */}
+      
     <View style={styles.searchBox}>
-      {/* <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} /> */}
       <TextInput style={styles.input} value= {value} placeholder='Add skills ' onChangeText={text => setValue(text)} />
-      {/* <SVGIcon name={ICONS.IC_REMOVE} /> */}
     </View>
-    {/* <View style={{height: 150}}>
-        <FlatList 
-        // horizontal={false}
-        // numColumns={2}
-
-        data={filterdata}
-        renderItem={({item})=> (
-          <View>
-            <TouchableOpacity
-            // onPress={()=> onButtonClick(item.name) }
-            >
-            {/* <View style={styles.item}> */}
-            {/* <Text>{item.skill}</Text>
-            </TouchableOpacity>
-            <View>
-           </View>
-            
-          </View>
-        )}
-        keyExtractor = {(item => item.skill)}
-        /> */}
-      {/* </View>  */}
+   
     <View style={styles.bottom}>
        <Button onPress={onClickApply} text={'Apply'} type="dark"/>
        

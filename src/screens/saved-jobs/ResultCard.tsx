@@ -30,7 +30,7 @@ const ResultCard = ({item, onItemPressed}) => {
             </View>
           </View>
           <View style={styles.organizationDetails}>
-            <Text style={styles.organizationName}>{item?.company}</Text>
+            <Text style={styles.organizationName}>{item?.comapny}</Text>
             <Text style={styles.organizationLocation}>{`${item?.city}`}</Text>
           </View>
           <View style={styles.bookmarkIcon}>

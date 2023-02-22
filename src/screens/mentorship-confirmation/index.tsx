@@ -14,11 +14,14 @@ import Loader from '@components/Loader/Loader';
 import Spacer from '@components/Spacer';
 import {Fonts} from '@styles/fonts';
 import TitleCard from '@components/TitleCard';
+import { userSkillView } from '@context';
 
 const MentorshipConfirmScreen = ({navigation}) => {
   const {selectedMentorData,transactionId} = useMentorContext();
+  console.log("mentor page", )
   const [loader, setLoader] = useState(false);
-
+  const {languages, skills, profileInfo} = userSkillView();
+  console.log("mentor id", profileInfo.profile?.id)
   const mentorshipData = [
     {
       title: 'Session Title',
@@ -64,7 +67,7 @@ const MentorshipConfirmScreen = ({navigation}) => {
       console.log("=====>",resp)
       setLoader(false);
       addSlotData()
-      // navigation.navigate('MentorSlotBooked');
+      navigation.navigate('MentorSlotConfirmation');
     } else {
       setLoader(false);
     }

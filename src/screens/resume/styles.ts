@@ -48,7 +48,9 @@ export const styles = StyleSheet.create<Styles>({
   },
   headerText: {
     textAlign: 'center',
-    fontWeight: '900'
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 20
   },
   sectionContainer:{ width: '90%', alignSelf: 'center', minHeight: 150, backgroundColor: Colors.white, borderRadius: Metrics.radius.medium, padding: Metrics.padding.medium, marginVertical: Metrics.margin.small },
   topSection:{ flex: 2, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'grey', borderBottomWidth: 1, alignItems: 'flex-start', },

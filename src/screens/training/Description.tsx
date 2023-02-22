@@ -92,7 +92,7 @@ function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navi
       <View style={styles.bottom}>
        <Button onPress={onClickBuyNow} text={'Buy Now'} type="dark"/>
        <Spacer size={20}/>
-        <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/>
+        {/* <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/> */}
       </View> 
     </SafeAreaView>
    </ScrollView>

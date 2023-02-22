@@ -5,7 +5,7 @@ import {styles} from '../scholarships/styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 
-function Description({navigation, data }: {navigation: Navigation, data: any}) {
+function Description({navigation, data, headerData }: {navigation: Navigation, data: any, headerData: any}) {
 
   const onClickApply = () => {
     const initContext = {
@@ -13,11 +13,12 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
       "companyId": data?.company?.id,
       "jobs": {
         "jobId": data?.selectedJobs[0]?.jobId
-      },
+      },  
     }
     
     navigation.navigate('SubmitApplication', initContext);
   }
+  console.log("headerData.userAppliedItem", headerData.userAppliedItem)
    const renderItem = ({item, index})=>{
     return(<>
     <View style={styles.row} key={index}>
@@ -85,7 +86,11 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
         /> */}
       </SafeAreaView>
       <View style={styles.bottom}>
-        <Button onPress={onClickApply} text={'Apply'} type="dark" />
+      <Button onPress={onClickApply} 
+      disabled={headerData.userAppliedItem}
+      text={headerData.userAppliedItem? 'Applied': 'Apply'} type="dark" 
+      />
+        
         <Spacer size={10} />
       </View>
     </ScrollView>

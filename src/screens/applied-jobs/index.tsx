@@ -20,8 +20,8 @@ const AppliedJobs = ({navigation}) => {
   const {profileInfo} = userSkillView();
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'jobs'},
-    {label: 'Tutoring & Mentorship', value: 'mentorships'},
-    {label: 'Scholarships & Grants', value: 'scholarships'},
+    {label: 'Tutoring & Mentorship', value: 'mentorship'},
+    {label: 'Scholarships & Grants', value: 'scholarship'},
     {label: 'Trainings & Courses', value: 'courses'},
   ]);
   const {list, selectedValue, setList, setSelectedValue} = useListView();
