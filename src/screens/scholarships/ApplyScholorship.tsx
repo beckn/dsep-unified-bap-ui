@@ -85,15 +85,20 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
       const resp = await callService(ApiMethods.POST, ENDPOINT.SCHOLARSHIP_INIT, request);
         if (resp?.status === 200) {   
           setLoader(false)
-          navigation.navigate('Confirmation',{
-            id:2,
-            heading:resp?.data?.scholarshipProvider.scholarships[0].name,
-            time: resp?.data?.scholarshipProvider.scholarships[0].scholarshipDetails.applicationEndDate,
-            imgPara: 'Congratulations!',
-            para1: resp?.data?.scholarshipProvider.description,
-            para2: 'We will evaluate your application and respond as soon as possible.'
+          // navigation.navigate('Confirmation',{
+          //   id:2,
+          //   heading:resp?.data?.scholarshipProvider.scholarships[0].name,
+          //   time: resp?.data?.scholarshipProvider.scholarships[0].scholarshipDetails.applicationEndDate,
+          //   imgPara: 'Congratulations!',
+          //   para1: resp?.data?.scholarshipProvider.description,
+          //   para2: 'We will evaluate your application and respond as soon as possible.'
+       
+          // });
+           navigation.navigate('ScholarInit',{
+            data: resp?.data
        
           });
+
         } else 
         {
             console.log(resp?.message);

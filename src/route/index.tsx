@@ -44,6 +44,7 @@ import MentorshipConfirmScreen from '../screens/mentorship-confirmation';
 import ConfirmApplication from '../screens/jobs/ConfirmApplication';
 import InitTraining from '../screens/training/Init';
 import ConfirmTraining from '../screens/training/Confirm';
+import ScholarInit from '../screens/scholarships/ScholarInit';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -240,6 +241,11 @@ function Routes() {
            <Stack.Screen
             name="ConfirmTraining"
             component={ConfirmTraining}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ScholarInit"
+            component={ScholarInit}
             options={{headerShown: false}}
           />
           
