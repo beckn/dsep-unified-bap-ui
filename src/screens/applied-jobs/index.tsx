@@ -19,7 +19,7 @@ import {userSkillView} from '@context';
 const AppliedJobs = ({navigation}) => {
   const {profileInfo} = userSkillView();
   const [dropdownData, setDropdownData] = useState([
-   {label: 'Jobs & Internships', value: 'jobs'},
+    {label: 'Jobs & Internships', value: 'jobs'},
     {label: 'Tutoring & Mentorship', value: 'mentorships'},
     {label: 'Scholarships & Grants', value: 'scholarships'},
     {label: 'Trainings & Courses', value: 'courses'},
@@ -65,7 +65,7 @@ const AppliedJobs = ({navigation}) => {
     );
   };
 
-  cconst MentorShipCards = () => {
+  const MentorShipCards = () => {
     return (
       <FlatList
         data={list}
