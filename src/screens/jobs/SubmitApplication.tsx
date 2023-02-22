@@ -92,7 +92,7 @@ function SubmitApplication({navigation, route}: {navigation: Navigation, route: 
         if(resp.data != ''){
           console.log("check resp data", JSON.stringify(resp.data))
           setLoader(false);
-         navigation.navigate('ConfirmApplication', {respData:resp.data, resumeUri:resumeUri, exp: exp, sop: sop});
+         navigation.navigate('ConfirmApplication', {respData:resp.data, fileName:fileName, exp: exp, sop: sop});
          }
         
       } else {

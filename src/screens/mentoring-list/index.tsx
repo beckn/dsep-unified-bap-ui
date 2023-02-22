@@ -75,9 +75,9 @@ const MentoringListScreen = ({
         <Loader />
       ) : data?.length > 0 ? (
         <>
-          <View style={styles.searchBoxContainer}>
-            <SearchBox />
-          </View>
+      <Header navigation={navigation} 
+        heading='Tutoring & Mentorship'
+        />
           <FlatList
             data={data}
             renderItem={({ item, index }) => (

@@ -34,6 +34,8 @@ type Styles = {
   designationText: TextStyle;
   detailsContainer: ViewStyle;
   provider: TextStyle;
+  listEmptyContainer: ViewStyle;
+  listEmptyTextStyle: TextStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -162,4 +164,6 @@ export const styles = StyleSheet.create<Styles>({
   },
   detailsContainer: {flex: 4},
   provider: {flex: 1, alignSelf: 'flex-end', fontSize: Fonts.size.small},
+  listEmptyContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  listEmptyTextStyle: {fontSize: 16, color: 'black'},
 });

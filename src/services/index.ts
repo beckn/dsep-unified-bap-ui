@@ -6,12 +6,12 @@ import {KeyValue} from '@interfaces/commonInterfaces';
 
 const apiCallInstance = axios.create({
   baseURL: BASE_URL,
-  timeout: 8000,
+  timeout: 10000,
 });
 
 export const profileApiCallInstance = axios.create({
   baseURL: PROFILE_BASE_URL,
-  timeout: 8000,
+  timeout: 10000,
 });
 
 apiCallInstance.interceptors.request.use(

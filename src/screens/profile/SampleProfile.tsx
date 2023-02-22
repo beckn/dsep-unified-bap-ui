@@ -12,7 +12,7 @@ import Loader from '@components/Loader/Loader';
 
 function SampleProfile({navigation}) {
   const {profileInfo, setProfileInfo} = userSkillView();
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
   const [firstName, setFirstName]: any = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail]:any = useState("");
@@ -59,7 +59,7 @@ const getProfile =async () =>{
     profile.lastName = resp.data.last_name
     profile.email = email
     profile.mobile = resp.data.mobile
-    profile.profileUrl = resp.data.profileUrl
+    profile.profileUrl = resp.data.full_name
     profile.id = resp.data._id
     let item = {profile}
     console.log("item-->>",item);
@@ -157,7 +157,7 @@ const getProfile =async () =>{
      <Spacer size={20}/>
      {/* <Text style={styles.sectionHeaderText}>Profile</Text> */}
      <TextInput 
-        placeholder="Paste Linked in Profile URl" 
+        placeholder="Paste LinkedIn Profile URl" 
         style={styles.inputStyle} 
         onChangeText ={(text)=>{setProfileUrl(text)}}
         value={profileUrl}

@@ -6,7 +6,7 @@ import {Navigation} from '@interfaces/commonInterfaces';
 import Spacer from '@components/Spacer';
 import {ICONS, SVGIcon } from '@components';
 import { Colors } from '@styles/colors';
-
+import Header from './Header';
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
   const { id, heading, time, imgPara, para1, para2, bacId} = route.params;
@@ -17,6 +17,9 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
     return (
     <View style={styles.container}>
         <View style={styles.header}>
+        
+         
+         
         </View>
       <View style={[styles.body,styles.alignItem]}>
         {id===1 && <SVGIcon
@@ -51,9 +54,9 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
        {id ===1 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
        {id===1 && <Spacer size={20}/>}
         {id === 1 ? <Button onPress={()=>{}} text={'EXPLORE OTHER COURSES'} type=""/> : null}
-        {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'Check application status'} type="dark"/>: null}
+        {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
        <Spacer size={20}/>
-        {id === 2 ? <Button onPress={()=>navigation.navigate('Dashboard')} text={'go back to home'} type=""/> : null}
+        {id === 2 ? <Button onPress={()=>navigation.navigate('Dashboard')} text={'go back to home'} type="dark"/> : null}
        {id ===2 && <Spacer size={20}/>}
         {id ===3 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'SHOW CALENDLY LINK'} type="dark"/>: null}
        {id===3 && <Spacer size={20}/>}

@@ -52,7 +52,6 @@ const SlotListScreen = ({ navigation }) => {
       if (resp.data) {
         navigation.navigate("MentorshipConfirmation");
       }
-
       setLoader(false);
     } else {
       setLoader(false);

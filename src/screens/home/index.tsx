@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {View, StyleSheet, TextInput, FlatList, TouchableOpacity, Alert, Image} from 'react-native'; 
+import {View, StyleSheet, TextInput, Text, FlatList, TouchableOpacity, Alert, Image} from 'react-native'; 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {Navigation} from '@interfaces/commonInterfaces';
-import {Text} from '@components/Text';
+// import {Text} from '@components/Text';
 import {getString} from '@i18n';
 import {commonStyles} from '@styles/commonStyles';
 import {Fonts} from '@styles/fonts';

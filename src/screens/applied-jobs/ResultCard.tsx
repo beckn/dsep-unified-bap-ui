@@ -5,7 +5,7 @@ import {ICONS, Text, SVGIcon} from '@components';
 import {styles} from './styles';
 
 const ResultCard = ({item, onItemPressed}) => {
-  console.log(item?.job_id?.comapny);
+  console.log('item::::', item);
   return (
     <TouchableOpacity onPress={() => onItemPressed(item)}>
       <View style={styles.resultCardContainer} key={item.id}>
@@ -16,21 +16,19 @@ const ResultCard = ({item, onItemPressed}) => {
             </View>
           </View>
           <View style={styles.organizationDetails}>
-            <Text style={styles.organizationName}>{item?.job_id?.comapny}</Text>
-            <Text style={styles.organizationLocation}>
-              {`${item?.job_id?.city}`}
-            </Text>
+            <Text style={styles.organizationName}>{item?.comapny}</Text>
+            <Text style={styles.organizationLocation}>{`${item?.city}`}</Text>
           </View>
-          <View style={styles.bookmarkIcon}>
+          {/* <View style={styles.bookmarkIcon}>
             <Image source={images.vector} />
-          </View>
+          </View> */}
         </View>
         <View style={styles.detailsRow}>
-          <Text style={styles.roleName}>{item?.job_id?.role}</Text>
-          <Text
+          <Text style={styles.roleName}>{item?.role}</Text>
+          {/* <Text
             style={
               styles.roleAttributes
-            }>{`${item?.job_id?.location_type}`}</Text>
+            }>{`${item?.job_id?.location_type}`}</Text> */}
           <View style={styles.roleHistory}>
             <Text style={styles.rolePostedDate}>
               {item?.job_id?.application_id}
