@@ -1,4 +1,4 @@
-import {StyleSheet, ViewStyle} from 'react-native';
+import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {Metrics} from '@styles/metrics';
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
@@ -12,6 +12,9 @@ type Styles = {
   left: ViewStyle;
   params: ViewStyle;
   row: ViewStyle;
+  aboutMentorTitle: TextStyle;
+  aboutMentordesc: TextStyle;
+  otherInformation: TextStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -20,6 +23,21 @@ export const styles = StyleSheet.create<Styles>({
     // backgroundColor: Colors.backgound,
     padding: Metrics.padding.medium,
     
+  },
+  aboutMentorTitle:{
+    fontWeight : Fonts.weight.w6,
+    color: Colors.slotText,
+    fontSize: Fonts.size.medium
+  },
+  aboutMentordesc:{
+    color: Colors.graniteGray,
+    fontSize: Fonts.size.base,
+    fontWeight: Fonts.weight.w4
+  },
+  otherInformation:{
+    fontWeight: Fonts.weight.bold,
+    fontSize: Fonts.size.medium,
+    color: Colors.slotText
   },
   heading: {
     color: Colors.black,

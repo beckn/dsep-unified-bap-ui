@@ -4,20 +4,25 @@ import {styles} from './styles';
 import { Button, Spacer} from '@components';
 import NavBar from '@components/Navbar';
 import { userSkillView } from '@context';
-import {callService} from '@services';
+import {callService, ProfileCallService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Loader from '@components/Loader/Loader';
 
 function SampleProfile({navigation}) {
   const {profileInfo, setProfileInfo} = userSkillView();
+  const [loader, setLoader] = useState(true);
   const [firstName, setFirstName]: any = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail]:any = useState("");
   const [mobile, setMobile]:any = useState("");
   const [data, setData] = useState();
- 
+
+  const [profileUrl, setProfileUrl] = useState("");
+  const [id, setId] = useState("");
+  // const [value, setValue] = useState("");
+
 const getUser = async () => {
     const fullName = await AsyncStorage.getItem('fullName');
    
@@ -27,51 +32,97 @@ const getUser = async () => {
     setEmail(email);
     setMobile(mobileNumber);
    console.log('fullName', fullName, email);
-    
+   getProfile();
 }
 useEffect(() => {
+  setLoader(true);
   async function fetchUser() {
     const user = await getUser();
     console.log('user',user);
   }
   fetchUser();
-}, []);
+  
+}, [email]);
+
+const getProfile =async () =>{
+  console.log("get profile called")
+  if(email != ''){
+    console.log("get profile email", email)
+  let usr = ENDPOINT.GET_USER_PROFILE+'/'+email
+  console.log("get profile email", usr)
+  const resp = await ProfileCallService(ApiMethods.GET,usr)
+  if (resp?.status == 200 && resp?.data._id!= '') {
+    console.log("get profile email", JSON.stringify(resp.data))
+    let profile = {firstName,lastName, email, mobile, id, profileUrl}
+    profile.firstName = resp.data.first_name
+    profile.lastName = resp.data.last_name
+    profile.email = email
+    profile.mobile = resp.data.mobile
+    profile.profileUrl = resp.data.profileUrl
+    profile.id = resp.data._id
+    let item = {profile}
+    console.log("item-->>",item);
+    setProfileInfo(item)
+    console.log(profileInfo);
+    navigation.navigate("Resume");
+    setLoader(false)
+  } else {
+    setLoader(false)
+    console.log(resp);
+  }
+  }else{
+
+  }   
+      
+      
+      
+  }
 
   const onClickApply =async () =>{
-    let profile = {firstName,lastName, email, mobile}
+    
+    let profile = {firstName,lastName, email, mobile, id, profileUrl}
     profile.firstName = firstName
     profile.lastName = lastName
     profile.email = email
     profile.mobile = mobile
-    let item = {profile}
-    console.log("item-->>",item);
-      setProfileInfo(item)
-      console.log(profileInfo);
-       const resp = await callService(ApiMethods.POST,ENDPOINT.USER_PROFILE,
+    profile.profileUrl = profileUrl
+
+    const resp = await ProfileCallService(ApiMethods.POST,ENDPOINT.USER_PROFILE,
         {
-          _id: "5f92cbf10cf217478ba93561",
-          email: email,
-          first_name: firstName,
-          middle_name: "",
-          last_name: lastName,
-          full_name: "",
-          mobile: mobile,
-          created_at: "2023-01-27T07:10:30Z",
-          last_modofied_at: "2023-01-27T07:10:30Z"
+          "_id": "",
+          "email": email,
+          "first_name": firstName,
+          "middle_name": "",
+          "last_name": lastName,
+          "full_name": profileUrl,
+          "mobile": mobile,
+          "created_at": new Date(),
+          "last_modofied_at": new Date()
          
         });
         if (resp?.status == 200) {
           setData(resp?.data);
-         
+          profile.id = resp.data._id
+          let item = {profile}
+          console.log("item-->>",item);
+          setProfileInfo(item)
+          console.log(profileInfo);
+          navigation.navigate("Resume");
+          console.log("test profile",resp.data);
         } else {
           console.log(resp);
         }
-        navigation.navigate("Resume");
+        
+        
     }
 
   return (
     <View>
-    <NavBar hasBackArrow={true} hasRightIcon = {true}  hasSecondaryRightIcon ={true}  rightIconName ={''} title = {"Profile"}/>
+      {loader ? (
+        <Loader />
+      ) :(
+    <View>
+    <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false}  rightIconName ={''} title = {"Profile"}/>
      <View style={styles.container}>
     <Spacer size={20}/>
      <TextInput placeholder="First Name" value={firstName} onChangeText={text => setFirstName(text)} style={styles.inputStyle} />
@@ -86,11 +137,20 @@ useEffect(() => {
      keyboardType='numeric'
       style={styles.inputStyle} />
      <Spacer size={20}/>
-     {/* <TextInput placeholder="Alternate Mobile Number" style={styles.inputStyle} /> */}
+     {/* <Text style={styles.sectionHeaderText}>Profile</Text> */}
+     <TextInput 
+        placeholder="Paste Linked in Profile URl" 
+        style={styles.inputStyle} 
+        onChangeText ={(text)=>{setProfileUrl(text)}}
+        value={profileUrl}
+        
+        />
      <Spacer size={40}/>
      <Button onPress={onClickApply} title={'SUBMIT'}  />
      </View>
     </View>
+      ) }
+      </View>
   );
 }
 

@@ -15,6 +15,9 @@ export interface IItemType {
       lastName: string;
       email: string;
       mobile: string;
+      id: string;
+      profileUrl: string;
+
   };
   }
   export interface IEducationType{

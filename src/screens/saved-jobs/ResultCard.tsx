@@ -3,8 +3,23 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import {styles} from './styles';
+import {getTimeDiff} from '@utilz/commonUtils';
 
 const ResultCard = ({item, onItemPressed}) => {
+  const getTimeString = (dt: number): string => {
+    const timeDiff = getTimeDiff(dt);
+    if (timeDiff?.days > 0) {
+      return `${timeDiff?.days}d ago`;
+    } else if (timeDiff?.hours > 0) {
+      return `${timeDiff?.hours}hours ago`;
+    } else if (timeDiff?.minutes > 0) {
+      return `${timeDiff?.days}minutes ago`;
+    } else if (timeDiff?.seconds > 0) {
+      return `${timeDiff?.days}seconds ago`;
+    } else {
+      return 'now';
+    }
+  };
   return (
     <TouchableOpacity onPress={() => onItemPressed(item)}>
       <View style={styles.resultCardContainer} key={item.id}>
@@ -15,9 +30,9 @@ const ResultCard = ({item, onItemPressed}) => {
             </View>
           </View>
           <View style={styles.organizationDetails}>
-            <Text style={styles.organizationName}>{item.company}</Text>
+            <Text style={styles.organizationName}>{item?.job_id?.comapny}</Text>
             <Text style={styles.organizationLocation}>
-              {`${item.city}, ${item.country}`}
+              {`${item?.job_id?.city}`}
             </Text>
           </View>
           <View style={styles.bookmarkIcon}>
@@ -25,13 +40,16 @@ const ResultCard = ({item, onItemPressed}) => {
           </View>
         </View>
         <View style={styles.detailsRow}>
-          <Text style={styles.roleName}>{item.skills}</Text>
-          <Text style={styles.roleAttributes}>
-            {`${item.type1} . ${item.type2} . ${item.type3}`}
-          </Text>
+          <Text style={styles.roleName}>{item?.job_id?.role}</Text>
+          <Text
+            style={
+              styles.roleAttributes
+            }>{`${item?.job_id?.location_type}`}</Text>
           <View style={styles.roleHistory}>
-            <Text style={styles.rolePostedDate}>{item.postedOn}</Text>
-            <Text style={styles.rolePostedBy}>{item.byWhom}</Text>
+            <Text style={styles.rolePostedDate}>
+              {getTimeString(item?.job_id?.created_at)}
+            </Text>
+            <Text style={styles.rolePostedBy}>{'by test.user@gmail.com'}</Text>
           </View>
         </View>
       </View>

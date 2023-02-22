@@ -23,10 +23,10 @@ import JobConfirmation from '../screens/job-confirmation';
 import ScholarshipListScreen from '../screens/scholarships-grants';
 import Jobs from '../screens/jobs';
 import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import LocationSearch from '../screens/search-result/LocationSearch';
 import SkillsSearch from '../screens/search-result/SkillsSearch';
-import home from '../screens/home'
+import home from '../screens/home';
 import WorkExperience from '../screens/profile/WorkExperience';
 import Education from '../screens/profile/Education';
 
@@ -40,6 +40,8 @@ import AddLanguage from '../screens/profile/AddLanguage';
 import ProfileScreen from '../screens/profile';
 import Notification from '../screens/notification';
 import SampleProfile from '../screens/profile/SampleProfile';
+import MentorshipConfirmScreen from '../screens/mentorship-confirmation';
+import ConfirmApplication from '../screens/jobs/ConfirmApplication';
 import InitTraining from '../screens/training/Init';
 import ConfirmTraining from '../screens/training/Confirm';
 const Stack = createNativeStackNavigator();
@@ -68,6 +70,7 @@ function Routes() {
           component={LessonPlan}
           options={{headerShown: false}}
         />
+        
         <Stack.Screen
           name="Debit"
           component={Debit}
@@ -125,6 +128,12 @@ function Routes() {
             component={MentorAvailableDate}
             options={{headerShown: false}}
           />
+
+<Stack.Screen
+              name="MentorshipConfirmation"
+              component={MentorshipConfirmScreen}
+              options={{headerShown: false}}
+            />
         
           <Stack.Screen
             name="SearchResult"
@@ -215,6 +224,12 @@ function Routes() {
            <Stack.Screen
             name="SampleProfile"
             component={SampleProfile}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="ConfirmApplication"
+            component={ConfirmApplication}
             options={{headerShown: false}}
           />
           <Stack.Screen

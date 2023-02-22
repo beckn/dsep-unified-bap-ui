@@ -4,6 +4,7 @@ import {Text} from '@components';
 import {Fonts} from '@styles/fonts';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
+import moment from 'moment';
 
 type cardDetails = {
   data: Array<{[key: string]: string}>;
@@ -21,15 +22,15 @@ const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
           <Text
             style={styles.nameStyle}
             fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-            {'Design Thinking '}
+            {data.name}
           </Text>
           <Text
             style={styles.designationText}
             fontFamily={Fonts.family.DM_SANS_REGULAR}>
-            {'Duration : 23h 40m'}
+            {data.duration}
           </Text>
         </View>
-        <Text style={styles.provider}>by udemy</Text>
+        <Text style={styles.provider}>{"by " + data.provider.name}</Text>
       </View>
       
      

@@ -36,7 +36,7 @@ console.log(data)
             <Text style = {styles.roleAttributes}></Text>
             <View style = {styles.roleHistory}>
                 <Text style = {styles.rolePostedDate}>{data?.postedOn}</Text>
-                <Text style = {styles.rolePostedBy}></Text>
+                <Text style = {styles.rolePostedBy}>{(data.jobs[0].userAppliedItem ? 'applied': 'not')}</Text>
             </View>
         </View>
     </TouchableOpacity>

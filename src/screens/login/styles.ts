@@ -110,7 +110,10 @@ export const styles = StyleSheet.create<Styles>({
       },
       headerText: {
         textAlign: 'center', 
-        fontWeight:'900'
+        fontWeight:'900',
+        color: Colors.black,
+      fontSize: Fonts.size.extraLarge,
+      //fontWeight : 'bold'
       },
       video: {
         flexDirection: 'row', 
@@ -123,11 +126,12 @@ export const styles = StyleSheet.create<Styles>({
         flexDirection:'row'
       },
       bottom: {
-      
+       
         backgroundColor: Colors.white,
          padding: Metrics.padding.medium,
-         
-         bottom: 0,
+         alignItems: 'flex-end',
+       
+        
       },
       debitHalf :{
         height:'50%',

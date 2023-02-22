@@ -15,38 +15,33 @@ import {Text} from '@components/Text';
 import Loader from '@components/Loader/Loader';
 import NoData from '@components/NoData';
 import {View, } from 'react-native';
+import { ReqContextView } from '@context';
 
 const Jobs = ({navigation, route}: {navigation: Navigation, route: any}) => {
-  const { reqdata } = route.params;
+  const { reqData, setreqData, headerData, setHeaderData } = ReqContextView();
   const {setAboutCompany} = useJobsInternshipsView();
+  
   const [data, setData]: any = useState();
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    console.log("check req in jobs", JSON.stringify(reqdata))
+    console.log("check req in jobs", JSON.stringify(reqData))
     const resp = await callService(ApiMethods.POST,ENDPOINT.SELECT_JOBS,
     {
-        "companyId": "1",
-        "jobs": {
-          "jobId": "0253719F295521CED39EC9C2F3C8DCDE"
-        },
-        "context": {
-          "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-         "bppId": "affinidi.com.bpp",
-          "bppUri": "https://6vs8xnx5i7.execute-api.ap-south-1.amazonaws.com/dsep"
-        }
-      // reqdata,
-      // "context": {
-      //   "transactionId": "a9aaecca-10b7-4d19-b640-b047a7c62195",
-      //   "bppId": "affinidi.com.bpp",
-      //   "bppUri": "https://6vs8xnx5i7.execute-api.ap-south-1.amazonaws.com/dsep"
-      // }
+      ...reqData
     });
     if (resp?.status == 200) {
       console.log("check respone in jobs", JSON.stringify(resp.data))
       setData(resp?.data);
+       
+      let header = {
+        "role":resp?.data?.selectedJobs[0]?.role,
+        "company": resp?.data?.company?.name,
+        "location": resp?.data?.selectedJobs[0]?.locations[0]?.city 
+      }
+      setHeaderData(header)
       setLoader(false)
     } else {
       setLoader(false)
@@ -68,15 +63,15 @@ const Jobs = ({navigation, route}: {navigation: Navigation, route: any}) => {
        <NavBar hasBackArrow={true} hasRightIcon = {false}  hasSecondaryRightIcon ={false} title={data?.selectedJobs[0]?.role}  />
       <DetailHeader
         title={data?.company?.name}
-        description={data?.selectedJobs[0]?.locations[0]?.city + ', ' +  data?.selectedJobs[0]?.locations[0]?.country}
-        heading={data?.selectedJobs[0].employmentInformation.name
-          //employmentInfo[0].value
-        }
+        description={data?.selectedJobs[0]?.locations[0]?.city }
+        // heading={data?.selectedJobs[0].employmentInformation.name
+        //   //employmentInfo[0].value
+        // }
         time=""
       />
       <Tabs
         tabData={[
-          {label: 'Description', comp: <Description navigation={navigation} data = {data}/>},
+          {label: 'Description', comp: <Description navigation={navigation}  data = {data}/>},
           {
             label: 'About Company',
             comp: <AboutCompany navigation={navigation} data = {data} />,

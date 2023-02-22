@@ -13,12 +13,13 @@ function Header({ navigation, heading }) {
         <TouchableOpacity onPress={() => { navigation.goBack() }}>
           <Image source={images.leftArrow} />
         </TouchableOpacity>
-        <Text style={styles.headerText}>{heading}</Text>
-        <SVGIcon
+        <View style={{paddingRight: 120}}>
+        <Text style={styles.headerText}>{heading}</Text></View>
+        {/* <SVGIcon
           name={ICONS.IC_FILTER}
           fill={Colors.oliveBlack}
           style={{ marginRight: 10 }}
-        />
+        /> */}
       </View>
     </View>
   )
