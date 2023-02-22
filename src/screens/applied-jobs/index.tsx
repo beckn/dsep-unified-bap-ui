@@ -14,10 +14,10 @@ import MentorCard from '@components/MentorCard';
 import Rating from '@components/Ratings';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components/Text';
-import { userSkillView } from '@context';
+import {userSkillView} from '@context';
 
 const AppliedJobs = ({navigation}) => {
-  const { profileInfo} = userSkillView();
+  const {profileInfo} = userSkillView();
   const [dropdownData, setDropdownData] = useState([
     {label: 'Jobs & Internships', value: 'jobs'},
     {label: 'Tutoring & Mentorship', value: 'mentorship'},
@@ -26,7 +26,7 @@ const AppliedJobs = ({navigation}) => {
   ]);
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
-  const email = profileInfo.profile?.email ;
+  const email = profileInfo.profile?.email;
   useEffect(() => {
     getData();
   }, []);
@@ -43,6 +43,7 @@ const AppliedJobs = ({navigation}) => {
         renderItem={({item, index}) => (
           <ResultCard item={item} onItemPressed={item => console.log(item)} />
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -70,6 +71,7 @@ const AppliedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -96,6 +98,7 @@ const AppliedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -127,16 +130,23 @@ const AppliedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
 
+  const ListEmptyComp = () => (
+    <View style={styles.listEmptyContainer}>
+      <Text style={styles.listEmptyTextStyle}>No Data Found</Text>
+    </View>
+  );
+
   const getData = async () => {
-    console.log("job response appli check",);
+    console.log('job response appli check');
     const resp = await axios.get(
       `${BASE_URL_PROFILE}${ENDPOINT.APPLIED_JOBS}${email}`,
     );
-    console.log("job response appli check",JSON.stringify(resp));
+    console.log('job response appli check', JSON.stringify(resp));
     if (resp?.status === 200) {
       console.log(JSON.stringify(resp.data));
       setData(resp.data);
