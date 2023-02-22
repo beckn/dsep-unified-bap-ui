@@ -15,7 +15,7 @@ function Header({ navigation, heading }) {
         </TouchableOpacity>
         <Text style={styles.headerText}>{heading}</Text>
         <SVGIcon
-          name={ICONS.IC_FILTER}
+          name={ICONS.IC_FILTER2}
           fill={Colors.oliveBlack}
           style={{ marginRight: 10 }}
         />

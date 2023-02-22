@@ -15,6 +15,9 @@ import Rating from '@components/Ratings';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components/Text';
 import { userSkillView } from '@context';
+import Loader from '@components/Loader/Loader';
+import NoData from '@components/NoData';
+
 
 const AppliedJobs = ({navigation}) => {
   const { profileInfo} = userSkillView();
@@ -160,7 +163,8 @@ const AppliedJobs = ({navigation}) => {
             }
           }}
         />
-      </View>
+   
+ </View> 
       {selectedValue && selectedValue.toString() === 'jobs' ? (
         <ResultCards />
       ) : null}

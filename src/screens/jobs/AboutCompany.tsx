@@ -11,7 +11,7 @@ import Spacer from '@components/Spacer';
 import { Navigation } from '@interfaces/commonInterfaces';
 import { useJobsInternshipsView} from '@context';
 
-function AboutCompany({ navigation , data }: { navigation: Navigation, data:any }) {
+function AboutCompany({ navigation , data, headerData }: { navigation: Navigation, data:any, headerData: any }) {
 
   const {aboutCompany:aboutCompanyTabDetails} = useJobsInternshipsView();
   const onClickApply = () => {
@@ -51,7 +51,10 @@ function AboutCompany({ navigation , data }: { navigation: Navigation, data:any 
         <Spacer size={20} />
       </SafeAreaView>
       <View style={styles.bottom}>
-        <Button onPress={onClickApply} text={'Apply'} type="dark" />
+      <Button onPress={onClickApply} 
+      disabled={headerData.userAppliedItem}
+      text={headerData.userAppliedItem? 'Applied': 'Apply'} type="dark" 
+      />
         <Spacer size={10} />
       </View>
     </ScrollView>

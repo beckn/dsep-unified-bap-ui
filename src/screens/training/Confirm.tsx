@@ -70,6 +70,15 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
           if (resp?.status == 200) {
             setLoader(false)
             setResponse(resp?.data);
+
+            navigation.navigate("Confirmation",{
+                id:2,//resp?.data?.applicationId,
+                heading:resp?.data?.course?.name,
+                time: resp?.data?.course?.duration,
+                imgPara: 'Successful',
+                para1: 'Congratulations,  you have successfully unlocked the course',
+              })
+
             AddItemToProfile(resp.data);
             // navigation.navigate("Confirmation",{
             //     id:2,//resp?.data?.applicationId,
@@ -78,6 +87,7 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
             //     imgPara: 'Successful',
             //     para1: 'Congratulations, your application has been sent',
             //   })
+
             console.log('resp?.data--->>>', resp?.data)
           } else {
             setLoader(false)

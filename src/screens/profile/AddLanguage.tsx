@@ -21,16 +21,17 @@ const AddLanguage = ({navigation}:{navigation: Navigation}) => {
       }
 
   return (
-    <SafeAreaView>
-    <View>
+    <SafeAreaView style={styles.container}>
+    <View style={{ paddingTop: 30, }}>
     <TouchableOpacity onPress={() => { navigation.goBack() }}>
+      <View style={styles.titlePosition}>
           <Image source={images.leftArrow} />
+          <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Known Languages </Text>
+          </View>
         </TouchableOpacity>
-      {/* <Text>LocationSearch</Text> */}
+      
     <View style={styles.searchBox}>
-      {/* <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} /> */}
       <TextInput style={styles.input} value= {value} placeholder='Add Languages known ' onChangeText={text => setValue(text)} />
-      {/* <SVGIcon name={ICONS.IC_REMOVE} /> */}
     </View>
    
     <View style={styles.bottom}>

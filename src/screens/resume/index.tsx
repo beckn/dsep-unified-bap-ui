@@ -246,7 +246,7 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
       </View>
       <Spacer size={20}/>
       <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Goto Dashboard'} type="dark"/>
+       <Button onPress={onClickApply} text={'Go To Dashboard'} type="dark"/>
        
       </View> 
     </ScrollView>
