@@ -1,15 +1,26 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React,{useEffect} from 'react';
+import { View, Text,BackHandler} from 'react-native';
 import {styles} from './styles';
 import Button from '@components/AppButton';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Spacer from '@components/Spacer';
 import {ICONS, SVGIcon } from '@components';
 import { Colors } from '@styles/colors';
-import Header from './Header';
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
-  const { id, heading, time, imgPara, para1, para2, bacId} = route.params;
+  const { id, heading, time, imgPara, para1, para2, bacId, data} = route.params;
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Home")
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
+  }, []);
+  
 
   const onClickConfirmation =(navigation) =>{
     // navigation.navigate('Home');
@@ -54,7 +65,7 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
        {id ===1 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
        {id===1 && <Spacer size={20}/>}
         {id === 1 ? <Button onPress={()=>{}} text={'EXPLORE OTHER COURSES'} type=""/> : null}
-        {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
+        {/* {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null} */}
        <Spacer size={20}/>
         {id === 2 ? <Button onPress={()=>navigation.navigate('Dashboard')} text={'go back to home'} type="dark"/> : null}
        {id ===2 && <Spacer size={20}/>}

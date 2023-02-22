@@ -43,7 +43,7 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
     return(
     <>
     <Header navigation={navigation} 
-            heading={data?.scholarshipProviders[0].scholarships[0]?.name}
+            heading={data?.scholarshipProviders[0]?.scholarships[0]?.name}
             
             //education={data?.scholarshipProviders[0]?.scholarships[0]?.category?.name}
            

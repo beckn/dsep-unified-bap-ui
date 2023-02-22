@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {View, Text, TextInput, Alert, ScrollView, SafeAreaView} from 'react-native';
+import {View, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import {styles} from './styles';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Button from '@components/AppButton';
@@ -37,7 +37,7 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
                   name: selectData.scholarshipProviders[0].scholarships[0].name,
                   description: selectData.scholarshipProviders[0].description,
                   amount: selectData.scholarshipProviders[0].scholarships[0].amount,
-                  "categoryId": "DSEP_CAT_1",
+                  "categoryId": "DSEP_CAT_2",
                   "scholarshipDetails": {
                       "id": "DSEP_FUL_01",
                       "type": "SCHOLARSHIP",
@@ -82,18 +82,27 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
       }
       };
       setLoader(true);
+      console.log('request',request);
+      
       const resp = await callService(ApiMethods.POST, ENDPOINT.SCHOLARSHIP_INIT, request);
         if (resp?.status === 200) {   
           setLoader(false)
-          navigation.navigate('Confirmation',{
-            id:2,
-            heading:resp?.data?.scholarshipProvider.scholarships[0].name,
-            time: resp?.data?.scholarshipProvider.scholarships[0].scholarshipDetails.applicationEndDate,
-            imgPara: 'Congratulations!',
-            para1: resp?.data?.scholarshipProvider.description,
-            para2: 'We will evaluate your application and respond as soon as possible.'
+          console.log('SCHOLARSHIP_INIT',resp?.data);
+          
+          // navigation.navigate('Confirmation',{
+          //   id:2,
+          //   heading:resp?.data?.scholarshipProvider.scholarships[0].name,
+          //   time: resp?.data?.scholarshipProvider.scholarships[0].scholarshipDetails.applicationEndDate,
+          //   imgPara: 'Congratulations!',
+          //   para1: resp?.data?.scholarshipProvider.description,
+          //   para2: 'We will evaluate your application and respond as soon as possible.'
+       
+          // });
+           navigation.navigate('ScholarInit',{
+            data: resp?.data
        
           });
+
         } else 
         {
             console.log(resp?.message);

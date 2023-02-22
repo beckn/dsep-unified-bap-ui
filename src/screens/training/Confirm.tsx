@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   Text,
   View,
-  FlatList,
   ScrollView
 } from 'react-native';
 import Button from '@components/AppButton';
@@ -61,6 +60,8 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
 
     const onConfirmPress = async()=>{
         const request = {};
+        console.log('data>>>>>', data);
+        
         request.context = data.context;
         request.courseId = data.course.id;
         request.CourseProviderId = data.course.provider.id;
@@ -70,6 +71,8 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
           if (resp?.status == 200) {
             setLoader(false)
             setResponse(resp?.data);
+            console.log('::::::',resp?.data);
+            
 
             navigation.navigate("Confirmation",{
                 id:2,//resp?.data?.applicationId,
@@ -79,7 +82,7 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
                 para1: 'Congratulations,  you have successfully unlocked the course',
               })
 
-            AddItemToProfile(resp.data);
+            // AddItemToProfile(resp.data);
             // navigation.navigate("Confirmation",{
             //     id:2,//resp?.data?.applicationId,
             //     heading:resp?.data?.course?.name,
