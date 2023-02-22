@@ -26,13 +26,15 @@ function ScholarInit({navigation, route}: {navigation: Navigation, route:any}) {
         const request = {};
         request.context = data.context;
        request.scholarshipProvider = data.scholarshipProvider;
+       console.log('requestScholarInit',request);
+       
         setLoader(true);
         const resp = await callService(ApiMethods.POST,ENDPOINT.CONFIRM_SCHOLARSHIP,request);
   
           if (resp?.status == 200) {
             setLoader(false)
             setResponse(resp?.data);
-            console.log('ScholarInitCongratulations:::-->>>',resp?.data);
+            console.log('ScholarInitCongratulations:::-->>>',resp);
             navigation.navigate("Confirmation",{data: data,loader,  imgPara: 'Successful',
                para1: 'Congratulations,  you have successfully unlocked the course',heading : data?.scholarshipProvider?.name })
           } else {
@@ -60,7 +62,7 @@ function ScholarInit({navigation, route}: {navigation: Navigation, route:any}) {
 
       </View>  
       <View style={styles.bottom}>
-       <Button onPress={onConfirmPress} text={'Init'} type="dark"/>
+       <Button onPress={onConfirmPress} text={'Confirmation'} type="dark"/>
       </View> 
       </>
 }

@@ -1,16 +1,25 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React,{useEffect} from 'react';
+import { View, Text,BackHandler} from 'react-native';
 import {styles} from './styles';
 import Button from '@components/AppButton';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Spacer from '@components/Spacer';
 import {ICONS, SVGIcon } from '@components';
 import { Colors } from '@styles/colors';
-import Header from './Header';
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
   const { id, heading, time, imgPara, para1, para2, bacId, data} = route.params;
-  console.log('data',data);
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Home")
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
+  }, []);
   
 
   const onClickConfirmation =(navigation) =>{
