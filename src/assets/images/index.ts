@@ -20,6 +20,7 @@ const images = {
     pdf: require("../images/PDF.png"),
     rectangle: require("../images/Rectangle.png"),
     signin: require("../images/signin.png"),
+    google: require("../images/google.png"),
     calender: require("../images/calender.png"),
 
 }

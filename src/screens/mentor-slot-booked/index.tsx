@@ -10,23 +10,17 @@ import Button from '@components/Button';
 import {Colors} from '@styles/colors';
 import NavBar from '@components/Navbar';
 import { useMentorContext } from '@context';
+import moment from 'moment';
 
 const SlotBookedScreen = ({navigation}) => {
   const [data, setData] = useState([]);
   const {selectedMentorData} = useMentorContext();
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   addSlotData();
+  // }, []);
 
-  const getData = async () => {
-    const resp = await callService(ApiMethods.GET, ENDPOINT.GET_MENTORS);
-    if (resp?.status === 200) {
-      setData(resp.data);
-    } else {
-      console.log(resp?.message);
-    }
-  };
+
 
   return (
     <View style={styles.container}>
@@ -34,7 +28,7 @@ const SlotBookedScreen = ({navigation}) => {
       <DetailHeader
         borderBottom={true}
         title= {selectedMentorData.mentor.name}
-        description="Frontend Architect | Founder - ABC company"
+        description= {`Date & time : ${moment(selectedMentorData.timingStart).format('DD/MM/YYYY, hh:mm A')}`}
       />
       <SuccessCard
         title={'Yay!'}

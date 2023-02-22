@@ -10,6 +10,7 @@ type Styles = {
     body: ViewStyle;
     spacer: ViewStyle;
     heading: ViewStyle;
+    heading2: ViewStyle;
     card: ViewStyle;
     debitCard:ViewStyle;
     smallCard: ViewStyle;
@@ -80,6 +81,11 @@ export const styles = StyleSheet.create<Styles>({
     heading: {
       color: Colors.black,
       fontSize: Fonts.size.medium,
+    },
+    heading2: {
+      color: Colors.black,
+      fontSize: Fonts.size.medium,
+      fontWeight : 'bold'
     },
     card:{
      height:60,

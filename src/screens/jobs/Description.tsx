@@ -15,7 +15,7 @@ function Description({navigation, data }: {navigation: Navigation, data: any}) {
         "jobId": data?.selectedJobs[0]?.jobId
       },
     }
-  
+    
     navigation.navigate('SubmitApplication', initContext);
   }
    const renderItem = ({item, index})=>{

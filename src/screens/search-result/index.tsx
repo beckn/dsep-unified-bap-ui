@@ -45,13 +45,15 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
         "jobId": item.jobs[0].jobId
       } 
     }
+    let userSavedItem = item.jobs[0].userSavedItem
+    let userAppliedItem = item.jobs[0].userAppliedItem
     setreqData(reqdata1)
     console.log("check search screen", JSON.stringify(reqData))
-    navigation.navigate("Jobs");
+    navigation.navigate("Jobs", {userSavedItem, userAppliedItem});
   }
   useEffect(() => {
     getData();
-    
+    console.log("check list data", JSON.stringify(list[0]?.jobs[0].role))  
   }, []);
   const onPress =() =>{
     showModal();
@@ -69,7 +71,7 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     setLoading(true);
     const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
     if (resp?.status === 200) {
-      // console.log("check search data", searchData)
+       //console.log("check search data", JSON.stringify(resp?.data.jobResults))
       
       setData(resp?.data.context);
       setList(resp?.data.jobResults)
@@ -89,8 +91,9 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
  </View> 
  ):(
     <View >
-      <Header navigation={navigation} 
-    heading='UX Designer'
+    <Header navigation={navigation} 
+     heading= {list[0]?.jobs[0].role}
+      // {list[0]?.jobs[0]?.role}
     onPress={onPress}
     count = {list.length}
     />
