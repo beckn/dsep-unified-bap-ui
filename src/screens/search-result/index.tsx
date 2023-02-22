@@ -27,6 +27,7 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
     {label: 'Mentorship', value: 'mentorship'},
   ]);
   const [data, setData] = useState();
+  const [role, setRole] = useState();
   const [loading, setLoading] = useState(false);
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
@@ -34,10 +35,12 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute', bottom: 0, height: 300, width: 400  };
   const {list, selectedValue, setList, setSelectedValue} = useListView();
-  const { reqData, setreqData } = ReqContextView();
+  const { reqData, setreqData, headerData, setHeaderData } = ReqContextView();
   const onClickApply =(item) =>{
     setSelectedValue(item);
-    console.log("check search screen", JSON.stringify(data))
+    console.log("check search screen", JSON.stringify(item))
+    // reqData to be sent in request as parameter
+
     let reqdata1 =  {
       "context": data,
       "companyId": item.company.id,
@@ -45,15 +48,29 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
         "jobId": item.jobs[0].jobId
       } 
     }
-    let userSavedItem = item.jobs[0].userSavedItem
-    let userAppliedItem = item.jobs[0].userAppliedItem
-    setreqData(reqdata1)
+    setreqData(reqdata1);
+    //header to show in all screens
+    let header = {
+      "role":item.jobs[0]?.role,
+      "company": item.company?.name,
+      "location": item.jobs[0]?.locations[0]?.city,
+      "userSavedItem" : item.jobs[0].userSavedItem,
+      "userAppliedItem" : item.jobs[0].userAppliedItem
+    }
+    setHeaderData(header)
+    
+    
     console.log("check search screen", JSON.stringify(reqData))
-    navigation.navigate("Jobs", {userSavedItem, userAppliedItem});
+    navigation.navigate("Jobs");
   }
   useEffect(() => {
     getData();
+    if(list.length !=0){
+      setRole(list[0]?.jobs[0].role);
     console.log("check list data", JSON.stringify(list[0]?.jobs[0].role))  
+  }else{
+
+  }
   }, []);
   const onPress =() =>{
     showModal();
@@ -69,9 +86,13 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
 
   const getData = async () => {
     setLoading(true);
+    
+    console.log("check search resp", JSON.stringify(searchData))
     const resp = await callService(ApiMethods.POST,ENDPOINT.SEARCH_JOBS, searchData);
+    
+    console.log("check search resp", JSON.stringify(resp))
     if (resp?.status === 200) {
-       //console.log("check search data", JSON.stringify(resp?.data.jobResults))
+       console.log("check search data", JSON.stringify(resp?.data.jobResults))
       
       setData(resp?.data.context);
       setList(resp?.data.jobResults)
@@ -92,8 +113,7 @@ const SearchResultScreen = ({navigation, route}: {navigation: Navigation, route:
  ):(
     <View >
     <Header navigation={navigation} 
-     heading= {list[0]?.jobs[0].role}
-      // {list[0]?.jobs[0]?.role}
+     heading= {role}
     onPress={onPress}
     count = {list.length}
     />

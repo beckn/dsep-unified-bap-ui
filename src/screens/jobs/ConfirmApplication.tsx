@@ -15,7 +15,7 @@ import { DetailHeader } from '@components/index';
 
 
 const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route: any}) => {
-    const { respData, resumeUri, exp, sop } = route.params;
+    const { respData, fileName, exp, sop } = route.params;
     const [data, setData] = useState([]);
     const { reqData, setreqData } = ReqContextView();
     const [init, setInit] = useState('init');
@@ -137,7 +137,7 @@ const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route:
         <Loader />
       ) :(
       <View style={{ padding: 30, backgroundColor: 'white' }}>
-      <Text style={styles.heading2}>Confirm Application</Text>
+      <Text style={{ fontSize : 18, color: 'black', fontWeight: 'bold'}}>Confirm Application</Text>
       <Spacer size={30} />
       <View style={{ flexDirection: 'row'}}>
       <Text style={styles.heading2}>Role :</Text>
@@ -160,13 +160,13 @@ const ConfirmApplication = ({navigation, route}: {navigation: Navigation, route:
       </View>
       <Spacer size={20} />
       <View style={{ flexDirection: 'row'}}>
-      <Text style={styles.heading2}> Linked in URL : </Text>
+      <Text style={styles.heading2}>LinkedIn URL : </Text>
       <Text> {profileInfo.profile?.profileUrl}</Text>
       </View>
       <Spacer size={20} />
       <View style={{ flexDirection: 'row'}}>
       <Text style={styles.heading2}>Resume : </Text>
-      <Text> {resumeUri}</Text>
+      <Text> {fileName}</Text>
       </View>
       <Spacer size={20} />
       <View style={{ flexDirection: 'row'}}>

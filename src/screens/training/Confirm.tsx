@@ -37,7 +37,7 @@ function ConfirmTraining({navigation,route}: {navigation: Navigation, route:any}
                 heading:resp?.data?.course?.name,
                 time: resp?.data?.course?.duration,
                 imgPara: 'Successful',
-                para1: 'Congratulations, your application has been sent',
+                para1: 'Congratulations,  you have successfully unlocked the course',
               })
             console.log('resp?.data--->>>', resp?.data)
           } else {

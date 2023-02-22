@@ -21,21 +21,21 @@ const ResultCard = ({item, onItemPressed}) => {
               {`${item?.job_id?.city}`}
             </Text>
           </View>
-          <View style={styles.bookmarkIcon}>
+          {/* <View style={styles.bookmarkIcon}>
             <Image source={images.vector} />
-          </View>
+          </View> */}
         </View>
         <View style={styles.detailsRow}>
           <Text style={styles.roleName}>{item?.job_id?.role}</Text>
-          <Text
+          {/* <Text
             style={
               styles.roleAttributes
-            }>{`${item?.job_id?.location_type}`}</Text>
+            }>{`${item?.job_id?.location_type}`}</Text> */}
           <View style={styles.roleHistory}>
             <Text style={styles.rolePostedDate}>
               {item?.job_id?.application_id}
             </Text>
-            <Text style={styles.rolePostedBy}>{'test.user@gmail.com'}</Text>
+            <Text style={styles.rolePostedBy}>{}</Text>
           </View>
         </View>
       </View>

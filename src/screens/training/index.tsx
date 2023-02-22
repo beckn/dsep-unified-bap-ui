@@ -55,7 +55,9 @@ const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
     <Tabs
         tabData={[
           {label: 'Description',comp : <Description navigation={navigation} data={data} loader={loader} onClickBuyNow = {onClickBuyNow}/>},
-          {label: 'LessonPlan', comp : <LessonPlan  navigation={navigation} onClickBuyNow = {onClickBuyNow}/>},
+          {label: 'Lesson Plan', 
+          // comp : <LessonPlan  navigation={navigation} onClickBuyNow = {onClickBuyNow}/>
+        },
         ]}
       />
     </>

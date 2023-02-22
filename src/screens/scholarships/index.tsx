@@ -51,7 +51,9 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
     <Tabs
         tabData={[
           {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} data = {data} loader={loader} />},
-          {label: 'Eligibility', comp : <Eligibility  navigation={navigation} data = {data} loader={loader} />},
+          {label: 'Eligibility', 
+          // comp : <Eligibility  navigation={navigation} data = {data} loader={loader} />
+        },
         ]}
       />
     </>

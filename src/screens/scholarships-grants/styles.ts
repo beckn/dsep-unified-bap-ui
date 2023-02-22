@@ -38,6 +38,8 @@ export const styles = StyleSheet.create<Styles>({
   },
   headerText: {
     textAlign: 'center',
-    fontWeight: '900'
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 20
   },
 });

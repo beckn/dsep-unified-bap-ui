@@ -12,19 +12,20 @@ type PropType = {
     text: any;
     onPress: any;
     type: any;
+    disabled: any;
   };
 
 const AppButton = (props: PropType) =>{
-    const {styles, text, onPress, type} = useAppButton(props);
+    const {styles, text, onPress, disabled, type} = useAppButton(props);
     return(
-       <TouchableOpacity onPress={onPress} style={styles.button}>
+       <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.button}>
         <Text style={styles.buttonText}>{text}</Text>
        </TouchableOpacity>
     )
 
 
   function useAppButton(props: PropType) {
-        const {height, text, style, onPress, type} = props;
+        const {height, text, style, onPress, disabled, type} = props;
         const styles = StyleSheet.create({
           button: {
             height: height,
@@ -46,6 +47,7 @@ const AppButton = (props: PropType) =>{
           styles,
           text,
           onPress,
+          disabled,
           type
         };
   }

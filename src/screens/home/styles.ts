@@ -4,18 +4,18 @@ import {StyleSheet, ViewStyle} from 'react-native';
 
 type Styles = {
   container: ViewStyle;
-  searchBoxContainer: ViewStyle,
-  listContainer: ViewStyle,
-  item: ViewStyle,
-  icon: ViewStyle,
-  input: ViewStyle,
-  feature: ViewStyle,
-  title: ViewStyle,
-  texttitle: ViewStyle,
-  list: ViewStyle,
-  centeredView: ViewStyle,
-  modalView: ViewStyle,
-  bottom: ViewStyle
+  searchBoxContainer: ViewStyle;
+  listContainer: ViewStyle;
+  item: ViewStyle;
+  icon: ViewStyle;
+  input: ViewStyle;
+  feature: ViewStyle;
+  title: ViewStyle;
+  texttitle: ViewStyle;
+  list: ViewStyle;
+  centeredView: ViewStyle;
+  modalView: ViewStyle;
+  bottom: ViewStyle;
 
 };
 
@@ -72,7 +72,7 @@ title : {
 },
 texttitle : {
   fontWeight: 'bold',
-  Color: `#000000`
+  color: 'black'
 },
 list: {
   height: 130,
@@ -106,6 +106,6 @@ modalView: {
   shadowOpacity: 0.25,
   shadowRadius: 4,
   elevation: 5,
-},
+}
 
 });

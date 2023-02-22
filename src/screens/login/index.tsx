@@ -82,10 +82,11 @@ function LoginScreen({navigation}) {
             borderRadius: 5,
           }}>
           <View style={{flexDirection: 'row', }}>
-          <View style={{alignItems: 'baseline', paddingRight: 10}}>
-          <Image source={images.google} style={{width: 30, height:30}} ></Image></View>
           <View style={{alignItems: 'baseline', paddingLeft: 10}} >
-          <Text style={{color: 'white', padding: 2, fontSize: 20}}>Sign in With Google</Text></View></View>  
+          <Text style={{color: 'white', padding: 2, fontSize: 20}}>Sign in With </Text></View>
+          <View style={{alignItems: 'baseline', paddingRight: 10}}>
+          <Image source={images.googleLogo} style={{width: 100, height:40}} ></Image></View>
+          </View>  
         </TouchableOpacity>
        
       </View>
