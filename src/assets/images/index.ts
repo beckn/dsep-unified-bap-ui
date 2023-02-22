@@ -21,6 +21,7 @@ const images = {
     rectangle: require("../images/Rectangle.png"),
     signin: require("../images/signin.png"),
     google: require("../images/google.png"),
+    googleLogo: require("../images/googleLogo.jpg"),
     calender: require("../images/calender.png"),
 
 }

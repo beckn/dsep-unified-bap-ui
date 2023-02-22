@@ -19,6 +19,7 @@ type Styles = {
   searchBoxContainer: ViewStyle;
   bottom: ViewStyle;
   inputStyleMultiLine: ViewStyle;
+  titlePosition: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -69,6 +70,7 @@ export const styles = StyleSheet.create<Styles>({
   },
   searchBox: {
     height: 47.95,
+    width: 330,
     backgroundColor: Colors.white,
     borderColor: Colors.black,
     borderWidth: 1,
@@ -82,6 +84,13 @@ export const styles = StyleSheet.create<Styles>({
   input: {
     flex: 1,
     paddingLeft: Metrics.padding.xSmall,
+  },
+  titlePosition:{
+    justifyContent: 'space-between', 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    width: 250,  
+    padding: 20
   },
   inputStyle: {
     height: 40,

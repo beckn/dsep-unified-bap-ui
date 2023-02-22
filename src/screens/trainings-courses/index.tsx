@@ -69,7 +69,7 @@ const TrainingListScreen = ({navigation}) => {
         heading='Training & Courses'
         />
           <View style={styles.searchBoxContainer}>
-            <SearchBox />
+            
           </View>
           <FlatList
             data={data}

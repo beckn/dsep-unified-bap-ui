@@ -36,12 +36,7 @@ const Jobs = ({navigation, route}: {navigation: Navigation, route: any}) => {
       console.log("check respone in jobs", JSON.stringify(resp.data))
       setData(resp?.data);
        
-      let header = {
-        "role":resp?.data?.selectedJobs[0]?.role,
-        "company": resp?.data?.company?.name,
-        "location": resp?.data?.selectedJobs[0]?.locations[0]?.city 
-      }
-      setHeaderData(header)
+      
       setLoader(false)
     } else {
       setLoader(false)
@@ -71,10 +66,10 @@ const Jobs = ({navigation, route}: {navigation: Navigation, route: any}) => {
       />
       <Tabs
         tabData={[
-          {label: 'Description', comp: <Description navigation={navigation}  data = {data}/>},
+          {label: 'Description', comp: <Description navigation={navigation}  data = {data} headerData = {headerData}   />},
           {
             label: 'About Company',
-            comp: <AboutCompany navigation={navigation} data = {data} />,
+            comp: <AboutCompany navigation={navigation} data = {data} headerData = {headerData} />,
           },
         ]}
       />
