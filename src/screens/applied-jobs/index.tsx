@@ -8,7 +8,7 @@ import ResultCard from './ResultCard';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 import SavedJSON from '../../data/saved-jobs.json';
-import {useListView} from '@context';
+import {ReqContextView, useListView} from '@context';
 import axios from 'axios';
 import MentorCard from '@components/MentorCard';
 import Rating from '@components/Ratings';
@@ -27,6 +27,7 @@ const AppliedJobs = ({navigation}) => {
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
   const email = profileInfo.profile?.email;
+  const {reqData, setreqData} = ReqContextView();
   useEffect(() => {
     getData();
   }, []);
@@ -41,7 +42,23 @@ const AppliedJobs = ({navigation}) => {
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <ResultCard item={item} onItemPressed={item => console.log(item)} />
+          <ResultCard
+            item={item}
+            onItemPressed={item => {
+              let reqdata1 = {
+                context: {
+                  bppId: item.job_id.bpp_id,
+                  bppUri: item.job_id.bpp_uri,
+                },
+                companyId: item.job_id.provider_id,
+                jobs: {
+                  jobId: item.job_id.job_id,
+                },
+              };
+              setreqData(reqdata1);
+              navigation.navigate('Jobs');
+            }}
+          />
         )}
         ListEmptyComponent={ListEmptyComp}
       />
