@@ -30,24 +30,22 @@ const ResultCard = ({item, onItemPressed}) => {
             </View>
           </View>
           <View style={styles.organizationDetails}>
-            <Text style={styles.organizationName}>{item?.job_id?.comapny}</Text>
-            <Text style={styles.organizationLocation}>
-              {`${item?.job_id?.city}`}
-            </Text>
+            <Text style={styles.organizationName}>{item?.company}</Text>
+            <Text style={styles.organizationLocation}>{`${item?.city}`}</Text>
           </View>
           <View style={styles.bookmarkIcon}>
             <Image source={images.vector} />
           </View>
         </View>
         <View style={styles.detailsRow}>
-          <Text style={styles.roleName}>{item?.job_id?.role}</Text>
+          <Text style={styles.roleName}>{item?.role}</Text>
           <Text
             style={
               styles.roleAttributes
             }>{`${item?.job_id?.location_type}`}</Text>
           <View style={styles.roleHistory}>
             <Text style={styles.rolePostedDate}>
-              {getTimeString(item?.job_id?.created_at)}
+              {getTimeString(item?.created_at)}
             </Text>
             <Text style={styles.rolePostedBy}>{'by test.user@gmail.com'}</Text>
           </View>
