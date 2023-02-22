@@ -59,6 +59,7 @@ const SavedJobs = ({navigation}) => {
             }}
           />
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -86,6 +87,7 @@ const SavedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -112,6 +114,7 @@ const SavedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
@@ -143,9 +146,16 @@ const SavedJobs = ({navigation}) => {
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
+
+  const ListEmptyComp = () => (
+    <View style={styles.listEmptyContainer}>
+      <Text style={styles.listEmptyTextStyle}>No Data Found</Text>
+    </View>
+  );
 
   const getData = async () => {
     const resp = await axios.get(
