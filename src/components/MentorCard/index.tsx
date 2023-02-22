@@ -15,7 +15,7 @@ type cardDetails = {
 const MentorCard = ({ data, index, onPress }: cardDetails) => {
   const navigation = useNavigation();
   return data?.mentorships.map((mentorshipsData) => {
-    console.log("mentorshipsData", mentorshipsData);
+    console.log("mentorshipsData", {mentorshipsData, data});
     return mentorshipsData.mentorshipSessions.map((mentorData) => {
       return (
         <TouchableOpacity
@@ -27,6 +27,8 @@ const MentorCard = ({ data, index, onPress }: cardDetails) => {
               mentorshipId: mentorshipsData.id,
               mentorshipName: mentorshipsData.name,
               mentorshipDesc: mentorshipsData.description,
+              userApplied : mentorshipsData.userAppliedItem,
+              mentorshipProviderId: data?.id
             })
           }
         >
@@ -48,7 +50,7 @@ const MentorCard = ({ data, index, onPress }: cardDetails) => {
             >
               {mentorshipsData.name}
             </Text>
-            <Rating rating={mentorData.mentor.rating} />
+            {mentorData.mentor.rating && <Rating rating={mentorData.mentor.rating} />}
           </View>
         </TouchableOpacity>
       );

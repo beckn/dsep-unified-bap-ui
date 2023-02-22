@@ -23,8 +23,8 @@ export default function Dashboard() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({size}) =>
-            TabBarIcon({name: ICONS.IC_HOME_FILLED, size}),
+          tabBarIcon: ({ focused, size }) => 
+            TabBarIcon({name: ICONS.IC_HOME_ACTIVE, size}),
             headerShown: false
         }}
       />
