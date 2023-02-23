@@ -29,7 +29,7 @@ import SkillsSearch from '../screens/search-result/SkillsSearch';
 import home from '../screens/home';
 import WorkExperience from '../screens/profile/WorkExperience';
 import Education from '../screens/profile/Education';
-
+import JobStatus from '../screens/job-status';
 import Settings from '../screens/settings';
 import TrainingListScreen from '../screens/trainings-courses';
 import ResumeScreen from '../screens/resume';
@@ -246,6 +246,12 @@ function Routes() {
           <Stack.Screen
             name="ScholarInit"
             component={ScholarInit}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="JobStatus"
+            component={JobStatus}
             options={{headerShown: false}}
           />
           

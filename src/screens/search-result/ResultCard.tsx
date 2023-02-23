@@ -4,14 +4,16 @@ import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import { styles } from "./styles";
 
-// const ResultCard = ({navigation})=>{
-//     return (
-//     <TouchableOpacity onPress={() => navigation.navigate('Jobs')}>  
-//     <View style = {styles.resultCardContainer}>
-const ResultCard = ({data, onItemPressed})=>{
-console.log(data)
+import {callService, ProfileCallService} from '@services';
+import {ENDPOINT} from '@services/endpoints';
+import {ApiMethods} from '@constant/common.constant';
+
+
+const ResultCard = ({data, onButtonClick, onItemPressed})=>{
+    
+console.log("check data in result card",JSON.stringify(data))
     return (
-        
+     
     <TouchableOpacity style = {styles.resultCardContainer} key ={data.id} onPress={() => onItemPressed(data)}>
         <View style = {styles.organizationRow}>
             <View style = {styles.profilleIconContainer}>
@@ -28,7 +30,11 @@ console.log(data)
                 </Text>
             </View>
             <View style = {styles.bookmarkIcon}>
+            <TouchableOpacity disabled={data.jobs[0].userSavedItem}
+            style={{backgroundColor: (data.jobs[0].userSavedItem)? 'red' : 'white'}}
+            onPress={() => onButtonClick(data)}>
             <Image source={images.vector} />
+            </TouchableOpacity>
             </View>
         </View>
         <View style = {styles.detailsRow}>
@@ -43,5 +49,12 @@ console.log(data)
     </TouchableOpacity>
     )
 }
-
+// Styles for applied button change, for this data cards should be maped based on jobs
+ //     { width: '90%',
+    //     height: 150,
+    //     backgroundColor:(data.jobs[0].userAppliedItem)? 'orange' :  Colors.white,
+    //     alignSelf: 'center',
+    //     borderRadius: Metrics.radius.large,
+    //     marginVertical: Metrics.margin.xSmall,
+    //   }  
 export default ResultCard;

@@ -12,10 +12,10 @@ function Header({ navigation, heading, onPress, count }) {
   return (
     <View >
     <View style={styles.header}>
-      <View style={[styles.headerHeading, StyleSheet.absoluteFill]}>
-      {/* <TouchableOpacity onPress={() => { navigation.goBack() }}>
+      <View style={[styles.headerHeading, ]}>
+      <TouchableOpacity onPress={() => { navigation.goBack() }} style={{padding:5, paddingRight: 60}} >
           <Image source={images.leftArrow} />
-        </TouchableOpacity> */}
+        </TouchableOpacity>
         <Text style={styles.headerText}>{heading}</Text>
       </View>
       </View>

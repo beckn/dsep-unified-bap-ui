@@ -26,7 +26,7 @@ const AppliedJobs = ({navigation}) => {
   ]);
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
-  const email = profileInfo.profile?.email;
+  const email = profileInfo.profile?.email
   const {reqData, setreqData} = ReqContextView();
   useEffect(() => {
     getData();
@@ -43,6 +43,7 @@ const AppliedJobs = ({navigation}) => {
         renderItem={({item, index}) => (
           <ResultCard
             item={item}
+            email={email}
             onItemPressed={item => {
               let reqdata1 = {
                 context: {
@@ -55,7 +56,7 @@ const AppliedJobs = ({navigation}) => {
                 },
               };
               setreqData(reqdata1);
-              navigation.navigate('Jobs');
+              navigation.navigate('JobStatus');
             }}
           />
         )}

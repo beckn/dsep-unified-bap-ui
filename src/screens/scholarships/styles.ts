@@ -4,6 +4,7 @@ import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
 type Styles = {
   container: ViewStyle;
+  container2: ViewStyle;
   heading: ViewStyle;
   card: ViewStyle;
   line: ViewStyle;
@@ -23,6 +24,12 @@ export const styles = StyleSheet.create<Styles>({
     padding: Metrics.padding.medium,
     
   },
+  container2: {
+    flex: 1,
+    //padding: Metrics.padding.medium,
+    
+  },
+  
   heading: {
     color: Colors.black,
     fontSize: Fonts.size.medium,

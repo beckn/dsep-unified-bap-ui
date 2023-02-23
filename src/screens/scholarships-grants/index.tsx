@@ -10,11 +10,14 @@ import {Navigation} from '@interfaces/commonInterfaces';
 import Loader from '@components/Loader/Loader';
 import NavBar from '@components/Navbar';
 import NoData from '@components/NoData';
+import {ReqContextView} from '@context';
+
 
 const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, route: any}) => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [loader, setLoader] = useState(true);
+  const { headerData,  setHeaderData} = ReqContextView();
   const { scholortitle } = route.params;
   console.log(scholortitle);
   const onSearch = (value: string) => {
@@ -32,6 +35,9 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
 
   const navigateToSlotList = () => {
     // change the navigation here
+    let userSavedItem = data?.scholarshipProviders[0]?.scholarships[0]?.userSavedItem;
+    let userAppliedItem = data?.scholarshipProviders[0]?.scholarships[0]?.userAppliedItem;
+    setHeaderData({"userSavedItem":userSavedItem, "userAppliedItem":userAppliedItem} )
     navigation.navigate("Scholarships",{dataFromSearch:data})
   }
 
@@ -54,7 +60,7 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
 
   const getData = async (data) => {
     console.log('scholortitle',scholortitle)
-    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS, {name: scholortitle,  loggedInUserEmail: "test.user@xyz.com"});
+    const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS,  scholortitle);
     if (resp?.status === 200) {
       setData(resp.data);
       console.log('ScholarshipListScreen',resp.data);

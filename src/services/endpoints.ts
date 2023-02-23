@@ -26,6 +26,7 @@ export const ENDPOINT = {
   SEARCH_COURSE: '/course/search',
   CONFIRM_MENTORSHIP: '/mentorship/confirm',
   SAVE_APPLIED_JOB_TO_PROFILE: '/user/item',
+  SAVE_JOB_TO_PROFILE: '/user/item',
   USER_RESUME: '/user/resume',
   SELECT_TRAINING: '/course/select',
   INIT_TRAINING:'/course/init',

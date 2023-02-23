@@ -7,8 +7,14 @@ import {Navigation} from '@interfaces/commonInterfaces';
 import {callService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {ApiMethods} from '@constant/common.constant';
+import {ReqContextView} from '@context';
+import { View } from 'react-native';
+import Loader from '@components/Loader/Loader';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {styles}  from './styles';
 
 const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) =>{
+  const {reqData,headerData, setreqData, setHeaderData} = ReqContextView();
   const [data, setData]: any = useState();
   const [loader, setLoader] = useState(true);
   const {dataFromSearch} = route.params;
@@ -41,22 +47,24 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
     }
   };
     return(
-    <>
-    <Header navigation={navigation} 
-            heading={data?.scholarshipProviders[0]?.scholarships[0]?.name}
-            
-            //education={data?.scholarshipProviders[0]?.scholarships[0]?.category?.name}
-           
-    />
+   <SafeAreaView style={styles.container}>
+    {loader ? (
+        <Loader />
+      ) : (data == "")?(<View></View>) : (
+      <View style={styles.container2}>
+    <Header navigation={navigation}  heading={data?.scholarshipProviders[0]?.scholarships[0]?.name} />
     <Tabs
-        tabData={[
+     tabData={[
           {label: 'About Scholarship',comp : <AboutScholarship navigation={navigation} data = {data} loader={loader} />},
           {label: 'Eligibility', 
           // comp : <Eligibility  navigation={navigation} data = {data} loader={loader} />
         },
         ]}
       />
-    </>
+      </View>
+    
+      )  }
+      </SafeAreaView>
     )
 
 }

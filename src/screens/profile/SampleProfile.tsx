@@ -62,7 +62,7 @@ const getProfile =async () =>{
     profile.profileUrl = resp.data.full_name
     profile.id = resp.data._id
     let item = {profile}
-    console.log("item-->>",item);
+    console.log("item-->>",resp.data._id);
     setProfileInfo(item)
     console.log(profileInfo);
     navigation.navigate("Resume");
