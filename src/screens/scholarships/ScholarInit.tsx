@@ -35,8 +35,10 @@ function ScholarInit({navigation, route}: {navigation: Navigation, route:any}) {
             setLoader(false)
             setResponse(resp?.data);
             console.log('ScholarInitCongratulations:::-->>>',resp);
-            navigation.navigate("Confirmation",{data: data,loader,  imgPara: 'Successful',
-               para1: 'Congratulations,  you have successfully unlocked the course',heading : data?.scholarshipProvider?.name })
+            navigation.navigate("Confirmation",{data: data,loader, id:1, imgPara: 'Congratulations!',
+               para1: 'Your scholarship application was submitted successfully! ',
+               para2: 'We will evaluate your application and respond as soon as possible.',
+               heading : data?.scholarshipProvider?.name })
           } else {
             setLoader(false)
             console.log(resp);

@@ -75,6 +75,7 @@ export const styles = StyleSheet.create<Styles>({
   },
   headerHeading: {
     // flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
     marginBottom: 20,

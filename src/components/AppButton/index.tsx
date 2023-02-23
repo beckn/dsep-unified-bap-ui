@@ -29,7 +29,7 @@ const AppButton = (props: PropType) =>{
         const styles = StyleSheet.create({
           button: {
             height: height,
-            backgroundColor: type === "dark" ? Colors.black : Colors.background,
+            backgroundColor: type === "dark" ? Colors.black : type === "grey"? Colors.graniteGray : Colors.background,
             alignItems:'center',
             justifyContent:'center',
             borderRadius: Metrics.radius.xSmall,
