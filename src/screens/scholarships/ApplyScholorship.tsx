@@ -17,7 +17,9 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
   const [info, setInfo] = useState("");
   const [loader, setLoader] = useState(false);
   const {selectData} = route.params;
+  console.log("selcect data", JSON.stringify(selectData))
     const onClickApply = async() =>{
+      console.log("selcect data", JSON.stringify(selectData))
       const arr = [name,address,phone,info]
       let formData = [];
       for (const [key, value] of Object.entries(arr)) {
@@ -37,29 +39,25 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
                   name: selectData.scholarshipProviders[0].scholarships[0].name,
                   description: selectData.scholarshipProviders[0].description,
                   amount: selectData.scholarshipProviders[0].scholarships[0].amount,
-                  "categoryId": "DSEP_CAT_2",
+                  "categoryId": "DSEP_CAT_1",
                   "scholarshipDetails": {
-                      "id": "DSEP_FUL_01",
-                      "type": "SCHOLARSHIP",
-                      "applicationStartDate": "2013-02-04T22:44:30.652Z",
-                      "applicationEndDate": "2013-02-04T22:44:30.652Z",
-                      "supportContact": {
-                          "name": "Mary G",
-                          "phone": "9876543210",
-                          "email": "maryg@xyz.com"
-                      },
+                      "id": selectData.scholarshipProviders[0].scholarships[0].scholarshipDetails.id,
+                      "type": selectData.scholarshipProviders[0].scholarships[0].scholarshipDetails.type,
+                      "applicationStartDate": selectData.scholarshipProviders[0].scholarships[0].scholarshipDetails.applicationStartDate,
+                      "applicationEndDate": selectData.scholarshipProviders[0].scholarships[0].scholarshipDetails.applicationEndDate,
+                      "supportContact": selectData.scholarshipProviders[0].scholarships[0].scholarshipDetails.supportContact,
                       "scholarshipRequestor": {
-                          "name": "James",
-                          "phone": "498674",
-                          "address": "Mumbai",
-                          "needOfScholarship": "higher education",
+                          "name": name,
+                          "phone": phone,
+                          "address": address,
+                          "needOfScholarship": info,
                           "docUrl": " http://abc.co/docs"
                       }
                   },
                   "additionalFormData": {
                       "formUrl": "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1/public/getForm/a9aaecca-10b7-4d19-b640-022723112309/ba854d6184fa48eea36aab701486eee9",
                       "formMimeType": "text/html",
-                      "submissionId": "8203501c-8934-468c-b947-1d5317847e9a",
+                      "submissionId": "8203501c-8934-468c-b947-1d5317847e9c",
                       "data": formData
                   },
                   "academicQualificationsCriteria": selectData.scholarshipProviders[0].scholarships[0].academicQualifications,
