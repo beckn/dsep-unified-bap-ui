@@ -14,6 +14,7 @@ import MentorCard from '@components/MentorCard';
 import Rating from '@components/Ratings';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components/Text';
+import {userSkillView} from '@context';
 
 const SavedJobs = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
@@ -25,7 +26,8 @@ const SavedJobs = ({navigation}) => {
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
   const {reqData, setreqData} = ReqContextView();
-
+  const {profileInfo} = userSkillView();
+  const email = profileInfo.profile?.email
   useEffect(() => {
     getData();
   }, []);
@@ -154,13 +156,13 @@ const SavedJobs = ({navigation}) => {
 
   const getData = async () => {
     const resp = await axios.get(
-      `${BASE_URL_PROFILE}${ENDPOINT.SAVED_JOBS}test.user@gmail.com`,
+      `${BASE_URL_PROFILE}${ENDPOINT.SAVED_JOBS}${email}`,
     );
 
     if (resp?.status === 200) {
-      console.log(JSON.stringify(resp.data));
+      console.log(JSON.stringify(resp));
       setData(resp.data);
-      if (selectedValue) {
+      if (selectedValue) {  
         setList(resp.data[selectedValue.toString()]);
       }
     } else {

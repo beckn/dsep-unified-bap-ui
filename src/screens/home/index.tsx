@@ -15,6 +15,9 @@ import { userSkillView } from '@context';
 import Button from '@components/AppButton';
 import SearchListJson from '../../data/search-list.json';
 import ResultCard from '../search-result/ResultCard';
+import {Dropdown} from '@components/Dropdown';
+import {ReqContextView, useListView} from '@context';
+
 
 function HomeScreen({navigation}: {navigation: Navigation}) {
   const {theme, setTheme} = useTheme();
@@ -27,12 +30,25 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   const [courseTitle, setCourseTitle] = useState("");
   const [sessiontitle, setSessionTitle] = useState("");
   const [mentortitle, setMentorTitle] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [open, setOpen] = useState(false);
+  console.log("open state", open);
   const {profileInfo} = userSkillView();
   const [data, setData] = useState([
     {"name" : "Jobs & Internships", "icon":images.bag},{"name" : "Trainings & Courses", "icon":images.Training},
     {"name" : "Scholarships & Grants", "icon":images.Scholar},{"name" : "Tutoring & Mentorship", "icon":images.Mentor},
   ])
 
+  const [dropdownData, setDropdownData] = useState([
+    {label: 'Search by scholarship name', value: 'name'},
+    {label: 'Search by gender criteria', value: 'gender'},
+    {label: 'Search by by financial income criteria', value: 'finStatus'},
+    {label: 'Search by by caste criteria', value: 'casteCategory'},
+    {label: 'Search by categories for female students', value: 'femalecategories'},
+  ]);
+  const  [selectedValue, setSelectedValue] = useState();
+
+  const onPress = () => {};
   const testData = {"company": {"id": "1", "imageLink": [[Object]], "name": "Google India Pvt Ltd"}, "jobs": [{"additionalDesc": [Object], "description": "Like Google's own ambitions, the work of a Software Engineer (SWE) goes way beyond just Search. SWE Managers have not only the technical expertise to take on and provide technical leadership to major projects, but also manage a team of engineers. You not only optimize your own code but make sure engineers are able to optimize theirs. As a SWE Manager you manage your project goals, contribute to product strategy and help develop your team. SWE teams work all across the company, in areas such as information retrieval, artificial intelligence, natural language processing, distributed computing, large-scale system design, networking, security, data compression, user interface design; the list goes on and is growing every day. Operating with scale and speed, our exceptional software engineers are just getting started -- and as a manager, you guide the way.Google Cloud accelerates organizations’ ability to digitally transform their business with the best infrastructure, platform, industry solutions and expertise. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems", "jobId": "1", "locations": [Array], "role": "Software Engineering Manager II, Google Cloud"}]}
   const onClickApply =() =>{
     if(selectedCatagory == "Jobs & Internships"){
@@ -40,7 +56,6 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     let loc = item.map(i => {return({ "city":i })})
     let skilitem = skills?.split(',')
     let sk = skilitem.map(i => {return({"name":i, "code":i })})
-    
     var searchData = {
       "loggedInUserEmail": profileInfo?.profile?.email,
       "title": {
@@ -55,9 +70,47 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
     hideModal()
     navigation.navigate('SearchResult', {searchData});
   }else if(selectedCatagory == "Scholarships & Grants"){
-   
+   var scholtitle 
+   if(selectedValue == 'name'){
+    scholtitle =  {
+      "loggedInUserEmail": profileInfo?.profile?.email,
+      "name": scholortitle
+    };
+    }else if(selectedValue == 'gender'){
+      scholtitle =   {
+        "loggedInUserEmail": profileInfo?.profile?.email,
+        "gender": scholortitle
+      };
+    }else if(selectedValue == 'finStatus'){
+      scholtitle =   {
+        "loggedInUserEmail": profileInfo?.profile?.email,
+        "finStatus": {
+          "family_income": scholortitle
+        }
+      };
+    }else if(selectedValue == 'casteCategory'){
+      scholtitle =   {
+        "loggedInUserEmail": profileInfo?.profile?.email,
+        "casteCategory": [
+          {
+            "caste": scholortitle
+          }
+        ]
+      };
+    }else{
+      scholtitle =  {
+        "loggedInUserEmail": profileInfo?.profile?.email,
+        "categories": [
+          {
+            "code": scholortitle
+          }
+        ],
+        "gender": scholortitle
+      }
+    }
     hideModal()
-    navigation.navigate('ScholarshipList', {scholortitle});
+    console.log("scholtitle", JSON.stringify(scholtitle))
+    navigation.navigate('ScholarshipList', {scholortitle: scholtitle});
   }else if(selectedCatagory == "Trainings & Courses"){
    
     hideModal()
@@ -94,9 +147,11 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   }
   const onFocus = () => alert("input pressed");
   const [visible, setVisible] = React.useState(false);
+  
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0, alignItems: 'center', height: 350, width: 400  };
+  const ScholarcontainerStyle = {backgroundColor: 'white', position: 'absolute', borderRadius: 10, bottom: 0, alignItems: 'center', height: 500, width: 400  };
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -105,17 +160,9 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <Text>Hello </Text>
       <Text style={styles.texttitle}> {profileInfo?.profile?.firstName} </Text></View>
       <View style={{ alignItems:'flex-end'}}>
-      {/* <Icon
-                size={30}
-                name={'bell'}
-                // backgroundColor="#3b5998"
-                onPress={()=> navigation.navigate('Notification')}
-                >
-                
-            </Icon> */}
-            </View>
-            </View>
-            <View style={{ alignItems:'center'}}>      
+     </View>
+      </View>
+    <View style={{ alignItems:'center'}}>      
       <TextInput style={styles.input}
         placeholder="Type here to Search !"
         editable={false}
@@ -125,7 +172,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <View style={{ paddingTop: 30, paddingLeft: 10 }}>
       <Text style={styles.texttitle}>Featured Jobs</Text></View>
       <View style={styles.feature}>
-      <ResultCard data={testData} onItemPressed={testData => onClickApply()} />
+      <ResultCard data={testData} onItemPressed={item => onPress()} />
       </View>
       </View>
       <View style={styles.listContainer}>
@@ -183,22 +230,42 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             onChangeText={text => setSkills(text)}
             />
           <View style={styles.bottom}>
-          <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+          <Button onPress={onClickApply} 
+          disabled={(jobtitle == "" && company=="" && location == "" && skills == "")? true : false}  
+          type={(jobtitle == "" && company=="" && location == "" && skills == "")? "grey": "dark" } 
+          text={'Apply'}  />
          </View> 
             </View>
       </Modal>  
       ):(selectedCatagory === 'Scholarships & Grants')?
       (
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={ScholarcontainerStyle}>
           <Text style={styles.texttitle}>Search Scholorship</Text>
-          <View style={{ alignItems:'center'}}>
+
+          <View style={{ height: 250, width: 350, margin: 10 }}>
+             <Dropdown
+          data={dropdownData}
+          open={open}
+         
+          onSelect={value => {
+            setOpen(true);
+            setSelectedValue(value);
+           
+          }}
+        />
+        </View>
+        <View style={{ alignItems: 'center'}}>
+          
           <TextInput style={styles.input}
-              placeholder="Enter scholorship title "
+              placeholder="Enter value "
               value={scholortitle}
               onChangeText={text => setScholorTitle(text)}
               />      
             <View style={styles.bottom}>
-            <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+        <Button onPress={onClickApply} 
+          disabled={(scholortitle == "" )? true : false}  
+          type={(scholortitle == "")? "grey": "dark" } 
+          text={'Apply'}  />
            </View> 
               </View>
         </Modal>  
@@ -213,7 +280,10 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
               onChangeText={text => setCourseTitle(text)}
               />      
             <View style={styles.bottom}>
-            <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+            <Button onPress={onClickApply} 
+              disabled={(courseTitle == "")? true : false}  
+              type={(courseTitle == "" )? "grey": "dark" } 
+              text={'Apply'}  />
            </View> 
               </View>
         </Modal>  
@@ -232,7 +302,10 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             onChangeText={text => setMentorTitle(text)}
             />      
             <View style={styles.bottom}>
-            <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+            <Button onPress={onClickApply} 
+              disabled={(mentortitle == "" && sessiontitle=="" )? true : false}  
+              type={(mentortitle == "" && sessiontitle=="")? "grey": "dark" } 
+              text={'Apply'}  />
            </View> 
               </View>
         </Modal> 

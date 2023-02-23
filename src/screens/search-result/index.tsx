@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {ICONS, Text, SVGIcon} from '@components';
 import Button from '@components/AppButton';
-import {callService} from '@services';
+import {callService, ProfileCallService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
 import ResultCard from './ResultCard';
@@ -19,20 +19,14 @@ import {Colors} from '@styles/colors';
 import {Dropdown} from '@components/Dropdown';
 import Header from './Header';
 import SearchListJson from '../../data/search-list.json';
-import {useListView} from '@context';
+import {useListView,  userSkillView } from '@context';
 import {ReqContextView} from '@context';
 import {Navigation} from '@interfaces/commonInterfaces';
 import NavBar from '@components/Navbar';
 import Loader from '@components/Loader/Loader';
 import NoData from '@components/NoData';
 
-const SearchResultScreen = ({
-  navigation,
-  route,
-}: {
-  navigation: Navigation;
-  route: any;
-}) => {
+const SearchResultScreen = ({ navigation, route,}: { navigation: Navigation; route: any;}) => {
   const {searchData} = route.params;
   const [loader, setLoader] = useState(true);
   const [dropdownData, setDropdownData] = useState([
@@ -54,7 +48,40 @@ const SearchResultScreen = ({
     width: 400,
   };
   const {list, selectedValue, setList, setSelectedValue} = useListView();
-  const {reqData, setreqData} = ReqContextView();
+  const {reqData,headerData, setreqData, setHeaderData} = ReqContextView();
+  const { profileInfo} = userSkillView();
+    let email = profileInfo.profile?.email
+    console.log("page reloaded")
+  const [savedState, setSavedState] = useState(true);
+
+    const onButtonClick = async(item)=> {
+        let req =  {
+           "_id": profileInfo.profile?.id,
+           "job_id": item?.jobs[0].jobId,
+           "provider_id": item?.companyId,
+           "application_id": item.applicationId,
+           "role": item.jobs[0].role,
+           "company": item.company.name,
+           "city": item.jobs[0].locations[0].city,
+           "data": "entire data item",
+           ...data,
+           "created_at": new Date()
+         }
+       // let a = 'test.user@gmail.com'
+         console.log("check saved profile req", JSON.stringify(req))
+       let end = ENDPOINT.SAVE_APPLIED_JOB_TO_PROFILE+'/job/'+email+'/save'
+       console.log("check saved profile end", JSON.stringify(end))
+         try {
+         const resp = await ProfileCallService(ApiMethods.POST, end, req); 
+         console.log("check saved profile respo", JSON.stringify(resp)) 
+        
+         getData();
+         
+         } catch (error) {
+           
+         }
+         
+    }
   const onClickApply = item => {
     setSelectedValue(item);
     console.log('check search screen', JSON.stringify(data));
@@ -67,13 +94,17 @@ const SearchResultScreen = ({
     };
     let userSavedItem = item.jobs[0].userSavedItem;
     let userAppliedItem = item.jobs[0].userAppliedItem;
+    setHeaderData({"userSavedItem":userSavedItem, "userAppliedItem":userAppliedItem} )
     setreqData(reqdata1);
     console.log('check search screen', JSON.stringify(reqData));
     navigation.navigate('Jobs', {userSavedItem, userAppliedItem});
   };
   useEffect(() => {
     getData();
-    console.log('check list data', JSON.stringify(list[0]?.jobs[0].role));
+    if(list.length !=0){
+      console.log('check list data', JSON.stringify(list[0]?.jobs[0].role));
+    }
+    
   }, []);
   const onPress = () => {
     showModal();
@@ -83,7 +114,7 @@ const SearchResultScreen = ({
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <ResultCard data={item} onItemPressed={item => onClickApply(item)} />
+          <ResultCard data={item}  onButtonClick={onButtonClick} onItemPressed={item => onClickApply(item)} />
         )}
       />
     );
@@ -100,7 +131,7 @@ const SearchResultScreen = ({
     console.log('resp:::::::', resp);
     if (resp?.status === 200) {
       //console.log("check search data", JSON.stringify(resp?.data.jobResults))
-
+      
       setData(resp?.data.context);
       setList(resp?.data.jobResults);
       setLoading(false);

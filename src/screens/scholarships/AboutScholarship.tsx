@@ -10,15 +10,16 @@ import {styles}  from './styles';
 import Spacer from '@components/Spacer';
 import {Navigation} from '@interfaces/commonInterfaces';
 import Loader from '@components/Loader/Loader';
-
+import {ReqContextView} from '@context';
 
 function AboutScholarship({navigation, data, loader}: {navigation: Navigation, data:any,loader: boolean}) {
-  
+  const {reqData,headerData, setreqData, setHeaderData} = ReqContextView();
+console.log("headerData.userAppliedItem", headerData.userAppliedItem);
   const onClickApply =() =>{
     navigation.navigate('ApplyScholorship',{
       selectData:data
     });
-  }
+  } 
 
   
   return (
@@ -68,7 +69,10 @@ function AboutScholarship({navigation, data, loader}: {navigation: Navigation, d
         <Spacer size={20}/>
     </SafeAreaView>
     <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+       <Button onPress={onClickApply} 
+      disabled={headerData.userAppliedItem}
+      text={headerData.userAppliedItem? 'Applied': 'Apply'} type="dark" 
+      />
        <Spacer size={10}/>
       </View> 
    </ScrollView>

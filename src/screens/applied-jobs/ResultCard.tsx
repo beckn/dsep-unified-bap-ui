@@ -4,7 +4,7 @@ import images from '../../assets/images';
 import {ICONS, Text, SVGIcon} from '@components';
 import {styles} from './styles';
 
-const ResultCard = ({item, onItemPressed}) => {
+const ResultCard = ({item, email, onItemPressed}) => {
   console.log('item::::', item);
   return (
     <TouchableOpacity onPress={() => onItemPressed(item)}>
@@ -33,7 +33,7 @@ const ResultCard = ({item, onItemPressed}) => {
             <Text style={styles.rolePostedDate}>
               {item?.job_id?.application_id}
             </Text>
-            <Text style={styles.rolePostedBy}>{'test.user@gmail.com'}</Text>
+            <Text style={styles.rolePostedBy}>{email}</Text>
           </View>
         </View>
       </View>
