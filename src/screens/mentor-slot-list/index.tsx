@@ -22,14 +22,10 @@ const SlotListScreen = ({ navigation }) => {
   const slotTime = moment(selectedMentorData.timingStart).format("hh:mm A");
 
   const confirmMentorship = async () => {
-    console.log("selectedMentorData", selectedMentorData);
     setLoader(true);
     const fullName = await AsyncStorage.getItem("fullName");
     const email = await AsyncStorage.getItem("email");
     const mobileNumber = await AsyncStorage.getItem("phoneNumber");
-    console.log("fullName", fullName);
-    console.log("email", email);
-    console.log("mobileNumber", mobileNumber);
 
     const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_MENTORSHIP, {
       mentorshipId: selectedMentorData?.mentorshipId,
@@ -47,7 +43,6 @@ const SlotListScreen = ({ navigation }) => {
         },
       },
     });
-    console.log("resp slot-list", resp);
     if (resp?.status === 200 && resp?.data !== "") {
       if (resp.data) {
         navigation.navigate("MentorshipConfirmation");

@@ -12,6 +12,7 @@ import { useMentorContext } from "@context";
 import Loader from "@components/Loader/Loader";
 import NoData from "@components/NoData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Header from "./Header";
 
 const MentoringListScreen = ({
   navigation,
@@ -25,49 +26,33 @@ const MentoringListScreen = ({
   const [data, setData] = useState([]);
   const { setSelectedMentorData, selectedMentorData, setTransactionId } =
     useMentorContext();
-  console.log("data", JSON.stringify(data));
-  // const [loader, setLoader] = useState(true);
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
     const email = await AsyncStorage.getItem("email");
+
     const resp = await callService(
       ApiMethods.POST,
       ENDPOINT.SEARCH_MENTORSHIP,
       { loggedInUserEmail: email, ...mentor }
-      // {
-      //   sessionTitle: {
-      //     key: 'Management',
-      //   },
-      //   mentor: {
-      //     name: 'joffin',
-      //   },
-      // },
     );
-    console.log("resp1", JSON.stringify(resp));
     if (resp?.status === 200 && resp?.data !== "") {
       setLoader(false);
       setData(resp.data.mentorshipProviders);
-      console.log("transactionId", resp.data.context.transactionId);
       setTransactionId(resp.data.context.transactionId);
     } else {
       setLoader(false);
-      console.log(resp?.message);
     }
   };
 
   const setMentorshipData = (data) => {
-    console.log("data123", data);
     setSelectedMentorData(data);
-    // return
     navigation.navigate("Mentorships", {
       mentorshipId: data.mentorshipId,
     });
   };
-
-  console.log("dataaaa", data);
 
   return (
     <View style={styles.container}>
@@ -75,7 +60,7 @@ const MentoringListScreen = ({
         <Loader />
       ) : data?.length > 0 ? (
         <>
-      <Header navigation={navigation} 
+           <Header navigation={navigation} 
         heading='Tutoring & Mentorship'
         />
           <FlatList

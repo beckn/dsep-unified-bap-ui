@@ -23,10 +23,6 @@ const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
   }, []);
 
   const getData = async () => {
-    console.log(
-      "selectedMentorData?.mentorshipId,",
-      selectedMentorData?.mentorshipId
-    );
     const resp = await callService(
       ApiMethods.POST,
       ENDPOINT.SELECT_MENTORSHIP,
@@ -39,7 +35,6 @@ const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
         },
       }
     );
-    console.log("resp111222", JSON.stringify(resp));
     if (resp?.status === 200 && resp?.data !== "") {
       setData(
         resp.data.mentorshipProvider.mentorships[0].mentorshipSessions[0].mentor
@@ -48,7 +43,6 @@ const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
       setLoader(false);
     } else {
       setLoader(false);
-      console.log(resp?.message);
     }
   };
 

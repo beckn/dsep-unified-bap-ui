@@ -24,7 +24,7 @@ export default function Dashboard() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused, size }) => 
-            TabBarIcon({name: ICONS.IC_HOME_ACTIVE, size}),
+            TabBarIcon({name: focused ? ICONS.IC_HOME_ACTIVE :ICONS.IC_HOME_INACTIVE, size}),
             headerShown: false
         }}
       />
@@ -32,7 +32,8 @@ export default function Dashboard() {
         name="Applied"
         component={AppliedJobs}
         options={{
-          tabBarIcon: ({size}) => TabBarIcon({name: ICONS.IC_APPLIED, size}),
+          tabBarIcon: ({ focused, size }) => 
+            TabBarIcon({name: focused ? ICONS.IC_APPLIED_ACTIVE : ICONS.IC_APPLIED_INACTIVE,  size}),
         }}
       />
       <Tab.Screen

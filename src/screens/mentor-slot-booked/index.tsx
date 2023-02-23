@@ -33,23 +33,23 @@ const SlotBookedScreen = ({ navigation, route }) => {
         primaryText={"You have successfully booked a slot with your mentor!"}
       />
       <View style={styles.buttonContainer}>
-      <Button
-          title="Show Session Link"
-          //style={styles.goBackButton}
-          labelStyle={{color: Colors.white}}
-          // onPress={()=>navigation.navigate('Dashboard')}
-        />
         <Button
           title="show session links"
-          style={styles.goBackButton}
-          labelStyle={{ color: Colors.black }}
+          labelStyle={{ color: Colors.white }}
           onPress={() => Linking.openURL(sessionLink)}
         />
         <Button
           title="go back to home"
           style={styles.goBackButton}
           labelStyle={{ color: Colors.black }}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() =>  navigation.reset({
+            index: 0,
+            routes: [
+              {
+                name: "Dashboard",
+              },
+            ],
+          })}
         />
       </View>
     </View>

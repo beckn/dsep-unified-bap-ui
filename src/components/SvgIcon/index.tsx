@@ -5,7 +5,9 @@ import Search from '../../assets/svg/search.svg';
 import Remove from '../../assets/svg/remove.svg';
 import Star from '../../assets/svg/star.svg';
 import HomeActive from '../../assets/svg/home-active.svg';
+import HomeInActive from '../../assets/svg/home-inactive.svg';
 import AppliedActive from '../../assets/svg/applied-active.svg';
+import AppliedInActive from '../../assets/svg/applied-inactive.svg';
 import Saved from '../../assets/svg/saved.svg';
 import Profile from '../../assets/svg/profile.svg';
 import Illustration from '../../assets/svg/illustration.svg';
@@ -53,8 +55,12 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <Star {...modifiedProps} />;
       case ICONS.IC_HOME_ACTIVE:
         return <HomeActive {...modifiedProps} />;
+      case ICONS.IC_HOME_INACTIVE:
+        return <HomeInActive {...modifiedProps} />;
       case ICONS.IC_APPLIED_ACTIVE:
         return <AppliedActive {...modifiedProps} />;
+      case ICONS.IC_APPLIED_INACTIVE:
+        return <AppliedInActive {...modifiedProps} />;
       case ICONS.IC_SAVED:
         return <Saved {...modifiedProps} />;
       case ICONS.IC_PROFILE:
@@ -144,7 +150,9 @@ export enum ICONS {
   IC_REMOVE = 'IC_REMOVE',
   IC_STAR = 'IC_STAR',
   IC_HOME_ACTIVE = 'IC_HOME_ACTIVE',
+  IC_HOME_INACTIVE = 'IC_HOME_INACTIVE',
   IC_APPLIED_ACTIVE = 'IC_APPLIED_ACTIVE',
+  IC_APPLIED_INACTIVE = 'IC_APPLIED_INACTIVE',
   IC_SAVED = 'IC_SAVED',
   IC_PROFILE = 'IC_PROFILE',
   IC_ILLUSTRATION = 'IC_ILLUSTRATION',

@@ -21,9 +21,6 @@ const MentorshipConfirmScreen = ({ navigation }) => {
     useMentorContext();
   const [loader, setLoader] = useState(false);
   const { languages, skills, profileInfo } = userSkillView();
-  // const [mentorshipApplicationId, setMentorshipApplicationId] = useState("");
-
-  console.log("SelectedMentorData", selectedMentorData);
 
   const mentorshipData = [
     {
@@ -67,35 +64,14 @@ const MentorshipConfirmScreen = ({ navigation }) => {
       }
     );
 
-    console.log("=====>", JSON.stringify(resp));
-
     if (resp?.status === 200 && resp?.data !== "") {
       addSlotData(resp.data.mentorshipApplicationId,resp.data.mentorshipSession.sessionJoinLinks[0].link);
-      setLoader(false);
-      // setMentorshipApplicationId(resp.data.mentorshipApplicationId);
-      // addSlotData()
-      // navigation.replace("MentorSlotConfirmation", {
-      //   sessionLink: resp.data.mentorshipSession.sessionJoinLinks[0].link,
-      // });
-      navigation.reset({
-        index: 0,
-        routes: [
-          {
-            name: "MentorSlotConfirmation",
-            params: {
-              sessionLink: resp.data.mentorshipSession.sessionJoinLinks[0].link,
-            },
-          },
-        ],
-      });
     } else {
       setLoader(false);
     }
   };
 
   const addSlotData = async (mentorshipApplicationId,sessionLink) => {
-    console.log("profileInfo.profile?.id", profileInfo.profile?.id);
-    console.log("selectedMentorData", selectedMentorData);
     const email = await AsyncStorage.getItem("email");
     const resp = await profileApiCallInstance.post(
       ENDPOINT.ADD_MENTORDATA + email + "/applied",
@@ -117,10 +93,20 @@ const MentorshipConfirmScreen = ({ navigation }) => {
       }
     );
     if (resp?.status === 200) {
-      console.log("implemented", JSON.stringify(resp));
-      // setData(resp.data);
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: "MentorSlotConfirmation",
+            params: {
+              sessionLink: sessionLink,
+            },
+          },
+        ],
+      });
+      setLoader(false);
     } else {
-      console.log(resp?.message);
+      setLoader(false);
     }
   };
 
