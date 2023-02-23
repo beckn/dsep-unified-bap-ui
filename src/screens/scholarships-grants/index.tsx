@@ -63,7 +63,7 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
     const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS,  scholortitle);
     if (resp?.status === 200) {
       setData(resp.data);
-      console.log('ScholarshipListScreen',resp.data);
+      console.log('ScholarshipListScreen',JSON.stringify(resp.data));
       
       setLoader(false)
     } else {
