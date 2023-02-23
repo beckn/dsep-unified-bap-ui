@@ -8,52 +8,34 @@ import {TrainingCard,SearchBox, Tabs} from '@components';
 import Header from './Header';
 import Loader from '@components/Loader/Loader';
 import NoData from '@components/NoData';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const TrainingListScreen = ({navigation}) => {
+const TrainingListScreen = ({navigation,route}) => {
   const [data, setData] = useState([]);
+  const [context, setContext] = useState({});
   const [loader, setLoader] = useState(true);
+  const {courseTitle} = route.params;
 
   useEffect(() => {
     getData();
   }, []);
 
-  const navigateToSlotList = () =>{
+  const navigateToSlotList = (trainingData) =>{
     // change the navigation here
-     navigation.navigate("Training", {data:data})
+     navigation.navigate("Training", {data:trainingData,context: context})
   }
 
-  const TrainingList = () => {
-    return (
-      <FlatList
-        data={data}
-        renderItem={({item, index}) => <TrainingCard data={item} index={index} onPress ={ navigateToSlotList} />}
-        contentContainerStyle={styles.listContainer}
-      /> 
-    )
-  }
-
-  const Demo = () => {
-    return (
-      <View>
-      </View>
-    )
-  }
 
   const getData = async () => {
-    console.log("in")
+    const email = await AsyncStorage.getItem("email");
     const resp = await callService(ApiMethods.POST, ENDPOINT.SEARCH_COURSE,{
-        "courseTrainer": "Prof. Madhavan Mukund",
-        "providerInstitute": "IIT Delhi",
-        "courseTitle": "Machine Learning",
-        "courseState": "archived",
-        "credits": "gt 1",
-        "courseLanguage": "Hindi"
+      "loggedInUserEmail":email,
+      "category": courseTitle
       }
     );
     console.log("resp223",JSON.stringify(resp))
     if (resp?.status === 200) {
-      console.log('TrainingListScreen.',resp?.data);
-      
+      setContext(resp.data.context)
       setData(resp.data.courses);
       setLoader(false)
     } else {

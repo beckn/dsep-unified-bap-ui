@@ -1,66 +1,112 @@
-import Description from './Description';
-import LessonPlan from './LessonPlan';
-import React,{useState, useEffect} from 'react';
-import Header from './Header';
-import Tabs from '@components/Tabs';
-import {Navigation} from '@interfaces/commonInterfaces';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
-import {ApiMethods} from '@constant/common.constant';
+import Description from "./Description";
+import LessonPlan from "./LessonPlan";
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import Tabs from "@components/Tabs";
+import { Navigation } from "@interfaces/commonInterfaces";
+import { callService } from "@services";
+import { ENDPOINT } from "@services/endpoints";
+import { ApiMethods } from "@constant/common.constant";
+import Loader from "@components/Loader/Loader";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
-  const [data, setData]: any = useState();
+const Training = ({
+  navigation,
+  route,
+}: {
+  navigation: Navigation;
+  route: any;
+}) => {
+  const [trainingData, setTrainingData]: any = useState();
   const [loader, setLoader] = useState(true);
-  // const {name} = route.params;
+  const { data, context } = route.params;
+
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST,ENDPOINT.SELECT_TRAINING,
-      {
-        "courseId": "Q291cnNlTGlzdDovbmQyX25jZTIyX3NjMjk=",
-        "courseProviderId": "NCERT",
-        "context": {
-          "transactionId": "4f3a48bb-9ffe-4177-94c4-c3196d22c5e5",
-          "messageId": "882447c5-5393-4ff1-b219-6829098da61b",
-          "bppId": "bpp.dsep.samagra.io",
-          "bppUri": "https://bpp.dsep.samagra.io"
-      }
-      }
-    );
+    const resp = await callService(ApiMethods.POST, ENDPOINT.SELECT_TRAINING, {
+      courseId: data.id,
+      courseProviderId: data.provider.id,
+      context: context,
+    });
     if (resp?.status == 200) {
-      setData(resp?.data);
-      setLoader(false)
-      console.log('resp?.data--->>>', resp?.data)
+      setTrainingData(resp?.data);
+      setLoader(false);
     } else {
       console.log(resp);
-      setLoader(false)
+      setLoader(false);
     }
   };
 
-  const onClickBuyNow = () =>{
-    // navigation.navigate("InitTraining", {data, loader})
-    navigation.navigate('ConfirmTraining',{data: data,loader});
-    // navigation.navigate("Confirmation",{data: data,loader,  imgPara: 'Successful',
-    // para1: 'Congratulations,  you have successfully unlocked the course',})
-  }
-  return (
+  const onClickBuyNow = async () => {
+    setLoader(true);
+    const fullName = await AsyncStorage.getItem("fullName");
+    const email = await AsyncStorage.getItem("email");
+    const mobileNumber = await AsyncStorage.getItem("phoneNumber");
+    const applicantProfile = {
+      name: fullName,
+      email: email,
+      contact: mobileNumber,
+    };
+    const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_TRAINING, {
+      context: context,
+      courseId: trainingData?.course?.id,
+      CourseProviderId: trainingData?.course?.provider?.id,
+      applicantProfile: applicantProfile,
+      additionalFormData: {
+        submissionId: Math.floor(100000 + Math.random() * 900000).toString(),
+        data: [
+          {
+            formInputKey: "key123",
+            formInputValue: "value123",
+          },
+        ],
+      },
+    });
+
+    if (resp?.status == 200) {
+      setLoader(false);
+      // setResponse(resp?.data);
+      navigation.navigate("ConfirmTraining", {
+        data: trainingData,
+        applicantProfile,
+      });
+    } else {
+      setLoader(false);
+      console.log(resp);
+    }
+  };
+  return loader ? (
+    <Loader />
+  ) : (
     <>
-   
-    <Header navigation={navigation} 
-    heading={data?.course?.name}
-    online= 'online'
-    video = 'video & lecture'
-    education={""}
-    rating={4.8}
-    />
-    <Tabs
+      <Header
+        navigation={navigation}
+        heading={trainingData?.course?.name}
+        online="online"
+        video="video & lecture"
+        education={""}
+        rating={4.8}
+      />
+      <Tabs
         tabData={[
-          {label: 'Description',comp : <Description navigation={navigation} data={data} loader={loader} onClickBuyNow = {onClickBuyNow}/>},
-          {label: 'Lesson Plan', 
-          // comp : <LessonPlan  navigation={navigation} onClickBuyNow = {onClickBuyNow}/>
-        },
+          {
+            label: "Description",
+            comp: (
+              <Description
+                navigation={navigation}
+                data={trainingData}
+                loader={loader}
+                onClickBuyNow={onClickBuyNow}
+                buyNowDisabled={data.userAppliedItem}
+              />
+            ),
+          },
+          {
+            label: "Lesson Plan",
+            // comp : <LessonPlan  navigation={navigation} onClickBuyNow = {onClickBuyNow}/>
+          },
         ]}
       />
     </>

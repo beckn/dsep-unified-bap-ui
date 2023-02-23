@@ -19,7 +19,7 @@ function Header({navigation, heading, online, video, education, rating}){
          
         <Text style={styles.headerText}>{heading}</Text>
         <SVGIcon
-          name={ICONS.IC_SAVED2}
+          name={ICONS.IC_SAVED_INACTIVE}
           fill={Colors.oliveBlack}
           style={{ marginRight: 10 }}
         />
