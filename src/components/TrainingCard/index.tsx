@@ -15,7 +15,7 @@ type cardDetails = {
 const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.card} key={index} onPress={onPress}>
+    <TouchableOpacity style={styles.card} key={index} onPress={() => onPress(data)}>
       <View style={styles.imageView} />
       <View style={styles.cardSpacing}>
         <View style = {styles.detailsContainer}>

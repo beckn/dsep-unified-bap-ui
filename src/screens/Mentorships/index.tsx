@@ -1,31 +1,28 @@
-import AboutMentor from './AboutMentor';
-import React, {useState, useEffect} from 'react';
-import {View} from 'react-native';
-import {Navigation} from '@interfaces/commonInterfaces';
-import {callService} from '@services';
-import {ENDPOINT} from '@services/endpoints';
-import {ApiMethods} from '@constant/common.constant';
-import NavBar from '@components/Navbar';
-import DetailHeader from '@components/DetailHeader';
-import {useMentorContext} from '@context';
-import HeadingTitle from '@components/HeadingTitle';
-import Loader from '@components/Loader/Loader';
-import {ICONS} from '@components/SvgIcon';
-const Mentorships = ({navigation, route}: {navigation: Navigation}) => {
+import AboutMentor from "./AboutMentor";
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
+import { Navigation } from "@interfaces/commonInterfaces";
+import { callService } from "@services";
+import { ENDPOINT } from "@services/endpoints";
+import { ApiMethods } from "@constant/common.constant";
+import NavBar from "@components/Navbar";
+import DetailHeader from "@components/DetailHeader";
+import { useMentorContext } from "@context";
+import HeadingTitle from "@components/HeadingTitle";
+import Loader from "@components/Loader/Loader";
+import { ICONS } from "@components/SvgIcon";
+const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
   const [data, setData]: any = useState({});
   const [loader, setLoader] = useState(true);
-  const {mentorshipId} = route.params;
-  const {selectedMentorData, transactionId} = useMentorContext();
+  const { mentorshipId } = route.params;
+  const { selectedMentorData, transactionId, setSelectedMentorObject } =
+    useMentorContext();
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    console.log(
-      'selectedMentorData?.mentorshipId,',
-      selectedMentorData?.mentorshipId,
-    );
     const resp = await callService(
       ApiMethods.POST,
       ENDPOINT.SELECT_MENTORSHIP,
@@ -33,25 +30,22 @@ const Mentorships = ({navigation, route}: {navigation: Navigation}) => {
         mentorshipId: selectedMentorData?.mentorshipId,
         context: {
           transactionId: transactionId,
-          bppId: 'dev.elevate-apis.shikshalokam.org/bpp',
-          bppUri: 'https://dev.elevate-apis.shikshalokam.org/bpp',
+          bppId: "dev.elevate-apis.shikshalokam.org/bpp",
+          bppUri: "https://dev.elevate-apis.shikshalokam.org/bpp",
         },
-      },
+      }
     );
-    console.log('resp111222', JSON.stringify(resp));
-    if (resp?.status === 200) {
+    if (resp?.status === 200 && resp?.data !== "") {
       setData(
-        resp.data.mentorshipProvider.mentorships[0].mentorshipSessions[0]
-          .mentor,
+        resp.data.mentorshipProvider.mentorships[0].mentorshipSessions[0].mentor
       );
+      setSelectedMentorObject(resp.data);
       setLoader(false);
     } else {
       setLoader(false);
-      console.log(resp?.message);
     }
   };
 
-  console.log('data.length', data.length);
   return (
     <>
       {loader ? (
@@ -60,7 +54,7 @@ const Mentorships = ({navigation, route}: {navigation: Navigation}) => {
         <>
           <NavBar
             hasBackArrow={true}
-            title={'Mentoring'}
+            title={"Mentoring"}
             hasRightIcon={true}
             rightIconName={ICONS.IC_OPTIONS}
           />

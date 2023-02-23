@@ -33,7 +33,6 @@ const AppliedJobs = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    console.log('selectedValue: ', selectedValue);
     getData();
   }, [selectedValue]);
 

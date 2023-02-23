@@ -43,6 +43,9 @@ type Styles = {
     outerCircle:ViewStyle;
     innerCircle: ViewStyle;
     saveResume: ViewStyle;
+    buttonContainer: ViewStyle;
+    goBackButton: ViewStyle
+
 
 
     
@@ -66,7 +69,7 @@ export const styles = StyleSheet.create<Styles>({
       alignItems:'center',
      },
      body: {
-      flex:8,
+      flex:1,
       padding: Metrics.padding.medium,
     },
     spacer: {
@@ -238,5 +241,13 @@ export const styles = StyleSheet.create<Styles>({
     borderWidth:1,
     borderRadius:10
 
+  },
+  buttonContainer: {
+    paddingHorizontal: 23,
+    paddingVertical: 37, backgroundColor: Colors.white
+  },
+  goBackButton: {
+    backgroundColor: Colors.black10,
+    marginTop: 24
   }
   });
