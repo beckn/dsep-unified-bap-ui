@@ -9,28 +9,26 @@ import { Colors } from '@styles/colors';
 
 function Confirmation({navigation, route}: {navigation: Navigation, route: any}){
   const { id, heading, time, imgPara, para1, para2, bacId, data} = route.params;
-  useEffect(() => {
-    const backAction = () => {
-      navigation.navigate("Home")
-      return true;
-    };
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
-    return () => backHandler.remove();
-  }, []);
+    // useEffect(() => {
+    //   const backAction = () => {
+    //     navigation.navigate("Home")
+    //     return true;
+    //   };
+    //   const backHandler = BackHandler.addEventListener(
+    //     'hardwareBackPress',
+    //     backAction,
+    //   );
+    //   return () => backHandler.remove();
+    // }, []);
   
 
   const onClickConfirmation =(navigation) =>{
-    // navigation.navigate('Home');
+     navigation.navigate('Home');
   }
     return (
     <View style={styles.container}>
         <View style={styles.header}>
         
-         
-         
         </View>
       <View style={[styles.body,styles.alignItem]}>
         {id===1 && <SVGIcon
@@ -62,7 +60,8 @@ function Confirmation({navigation, route}: {navigation: Navigation, route: any})
       </View>
       </View>
       <View style={styles.bottom}>
-       {id ===1 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null}
+       
+       {id ===1 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'HOME'} type="dark"/>: null}
        {id===1 && <Spacer size={20}/>}
         {id === 1 ? <Button onPress={()=>{}} text={'EXPLORE OTHER COURSES'} type=""/> : null}
         {/* {id ===2 ?<Button onPress={()=>onClickConfirmation(navigation)} text={'START COURSE'} type="dark"/>: null} */}

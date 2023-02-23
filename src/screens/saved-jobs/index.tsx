@@ -14,6 +14,7 @@ import MentorCard from '@components/MentorCard';
 import Rating from '@components/Ratings';
 import {Fonts} from '@styles/fonts';
 import {Text} from '@components/Text';
+import {userSkillView} from '@context';
 
 const SavedJobs = ({navigation}) => {
   const [dropdownData, setDropdownData] = useState([
@@ -25,7 +26,8 @@ const SavedJobs = ({navigation}) => {
   const {list, selectedValue, setList, setSelectedValue} = useListView();
   const [data, setData] = useState(null);
   const {reqData, setreqData} = ReqContextView();
-
+  const {profileInfo} = userSkillView();
+  const email = profileInfo.profile?.email
   useEffect(() => {
     getData();
   }, []);
@@ -46,12 +48,12 @@ const SavedJobs = ({navigation}) => {
               seeJobStatus();
               let reqdata1 = {
                 context: {
-                  bppId: item.job_id.bpp_id,
-                  bppUri: item.job_id.bpp_uri,
+                  bppId: item.bpp_id,
+                  bppUri: item.bpp_uri,
                 },
-                companyId: item.job_id.provider_id,
+                companyId: item.provider_id,
                 jobs: {
-                  jobId: item.job_id.job_id,
+                  jobId: item.job_id,
                 },
               };
               setreqData(reqdata1);
@@ -59,15 +61,15 @@ const SavedJobs = ({navigation}) => {
             }}
           />
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
 
   const MentorShipCards = () => {
-    const mentorList = list.filter(item => item?.mentorship_id !== null);
     return (
       <FlatList
-        data={mentorList}
+        data={list}
         renderItem={({item, index}) => (
           <TouchableOpacity style={styles.card} key={index}>
             <View style={styles.imageView} />
@@ -75,26 +77,26 @@ const SavedJobs = ({navigation}) => {
               <Text
                 style={styles.nameStyle}
                 fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-                {item?.mentorship_id?.mentor}
+                {item?.mentor}
               </Text>
               <Text
                 style={styles.designationText}
                 fontFamily={Fonts.family.DM_SANS_REGULAR}>
-                {'Frontend Architect | Founder - ABC company'}
+                {item?.mentorshipTitle}
               </Text>
-              <Rating rating={'4.5'} />
+              <Rating rating={item?.mentorRating} />
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
 
   const ScholarShipsCards = () => {
-    const scholarShips = list.filter(item => item?.scholarship_id !== null);
     return (
       <FlatList
-        data={scholarShips}
+        data={list}
         renderItem={({item, index}) => (
           <TouchableOpacity style={styles.card} key={index}>
             <View style={styles.imageView} />
@@ -102,25 +104,25 @@ const SavedJobs = ({navigation}) => {
               <Text
                 style={styles.nameStyle}
                 fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-                {item?.scholarship_id?.title}
+                {item?.title}
               </Text>
               <Text
                 style={styles.designationText}
                 fontFamily={Fonts.family.DM_SANS_REGULAR}>
-                {item?.scholarship_id?.data}
+                {item?.data}
               </Text>
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
 
   const CoursesCards = () => {
-    const courses = list.filter(item => item?.course_id !== null);
     return (
       <FlatList
-        data={courses}
+        data={list}
         renderItem={({item, index}) => (
           <TouchableOpacity style={styles.card} key={index}>
             <View style={styles.imageView} />
@@ -129,33 +131,38 @@ const SavedJobs = ({navigation}) => {
                 <Text
                   style={styles.nameStyle}
                   fontFamily={Fonts.family.OPEN_SANS_REGULAR}>
-                  {item?.course_id?.title}
+                  {item?.title}
                 </Text>
                 <Text
                   style={styles.designationText}
                   fontFamily={Fonts.family.DM_SANS_REGULAR}>
-                  {'Duration : 23h 40m'}
+                  {item?.duration}
                 </Text>
               </View>
-              <Text style={styles.provider}>
-                {item?.course_id?.provider_id}
-              </Text>
+              <Text style={styles.provider}>{item?.provider_id}</Text>
             </View>
           </TouchableOpacity>
         )}
+        ListEmptyComponent={ListEmptyComp}
       />
     );
   };
 
+  const ListEmptyComp = () => (
+    <View style={styles.listEmptyContainer}>
+      <Text style={styles.listEmptyTextStyle}>No Data Found</Text>
+    </View>
+  );
+
   const getData = async () => {
     const resp = await axios.get(
-      `${BASE_URL_PROFILE}${ENDPOINT.SAVED_JOBS}test.user@gmail.com`,
+      `${BASE_URL_PROFILE}${ENDPOINT.SAVED_JOBS}${email}`,
     );
 
     if (resp?.status === 200) {
-      console.log(JSON.stringify(resp.data));
+      console.log(JSON.stringify(resp));
       setData(resp.data);
-      if (selectedValue) {
+      if (selectedValue) {  
         setList(resp.data[selectedValue.toString()]);
       }
     } else {
