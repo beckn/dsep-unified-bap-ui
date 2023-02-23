@@ -11,6 +11,7 @@ type Styles = {
   designationText: TextStyle,
   detailsContainer:ViewStyle,
   provider:TextStyle
+  bookmarkIcon: ViewStyle;
 }
 
 export const styles = StyleSheet.create<Styles>({
@@ -44,5 +45,6 @@ export const styles = StyleSheet.create<Styles>({
     color: Colors.cardDesc,
   },
   detailsContainer:{flex:4},
-  provider:{ flex:1,alignSelf:'flex-end', fontSize:Fonts.size.small}
+  provider:{ flex:1,alignSelf:'flex-end', fontSize:Fonts.size.small},
+  bookmarkIcon: {flex: 1, alignItems: 'flex-start', justifyContent: 'center'},
 });

@@ -12,7 +12,8 @@ import {ApiMethods} from '@constant/common.constant';
 const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
   const [data, setData]: any = useState();
   const [loader, setLoader] = useState(true);
-  // const {name} = route.params;
+  const {searchData} = route.params;
+  console.log('searchData',searchData);
   useEffect(() => {
     getData();
   }, []);

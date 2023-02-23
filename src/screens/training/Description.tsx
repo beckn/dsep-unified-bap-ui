@@ -14,7 +14,8 @@ import Loader from '@components/Loader/Loader';
 
 
 function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navigation, data:any,loader:boolean,onClickBuyNow:any}) {
-
+  console.log('Description',data);
+  
   return (
    <ScrollView style={styles.container}>
      
@@ -90,7 +91,9 @@ function Description({navigation, data, loader,onClickBuyNow}: {navigation: Navi
         <Text>{data?.courseDetails?.price}</Text>
       </View>  
       <View style={styles.bottom}>
-       <Button onPress={onClickBuyNow} text={'Buy Now'} type="dark"/>
+       <Button onPress={onClickBuyNow} 
+       text={`${data?.userAppliedItem ? 'Applied': 'Buy Now'}`}
+       type="dark"/>
        <Spacer size={20}/>
         {/* <Button onPress={()=>{}} text={'GIFT THIS COURSE'} type=""/> */}
       </View> 
