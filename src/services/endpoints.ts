@@ -33,4 +33,5 @@ export const ENDPOINT = {
   CONFIRM_TRAINING:'/course/confirm',
   ADD_MENTORDATA: '/user/item/mentorship/',
   JOB_STATUS: '/job/status',
+  SCHOLARSHIP_STATUS: '/scholarship/status',
 };
