@@ -40,7 +40,10 @@ const Training = ({navigation, route}: {navigation: Navigation, route:any}) => {
   };
 
   const onClickBuyNow = () =>{
-    navigation.navigate("InitTraining", {data, loader})
+    // navigation.navigate("InitTraining", {data, loader})
+    navigation.navigate('ConfirmTraining',{data: data,loader});
+    // navigation.navigate("Confirmation",{data: data,loader,  imgPara: 'Successful',
+    // para1: 'Congratulations,  you have successfully unlocked the course',})
   }
   return (
     <>

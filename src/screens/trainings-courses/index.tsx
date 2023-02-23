@@ -19,7 +19,7 @@ const TrainingListScreen = ({navigation}) => {
 
   const navigateToSlotList = () =>{
     // change the navigation here
-     navigation.navigate("Training")
+     navigation.navigate("Training", {data:data})
   }
 
   const TrainingList = () => {
@@ -52,6 +52,8 @@ const TrainingListScreen = ({navigation}) => {
     );
     console.log("resp223",JSON.stringify(resp))
     if (resp?.status === 200) {
+      console.log('TrainingListScreen.',resp?.data);
+      
       setData(resp.data.courses);
       setLoader(false)
     } else {
