@@ -45,6 +45,9 @@ const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
       setLoader(false);
     }
   };
+  const onClickApply = () => {
+    navigation.navigate('MentorAvailableDate');
+  };
 
   return (
     <>
@@ -66,7 +69,7 @@ const Mentorships = ({ navigation, route }: { navigation: Navigation }) => {
                 description={selectedMentorData?.mentor?.experience}
               />
               <HeadingTitle title="About Mentor" />
-              <AboutMentor navigation={navigation} data={data} />
+              <AboutMentor navigation={navigation} data={data} primaryButtonTitle={'Apply'} onPress ={onClickApply} />
             </>
           ) : (
             <View />

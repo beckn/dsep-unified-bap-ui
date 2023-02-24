@@ -45,6 +45,7 @@ import ConfirmApplication from '../screens/jobs/ConfirmApplication';
 import InitTraining from '../screens/training/Init';
 import ConfirmTraining from '../screens/training/Confirm';
 import ScholarInit from '../screens/scholarships/ScholarInit';
+import MentorshipStatus from '../screens/Mentorships/MentoringStatus';
 const Stack = createNativeStackNavigator();
 
 function Routes() {
@@ -135,6 +136,13 @@ function Routes() {
               component={MentorshipConfirmScreen}
               options={{headerShown: false}}
             />
+
+<Stack.Screen
+              name="MentorshipStatus"
+              component={MentorshipStatus}
+              options={{headerShown: false}}
+            />
+
         
           <Stack.Screen
             name="SearchResult"

@@ -12,7 +12,7 @@ import AppliedJobs from "../screens/applied-jobs";
 const Tab = createBottomTabNavigator();
 
 const TabBarIcon = ({ name, size }: { name: ICONS; size: number }) => (
-  <SVGIcon name={name} width={size} height={size} />
+  <SVGIcon name={name}  />
 );
 
 export default function Dashboard() {
