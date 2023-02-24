@@ -39,7 +39,7 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
     if (resp?.status == 200) {
       setData(resp?.data);
       setLoader(false)
-      console.log('resp?.data---Scholarships>>>', resp?.data)
+      console.log('resp?.data---Scholarships>>>', JSON.stringify(resp?.data))
     } else {
       console.log(resp);
       // setLoader(false)
