@@ -23,6 +23,7 @@ export const ENDPOINT = {
   SEARCH_MENTORSHIP: '/mentorship/search',
   SELECT_MENTORSHIP: '/mentorship/select',
   INIT_MENTORSHIP: '/mentorship/init',
+  MENTORSHIP_STATUS: '/mentorship/status',
   SEARCH_COURSE: '/course/search',
   CONFIRM_MENTORSHIP: '/mentorship/confirm',
   SAVE_APPLIED_JOB_TO_PROFILE: '/user/item',

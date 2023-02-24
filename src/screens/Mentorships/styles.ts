@@ -15,6 +15,7 @@ type Styles = {
   aboutMentorTitle: TextStyle;
   aboutMentordesc: TextStyle;
   otherInformation: TextStyle;
+  secondaryButtonStyle: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -74,4 +75,8 @@ export const styles = StyleSheet.create<Styles>({
     row:{
       flexDirection: 'row'
     },
+    secondaryButtonStyle: {
+      backgroundColor: Colors.black10,
+      marginTop: 24
+    }
 });
