@@ -34,4 +34,5 @@ export const ENDPOINT = {
   ADD_MENTORDATA: '/user/item/mentorship/',
   JOB_STATUS: '/job/status',
   SCHOLARSHIP_STATUS: '/scholarship/status',
+  COURSE_STATUS: '/course/status',
 };

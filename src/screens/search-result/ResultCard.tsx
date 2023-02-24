@@ -30,8 +30,9 @@ console.log("check data in result card",JSON.stringify(data))
                 </Text>
             </View>
             <View style = {styles.bookmarkIcon}>
-            <TouchableOpacity disabled={data.jobs[0].userSavedItem}
-            style={{backgroundColor: (data.jobs[0].userSavedItem)? 'red' : 'white'}}
+            <TouchableOpacity 
+            //disabled={data.jobs[0].userSavedItem}
+            //style={{backgroundColor: (data.jobs[0].userSavedItem)? 'red' : 'white'}}
             onPress={() => onButtonClick(data)}>
             <Image source={images.vector} />
             </TouchableOpacity>

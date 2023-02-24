@@ -9,27 +9,19 @@ import { ENDPOINT } from "@services/endpoints";
 import { ApiMethods } from "@constant/common.constant";
 import Loader from "@components/Loader/Loader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ReqContextView } from '@context';
 
-const Training = ({
-  navigation,
-  route,
-}: {
-  navigation: Navigation;
-  route: any;
-}) => {
+
+const TrainingStatus = ({ navigation, route, }: { navigation: Navigation; route: any; }) => {
   const [trainingData, setTrainingData]: any = useState();
   const [loader, setLoader] = useState(true);
-  const { data, context } = route.params;
-
+  const { reqData, setreqData, headerData, setHeaderData } = ReqContextView();
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST, ENDPOINT.SELECT_TRAINING, {
-      courseId: data.id,
-      courseProviderId: data.provider.id,
-      context: context,
-    });
+    console.log("check courses req data in training folder ", JSON.stringify(reqData))
+    const resp = await callService(ApiMethods.POST, ENDPOINT.COURSE_STATUS, reqData);
     if (resp?.status == 200) {
       setTrainingData(resp?.data);
       setLoader(false);
@@ -39,44 +31,7 @@ const Training = ({
     }
   };
 
-  const onClickBuyNow = async () => {
-    setLoader(true);
-    const fullName = await AsyncStorage.getItem("fullName");
-    const email = await AsyncStorage.getItem("email");
-    const mobileNumber = await AsyncStorage.getItem("phoneNumber");
-    const applicantProfile = {
-      name: fullName,
-      email: email,
-      contact: mobileNumber,
-    };
-    const resp = await callService(ApiMethods.POST, ENDPOINT.INIT_TRAINING, {
-      context: context,
-      courseId: trainingData?.course?.id,
-      CourseProviderId: trainingData?.course?.provider?.id,
-      applicantProfile: applicantProfile,
-      additionalFormData: {
-        submissionId: Math.floor(100000 + Math.random() * 900000).toString(),
-        data: [
-          {
-            formInputKey: "key123",
-            formInputValue: "value123",
-          },
-        ],
-      },
-    });
-
-    if (resp?.status == 200) {
-      setLoader(false);
-      // setResponse(resp?.data);
-      navigation.navigate("ConfirmTraining", {
-        data: trainingData,
-        applicantProfile,
-      });
-    } else {
-      setLoader(false);
-      console.log(resp);
-    }
-  };
+  
   return loader ? (
     <Loader />
   ) : (
@@ -98,7 +53,7 @@ const Training = ({
                 navigation={navigation}
                 data={trainingData}
                 loader={loader}
-                onClickBuyNow={onClickBuyNow}
+                
                 buyNowDisabled={data.userAppliedItem}
               />
             ),
@@ -112,4 +67,4 @@ const Training = ({
     </>
   );
 };
-export default Training;
+export default TrainingStatus;

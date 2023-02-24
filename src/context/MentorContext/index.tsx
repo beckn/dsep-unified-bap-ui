@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {KeyValue} from '@interfaces/commonInterfaces';
+import React, { useState } from "react";
+import { KeyValue } from "@interfaces/commonInterfaces";
 
 export interface IItemType {
   id: string;
@@ -22,8 +22,10 @@ export interface Context {
   selectedMentorData: IItemType | null;
   setSelectedMentorData: (args: IItemType) => void;
   setMentorlist: (args: IItemType[]) => void;
-  setTransactionId: (id : string) => void;
+  setTransactionId: (id: string) => void;
   transactionId: string;
+  selectedMentorObject: IItemType | null;
+  setSelectedMentorObject: (args: IItemType) => void;
 }
 
 export const MentorContext = React.createContext({
@@ -31,18 +33,21 @@ export const MentorContext = React.createContext({
   selectedMentorData: null,
   setSelectedMentorData: (args: IItemType) => {},
   setMentorlist: (args: IItemType[]) => {},
-  setTransactionId: (id : string) => {},
-  transactionId: ""
+  setTransactionId: (id: string) => {},
+  transactionId: "",
+  selectedMentorObject: null,
+  setSelectedMentorObject: (args: IItemType) => {},
 });
 
 export const useMentorContext = (): Context => React.useContext(MentorContext);
 
-export function MentorProvider({children}): JSX.Element {
+export function MentorProvider({ children }): JSX.Element {
   const [mentorList, setMentorlist] = useState([]);
   const [selectedMentorData, setSelectedMentorData] = useState(null);
   const [transactionId, setTransactionId] = useState("");
+  const [selectedMentorObject, setSelectedMentorObject] = useState(null);
 
-  console.log("mentorlistcon",mentorList)
+  console.log("mentorlistcon", mentorList);
 
   return (
     <MentorContext.Provider
@@ -52,8 +57,11 @@ export function MentorProvider({children}): JSX.Element {
         selectedMentorData: selectedMentorData,
         setSelectedMentorData: setSelectedMentorData,
         setTransactionId: setTransactionId,
-        transactionId: transactionId
-      }}>
+        transactionId: transactionId,
+        selectedMentorObject: selectedMentorObject,
+        setSelectedMentorObject: setSelectedMentorObject
+      }}
+    >
       {children}
     </MentorContext.Provider>
   );

@@ -1,21 +1,24 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import {Text} from '@components';
 import {Fonts} from '@styles/fonts';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
+import images from '../../assets/images';
+
 
 type cardDetails = {
   data: Array<{[key: string]: string}>;
   index: number;
+  onButtonClick,
   onPress?: () => void;
 };
 
-const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
+const ScholarshipCard = ({data, index, onButtonClick, onPress}: cardDetails) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.card} key={index} onPress={onPress}>
+    <TouchableOpacity style={styles.card} key={index} onPress={() => onPress(data)}>
       <View style={styles.imageView} />
       <View style={styles.cardSpacing}>
         <View style = {styles.detailsContainer}>
@@ -31,6 +34,17 @@ const ScholarshipCard = ({data, index, onPress}: cardDetails) => {
           </Text>
         </View>
         <Text style={styles.provider}>{"by " + data.provider.name}</Text>
+
+        <View style = {styles.bookmarkIcon}>
+            <TouchableOpacity 
+           // disabled={data?.userSavedItem}
+            style={{
+             // backgroundColor: (data?.userSavedItem)? 'red' : 'white'
+            }}
+            onPress={() => onButtonClick(data)}>
+            <Image source={images.vector} />
+            </TouchableOpacity>
+            </View>
       </View>
       
      

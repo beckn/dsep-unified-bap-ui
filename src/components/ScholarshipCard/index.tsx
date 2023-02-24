@@ -31,9 +31,9 @@ const ScholarshipCard = ({data, index, onButtonClick, onPress}: cardDetails) => 
       </View>
       <View style = {styles.bookmarkIcon}>
             <TouchableOpacity 
-            disabled={data?.userSavedItem}
+           // disabled={data?.userSavedItem}
             style={{
-              backgroundColor: (data?.userSavedItem)? 'red' : 'white'
+             // backgroundColor: (data?.userSavedItem)? 'red' : 'white'
             }}
             onPress={() => onButtonClick(data)}>
             <Image source={images.vector} />

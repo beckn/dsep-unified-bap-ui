@@ -51,8 +51,9 @@ const getProfile =async () =>{
   let usr = ENDPOINT.GET_USER_PROFILE+'/'+email
   console.log("get profile email", usr)
   const resp = await ProfileCallService(ApiMethods.GET,usr)
-  if (resp?.status == 200 && resp?.data._id!= '') {
-    console.log("get profile email", JSON.stringify(resp.data))
+  console.log("resp---",resp)
+  if (resp?.status == 200 && !!(resp?.data?._id)) {
+    console.log("get profile emaillll", JSON.stringify(resp.data))
     let profile = {firstName,lastName, email, mobile, id, profileUrl}
     profile.firstName = resp.data.first_name
     profile.lastName = resp.data.last_name
@@ -86,8 +87,24 @@ const getProfile =async () =>{
     profile.email = email
     profile.mobile = mobile
     profile.profileUrl = profileUrl
+    let date = new Date();
+
+    console.log({
+      "_id": "",
+      "email": email,
+      "first_name": firstName,
+      "middle_name": "",
+      "last_name": lastName,
+      "full_name": profileUrl,
+      "mobile": mobile,
+      "created_at": date.toString(),
+      "last_modofied_at": date.toString()
+     
+    })
 
     const resp = await ProfileCallService(ApiMethods.POST,ENDPOINT.USER_PROFILE,
+   
+      
         {
           "_id": "",
           "email": email,
@@ -96,11 +113,12 @@ const getProfile =async () =>{
           "last_name": lastName,
           "full_name": profileUrl,
           "mobile": mobile,
-          "created_at": new Date(),
-          "last_modofied_at": new Date()
+          "created_at": date.toString(),
+          "last_modofied_at": date.toString()
          
         });
         if (resp?.status == 200) {
+          console.log("resp?.data)",resp?.data)
           setData(resp?.data);
           profile.id = resp.data._id
           let item = {profile}

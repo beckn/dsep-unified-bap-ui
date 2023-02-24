@@ -31,6 +31,7 @@ import WorkExperience from '../screens/profile/WorkExperience';
 import Education from '../screens/profile/Education';
 import JobStatus from '../screens/job-status';
 import ScholarshipStatus from '../screens/scholarship-status';
+import TrainingStatus from '../screens/training-status';
 import Settings from '../screens/settings';
 import TrainingListScreen from '../screens/trainings-courses';
 import ResumeScreen from '../screens/resume';
@@ -259,6 +260,12 @@ function Routes() {
           <Stack.Screen
             name="ScholarshipStatus"
             component={ScholarshipStatus}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name="TrainingStatus"
+            component={TrainingStatus}
             options={{headerShown: false}}
           />
           

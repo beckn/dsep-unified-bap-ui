@@ -1,38 +1,42 @@
-import React from 'react';
-import {View, ViewStyle, StyleSheet} from 'react-native';
-import Filter from '../../assets/svg/filter.svg';
-import Search from '../../assets/svg/search.svg';
-import Remove from '../../assets/svg/remove.svg';
-import Star from '../../assets/svg/star.svg';
-import Home from '../../assets/svg/home.svg';
-import Applied from '../../assets/svg/applied.svg';
-import Saved from '../../assets/svg/saved.svg';
-import Profile from '../../assets/svg/profile.svg';
-import Illustration from '../../assets/svg/illustration.svg';
-import BackArrow from '../../assets/svg/back-arrow.svg';
-import Options from '../../assets/svg/options';
-import PersonalInfo from '../../assets/svg/personalInfo.svg';
-import Resume from '../../assets/svg/resume.svg';
-import Settings from '../../assets/svg/settings.svg';
-import RightArrow from '../../assets/svg/right-arrow.svg';
-import LeftArrow from '../../assets/svg/left-arrow.svg';
-import PurchaseHistory from '../../assets/svg/purchaseHistory.svg';
-import PDF from '../../assets/svg/pdf.svg';
-import Rectangle from '../../assets/svg/Rectangle.svg';
-import Upload from '../../assets/svg/upload.svg';
-import Edit from '../../assets/svg/edit.svg';
-import Delete from '../../assets/svg/delete.svg';
-import Privacy from '../../assets/svg/Privacy.svg';
-import Language from '../../assets/svg/Language.svg';
-import CPass from '../../assets/svg/cPass.svg';
-import LeftLargeArrow from '../../assets/svg/leftLarge-arrow.svg';
-import DownArrow from '../../assets/svg/down_arrow.svg';
-import YesBank from '../../assets/svg/yesBank.svg';
-import MasterCard from '../../assets/svg/MasterCard.svg';
-import PaytmCircle from '../../assets/svg/PaytmCircle.svg';
-import Paytm from '../../assets/svg/Paytm.svg';
-import GrayCircle from '../../assets/svg/grayCircle.svg';
-import {Colors} from '@styles/colors';
+import React from "react";
+import { View, ViewStyle, StyleSheet } from "react-native";
+import Filter from "../../assets/svg/filter.svg";
+import Search from "../../assets/svg/search.svg";
+import Remove from "../../assets/svg/remove.svg";
+import Star from "../../assets/svg/star.svg";
+import HomeActive from "../../assets/svg/home-active.svg";
+import HomeInActive from "../../assets/svg/home-inactive.svg";
+import AppliedActive from "../../assets/svg/applied-active.svg";
+import AppliedInActive from "../../assets/svg/applied-inactive.svg";
+import SavedActive from "../../assets/svg/saved-active.svg";
+import SavedInActive from "../../assets/svg/saved-inactive.svg";
+import ProfileActive from "../../assets/svg/profile-active.svg";
+import ProfileInActive from "../../assets/svg/profile-inactive.svg";
+import Illustration from "../../assets/svg/illustration.svg";
+import BackArrow from "../../assets/svg/back-arrow.svg";
+import Options from "../../assets/svg/options";
+import PersonalInfo from "../../assets/svg/personalInfo.svg";
+import Resume from "../../assets/svg/resume.svg";
+import Settings from "../../assets/svg/settings.svg";
+import RightArrow from "../../assets/svg/right-arrow.svg";
+import LeftArrow from "../../assets/svg/left-arrow.svg";
+import PurchaseHistory from "../../assets/svg/purchaseHistory.svg";
+import PDF from "../../assets/svg/pdf.svg";
+import Rectangle from "../../assets/svg/Rectangle.svg";
+import Upload from "../../assets/svg/upload.svg";
+import Edit from "../../assets/svg/edit.svg";
+import Delete from "../../assets/svg/delete.svg";
+import Privacy from "../../assets/svg/Privacy.svg";
+import Language from "../../assets/svg/Language.svg";
+import CPass from "../../assets/svg/cPass.svg";
+import LeftLargeArrow from "../../assets/svg/leftLarge-arrow.svg";
+import DownArrow from "../../assets/svg/down_arrow.svg";
+import YesBank from "../../assets/svg/yesBank.svg";
+import MasterCard from "../../assets/svg/MasterCard.svg";
+import PaytmCircle from "../../assets/svg/PaytmCircle.svg";
+import Paytm from "../../assets/svg/Paytm.svg";
+import GrayCircle from "../../assets/svg/grayCircle.svg";
+import { Colors } from "@styles/colors";
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
   const modifiedProps = {
@@ -51,14 +55,22 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
         return <Remove {...modifiedProps} />;
       case ICONS.IC_STAR:
         return <Star {...modifiedProps} />;
-      case ICONS.IC_HOME_FILLED:
-        return <Home {...modifiedProps} />;
-      case ICONS.IC_APPLIED:
-        return <Applied {...modifiedProps} />;
-      case ICONS.IC_SAVED:
-        return <Saved {...modifiedProps} />;
-      case ICONS.IC_PROFILE:
-        return <Profile {...modifiedProps} />;
+      case ICONS.IC_HOME_ACTIVE:
+        return <HomeActive {...modifiedProps} />;
+      case ICONS.IC_HOME_INACTIVE:
+        return <HomeInActive {...modifiedProps} />;
+      case ICONS.IC_APPLIED_ACTIVE:
+        return <AppliedActive {...modifiedProps} />;
+      case ICONS.IC_APPLIED_INACTIVE:
+        return <AppliedInActive {...modifiedProps} />;
+      case ICONS.IC_SAVED_ACTIVE:
+        return <SavedActive {...modifiedProps} />;
+      case ICONS.IC_SAVED_INACTIVE:
+        return <SavedInActive {...modifiedProps} />;
+      case ICONS.IC_PROFILE_ACTIVE:
+        return <ProfileActive {...modifiedProps} />;
+      case ICONS.IC_PROFILE_INACTIVE:
+        return <ProfileInActive {...modifiedProps} />;
       case ICONS.IC_ILLUSTRATION:
         return <Illustration {...modifiedProps} />;
       case ICONS.IC_BACK_ARROW:
@@ -96,19 +108,19 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       case ICONS.IC_CPASS:
         return <CPass {...modifiedProps} />;
       case ICONS.IC_LEFT_LARGE_ARROW:
-      return <LeftLargeArrow {...modifiedProps} />;
+        return <LeftLargeArrow {...modifiedProps} />;
       case ICONS.IC_DOWN_ARROW:
-      return <DownArrow {...modifiedProps} />;
+        return <DownArrow {...modifiedProps} />;
       case ICONS.IC_YES_BANK:
-      return <YesBank {...modifiedProps} />;
+        return <YesBank {...modifiedProps} />;
       case ICONS.IC_MASTER_CARD:
-      return <MasterCard {...modifiedProps} />;
+        return <MasterCard {...modifiedProps} />;
       case ICONS.IC_PAYTM_CIRCLE:
-      return <PaytmCircle {...modifiedProps} />;
+        return <PaytmCircle {...modifiedProps} />;
       case ICONS.PAYTM:
-      return <Paytm {...modifiedProps} />;
+        return <Paytm {...modifiedProps} />;
       case ICONS.IC_GRAY_CIRCLE:
-      return <GrayCircle {...modifiedProps} />;
+        return <GrayCircle {...modifiedProps} />;
     }
   };
 
@@ -123,8 +135,8 @@ type Styles = {
 
 export const styles = StyleSheet.create<Styles>({
   container: {
-    alignItems: 'center',
-    flexWrap: 'wrap',
+    alignItems: "center",
+    flexWrap: "wrap",
   },
 });
 
@@ -139,36 +151,40 @@ export interface PropTypes {
 }
 
 export enum ICONS {
-  IC_FILTER = 'IC_FILTER',
-  IC_SEARCH = 'IC_SEARCH',
-  IC_REMOVE = 'IC_REMOVE',
-  IC_STAR = 'IC_STAR',
-  IC_HOME_FILLED = 'IC_HOME_FILLED',
-  IC_APPLIED = 'IC_APPLIED',
-  IC_SAVED = 'IC_SAVED',
-  IC_PROFILE = 'IC_PROFILE',
-  IC_ILLUSTRATION = 'IC_ILLUSTRATION',
-  IC_BACK_ARROW = 'IC_BACK_ARROW',
-  IC_OPTIONS = 'IC_OPTIONS',
-  IC_PERSONAL_INFO = 'IC_PERSONAL_INFO',
-  IC_RESUME = 'IC_RESUME',
-  IC_SETTINGS = 'IC_SETTINGS',
-  IC_RIGHT_ARROW = 'IC_RIGHT_ARROW',
-  IC_LEFT_ARROW = 'IC_LEFT_ARROW',
-  IC_PURCHASE_HISTORY = 'IC_PURCHASE_HISTORY',
-  IC_PDF = 'IC_PDF',
-  IC_RECTANGLE = 'IC_RECTANGLE',
-  IC_UPLOAD = 'IC_UPLOAD',
-  IC_EDIT = 'IC_EDIT',
-  IC_DELETE = 'IC_DELETE',
-  IC_PRIVACY = 'IC_PRIVACY',
-  IC_LANGUAGE = 'IC_LANGUAGE',
-  IC_CPASS = 'IC_CPASS',
-  IC_LEFT_LARGE_ARROW= 'IC_LEFT_LARGE_ARROW',
-  IC_DOWN_ARROW='IC_DOWN_ARROW',
-  IC_YES_BANK= 'IC_YES_BANK',
-  IC_MASTER_CARD= 'IC_MASTER_CARD',
-  IC_PAYTM_CIRCLE='IC_PAYTM_CIRCLE',
-  PAYTM='PAYTM',
-  IC_GRAY_CIRCLE='IC_GRAY_CIRCLE'
+  IC_FILTER = "IC_FILTER",
+  IC_SEARCH = "IC_SEARCH",
+  IC_REMOVE = "IC_REMOVE",
+  IC_STAR = "IC_STAR",
+  IC_HOME_ACTIVE = "IC_HOME_ACTIVE",
+  IC_HOME_INACTIVE = "IC_HOME_INACTIVE",
+  IC_APPLIED_ACTIVE = "IC_APPLIED_ACTIVE",
+  IC_APPLIED_INACTIVE = "IC_APPLIED_INACTIVE",
+  IC_SAVED_ACTIVE = "IC_SAVED_ACTIVE",
+  IC_SAVED_INACTIVE = "IC_SAVED_INACTIVE",
+  IC_PROFILE_ACTIVE = "IC_PROFILE_ACTIVE",
+  IC_PROFILE_INACTIVE = "IC_PROFILE_INACTIVE",
+  IC_ILLUSTRATION = "IC_ILLUSTRATION",
+  IC_BACK_ARROW = "IC_BACK_ARROW",
+  IC_OPTIONS = "IC_OPTIONS",
+  IC_PERSONAL_INFO = "IC_PERSONAL_INFO",
+  IC_RESUME = "IC_RESUME",
+  IC_SETTINGS = "IC_SETTINGS",
+  IC_RIGHT_ARROW = "IC_RIGHT_ARROW",
+  IC_LEFT_ARROW = "IC_LEFT_ARROW",
+  IC_PURCHASE_HISTORY = "IC_PURCHASE_HISTORY",
+  IC_PDF = "IC_PDF",
+  IC_RECTANGLE = "IC_RECTANGLE",
+  IC_UPLOAD = "IC_UPLOAD",
+  IC_EDIT = "IC_EDIT",
+  IC_DELETE = "IC_DELETE",
+  IC_PRIVACY = "IC_PRIVACY",
+  IC_LANGUAGE = "IC_LANGUAGE",
+  IC_CPASS = "IC_CPASS",
+  IC_LEFT_LARGE_ARROW = "IC_LEFT_LARGE_ARROW",
+  IC_DOWN_ARROW = "IC_DOWN_ARROW",
+  IC_YES_BANK = "IC_YES_BANK",
+  IC_MASTER_CARD = "IC_MASTER_CARD",
+  IC_PAYTM_CIRCLE = "IC_PAYTM_CIRCLE",
+  PAYTM = "PAYTM",
+  IC_GRAY_CIRCLE = "IC_GRAY_CIRCLE",
 }

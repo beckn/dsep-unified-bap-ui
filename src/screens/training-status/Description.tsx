@@ -10,7 +10,7 @@ function Description({
   navigation,
   data,
   loader,
-  onClickBuyNow,
+  
   buyNowDisabled,
 }: {
   navigation: Navigation;
@@ -99,7 +99,7 @@ function Description({
         </View>
         <View style={styles.bottom}>
           <Button
-            onPress={onClickBuyNow}
+            //onPress={onClickBuyNow}
             title={"Buy Now"}
             disabled={buyNowDisabled}
           />
