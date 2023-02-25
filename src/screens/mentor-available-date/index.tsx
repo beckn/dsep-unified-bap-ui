@@ -109,8 +109,8 @@ const MentorAvailableDate = ({navigation}) => {
         description={selectedMentorData?.mentor?.experience}
       />
       <HeadingTitle title="Available Dates" />
+   
       <CalendarComp />
-      <View style={commonStyles.flex1}></View>
     </View>
   );
 };
