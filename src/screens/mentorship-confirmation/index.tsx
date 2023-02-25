@@ -72,6 +72,7 @@ const MentorshipConfirmScreen = ({ navigation }) => {
   };
 
   const addSlotData = async (mentorshipApplicationId,sessionLink) => {
+    console.log("sessionLink",sessionLink)
     const email = await AsyncStorage.getItem("email");
     const resp = await profileApiCallInstance.post(
       ENDPOINT.ADD_MENTORDATA + email + "/applied",
@@ -92,6 +93,7 @@ const MentorshipConfirmScreen = ({ navigation }) => {
         created_at: new Date().toString(),
       }
     );
+    console.log("resp223",resp)
     if (resp?.status === 200) {
       navigation.reset({
         index: 0,

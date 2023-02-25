@@ -1,6 +1,6 @@
 import AboutMentor from "./AboutMentor";
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { Linking, View } from "react-native";
 import { Navigation } from "@interfaces/commonInterfaces";
 import { callService } from "@services";
 import { ENDPOINT } from "@services/endpoints";
@@ -15,7 +15,7 @@ const MentorshipStatus = ({ navigation, route }: { navigation: Navigation }) => 
   const [mentorData, setMentorData]: any = useState({});
   const [metorshipApplicationStatus, setMentorshipApplicationStatus]: any = useState("");
   const [loader, setLoader] = useState(true);
-  const { applicationId } = route.params;
+  const { applicationId,sessionLink } = route.params;
   const { transactionId } = useMentorContext();
 
     useEffect(() => {
@@ -71,7 +71,7 @@ const MentorshipStatus = ({ navigation, route }: { navigation: Navigation }) => 
                 description={mentorData?.experience}
               />
               <HeadingTitle title="About Mentor" />
-              <AboutMentor navigation={navigation} data={mentorData} primaryButtonTitle={metorshipApplicationStatus} primaryOnPressDisabled={true} hasSecondaryButton={true} secondaryButtonTitle={'go to home'} onSecondaryPress={goToHome} />
+              <AboutMentor navigation={navigation} data={mentorData} primaryButtonTitle={metorshipApplicationStatus} primaryOnPressDisabled={true} hasSecondaryButton={true} sessionLink= {sessionLink} onSessionLinkPress={() => Linking.openURL(sessionLink) } secondaryButtonTitle={'go to home'} onSecondaryPress={goToHome} />
             </>
           ) : (
             <View />

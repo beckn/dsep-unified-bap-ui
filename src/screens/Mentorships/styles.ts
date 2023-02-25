@@ -1,4 +1,4 @@
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {StyleSheet, TextStyle, View, ViewStyle} from 'react-native';
 import {Metrics} from '@styles/metrics';
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
@@ -16,6 +16,7 @@ type Styles = {
   aboutMentordesc: TextStyle;
   otherInformation: TextStyle;
   secondaryButtonStyle: ViewStyle;
+  sessionLinkButton: ViewStyle
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -77,6 +78,9 @@ export const styles = StyleSheet.create<Styles>({
     },
     secondaryButtonStyle: {
       backgroundColor: Colors.black10,
+      marginTop: 24
+    },
+    sessionLinkButton:{
       marginTop: 24
     }
 });
