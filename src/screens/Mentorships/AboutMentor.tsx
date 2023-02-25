@@ -18,16 +18,20 @@ function AboutMentor({
   secondaryButtonTitle,
   hasSecondaryButton,
   onSecondaryPress,
-  onPress
+  onPress,
+  sessionLink,
+  onSessionLinkPress
 }: {
   navigation: Navigation;
   data: any;
   primaryButtonTitle: string;
+  sessionLink?: string;
   primaryOnPressDisabled?: boolean;
   secondaryButtonTitle?: string;
   hasSecondaryButton?: boolean
   onPress: () => void
   onSecondaryPress: () => void
+  onSessionLinkPress: () => void
 }) {
   const {selectedMentorData} = useMentorContext();
 
@@ -64,6 +68,14 @@ function AboutMentor({
           onPressDisabled={primaryOnPressDisabled}
           title={primaryButtonTitle}
         />
+        {
+          sessionLink && 
+          <Button
+          onPress={onSessionLinkPress}
+          style={styles.sessionLinkButton}
+          title={"Show Session Link"}
+        />
+        }
         {
           hasSecondaryButton && 
           <Button
