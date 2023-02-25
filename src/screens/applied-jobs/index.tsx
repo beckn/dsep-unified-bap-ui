@@ -106,7 +106,7 @@ const AppliedJobs = ({navigation}) => {
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <TouchableOpacity style={styles.card} key={index}>
+          <TouchableOpacity style={styles.card} key={index} onPress={() => navigation.navigate("MentorshipStatus",{applicationId : item?.application_id})}>
             <View style={styles.imageView} />
             <View style={styles.cardSpacing}>
               <Text

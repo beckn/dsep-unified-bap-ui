@@ -10,12 +10,14 @@ type ButtonTypes = {
   onPress?: () => void;
   style?: ViewStyle;
   labelStyle?: TextStyle;
+  onPressDisabled? : boolean;
 }
 
 const Button: FunctionComponent<ButtonTypes> = ({
   title,
   onPress,
   disabled,
+  onPressDisabled,
   style = styles.defaultButtonStyle,
   labelStyle = styles.defaultLabelStyle,
 }) => {
@@ -30,7 +32,7 @@ const Button: FunctionComponent<ButtonTypes> = ({
       <TouchableOpacity
         onPress={onPress}
         style={styles.container}
-        disabled={disabled}
+        disabled={disabled || onPressDisabled}
       >
         <View style={styles.labelWrapper}>
           <Text

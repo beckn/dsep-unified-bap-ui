@@ -58,7 +58,7 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       case ICONS.IC_HOME_ACTIVE:
         return <HomeActive {...modifiedProps} />;
       case ICONS.IC_HOME_INACTIVE:
-        return <HomeInActive {...modifiedProps} />;
+        return <HomeInActive />;
       case ICONS.IC_APPLIED_ACTIVE:
         return <AppliedActive {...modifiedProps} />;
       case ICONS.IC_APPLIED_INACTIVE:
