@@ -7,6 +7,7 @@ type Styles = {
   card: ViewStyle,
   imageView: ViewStyle,
   cardSpacing: ViewStyle,
+  bookmarkIcon: ViewStyle,
   nameStyle: TextStyle,
   designationText: TextStyle,
 }
@@ -19,9 +20,10 @@ export const styles = StyleSheet.create<Styles>({
     borderRadius: Metrics.radius.large,
     marginBottom: Metrics.margin.medium
   },
+  bookmarkIcon: { alignItems: 'flex-end', padding: 2 },
   imageView: {
-    width: 126,
-    height: 126,
+    width: 116,
+    height: 116,
     backgroundColor: Colors.silverSand,
     borderRadius: Metrics.radius.large,
   },

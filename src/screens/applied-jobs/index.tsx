@@ -36,6 +36,42 @@ const AppliedJobs = ({navigation}) => {
     getData();
   }, [selectedValue]);
 
+ const onScholorItemPressed=(item) => {
+    let reqdata1 = {
+      context: {
+        bppId: item.bpp_id,
+        bppUri: item.bpp_uri,
+        transactionId: item.transaction_id
+      },
+      scholarshipApplicationId: "APP_32620371" //item.scholarship_id,
+      
+    };
+    console.log("check scholar req data", JSON.stringify(reqdata1))
+    setreqData(reqdata1);
+    navigation.navigate('ScholarshipStatus');
+  }
+
+
+
+  const onCourseItemPressed=(item) => {
+    let reqdata1 = {
+      context: {
+        bppId: item.bpp_id,
+        bppUri: item.bpp_uri,
+        transactionId: item.transaction_id
+      },
+      applicationId: item.application_id,
+      
+    };
+    console.log("check courses req data", JSON.stringify(reqdata1))
+    setreqData(reqdata1);
+    alert("status is in progress")
+    //navigation.navigate('TrainingStatus');
+  }
+
+
+
+
   const ResultCards = () => {
     return (
       <FlatList
@@ -97,7 +133,7 @@ const AppliedJobs = ({navigation}) => {
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <TouchableOpacity style={styles.card} key={index}>
+          <TouchableOpacity onPress={() => {onScholorItemPressed(item)}} style={styles.card} key={index}>
             <View style={styles.imageView} />
             <View style={styles.cardSpacing}>
               <Text
@@ -123,7 +159,7 @@ const AppliedJobs = ({navigation}) => {
       <FlatList
         data={list}
         renderItem={({item, index}) => (
-          <TouchableOpacity style={styles.card} key={index}>
+          <TouchableOpacity onPress={() => {onCourseItemPressed(item)}} style={styles.card} key={index}>
             <View style={styles.imageView} />
             <View style={styles.cardSpacing}>
               <View style={styles.detailsContainer}>
