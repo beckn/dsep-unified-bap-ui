@@ -26,7 +26,7 @@ console.log("check data in result card",JSON.stringify(data))
                     {data.company.name}
                 </Text>
                 <Text style = {styles.organizationLocation}>
-                {data.jobs[0].locations[0].city}{","} {data.jobs[0].locations[0].country}
+                {data?.jobs[0]?.locations[0]?.city}{","} {data?.jobs[0]?.locations[0]?.country}
                 </Text>
             </View>
             <View style = {styles.bookmarkIcon}>
@@ -42,7 +42,7 @@ console.log("check data in result card",JSON.stringify(data))
             <Text style = {styles.roleName}>{data.jobs[0].role}</Text>
             <Text style = {styles.roleAttributes}></Text>
             <View style = {styles.roleHistory}>
-            <Text style = {styles.rolePostedDate}>{(data.jobs[0].userAppliedItem ? 'applied': '')}</Text>
+            <Text style = {styles.rolePostedDate}>{(data?.jobs[0]?.userAppliedItem ? 'applied': '')}</Text>
                 <Text style = {styles.rolePostedDate}>{data?.postedOn}</Text>
                
             </View>
