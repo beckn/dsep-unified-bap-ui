@@ -61,20 +61,8 @@ const ApplyScholorship = ({navigation, route}: {navigation: Navigation, route:an
                       "data": formData
                   },
                   "academicQualificationsCriteria": selectData.scholarshipProviders[0].scholarships[0].academicQualifications,
-                  "finStatusCriteria": [
-                      {
-                          "code": "family_income",
-                          "name": "Family Income",
-                          "value": "<= 2000000"
-                      }
-                  ],
-                  "benefits": [
-                      {
-                          "code": "scholarship-amount",
-                          "name": "Scholarship Amount",
-                          "value": "Upto Rs.30000 per year"
-                      }
-                  ]
+                  "finStatusCriteria": selectData.scholarshipProviders[0].scholarships[0].finStatusCriteria,
+                  "benefits": selectData.scholarshipProviders[0].scholarships[0].benefits,
               }
           ]
       }

@@ -29,17 +29,18 @@ const Scholarships = ({navigation, route}: {navigation: Navigation, route:any}) 
         scholarshipProviderId: dataFromSearch.scholarshipProviders[0].id,
         scholarshipId: dataFromSearch.scholarshipProviders[0].scholarships[0].id,
         scholarshipDetailsId: dataFromSearch.scholarshipProviders[0].scholarships[0].scholarshipDetails.id,
-        context: {
-          transactionId: "bdb5ba09-2241-4f00-b434-73466cd06228",
-          bppId: "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1",
-          bppUri: "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1/public"
-        }
+        // context: {
+        //   transactionId: "bdb5ba09-2241-4f00-b434-73466cd06228",
+        //   bppId: "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1",
+        //   bppUri: "https://proteanrc.centralindia.cloudapp.azure.com/dsep-bpp-1/public"
+        // }
+      context: dataFromSearch.context
       }
     );
     if (resp?.status == 200) {
       setData(resp?.data);
       setLoader(false)
-      console.log('resp?.data---Scholarships>>>', JSON.stringify(resp?.data))
+      console.log('resp?.data---Scholarships>>>', JSON.stringify(resp))
     } else {
       console.log(resp);
       // setLoader(false)

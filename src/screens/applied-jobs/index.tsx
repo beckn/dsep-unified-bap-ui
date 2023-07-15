@@ -43,7 +43,7 @@ const AppliedJobs = ({navigation}) => {
         bppUri: item.bpp_uri,
         transactionId: item.transaction_id
       },
-      scholarshipApplicationId: "APP_32620371" //item.scholarship_id,
+      scholarshipApplicationId: item.application_id,  //"APP_32620371" //,
       
     };
     console.log("check scholar req data", JSON.stringify(reqdata1))
