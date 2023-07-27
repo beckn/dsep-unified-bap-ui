@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
 } from 'react-native';
+import moment from 'moment';
 import Button from '@components/AppButton';
 import {styles}  from './styles';
 import Spacer from '@components/Spacer';
@@ -34,7 +35,7 @@ console.log("headerData.userAppliedItem", headerData.userAppliedItem);
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Description'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.description}</Text>
+                 <Text>{data?.scholarshipProviders[0]?.description}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
@@ -59,12 +60,12 @@ console.log("headerData.userAppliedItem", headerData.userAppliedItem);
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application Start Date'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationStartDate}</Text>
+                 <Text>{ moment(data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails[0]?.applicationStartDate).format('DD-MM-YYYY')}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.card} >
                  <Text style={styles.heading}>{'Application End Date'}</Text>
-                 <Text>{data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails?.applicationEndDate}</Text>
+                 <Text>{ moment(data?.scholarshipProviders[0]?.scholarships[0]?.scholarshipDetails[0]?.applicationEndDate).format('DD-MM-YYYY') }</Text>
         </View>
         <Spacer size={20}/>
     </SafeAreaView>
