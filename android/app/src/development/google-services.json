@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "153318683305",
+    "project_id": "reference-apps-authentication",
+    "storage_bucket": "reference-apps-authentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153318683305:android:b39de9c2a3395de652afb8",
+        "android_client_info": {
+          "package_name": "org.beckn.dsep.bap.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvCIrk7nY204p7S_r6ANPDo-183BPDOgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -39,7 +39,7 @@ export const ProfileCallService = async (
       const response = await profileApiCallInstance.post(endpoint, body);
       return response;
     } catch (error) {
-      console.log('error', error);
+      console.log('error----', error);
     }
   } else {
     try {
