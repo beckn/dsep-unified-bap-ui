@@ -8,15 +8,16 @@ import SearchBox from '@components/SearchBox'
 import {ICONS, SVGIcon} from '@components/SvgIcon';
 import {Colors} from '@styles/colors';
 import { userSkillView } from '@context';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const AddLanguage = ({navigation}:{navigation: Navigation}) => {
     const [value, setValue] = useState("");
     const {languages, setLanguages} = userSkillView();
    
-      const onClickApply =() =>{
+      const onClickApply = async () =>{
         let item = value?.split(',')
         console.log(item);
         setLanguages([...languages,item])
+        await AsyncStorage.setItem('languageInfo',JSON.stringify([...languages,item]))
         navigation.navigate("Resume");
       }
 

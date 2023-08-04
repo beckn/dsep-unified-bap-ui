@@ -24,18 +24,7 @@ const Education = ({route, navigation }: {route: any, navigation: Navigation }) 
   const [endDate, setEndDate] = useState(navParam?.endDate || new Date())
   const [information, setInformation] = useState(navParam?.information || "");
   const [education, setEducation] = useState(navParam?.education || "");
-  const [educationInfo, setEducationInfo] = useState([]);
-  // const { educationInfo, setEducationInfo } = userSkillView();
-
-  useEffect(()=>{
-    // setEducationInfo
-    async function getAddedEdcucation() {
-      const educationList = await AsyncStorage.getItem('educationInfo');
-      educationList && setEducationInfo(JSON.parse(educationList))
-    }
-
-    getAddedEdcucation()
-  },[])
+  const { educationInfo, setEducationInfo } = userSkillView();
 
   const onClickApply = async () => {
     let educationProfile = { collageName, collageAddress, startDate, endDate, information, education}
@@ -55,7 +44,6 @@ const Education = ({route, navigation }: {route: any, navigation: Navigation }) 
     }else{
       setEducationInfo([...educationInfo,item]);
         await AsyncStorage.setItem('educationInfo',JSON.stringify([...educationInfo,item]))
-        console.log('added - >', [...educationInfo,item])
     }
     console.log("educationInfo-->>", educationInfo);
     navigation.goBack();

@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {KeyValue} from '@interfaces/commonInterfaces';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface IItemType {
   
@@ -87,6 +88,25 @@ export function UserProfileDetailsProvider({children}): JSX.Element {
   const [languages, setLanguages] = useState([]);
   const [educationInfo,setEducationInfo] = useState([]);
   const [experienceInfo, setExperienceInfo] = useState([]);
+
+  useEffect(()=>{
+    async function getAddedSkills() {
+      const skillsListArr = await AsyncStorage.getItem('skillsInfo');
+      skillsListArr && setSkills(JSON.parse(skillsListArr))
+    }
+    async function getAddedEducations() {
+      const educationArr = await AsyncStorage.getItem('educationInfo');
+      educationArr && setEducationInfo(JSON.parse(educationArr))
+    }
+    async function getAddedLanguage() {
+      const langArr = await AsyncStorage.getItem('languageInfo');
+      langArr && setLanguages(JSON.parse(langArr))
+    }
+    getAddedSkills()
+    getAddedEducations()
+    getAddedLanguage()
+  },[])
+
 
   return (
     <UserSkillsContext.Provider

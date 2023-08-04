@@ -8,10 +8,13 @@ import SearchBox from '@components/SearchBox'
 import {ICONS, SVGIcon} from '@components/SvgIcon';
 import {Colors} from '@styles/colors';
 import { userSkillView } from '@context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const AddSkills = ({navigation}:{navigation: Navigation}) => {
     const [value, setValue] = useState("");
     const {skills, setSkills} = userSkillView();
+    // const [skillsList, setSkillsList] = useState([]);
     // const[data, setData] = useState([
     //     {
     //         id: 1,
@@ -48,18 +51,14 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
     //     }
         
     //   }
-      const onClickApply =() =>{
+      const onClickApply =async () =>{
         let item = value?.split(',')
         console.log(item);
+        await AsyncStorage.setItem('skillsInfo',JSON.stringify([...skills,item]))
         setSkills([...skills,item])
+        // setSkillsList([...skills,item])
         navigation.navigate("Resume");
       }
-
-      // useEffect(() => {
-        
-      //   console.log("check",skills);
-      // }, []);
-
 
   return (
     <SafeAreaView style={styles.container}>

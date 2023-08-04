@@ -14,14 +14,15 @@ import { userSkillView } from '@context';
 import Button from '@components/AppButton';
 import DocumentPicker from 'react-native-document-picker';
 import images from '../../assets/images';
-import { useIsFocused } from '@react-navigation/native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ResumeScreen = ({ navigation }: { navigation: Navigation }) => {
-  const { skills, setSkills } = userSkillView();
-  const { languages, setLanguages } = userSkillView();
-  const { profileInfo, setProfileInfo } = userSkillView();
-  const { educationInfo, setEducationInfo } = userSkillView();
+  const { skills } = userSkillView();
+
+  const { languages } = userSkillView();
+  const { profileInfo } = userSkillView();
+  const { educationInfo } = userSkillView();
   const { experienceInfo, setExperienceInfo } = userSkillView();
   const [ educationList, setEducationList ] = useState([]);
   const [upload, setUpload] = useState(true);
@@ -34,32 +35,21 @@ const ResumeScreen = ({ navigation }: { navigation: Navigation }) => {
     if (skills.length != 0 && languages.length != 0) {
       navigation.navigate("Dashboard");
     }
-    getAddedEducations()
     // removeLocalStorage()
   }, []);
 
   async function  removeLocalStorage(){
     await AsyncStorage.removeItem('educationInfo');
+    await AsyncStorage.removeItem('skillsInfo');
+    await AsyncStorage.removeItem('languageInfo');
     console.log('|----------- Removed Localstorage ---------|')
-
   }
 
-  async function getAddedEducations () {
-    const educationsAdded = await AsyncStorage.getItem('educationInfo');
-    educationsAdded && setEducationList(JSON.parse(educationsAdded))
-  }
-
-useEffect(()=>{
-  const unsubscribe = navigation.addListener('focus', async () => {
-    // setEducationList(educationInfo)
-    getAddedEducations()
-
-    // Call any action
-  });
-
-  // Return the function to unsubscribe from the event so it gets removed on unmount
-  return unsubscribe;
-},[navigation,isFocused])
+useFocusEffect(
+  React.useCallback(() => {
+    setEducationList(educationInfo)
+  }, [educationInfo])
+);
 
   const onClickApply = async () => {
     console.log(fileType + resumeUri);
