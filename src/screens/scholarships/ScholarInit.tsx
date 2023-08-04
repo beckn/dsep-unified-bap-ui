@@ -62,7 +62,7 @@ function ScholarInit({navigation, route}: {navigation: Navigation, route:any}) {
         
       setLoader(true);
         const resp = await callService(ApiMethods.POST,ENDPOINT.CONFIRM_SCHOLARSHIP,data);
-       // console.log('resp out side:::-->>>',JSON.stringify(resp));
+       console.log('resp out side:::-->>>',JSON.stringify(resp));
           if (resp?.status == 200) {
           //  
 
