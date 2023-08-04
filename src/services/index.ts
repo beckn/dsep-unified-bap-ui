@@ -37,6 +37,7 @@ export const ProfileCallService = async (
   if (methodType === ApiMethods.POST) {
     try {
       const response = await profileApiCallInstance.post(endpoint, body);
+
       return response;
     } catch (error) {
       console.log('error----', error);
@@ -44,6 +45,8 @@ export const ProfileCallService = async (
   } else {
     try {
       const response = await profileApiCallInstance.get(endpoint);
+      console.log('profile Res ----', response);
+
       return response;
     } catch (error) {
       console.log('error', error);

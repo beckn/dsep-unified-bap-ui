@@ -16,26 +16,28 @@ const AddLanguage = ({navigation}:{navigation: Navigation}) => {
       const onClickApply =() =>{
         let item = value?.split(',')
         console.log(item);
-        setLanguages(item)
+        setLanguages([...languages,item])
         navigation.navigate("Resume");
       }
 
   return (
     <SafeAreaView style={styles.container}>
-    <View style={{ paddingTop: 30, }}>
-    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+    <View>
+    <View>
       <View style={styles.titlePosition}>
+        <TouchableOpacity onPress={() => { navigation.goBack() }}>
           <Image source={images.leftArrow} />
+        </TouchableOpacity>
           <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Known Languages </Text>
           </View>
-        </TouchableOpacity>
+        </View>
       
     <View style={styles.searchBox}>
       <TextInput style={styles.input} value= {value} placeholder='Add Languages known ' onChangeText={text => setValue(text)} />
     </View>
    
     <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+       <Button onPress={onClickApply} text={'SAVE'} type="dark"/>
        
       </View> 
     </View>

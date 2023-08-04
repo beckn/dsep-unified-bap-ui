@@ -48,7 +48,7 @@ export interface Context {
   jobSearchSkills: IItemType[];
   jobsearchlocation: IItemType[];
   languages: IItemType[];
-  educationInfo: IEducationType;
+  educationInfo: IEducationType[];
   experienceInfo: IExperienceType;
   setProfileInfo: (args: IProfileType) => void;
   setAppId: (args: IAppId) => void;
@@ -56,7 +56,7 @@ export interface Context {
   setJobSearchSkills: (args: IItemType[]) => void;
   setLanguages: (args: IItemType[]) => void;
   setJobSearchlocation: (args: IItemType[]) => void;
-  setEducationInfo: (args: IEducationType) =>void;
+  setEducationInfo: (args: IEducationType[]) =>void;
   setExperienceInfo: (args: IExperienceType) =>void;
 }
 
@@ -66,14 +66,14 @@ export const UserSkillsContext = React.createContext({
   jobSearchSkills: [],
   jobsearchlocation: [],
   languages: [],
-  educationInfo: {},
+  educationInfo: [],
   experienceInfo:{},
   setProfileInfo: (args: IProfileType) => {},
   setSkills: (args: IItemType[]) => {},
   setJobSearchSkills: (args: IItemType[]) => {},
   setLanguages: (args: IItemType[]) => {},
   setJobSearchlocation: (args: IItemType[]) => {},
-  setEducationInfo: (args: IEducationType) =>{},
+  setEducationInfo: (args: IEducationType[]) =>{},
   setExperienceInfo: (args: IExperienceType) =>{},
 });
 

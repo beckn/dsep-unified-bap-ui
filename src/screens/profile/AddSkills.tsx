@@ -51,7 +51,7 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
       const onClickApply =() =>{
         let item = value?.split(',')
         console.log(item);
-        setSkills(item)
+        setSkills([...skills,item])
         navigation.navigate("Resume");
       }
 
@@ -63,19 +63,22 @@ const AddSkills = ({navigation}:{navigation: Navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-    <View style={{ paddingTop: 30, }}>
-    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+    <View>
+    <View>
       <View style={styles.titlePosition}>
+      <TouchableOpacity onPress={() => { navigation.goBack() }}>
           <Image source={images.leftArrow} />
-          <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Your Skills</Text></View>
         </TouchableOpacity>
+          <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Your Skills</Text>
+          </View>
+        </View>
       
     <View style={styles.searchBox}>
       <TextInput style={styles.input} value= {value} placeholder='Add skills ' onChangeText={text => setValue(text)} />
     </View>
    
     <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+       <Button onPress={onClickApply} text={'SAVE'} type="dark"/>
        
       </View> 
     </View>

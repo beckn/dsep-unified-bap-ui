@@ -10,10 +10,10 @@ function Header({ navigation, heading }) {
   return (
     <View style={styles.header}>
       <View style={styles.headerHeading}>
-        <TouchableOpacity onPress={() => { navigation.goBack() }}>
+        <TouchableOpacity onPress={() => { navigation.goBack() }} style={styles.backButtonContainer}>
           <Image source={images.leftArrow} />
         </TouchableOpacity>
-        <View style={{paddingRight: 120}}>
+        <View style={styles.titleTextWraper}>
         <Text style={styles.headerText}>{heading}</Text></View>
         {/* <SVGIcon
           name={ICONS.IC_FILTER}
