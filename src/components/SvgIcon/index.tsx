@@ -36,6 +36,7 @@ import MasterCard from "../../assets/svg/MasterCard.svg";
 import PaytmCircle from "../../assets/svg/PaytmCircle.svg";
 import Paytm from "../../assets/svg/Paytm.svg";
 import GrayCircle from "../../assets/svg/grayCircle.svg";
+import Calender from "../../assets/svg/calender.svg";
 import { Colors } from "@styles/colors";
 
 export const SVGIcon = (props: PropTypes): JSX.Element => {
@@ -120,8 +121,10 @@ export const SVGIcon = (props: PropTypes): JSX.Element => {
       case ICONS.PAYTM:
         return <Paytm {...modifiedProps} />;
       case ICONS.IC_GRAY_CIRCLE:
-        return <GrayCircle {...modifiedProps} />;
-    }
+          return <GrayCircle {...modifiedProps} />;
+      case ICONS.IC_CALENDER:
+            return <Calender {...modifiedProps} />;
+          }
   };
 
   return (
@@ -187,4 +190,5 @@ export enum ICONS {
   IC_PAYTM_CIRCLE = "IC_PAYTM_CIRCLE",
   PAYTM = "PAYTM",
   IC_GRAY_CIRCLE = "IC_GRAY_CIRCLE",
+  IC_CALENDER = "IC_CALENDER",
 }

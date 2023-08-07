@@ -1,6 +1,9 @@
-export const PROFILE_BASE_URL = 'https://api.dsep-bap-api.becknprotocol.io';
-export const BASE_URL = 'https://api.dsep-bap-client.becknprotocol.io';
-export const BASE_URL_PROFILE = 'https://api.dsep-bap-api.becknprotocol.io';
+import Config from "react-native-config";
+
+export const PROFILE_BASE_URL = Config.PROFILE_BASE_URL;
+export const BASE_URL = Config.BASE_URL;
+export const BASE_URL_PROFILE = Config.BASE_URL_PROFILE;
+console.log('Config.PROFILE_BASE_URL ----------------------------? ', Config.PROFILE_BASE_URL)
 export const ENDPOINT = {
 
   INIT_APLLICATION: "/job/init",

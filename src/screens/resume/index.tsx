@@ -175,11 +175,11 @@ const ResumeScreen = ({navigation}: {navigation: Navigation}) => {
             {educationInfo?.educationProfile?.information}
             </Text>
           </View>
-          <SVGIcon
+          {/* <SVGIcon
             name={ICONS.IC_EDIT}
             fill={Colors.white}
             style={styles.iconMargin}
-          />
+          /> */}
         </View>
       </View>
 

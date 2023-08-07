@@ -7,7 +7,7 @@ import {styles} from './styles';
 import Spacer from '@components/Spacer';
 import images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Config from "react-native-config";
 function LoginScreen({navigation}) {
   useEffect(() => {
     GoogleSignin.configure({
@@ -64,14 +64,16 @@ function LoginScreen({navigation}) {
   return (
     <View style={{}}>
     <Spacer size={300}/>
-    <Text style={styles.headerText}>Unified BAP</Text>
+    <Text style={styles.headerText}>Unified BAP {Config?.ENV_NAME}</Text>
     <Spacer size={30}/>
       <View style={styles.bottom}>
-        <TouchableOpacity
+        <TouchableOpacity 
           onPress={() =>
             onGoogleButtonPress().then(() =>
               console.log('Signed in with Google!'),
-            )
+            ).catch((e)=>{
+                console.log('Failed to signIn : Error:  ',e )
+            })
           }
           style={{
             alignItems: 'center',

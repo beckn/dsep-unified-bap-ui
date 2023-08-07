@@ -14,12 +14,13 @@ type Styles = {
   input: ViewStyle;
   centeredView: ViewStyle;
   modalView: ViewStyle;
-  calender: ViewStyle;
+  // calender: ViewStyle;
   button: ViewStyle;
   searchBoxContainer: ViewStyle;
   bottom: ViewStyle;
   inputStyleMultiLine: ViewStyle;
   titlePosition: ViewStyle;
+  rowContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -34,7 +35,7 @@ export const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
     paddingHorizontal: Metrics.base,
-    backgroundColor:Colors.white
+    backgroundColor:Colors.white,
   },
   optionsRow:{
     flexDirection:'row',
@@ -43,17 +44,7 @@ export const styles = StyleSheet.create<Styles>({
     margin:Metrics.small,
     alignItems:'center'
   },
-  calender:{
-    flexDirection: 'row',
-    // minHeight:Metrics.large,
-    // // backgroundColor:Colors.white,
-    // // margin:Metrics.small,
-    height: 60,
-    top:5,
-    alignItems: 'stretch',
-    justifyContent:'space-between'
-   
-  },
+
   optionsLeftIcon:{
     flex:2
   },
@@ -98,6 +89,7 @@ export const styles = StyleSheet.create<Styles>({
     borderColor: 'black',
     borderRadius: Metrics.radius.small,
     marginVertical: Metrics.margin.small,
+    paddingHorizontal:10
   },
   inputStyleMultiLine: {
     height: 130,
@@ -123,6 +115,13 @@ export const styles = StyleSheet.create<Styles>({
       width: 0,
       height: 2,
     },
-  }
- 
+  },
+  rowContainer :{
+    flex: 1,
+    flexDirection :'row',
+    justifyContent:'space-around',
+    marginBottom:10
+    // paddingHorizontal: Metrics.base,
+    // backgroundColor:Colors.white
+  } 
 });

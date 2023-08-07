@@ -1,119 +1,106 @@
-import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import {styles} from './styles';
-import {Navigation} from '@interfaces/commonInterfaces';
+import { styles } from './styles';
+import { Navigation } from '@interfaces/commonInterfaces';
 import Button from '@components/AppButton';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import images from '../../assets/images';
 import { userSkillView } from '@context';
+import DatePicker from 'react-native-date-picker'
+import DatePickerButton from '@components/Datepicker';
+import Spacer from '@components/Spacer';
+import Input from '@components/Input';
+import { Colors } from '@styles/colors';
 
-
-const Education = ({navigation}: {navigation: Navigation}) => {
+const Education = ({ navigation }: { navigation: Navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [endModalVisible, setEndModalVisible] = useState(false);
   const [collageName, setCollageName] = useState("");
   const [collageAddress, setCollageAddress] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   const [information, setInformation] = useState("");
   const [education, setEducation] = useState("");
-  const {educationInfo, setEducationInfo} = userSkillView();
-    const onClickApply =() =>{
-        let educationProfile = {collageName,collageAddress, startDate, endDate, information, education}
-        educationProfile.collageName = collageName
-        educationProfile.collageAddress = collageAddress
-        educationProfile.startDate = startDate
-        educationProfile.endDate = endDate
-        educationProfile.information = information
-        educationProfile.education = education
-        let item = {educationProfile}
-        console.log('----item>>>>', item);
-        setEducationInfo(item);
-        console.log("educationInfo-->>", educationInfo);
-        navigation.navigate('Resume');
-      }
+  const { educationInfo, setEducationInfo } = userSkillView();
+  const onClickApply = () => {
+    let educationProfile = { collageName, collageAddress, startDate, endDate, information, education }
+    educationProfile.collageName = collageName
+    educationProfile.collageAddress = collageAddress
+    educationProfile.startDate = startDate
+    educationProfile.endDate = endDate
+    educationProfile.information = information
+    educationProfile.education = education
+    let item = { educationProfile }
+    setEducationInfo(item);
+    console.log("educationInfo-->>", educationInfo);
+    navigation.navigate('Resume');
+  }
 
-     const onClickStartDate  =() =>{
-        setModalVisible(!modalVisible)
-      }
-     const onClickEndDate = () =>{
-      setEndModalVisible(!endModalVisible)
-     } 
-     
+  const onClickStartDate = () => {
+    setModalVisible(!modalVisible)
+  }
+  const onClickEndDate = () => {
+    setEndModalVisible(!endModalVisible)
+  }
+
+  function padTo2Digits(num: Number) {
+    return num.toString().padStart(2, '0');
+  }
+
+  function formatDate(date: Date) {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-');
+  }
+
   return (
-    <SafeAreaView>
-    <View>
-    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-          <Image source={images.leftArrow} />
+    <SafeAreaView style={{flex:1, backgroundColor: Colors.white}}>
+       <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
+      <View >
+        <TouchableOpacity onPress={() => { navigation.goBack() }}>
+          <View style={styles.titlePosition}>
+            <Image source={images.leftArrow} />
+            <Text style={{ color: 'black', fontWeight: 'bold' }}>Add Education </Text>
+          </View>
         </TouchableOpacity>
-      <Text>Education</Text>
-      <View style={styles.container}>
-      <TextInput 
-        placeholder="Education B.tech or MCA"  
-        style={styles.inputStyle} 
-        value={education}
-        onChangeText={(text)=>{setEducation(text)}}
-        />
-      <TextInput 
-        placeholder="School or Collage"  
-        style={styles.inputStyle} 
-        value={collageName}
-        onChangeText={(text)=>{setCollageName(text)}}
-        />
-      <TextInput 
-         placeholder="Address" 
-         style={styles.inputStyle} 
-         value={collageAddress}
-         onChangeText={(text)=>{setCollageAddress(text)}}
-         />
-      <View style={styles.calender}>
-      <View style={styles.button}>
-      <TouchableOpacity style={{ height: 50, padding: 10,borderWidth: 2, borderRadius: 5}}
-      onPress={onClickStartDate}><Text>{startDate || 'Start Date'}</Text></TouchableOpacity></View>
-      <View style={styles.button}>
-      <TouchableOpacity style={{ height: 50, padding: 10, borderRadius: 5, borderWidth: 2}}
-      onPress={onClickEndDate}><Text>{endDate || 'End Date'}</Text></TouchableOpacity></View>
-      <Modal visible={modalVisible}>
-      <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-        <Calendar 
-         onDayPress={day => {
-          console.log('selected day', day.dateString);
-          setStartDate(day.dateString);
-          setModalVisible(!modalVisible);
-        }}
-        
-        />
-      <TouchableOpacity onPress={()=>setModalVisible(false)}><Text>Close</Text></TouchableOpacity>
-      </View></View>
-      </Modal>
-      <Modal visible={endModalVisible}>
-      <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-        <Calendar 
-         onDayPress={day => {
-          console.log('selected day', day.dateString);
-          setEndDate(day.dateString);
-          setEndModalVisible(!endModalVisible);
-        }}
-        
-        />
-      <TouchableOpacity onPress={()=>setEndModalVisible(!endModalVisible)}><Text>Close</Text></TouchableOpacity>
-      </View></View>
-      </Modal>
+        <View style={[styles.container,{marginTop:30}]}>
+          <Input
+            label={'Level of education'}
+            placeholder="Education B.Tech or MCA"
+            value={education}
+            onChangeText={(text) => { setEducation(text) }} />
+
+          <Input
+            label={'Institution/University name'}
+            placeholder="School or College"
+            value={collageName}
+            onChangeText={(text: string) => { setCollageName(text) }} />
+
+          <Input
+            label={'Address'}
+            placeholder="Address"
+            value={collageAddress}
+            onChangeText={(text) => { setCollageAddress(text) }} />
+
+            <View style={styles.rowContainer}>
+              <DatePickerButton onSelect={(day) => setStartDate(day)} label={'Start Date'} value={formatDate(startDate)} />
+              <Spacer size={15} horizontal={true} />
+              <DatePickerButton onSelect={(day) => setEndDate(day)} label={'End Date'} value={formatDate(endDate)} />
+            </View>
+            
+          <Input
+            label={'Description'}
+            placeholder="Write additional information here..."
+            multiline numberOfLines={4}
+            value={information}
+            onChangeText={(text) => { setInformation(text) }} />
+          <Button onPress={onClickApply} text={'Apply'} type="dark" />
+        </View>
       </View>
-      <TextInput 
-       placeholder="Add information here" 
-       multiline numberOfLines={4} 
-       style={styles.inputStyleMultiLine} 
-       textAlignVertical={'top'}
-       onChangeText={(text)=>{setInformation(text)}}
-       value={information}
-       />
-      <Button onPress={onClickApply} text={'Apply'} type="dark"/>
-    </View>
-    </View>
-    </SafeAreaView>
+      </ScrollView>
+     </SafeAreaView>
   )
 }
 
