@@ -1,6 +1,6 @@
 import Description from "./Description";
 import LessonPlan from "./LessonPlan";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header from "./Header";
 import Tabs from "@components/Tabs";
 import { Navigation } from "@interfaces/commonInterfaces";
@@ -20,18 +20,23 @@ const Training = ({
   const [trainingData, setTrainingData]: any = useState();
   const [loader, setLoader] = useState(true);
   const { data, context } = route.params;
-
+  const dataref = useRef();
   useEffect(() => {
     getData();
-  }, []);
+    console.log('trsinig');
+  }, [trainingData]);
   const getData = async () => {
-    const resp = await callService(ApiMethods.POST, ENDPOINT.SELECT_TRAINING, {
+    const reqData = {
       courseId: data.id,
       courseProviderId: data.provider.id,
       context: context,
-    });
+    }
+    console.log('reqData',reqData);
+    const resp = await callService(ApiMethods.POST, ENDPOINT.SELECT_TRAINING, reqData);
     if (resp?.status == 200) {
       setTrainingData(resp?.data);
+      dataref.current = resp.data;
+      console.log('respData',resp);
       setLoader(false);
     } else {
       console.log(resp);
@@ -83,7 +88,7 @@ const Training = ({
     <>
       <Header
         navigation={navigation}
-        heading={trainingData?.course?.name}
+        heading=   {trainingData?.course?.name}
         online="online"
         video="video & lecture"
         education={""}

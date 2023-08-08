@@ -16,6 +16,8 @@ type Styles = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
   bottom: ViewStyle;
+  textlist: ViewStyle;
+  search: ViewStyle;
 
 };
 
@@ -44,15 +46,23 @@ export const styles = StyleSheet.create<Styles>({
     backgroundColor:  `#dcdcdc`, 
   },
   input: {
-    height: 40,
+    height: 50,
     margin: 10,
     width: 300,
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 10,
     padding: 10,
     backgroundColor:  `#f8f8ff`, 
+    borderColor: `#D0D0D0`,
 
   },
+  search : {
+    height: 50,
+    margin: 5,
+    marginLeft: 30,
+    width: 310,
+  },
+
   feature: {
     height: 150,
     margin: 5,
@@ -72,8 +82,18 @@ title : {
 },
 texttitle : {
   fontWeight: 'bold',
-  color: 'black'
+  color: 'black',
+paddingLeft: 45,
+marginTop: 20,
+marginBottom: 10
+
 },
+textlist : {
+  fontWeight: 'bold',
+  color: 'black',
+
+},
+
 list: {
   height: 130,
   flex: 1,

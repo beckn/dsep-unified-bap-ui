@@ -23,6 +23,7 @@ const images = {
     google: require("../images/google.png"),
     googleLogo: require("../images/googleLogo.jpg"),
     calender: require("../images/calender.png"),
+    doc: require("../images/doc.png"),
 
 }
 

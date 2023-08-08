@@ -51,8 +51,6 @@ const AppliedJobs = ({navigation}) => {
     navigation.navigate('ScholarshipStatus');
   }
 
-
-
   const onCourseItemPressed=(item) => {
     let reqdata1 = {
       context: {

@@ -101,9 +101,9 @@ const SearchResultScreen = ({ navigation, route,}: { navigation: Navigation; rou
   };
   useEffect(() => {
     getData();
-    if(list.length !=0){
-      console.log('check list data', JSON.stringify(list[0]?.jobs[0].role));
-    }
+    // if(list?.length !=0){
+    //   console.log('check list data', JSON.stringify(list[0]?.jobs[0].role));
+    // }
     
   }, []);
   const onPress = () => {
@@ -132,8 +132,8 @@ const SearchResultScreen = ({ navigation, route,}: { navigation: Navigation; rou
     if (resp?.status === 200) {
       //console.log("check search data", JSON.stringify(resp?.data.jobResults))
       
-      setData(resp?.data.context);
-      setList(resp?.data.jobResults);
+      setData(resp?.data?.context);
+      setList(resp?.data?.jobResults);
       setLoading(false);
     } else {
       console.log(resp);
@@ -143,13 +143,13 @@ const SearchResultScreen = ({ navigation, route,}: { navigation: Navigation; rou
     <SafeAreaView style={styles.container}>
       {loading ? (
         <Loader />
-      ) : list.length == undefined ? (
+      ) : list?.length == undefined ? (
         <View>
           <NavBar
             hasBackArrow={true}
             hasRightIcon={false}
             hasSecondaryRightIcon={false}
-            title=""
+            title="No Data found"
           />
           <NoData message={'No Data found'} />
         </View>
@@ -160,7 +160,7 @@ const SearchResultScreen = ({ navigation, route,}: { navigation: Navigation; rou
             heading={list[0]?.jobs[0].role}
             // {list[0]?.jobs[0]?.role}
             onPress={onPress}
-            count={list.length}
+            count={list?.length}
           />
 
           <ResultCards />

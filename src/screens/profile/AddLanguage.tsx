@@ -8,34 +8,37 @@ import SearchBox from '@components/SearchBox'
 import {ICONS, SVGIcon} from '@components/SvgIcon';
 import {Colors} from '@styles/colors';
 import { userSkillView } from '@context';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const AddLanguage = ({navigation}:{navigation: Navigation}) => {
     const [value, setValue] = useState("");
     const {languages, setLanguages} = userSkillView();
    
-      const onClickApply =() =>{
+      const onClickApply = async () =>{
         let item = value?.split(',')
         console.log(item);
-        setLanguages(item)
+        setLanguages([...languages,item])
+        await AsyncStorage.setItem('languageInfo',JSON.stringify([...languages,item]))
         navigation.navigate("Resume");
       }
 
   return (
     <SafeAreaView style={styles.container}>
-    <View style={{ paddingTop: 30, }}>
-    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+    <View>
+    <View>
       <View style={styles.titlePosition}>
+        <TouchableOpacity onPress={() => { navigation.goBack() }}>
           <Image source={images.leftArrow} />
+        </TouchableOpacity>
           <Text style={{ color: 'black', fontWeight: 'bold'  }}>Add Known Languages </Text>
           </View>
-        </TouchableOpacity>
+        </View>
       
     <View style={styles.searchBox}>
       <TextInput style={styles.input} value= {value} placeholder='Add Languages known ' onChangeText={text => setValue(text)} />
     </View>
    
     <View style={styles.bottom}>
-       <Button onPress={onClickApply} text={'Apply'} type="dark"/>
+       <Button onPress={onClickApply} text={'SAVE'} type="dark"/>
        
       </View> 
     </View>

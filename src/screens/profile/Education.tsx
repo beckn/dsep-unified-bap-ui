@@ -1,5 +1,6 @@
-import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, TextInput, SafeAreaView, Modal, TouchableOpacity, Image, ScrollView  } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from 'react'
 import { styles } from './styles';
 import { Navigation } from '@interfaces/commonInterfaces';
 import Button from '@components/AppButton';
@@ -12,28 +13,41 @@ import Spacer from '@components/Spacer';
 import Input from '@components/Input';
 import { Colors } from '@styles/colors';
 
-const Education = ({ navigation }: { navigation: Navigation }) => {
+const Education = ({route, navigation }: {route: any, navigation: Navigation }) => {
+  console.log('navigation ------------------ ', route?.params?.education?.educationProfile)
+  const navParam = route?.params?.education?.educationProfile;
   const [modalVisible, setModalVisible] = useState(false);
   const [endModalVisible, setEndModalVisible] = useState(false);
-  const [collageName, setCollageName] = useState("");
-  const [collageAddress, setCollageAddress] = useState("");
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
-  const [information, setInformation] = useState("");
-  const [education, setEducation] = useState("");
+  const [collageName, setCollageName] = useState(navParam?.collageName || "");
+  const [collageAddress, setCollageAddress] = useState(navParam?.collegeAddress || "");
+  const [startDate, setStartDate] = useState(navParam?.startDate || new Date())
+  const [endDate, setEndDate] = useState(navParam?.endDate || new Date())
+  const [information, setInformation] = useState(navParam?.information || "");
+  const [education, setEducation] = useState(navParam?.education || "");
   const { educationInfo, setEducationInfo } = userSkillView();
-  const onClickApply = () => {
-    let educationProfile = { collageName, collageAddress, startDate, endDate, information, education }
+
+  const onClickApply = async () => {
+    let educationProfile = { collageName, collageAddress, startDate, endDate, information, education}
     educationProfile.collageName = collageName
     educationProfile.collageAddress = collageAddress
-    educationProfile.startDate = startDate
-    educationProfile.endDate = endDate
+    educationProfile.startDate = formatDate(new Date(startDate))
+    educationProfile.endDate = formatDate(new Date(endDate))
     educationProfile.information = information
     educationProfile.education = education
+    educationProfile.localId = Math.floor(100000 + Math.random() * 900000);
     let item = { educationProfile }
-    setEducationInfo(item);
+    if(navParam && Object.keys(navParam)?.length){
+      const currentEduIndex = educationInfo.findIndex((edu)=>edu.educationProfile.localId === navParam?.localId)
+      educationInfo[currentEduIndex] = item
+      setEducationInfo(educationInfo);
+      await AsyncStorage.setItem('educationInfo',JSON.stringify(educationInfo))
+    }else{
+      setEducationInfo([...educationInfo,item]);
+        await AsyncStorage.setItem('educationInfo',JSON.stringify([...educationInfo,item]))
+    }
     console.log("educationInfo-->>", educationInfo);
-    navigation.navigate('Resume');
+    navigation.goBack();
+
   }
 
   const onClickStartDate = () => {
@@ -49,7 +63,7 @@ const Education = ({ navigation }: { navigation: Navigation }) => {
 
   function formatDate(date: Date) {
     return [
-      date.getFullYear(),
+      date?.getFullYear(),
       padTo2Digits(date.getMonth() + 1),
       padTo2Digits(date.getDate()),
     ].join('-');
@@ -85,9 +99,9 @@ const Education = ({ navigation }: { navigation: Navigation }) => {
             onChangeText={(text) => { setCollageAddress(text) }} />
 
             <View style={styles.rowContainer}>
-              <DatePickerButton onSelect={(day) => setStartDate(day)} label={'Start Date'} value={formatDate(startDate)} />
+              <DatePickerButton onSelect={(day) => setStartDate(day)} label={'Start Date'} value={formatDate(new Date(startDate))} />
               <Spacer size={15} horizontal={true} />
-              <DatePickerButton onSelect={(day) => setEndDate(day)} label={'End Date'} value={formatDate(endDate)} />
+              <DatePickerButton onSelect={(day) => setEndDate(day)} label={'End Date'} value={formatDate(new Date(endDate))} />
             </View>
             
           <Input
@@ -96,7 +110,7 @@ const Education = ({ navigation }: { navigation: Navigation }) => {
             multiline numberOfLines={4}
             value={information}
             onChangeText={(text) => { setInformation(text) }} />
-          <Button onPress={onClickApply} text={'Apply'} type="dark" />
+          <Button onPress={onClickApply} text={'SAVE'} type="dark" />
         </View>
       </View>
       </ScrollView>

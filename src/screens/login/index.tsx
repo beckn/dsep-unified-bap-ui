@@ -64,7 +64,7 @@ function LoginScreen({navigation}) {
   return (
     <View style={{}}>
     <Spacer size={300}/>
-    <Text style={styles.headerText}>Unified BAP {Config?.ENV_NAME}</Text>
+    <Text style={styles.headerText}>Unified BAP</Text>
     <Spacer size={30}/>
       <View style={styles.bottom}>
         <TouchableOpacity 
