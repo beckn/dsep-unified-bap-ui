@@ -8,6 +8,7 @@ import Spacer from '@components/Spacer';
 import images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from "react-native-config";
+import { StackActions } from '@react-navigation/native';
 function LoginScreen({navigation}) {
   useEffect(() => {
     GoogleSignin.configure({
@@ -38,7 +39,10 @@ function LoginScreen({navigation}) {
   async function onGoogleButtonPress() {
     await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
     // Get the users ID token
-    const {idToken} = await GoogleSignin.signIn();
+    const {idToken,user} = await GoogleSignin.signIn();
+    AsyncStorage.setItem('fullName',user?.name);
+    AsyncStorage.setItem('email',user?.email);
+    AsyncStorage.setItem('photoURL',user?.photo);
     console.log('idtoken', idToken);
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
@@ -46,7 +50,9 @@ function LoginScreen({navigation}) {
     console.log('googleCredential===>>>', googleCredential);
     // Sign-in the user with the credential
     if(idToken != ''){
-      navigation.navigate('SampleProfile')
+      const resetAction = StackActions.replace('SampleProfile');
+      navigation.dispatch(resetAction);
+      // navigation.popToTop();
     }
     return auth().signInWithCredential(googleCredential);
   }

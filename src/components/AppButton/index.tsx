@@ -38,7 +38,7 @@ const AppButton = (props: PropType) =>{
             ...style,
       },
       buttonText :{
-        color:  type === "dark" ?  Colors.white : Colors.black,
+        color:  type === "dark" ?  Colors.white : Colors.liteGray,
         textTransform: 'uppercase'
       }
         });

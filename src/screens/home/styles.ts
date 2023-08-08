@@ -4,7 +4,7 @@ import {StyleSheet, ViewStyle} from 'react-native';
 
 type Styles = {
   container: ViewStyle;
-  searchBoxContainer: ViewStyle;
+  // searchBoxContainer: ViewStyle;
   listContainer: ViewStyle;
   item: ViewStyle;
   icon: ViewStyle;
@@ -18,7 +18,6 @@ type Styles = {
   bottom: ViewStyle;
   textlist: ViewStyle;
   search: ViewStyle;
-
 };
 
 export const styles = StyleSheet.create<Styles>({
@@ -29,7 +28,7 @@ export const styles = StyleSheet.create<Styles>({
   bottom: {
     backgroundColor: Colors.white,
      padding: Metrics.padding.medium,
-     width: 400
+     width: 400,
   },
   listContainer: { padding: 10 },
   item:{
@@ -45,10 +44,11 @@ export const styles = StyleSheet.create<Styles>({
     alignItems: 'center',
     backgroundColor:  `#dcdcdc`, 
   },
+  
   input: {
     height: 50,
     margin: 10,
-    width: 300,
+    width: '100%',
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
@@ -83,9 +83,8 @@ title : {
 texttitle : {
   fontWeight: 'bold',
   color: 'black',
-paddingLeft: 45,
-marginTop: 20,
-marginBottom: 10
+  marginTop: 20,
+  marginBottom: 10,
 
 },
 textlist : {

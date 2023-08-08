@@ -9,15 +9,14 @@ import Header from './Header';
 import { Colors } from '@styles/colors';
 import { Fonts } from '@styles/fonts';
 import { Metrics } from '@styles/metrics';
-import { Navigation } from '@interfaces/commonInterfaces';
 import { userSkillView } from '@context';
 import Button from '@components/AppButton';
 import DocumentPicker from 'react-native-document-picker';
 import images from '../../assets/images';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
+import { StackActions, useFocusEffect, useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ResumeScreen = ({ navigation }: { navigation: Navigation }) => {
+const ResumeScreen = ({ navigation }) => {
   const { skills } = userSkillView();
 
   const { languages } = userSkillView();
@@ -33,7 +32,8 @@ const ResumeScreen = ({ navigation }: { navigation: Navigation }) => {
 
   useEffect(() => {
     if (skills.length != 0 && languages.length != 0) {
-      navigation.navigate("Dashboard");
+      const resetAction = StackActions.replace('Dashboard');
+      navigation.dispatch(resetAction);
     }
     // removeLocalStorage()
   }, []);
@@ -48,8 +48,7 @@ const ResumeScreen = ({ navigation }: { navigation: Navigation }) => {
 useFocusEffect(
   React.useCallback(() => {
     setEducationList(educationInfo)
-  }, [educationInfo])
-);
+  }, [educationInfo]))
 
   const onClickApply = async () => {
     console.log(fileType + resumeUri);
@@ -67,7 +66,8 @@ useFocusEffect(
     const resp = await ProfileCallService(ApiMethods.POST, ENDPOINT.USER_RESUME, req);
     if (resp?.status == 200) {
       console.log("test profile", resp.data);
-      navigation.navigate("Dashboard");
+      const resetAction = StackActions.replace('Dashboard');
+      navigation.dispatch(resetAction);
     } else {
       console.log(resp);
     }
@@ -193,7 +193,7 @@ useFocusEffect(
       </View> */}
 
       {/* <View style={styles.sectionContainer}>
-        <View style={styles.topSection}>
+        <View style={[styles.topSection,{ minHeight:40,maxHeight:40 }]}>
           <Text style={styles.sectionHeaderText}>Work Experience</Text>
           <TouchableOpacity onPress={ ()=> onPress() }><Text style={styles.addText}>+ Add New</Text></TouchableOpacity>
         </View>
@@ -218,7 +218,7 @@ useFocusEffect(
       </View> */}
     
       <View style={styles.sectionContainer}>
-        <View style={styles.topSection}>
+        <View style={[styles.topSection,{ minHeight:40,maxHeight:40 }]}>
           <Text style={styles.sectionHeaderText}>Education</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Education')}><Text style={styles.addText}>+ Add New</Text></TouchableOpacity>
         </View>
@@ -253,7 +253,7 @@ useFocusEffect(
       </View>
 
       <View style={styles.sectionContainer}>
-        <View style={styles.topSection}>
+        <View style={[styles.topSection,{ minHeight:40,maxHeight:40 }]}>
           <Text style={styles.sectionHeaderText}>Skill</Text>
           <TouchableOpacity onPress={() => navigation.navigate('AddSkills')}><Text style={styles.addText}>+ Add More</Text>
           </TouchableOpacity>
@@ -266,7 +266,7 @@ useFocusEffect(
       </View>
 
       <View style={styles.sectionContainer}>
-        <View style={styles.topSection}>
+        <View style={[styles.topSection,{ minHeight:40,maxHeight:40 }]}>
           <Text style={styles.sectionHeaderText}>Languages Known</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Language')}><Text style={styles.addText}>+ Add More</Text>
           </TouchableOpacity>

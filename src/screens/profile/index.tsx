@@ -11,6 +11,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ProfileScreen({navigation}: {navigation: Navigation}) {
   const onGoogleSignOut = () => {
+    GoogleSignin.configure({
+      webClientId:
+        '153318683305-qj2l6jk77jvm2q30fb0929perhr2hh9v.apps.googleusercontent.com',     
+  });
     GoogleSignin.signOut()
       .then(res => {
         console.log('signed out', res);

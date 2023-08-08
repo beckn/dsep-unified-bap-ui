@@ -31,7 +31,7 @@ export const styles = StyleSheet.create<Styles>({
     height: 40,
     borderWidth: 1,
     borderColor: Colors.liteGray,
-    borderRadius: 15,
+    borderRadius: Metrics.radius.small,
     marginVertical: Metrics.margin.small,
     paddingHorizontal:10
   },
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create<Styles>({
     height: 130,
     borderWidth: 1,
     borderColor: Colors.liteGray,
-    borderRadius: 15,
+    borderRadius: Metrics.radius.small,
     marginVertical: Metrics.margin.small,
     paddingHorizontal:10,
     textAlignVertical: 'top'
