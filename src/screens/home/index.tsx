@@ -150,7 +150,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
   
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0, alignItems: 'center', height: 350, width: 400  };
+  const containerStyle = {backgroundColor: 'white', position: 'absolute',borderRadius: 10, bottom: 0,  height: 410, width: 390  };
   const ScholarcontainerStyle = {backgroundColor: 'white', position: 'absolute', borderRadius: 10, bottom: 0, alignItems: 'center', height: 500, width: 400  };
   return (
     <View style={styles.container}>
@@ -158,7 +158,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 20}}>
       <View style={{ alignItems:'center'}}>
       <Text>Hello </Text>
-      <Text style={styles.texttitle}> {profileInfo?.profile?.firstName} </Text></View>
+      <Text style={styles.textlist}> {profileInfo?.profile?.firstName} </Text></View>
       <View style={{ alignItems:'flex-end'}}>
      </View>
       </View>
@@ -170,13 +170,13 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       </View>
       <View>
       <View style={{ paddingTop: 30, paddingLeft: 10 }}>
-      <Text style={styles.texttitle}>Featured Jobs</Text></View>
+      <Text style={styles.textlist}>Featured Jobs</Text></View>
       <View style={styles.feature}>
       <ResultCard data={testData} onItemPressed={item => onPress()} />
       </View>
       </View>
       <View style={styles.listContainer}>
-      <Text style={styles.texttitle}>Browse by categories</Text>
+      <Text style={styles.textlist}>Browse by categories</Text>
       <View >
         <FlatList 
         horizontal={false}
@@ -197,7 +197,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
             </View>
             </TouchableOpacity>
             <View>
-            <Text style={styles.texttitle}>{item.name}</Text></View>
+            <Text style={styles.textlist}>{item.name}</Text></View>
             
           </View>
         )}
@@ -207,7 +207,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
       </View>
       {(selectedCatagory === 'Jobs & Internships')?(
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-        <Text style={styles.texttitle}>Search Jobs & InternShips.</Text>
+        <Text style={styles.texttitle}>Search Jobs & Internships</Text>
         <View style={{ alignItems:'center'}}>
         <TextInput style={styles.input}
             placeholder="Enter job title "
@@ -233,7 +233,9 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
           <Button onPress={onClickApply} 
           disabled={(jobtitle == "" && company=="" && location == "" && skills == "")? true : false}  
           type={(jobtitle == "" && company=="" && location == "" && skills == "")? "grey": "dark" } 
-          text={'Apply'}  />
+          text={'SEARCH'} 
+          style={styles.search}
+          />
          </View> 
             </View>
       </Modal>  
@@ -265,7 +267,7 @@ function HomeScreen({navigation}: {navigation: Navigation}) {
         <Button onPress={onClickApply} 
           disabled={(scholortitle == "" )? true : false}  
           type={(scholortitle == "")? "grey": "dark" } 
-          text={'Apply'}  />
+          text={'SEARCH'}  />
            </View> 
               </View>
         </Modal>  

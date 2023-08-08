@@ -32,7 +32,7 @@ const TrainingListScreen = ({navigation,route}) => {
     const email = await AsyncStorage.getItem("email");
     const resp = await callService(ApiMethods.POST, ENDPOINT.SEARCH_COURSE,{
       "loggedInUserEmail":email,
-      "category": courseTitle
+      "searchTitle": courseTitle
       }
     );
     console.log("resp223",JSON.stringify(resp))
