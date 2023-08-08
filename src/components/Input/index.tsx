@@ -5,11 +5,12 @@ import { TextInput, View, Text } from 'react-native';
 import { styles } from './styles';
 import DatePicker from 'react-native-date-picker';
 
-const Input = ({ value, label, onChangeText, placeholder, multiline=false, numberOfLines=4 }) => {
+const Input = ({ value, label, onChangeText, placeholder, multiline=false, numberOfLines=4, ...props }) => {
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.labelText}>{label}</Text>
       <TextInput
+       {...props}
         placeholder={placeholder}
         style={multiline? styles.inputStyleMultiLine : styles.inputStyle}
         multiline 

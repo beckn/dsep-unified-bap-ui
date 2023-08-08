@@ -1,61 +1,69 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../screens/login';
-import MentoringListScreen from '../screens/mentoring-list';
-import SlotBookedScreen from '../screens/mentor-slot-booked';
-import Dashboard from './Dashboard';
-import LessonPlan from '../screens/training/LessonPlan';
-import Debit from '../screens/training/Debit';
-import Confirmation from '../screens/training/Confirmation';
-import Training from '../screens/training';
-import AboutScholarship from '../screens/scholarships/AboutScholarship';
-import Eligibility from '../screens/scholarships/Eligibility';
-import Scholarships from '../screens/scholarships';
-import {ThemeProvider} from '@context';
-import SlotListScreen from '../screens/mentor-slot-list';
-import DevScreen from '../screens/dev';
-import MentorAvailableDate from '../screens/mentor-available-date';
-import SearchResultScreen from '../screens/search-result';
-import SubmitApplication from '../screens/jobs/SubmitApplication';
+import { ThemeProvider, userSkillView } from '@context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useEffect } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Mentorships from '../screens/Mentorships';
+import MentorshipStatus from '../screens/Mentorships/MentoringStatus';
+import DevScreen from '../screens/dev';
 import JobConfirmation from '../screens/job-confirmation';
-import ScholarshipListScreen from '../screens/scholarships-grants';
-import Jobs from '../screens/jobs';
-import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import LocationSearch from '../screens/search-result/LocationSearch';
-import SkillsSearch from '../screens/search-result/SkillsSearch';
-import home from '../screens/home';
-import WorkExperience from '../screens/profile/WorkExperience';
-import Education from '../screens/profile/Education';
 import JobStatus from '../screens/job-status';
-import ScholarshipStatus from '../screens/scholarship-status';
-import TrainingStatus from '../screens/training-status';
-import Settings from '../screens/settings';
-import TrainingListScreen from '../screens/trainings-courses';
-import ResumeScreen from '../screens/resume';
-import SavedJobs from '../screens/saved-jobs';
-import AddSkills from '../screens/profile/AddSkills';
+import Jobs from '../screens/jobs';
+import ConfirmApplication from '../screens/jobs/ConfirmApplication';
+import SubmitApplication from '../screens/jobs/SubmitApplication';
+import LoginScreen from '../screens/login';
+import MentorAvailableDate from '../screens/mentor-available-date';
+import SlotBookedScreen from '../screens/mentor-slot-booked';
+import SlotListScreen from '../screens/mentor-slot-list';
+import MentoringListScreen from '../screens/mentoring-list';
+import MentorshipConfirmScreen from '../screens/mentorship-confirmation';
+import Notification from '../screens/notification';
+import ProfileScreen from '../screens/profile';
 import AddDegree from '../screens/profile/AddDegree';
 import AddLanguage from '../screens/profile/AddLanguage';
-import ProfileScreen from '../screens/profile';
-import Notification from '../screens/notification';
+import AddSkills from '../screens/profile/AddSkills';
+import Education from '../screens/profile/Education';
 import SampleProfile from '../screens/profile/SampleProfile';
-import MentorshipConfirmScreen from '../screens/mentorship-confirmation';
-import ConfirmApplication from '../screens/jobs/ConfirmApplication';
-import InitTraining from '../screens/training/Init';
-import ConfirmTraining from '../screens/training/Confirm';
+import WorkExperience from '../screens/profile/WorkExperience';
+import ResumeScreen from '../screens/resume';
+import ScholarshipStatus from '../screens/scholarship-status';
+import Scholarships from '../screens/scholarships';
+import ScholarshipListScreen from '../screens/scholarships-grants';
+import AboutScholarship from '../screens/scholarships/AboutScholarship';
+import ApplyScholorship from '../screens/scholarships/ApplyScholorship';
+import Eligibility from '../screens/scholarships/Eligibility';
 import ScholarInit from '../screens/scholarships/ScholarInit';
-import MentorshipStatus from '../screens/Mentorships/MentoringStatus';
+import SearchResultScreen from '../screens/search-result';
+import LocationSearch from '../screens/search-result/LocationSearch';
+import SkillsSearch from '../screens/search-result/SkillsSearch';
+import Settings from '../screens/settings';
+import Training from '../screens/training';
+import TrainingStatus from '../screens/training-status';
+import ConfirmTraining from '../screens/training/Confirm';
+import Confirmation from '../screens/training/Confirmation';
+import Debit from '../screens/training/Debit';
+import InitTraining from '../screens/training/Init';
+import LessonPlan from '../screens/training/LessonPlan';
+import TrainingListScreen from '../screens/trainings-courses';
+import Dashboard from './Dashboard';
+
 const Stack = createNativeStackNavigator();
 
-function Routes() {
+
+const  Routes = ({initialRoute, profileDetails})=> {
+  const {setProfileInfo } = userSkillView();
+  console.log('routeeeee - > ', profileDetails)
+
+  useEffect(()=>{
+    setProfileInfo(profileDetails);
+
+  },[profileDetails])
+
   return (
     <SafeAreaView style={{flex: 1}}>
     <ThemeProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={initialRoute.toString()}>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="DevScreen" component={DevScreen} />
           <Stack.Screen

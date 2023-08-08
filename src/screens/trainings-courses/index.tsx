@@ -1,6 +1,6 @@
 import {ApiMethods} from '@constant/common.constant';
 import React, {useEffect, useState} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 import {callService, ProfileCallService} from '@services';
 import {ENDPOINT} from '@services/endpoints';
 import {styles} from './styles';
@@ -16,6 +16,7 @@ const TrainingListScreen = ({navigation,route}) => {
   const [data, setData] = useState([]);
   const [context, setContext] = useState({});
   const [loader, setLoader] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
   const {courseTitle} = route.params;
   const { profileInfo} = userSkillView();
   let email = profileInfo.profile?.email
@@ -56,6 +57,7 @@ const TrainingListScreen = ({navigation,route}) => {
       "_id": profileInfo.profile?.id,
       "course_id": item.id,
       "provider_id": item?.provider.id,
+      "name": name,
       "application_id": null,
       "title": item.description,
       "duration": item?.duration,
@@ -97,10 +99,17 @@ const TrainingListScreen = ({navigation,route}) => {
         heading='Training & Courses'
         />
           <View style={styles.searchBoxContainer}>
-            
+          <SearchBox
+            value={searchQuery}
+            onSearch={(text) => setSearchQuery(text)}
+            placeholder="Search courses..."
+          />
           </View>
           <FlatList
-            data={data}
+            data={data.filter((item) =>
+              item?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+            )}
+            ListEmptyComponent={<NoData message={'No Data found'} />}
             renderItem={({item, index}) => <TrainingCard data={item} onButtonClick={(item)=>onButtonClick(item)} index={index} onPress ={ navigateToSlotList} />}
             contentContainerStyle={styles.listContainer}
           /> 

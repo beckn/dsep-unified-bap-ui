@@ -14,7 +14,6 @@ import Input from '@components/Input';
 import { Colors } from '@styles/colors';
 
 const Education = ({route, navigation }: {route: any, navigation: Navigation }) => {
-  console.log('navigation ------------------ ', route?.params?.education?.educationProfile)
   const navParam = route?.params?.education?.educationProfile;
   const [modalVisible, setModalVisible] = useState(false);
   const [endModalVisible, setEndModalVisible] = useState(false);
@@ -45,7 +44,6 @@ const Education = ({route, navigation }: {route: any, navigation: Navigation }) 
       setEducationInfo([...educationInfo,item]);
         await AsyncStorage.setItem('educationInfo',JSON.stringify([...educationInfo,item]))
     }
-    console.log("educationInfo-->>", educationInfo);
     navigation.goBack();
 
   }
