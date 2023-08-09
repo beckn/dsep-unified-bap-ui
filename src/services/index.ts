@@ -62,6 +62,8 @@ export const callService = async (
   if (methodType === ApiMethods.POST) {
     try {
       const response = await apiCallInstance.post(endpoint, body);
+      console.log('response ------ | ', response);
+
       return response;
     } catch (error) {
       console.log('error', error);

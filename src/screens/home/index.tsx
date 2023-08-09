@@ -9,6 +9,7 @@ import { Modal } from 'react-native-paper';
 import images from '../../assets/images';
 import ResultCard from '../search-result/ResultCard';
 import { styles } from './styles';
+import Spacer from '@components/Spacer';
 
 
 function HomeScreen({ navigation }: { navigation: Navigation }) {
@@ -220,22 +221,21 @@ function HomeScreen({ navigation }: { navigation: Navigation }) {
               value={skills}
               onChangeText={text => setSkills(text)}
             />
-            <View style={styles.bottom}>
+            {/* <View style={styles.bottom}> */}
               <Button onPress={onClickApply}
                 disabled={(jobtitle == "" && company == "" && location == "" && skills == "") ? true : false}
                 type={(jobtitle == "" && company == "" && location == "" && skills == "") ? "grey" : "dark"}
                 text={'SEARCH'}
                 style={styles.search}
               />
-            </View>
+            {/* </View> */}
           </View>
         </Modal>
       ) : (selectedCatagory === 'Scholarships & Grants') ?
         (
-          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={ScholarcontainerStyle}>
+          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
             <Text style={styles.texttitle}>Search Scholorship</Text>
-
-            <View style={{ height: 250, width: 350, margin: 10 }}>
+            <View>
               <Dropdown
                 data={dropdownData}
                 open={open}
@@ -247,6 +247,7 @@ function HomeScreen({ navigation }: { navigation: Navigation }) {
                 }}
               />
             </View>
+            <Spacer size={10} />
             <View style={{ alignItems: 'center' }}>
 
               <TextInput style={styles.input}
@@ -254,12 +255,12 @@ function HomeScreen({ navigation }: { navigation: Navigation }) {
                 value={scholortitle}
                 onChangeText={text => setScholorTitle(text)}
               />
-              <View style={styles.bottom}>
+             
                 <Button onPress={onClickApply}
                   disabled={(scholortitle == "") ? true : false}
                   type={(scholortitle == "") ? "grey" : "dark"}
-                  text={'SEARCH'} />
-              </View>
+                  text={'SEARCH'} 
+                  style={styles.search}/>
             </View>
           </Modal>
         ) : (selectedCatagory === 'Trainings & Courses') ?
@@ -272,14 +273,14 @@ function HomeScreen({ navigation }: { navigation: Navigation }) {
                   value={courseTitle}
                   onChangeText={text => setCourseTitle(text)}
                 />
-                <View style={styles.bottom}>
+                {/* <View style={styles.bottom}> */}
                   <Button onPress={onClickApply}
                     disabled={(courseTitle == "") ? true : false}
                     type={(courseTitle == "") ? "grey" : "dark"}
                     text={'Search'}
                     style={styles.search}
                   />
-                </View>
+                {/* </View> */}
               </View>
             </Modal>
           ) : (
@@ -296,14 +297,14 @@ function HomeScreen({ navigation }: { navigation: Navigation }) {
                   value={mentortitle}
                   onChangeText={text => setMentorTitle(text)}
                 />
-                <View style={styles.bottom}>
+                {/* <View style={styles.bottom}> */}
                   <Button onPress={onClickApply}
                     disabled={(mentortitle == "" && sessiontitle == "") ? true : false}
                     type={(mentortitle == "" && sessiontitle == "") ? "grey" : "dark"}
                     text={'Search'}
                     style={styles.search}
                   />
-                </View>
+                {/* </View> */}
               </View>
             </Modal>
           )
