@@ -93,7 +93,7 @@ const TrainingListScreen = ({navigation,route}) => {
     <View style={styles.container}>
       {
         loader ? <Loader/> 
-        : data.length > 0 ? (
+        : data?.length > 0 ? (
           <>
         <Header navigation={navigation} 
         heading='Training & Courses'
