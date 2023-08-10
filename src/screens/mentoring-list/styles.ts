@@ -19,10 +19,12 @@ export const styles = StyleSheet.create<Styles>({
     backgroundColor: Colors.background,
   },
   searchBoxContainer: {
-    paddingTop: Metrics.padding.base,
-    paddingHorizontal: Metrics.padding.base,
+    
+    // paddingTop: Metrics.padding.base,
+    marginBottom:24,
+    // paddingHorizontal: Metrics.padding.small,
   },
-  listContainer: {paddingTop: 34, paddingHorizontal: 22, paddingBottom: 31 },
+  listContainer: { paddingHorizontal: 22, paddingBottom: 31 },
   header: {
     height: 60,
     paddingLeft: Metrics.padding.base,

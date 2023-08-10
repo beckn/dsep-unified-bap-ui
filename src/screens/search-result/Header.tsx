@@ -10,7 +10,7 @@ import images from '../../assets/images';
 function Header({ navigation, heading, onPress, count }) {
 
   return (
-    <View >
+    <View>
     <View style={styles.header}>
       <View style={[styles.headerHeading, ]}>
       <TouchableOpacity onPress={() => { navigation.goBack() }} style={{padding:5, paddingRight: 60}} >
@@ -19,7 +19,7 @@ function Header({ navigation, heading, onPress, count }) {
         <Text style={styles.headerText}>{heading}</Text>
       </View>
       </View>
-      <View style={styles.headerHeading}>
+      <View style={[styles.headerHeading,{justifyContent:'flex-start',paddingHorizontal:14}]}>
         <Text> {count} Results Found</Text>
         
       <View style={styles.rightTextContainer}>

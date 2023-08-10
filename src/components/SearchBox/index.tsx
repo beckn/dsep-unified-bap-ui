@@ -4,12 +4,12 @@ import React from 'react';
 import {TextInput, View} from 'react-native';
 import {styles} from './styles';
 
-const SearchBox = ({value, onSearch, ...props}) => {
+const SearchBox = ({value, onSearch,onClear, ...props }) => {
   return (
     <View style={styles.searchBox}>
       <SVGIcon name={ICONS.IC_SEARCH} fill={Colors.white} />
       <TextInput onChangeText={(value)=>{onSearch(value)}} style={styles.input} value = {value} {...props}/>
-      <SVGIcon name={ICONS.IC_REMOVE} />
+      <SVGIcon name={ICONS.IC_REMOVE} onPress={onClear}/>
     </View>
   );
 };

@@ -42,8 +42,8 @@ const ScholarshipListScreen = ({navigation, route}: {navigation: Navigation, rou
     const resp = await callService(ApiMethods.POST, ENDPOINT.GET_SCHOLARSHIPS,  scholortitle);
     if (resp?.status === 200) {
       setData(resp.data);
-      setReqData(resp?.data.context)
-      setProviderId(resp?.data.scholarshipProviders[0].id)
+      setReqData(resp?.data?.context)
+      setProviderId(resp?.data?.scholarshipProviders[0].id)
       console.log('ScholarshipListScreen',JSON.stringify(resp.data));
       
       setLoader(false)
