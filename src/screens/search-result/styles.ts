@@ -78,7 +78,7 @@ export const styles = StyleSheet.create<Styles>({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
-    marginBottom: 20,
+    marginVertical: 12,
     padding: 5
   },
   

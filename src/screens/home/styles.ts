@@ -59,8 +59,9 @@ export const styles = StyleSheet.create<Styles>({
   search : {
     height: 50,
     margin: 5,
-    marginLeft: 30,
-    width: 310,
+    marginVertical: 10,
+    width: '100%',
+    alignSelf :'center'
   },
 
   feature: {
