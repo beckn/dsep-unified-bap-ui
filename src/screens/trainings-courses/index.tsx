@@ -26,6 +26,7 @@ const TrainingListScreen = ({navigation,route}) => {
 
   const navigateToSlotList = (trainingData) =>{
     // change the navigation here
+    console.log('clicked on trainingData ------------------> ', trainingData)
      navigation.navigate("Training", {data:trainingData,context: context})
   }
 
@@ -88,7 +89,7 @@ const TrainingListScreen = ({navigation,route}) => {
 
 
 
-
+console.log('data -----------> ', JSON.stringify(data))
   return (
     <View style={styles.container}>
       {

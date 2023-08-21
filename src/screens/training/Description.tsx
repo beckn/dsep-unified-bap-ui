@@ -26,12 +26,13 @@ function Description({
           <Spacer />
           <Text style={styles.heading}>{"About the Course"}</Text>
           <Spacer />
-          <Text>{data?.course?.description}</Text>
+          <Text>{data?.course?.description || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Course Highlights"}</Text>
           <Spacer />
           <FlatList
             data={data?.courseDetails?.courseHighlights}
+            ListEmptyComponent={<><Spacer /><Text> NA </Text></>}
             renderItem={({ item, index }) => {
               return (
                 <>
@@ -47,26 +48,27 @@ function Description({
           <Text style={styles.heading}>{"General Information"}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Duration"}</Text>
-          <Text>{data?.course?.duration}</Text>
+          <Text>{data?.course?.duration || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Language"}</Text>
-          <Text>{data?.language}</Text>
+          <Text>{data?.language || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Number of enrollments"}</Text>
-          <Text>{data?.enrollments}</Text>
+          <Text>{data?.enrollments || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Specialization"}</Text>
-          <Text>{data?.specialization}</Text>
+          <Text>{data?.specialization || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Course Creator"}</Text>
-          <Text>{data?.courseDetails?.instructors}</Text>
+          <Text>{data?.courseDetails?.instructors || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Provider"}</Text>
-          <Text>{data?.course?.provider?.name}</Text>
+          <Text>{data?.course?.provider?.name || 'NA'}</Text>
           <Spacer />
           <Text style={styles.heading}>{"Prerequisites"}</Text>
           <FlatList
             data={data?.courseDetails?.prerequisites}
+            ListEmptyComponent={<><Spacer /><Text> NA </Text></>}
             renderItem={({ item, index }) => {
               return (
                 <>
@@ -82,6 +84,7 @@ function Description({
           <Text style={styles.heading}>{"Eligibility"}</Text>
           <FlatList
             data={data?.courseDetails?.eligibility}
+            ListEmptyComponent={<><Spacer /><Text> NA </Text></>}
             renderItem={({ item, index }) => {
               return (
                 <>
@@ -95,7 +98,7 @@ function Description({
           />
           <Spacer />
           <Text style={styles.heading}>{"Course Fees"}</Text>
-          <Text>{data?.courseDetails?.price}</Text>
+          <Text>{data?.courseDetails?.price || 'NA'}</Text>
         </View>
         <View style={styles.bottom}>
           <Button

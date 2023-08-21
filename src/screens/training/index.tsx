@@ -17,13 +17,14 @@ const Training = ({
   navigation: Navigation;
   route: any;
 }) => {
+
   const [trainingData, setTrainingData]: any = useState();
   const [loader, setLoader] = useState(true);
   const { data, context } = route.params;
   const dataref = useRef();
   useEffect(() => {
     getData();
-    console.log('trsinig');
+    console.log('trsinig', );
   }, [trainingData]);
   const getData = async () => {
     const reqData = {
@@ -36,6 +37,7 @@ const Training = ({
     if (resp?.status == 200) {
       setTrainingData(resp?.data);
       dataref.current = resp.data;
+      console.log('respData.data',resp.data);
       console.log('respData',resp);
       setLoader(false);
     } else {
