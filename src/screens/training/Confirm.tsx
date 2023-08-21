@@ -113,25 +113,25 @@ function ConfirmTraining({
             <Spacer />
             <Text style={styles.heading}>{"About the Course"}</Text>
             <Spacer />
-            <Text>{data?.course?.description}</Text>
+            <Text>{data?.course?.description  || 'NA'}</Text>
 
             <Spacer />
 
             <Text style={styles.heading}>{"Duration"}</Text>
-            <Text>{data?.course.duration}</Text>
+            <Text>{data?.course.duration  || 'NA'}</Text>
             <Spacer />
             <Text style={styles.heading}>{"Language"}</Text>
-            <Text>{data?.language}</Text>
+            <Text>{data?.language  || 'NA'}</Text>
             <Spacer />
 
             <Text style={styles.heading}>{"Specialization"}</Text>
-            <Text>{data?.specialization}</Text>
+            <Text>{data?.specialization  || 'NA'}</Text>
             <Spacer />
             <Text style={styles.heading}>{"Course Creator"}</Text>
-            <Text>{data?.courseDetails?.instructors}</Text>
+            <Text>{data?.courseDetails?.instructors  || 'NA'}</Text>
             <Spacer />
             <Text style={styles.heading}>{"Course Fees"}</Text>
-            <Text>{data?.courseDetails?.price}</Text>
+            <Text>{data?.courseDetails?.price || 'NA'}</Text>
           </View>
           <View style={styles.bottom}>
             <Button onPress={onConfirmPress} text={"Confirm"} type="dark" />

@@ -13,9 +13,8 @@ type cardDetails = {
 };
 
 const MentorCard = ({ data, index, onPress }: cardDetails) => {
-  const navigation = useNavigation();
-  return data?.mentorships.map((mentorshipsData) => {
-    return mentorshipsData.mentorshipSessions.map((mentorData) => {
+  return data?.mentorships?.length && data?.mentorships.map((mentorshipsData) => {
+     return mentorshipsData?.mentorshipSessions?.length && mentorshipsData?.mentorshipSessions?.map((mentorData) => {
       return (
         <TouchableOpacity
           style={styles.card}

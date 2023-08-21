@@ -19,7 +19,7 @@ const ScholarshipCard = ({ data, index, onButtonClick, onPress }: cardDetails) =
   const navigation = useNavigation();
   return (
     <TouchableOpacity style={styles.card} key={index} onPress={() => onPress(data)}>
-      <View style={styles.imageView} />
+      {data?.imageLocations?.length ? <Image  source={{uri:data.imageLocations[0]}} resizeMode='contain' style={styles.imageView}/> : <View style={styles.imageView} /> }
       <View style={styles.cardSpacing}>
         <View style={styles.detailsContainer}>
           <View style={styles.titleSubTitleWrapper}>

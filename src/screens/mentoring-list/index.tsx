@@ -24,6 +24,7 @@ const MentoringListScreen = ({
   const { mentor } = route.params;
   const [loader, setLoader] = useState(true);
   const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const { setSelectedMentorData, selectedMentorData, setTransactionId } =
     useMentorContext();
   useEffect(() => {
@@ -54,17 +55,65 @@ const MentoringListScreen = ({
     });
   };
 
+  function filterSessionsByMentorName(data, mentorName) {
+    if (!mentorName) {
+      return data;
+    }
+
+    const filteredData = [];
+
+    for (const item of data) {
+      const mentorships = item?.mentorships || [];
+
+      for (const mentorshipArray of mentorships) {
+        const mentorshipSessions = mentorshipArray?.mentorshipSessions || [];
+
+        const filteredSessions = mentorshipSessions.filter(
+          (session) =>
+            session?.mentor?.name?.toLowerCase().includes(mentorName.toLowerCase())
+        );
+
+        if (filteredSessions.length > 0) {
+          filteredData.push({
+            ...item,
+            mentorships: [
+              {
+                ...mentorshipArray,
+                mentorshipSessions: filteredSessions,
+              },
+            ],
+          });
+        }
+      }
+    }
+    return filteredData;
+  }
+
+  const onClearSearch = () => {
+    setSearchQuery('')
+  }
+
   return (
     <View style={styles.container}>
       {loader ? (
         <Loader />
       ) : data?.length > 0 ? (
         <>
-           <Header navigation={navigation} 
-        heading='Tutoring & Mentorship'
-        />
+          <Header navigation={navigation}
+            heading='Tutoring & Mentorship'
+          />
           <FlatList
-            data={data}
+            data={filterSessionsByMentorName(data, searchQuery)}
+            ListHeaderComponent={
+              <View style={styles.searchBoxContainer}>
+                <SearchBox
+                onClear={onClearSearch}
+                  value={searchQuery}
+                  onSearch={(text) => setSearchQuery(text)}
+                  placeholder="Search mentorship..."
+                />
+              </View>
+            }
             renderItem={({ item, index }) => (
               <MentorCard
                 data={item}
